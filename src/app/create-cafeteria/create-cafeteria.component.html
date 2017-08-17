@@ -1,0 +1,140 @@
+<div class="create-cafeteria-component">
+  <div class="component-title">
+    הקמת סניף
+  </div>
+  <app-progress-bar [complete]="complete"></app-progress-bar>
+
+
+  <div class="component-content">
+    <div class="left-side-form">
+      test
+    </div>
+
+    <div class="cafeteria-details-form">
+      <!--cafeteria details-->
+      <div class="form-label">
+        פרטי הקפיטריה
+      </div>
+
+      <div class="input-line required">
+        <input type="text" appInput [(ngModel)]="createdCafeteria.cafeteria.caf_name" [placeholderMessage]="'שם חברה'">
+      </div>
+
+      <div class="input-line required">
+        <input type="text" appInput [(ngModel)]="createdCafeteria.cafeteria.caf_address" [placeholderMessage]="'address'">
+      </div>
+
+      <div class="select-line required">
+        <select [(ngModel)]="createdCafeteria.cafeteria.caf_university_id" (change)="selectUniversity($event)">
+          <option *ngFor="let university of universities" [value]="university.university_id">
+            {{ university.university_name }}
+          </option>
+        </select>
+      </div>
+
+      <div class="select-line required">
+        <select [(ngModel)]="createdCafeteria.cafeteria.caf_university_building_id">
+          <option *ngFor="let universityBuilding of universityBuildings" [value]="universityBuilding.building_id">
+            {{ universityBuilding.building_name }}
+          </option>
+        </select>
+      </div>
+
+      <div class="select-line required">
+        <select [(ngModel)]="createdCafeteria.cafeteria.caf_kosher_type">
+          <option [value]="0">first</option>
+          <option [value]="1">second</option>
+          <option [value]="2">third</option>
+          <option [value]="3">fourth</option>
+          <option [value]="4">fifth</option>
+        </select>
+      </div>
+
+      <div class="radio-line">
+        <div class="radio-button-element">
+          <!-- not vegeterian -->
+          <span class="button-description">
+           אין מאכלים צמחוניים
+          </span>
+          <!--<input type="radio"  name="sex" >Female-->
+
+          <input type="radio" [(ngModel)]="createdCafeteria.cafeteria.caf_veg_type" [value]="0">
+        </div>
+
+        <div class="radio-button-element">
+          <!-- vegeterian -->
+          <span class="button-description">
+            יש מנות צמחוניות
+          </span>
+          <input type="radio" [(ngModel)]="createdCafeteria.cafeteria.caf_veg_type" [value]="1">
+          <!--<input type="radio">-->
+        </div>
+      </div>
+
+      <div class="days-of-branch-activity">
+        <div class="label">
+          ימי פעילות הסניף
+        </div>
+        <div class="days required-top">
+          <div class="day" (click)="showTimeSelectModal(1, $event)">
+            <div class="time" *ngIf="showTimeText(1)">
+              {{ getTimeByDayNumber(1) }}
+            </div>
+            <div class="icon">א</div>
+          </div>
+          <div class="day" (click)="showTimeSelectModal(2, $event)">
+            <div class="time" *ngIf="showTimeText(2)">
+              {{ getTimeByDayNumber(2) }}
+            </div>
+            <div class="icon">ב</div>
+          </div>
+          <div class="day" (click)="showTimeSelectModal(3, $event)">
+            <div class="time" *ngIf="showTimeText(3)">
+              {{ getTimeByDayNumber(3) }}
+            </div>
+            <div class="icon">ג</div>
+          </div>
+          <div class="day" (click)="showTimeSelectModal(4, $event)">
+            <div class="time" *ngIf="showTimeText(4)">
+              {{ getTimeByDayNumber(4) }}
+            </div>
+            <div class="icon">ד</div>
+          </div>
+          <div class="day" (click)="showTimeSelectModal(5, $event)">
+            <div class="time" *ngIf="showTimeText(5)">
+              {{ getTimeByDayNumber(5) }}
+            </div>
+            <div class="icon">ה</div>
+          </div>
+          <div class="day" (click)="showTimeSelectModal(6, $event)">
+            <div class="time" *ngIf="showTimeText(6)">
+              {{ getTimeByDayNumber(6) }}
+            </div>
+            <div class="icon">ו</div>
+          </div>
+          <div class="day" (click)="showTimeSelectModal(7, $event)">
+            <div class="time" *ngIf="showTimeText(7)">
+              {{ getTimeByDayNumber(7) }}
+            </div>
+            <div class="icon">ש</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="textarea-line">
+        <textarea appInput [(ngModel)]="createdCafeteria.cafeteria.caf_description" [placeholderMessage]="'description'"></textarea>
+      </div>
+
+      <div class="submit-block">
+        <div class="submit-button-container">
+          <button (click)="createCafeteria(createdCafeteria)">הרשם/י</button>
+          <div class="repeat-button">
+            <span (click)="goBack()">חזור/י</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>

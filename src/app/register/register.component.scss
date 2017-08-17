@@ -1,0 +1,129 @@
+.registration-component {
+  width: 60%;
+  max-width: 940px;
+  margin: 10px auto;
+
+  @media screen and (max-width: 760px) {
+    width: 90%;
+  }
+
+  .registration-header {
+    text-align: right;
+    margin-bottom: 20px;
+
+    .label {
+      font-size: 1.5rem;
+      font-weight: 800;
+    }
+  }
+
+  .registration-content {
+    position: relative;
+
+    .create-connection {
+      position: absolute;
+      min-width: 240px;
+      max-width: 270px;
+      width: 30%;
+      margin-bottom: 20px;
+
+      .notice {
+        text-align: right;
+        background: #ffffff;
+        padding: 10px;
+        border: 4px solid #fff557;
+        margin-bottom: 20px;
+
+        .bold {
+          font-weight: 700;
+        }
+
+        .normal {
+          color: #8f8f8f
+        }
+      }
+      .link {
+        font-weight: 600;
+        text-align: center;
+        text-decoration: underline;
+        cursor: pointer;
+        user-select: none;
+      }
+    }
+
+    .registration-block {
+      text-align: right;
+      padding-top: 20px;
+
+      .label {
+        font-size: 1.2rem;
+        font-weight: 800;
+        margin-bottom: 20px;
+      }
+
+
+      // todo: move to one .scss file
+      .input-line {
+        position: relative;
+        width: 40%;
+        margin-bottom: 40px;
+        align-self: flex-end;
+
+        input {
+          width: 100%;
+          height: 34px;
+          font-size: 1.1rem;
+          font-weight: 300;
+          background: inherit;
+        }
+      }
+
+      .input-line.required:after {
+        content: '';
+        position: absolute;
+        width: 5px;
+        height: 5px;
+        background: #ff5b57;
+        right: 0;
+        bottom: 1px;
+      }
+
+      .business-details,
+      .chief-account-details,
+      .securing,
+      .submit-block {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 50px;
+      }
+
+      // todo: move to one .scss file
+      .submit-block {
+        .description,
+        .submit-button-container {
+          width: 40%;
+          align-self: flex-end;
+        }
+
+        .description {
+          font-size: 0.8rem;
+          margin-bottom: 10px;
+        }
+        .submit-button-container {
+          button {
+            width: 100%;
+            height: 44px;
+            background: #fff557;
+            font-size: 0.9rem;
+            font-weight: 900;
+            &:active {
+              background: darken(#fff557, 10%)
+            }
+          }
+        }
+      }
+
+
+    }
+  }
+}

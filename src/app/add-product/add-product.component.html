@@ -1,0 +1,102 @@
+<div class="add-product-component">
+  <div class="component-header">
+    <div class="button-container">
+      <button>???</button>
+    </div>
+    <div class="text-container">
+      text
+    </div>
+  </div>
+
+  <div class="component-body">
+    <div class="new-product">
+      <div class="name-line">
+        <div class="input-line required">
+          <input type="text" appInput [(ngModel)]="createdMainProduct.product.pr_name" [placeholderMessage]="'product name'">
+        </div>
+        <div class="check-elements">
+          <span class="check-element"></span>
+          <span class="check-element"></span>
+        </div>
+
+
+      </div>
+
+      <div class="border-bottom"></div>
+
+      <div class="input-line required">
+        <input type="text" appInput [(ngModel)]="createdMainProduct.product.pr_descr" [placeholderMessage]="'product details'">
+      </div>
+
+      <div class="input-line required">
+        <input type="number" dir="rtl" appInput [(ngModel)]="createdMainProduct.product.pr_price" [placeholderMessage]="'product price'">
+      </div>
+
+      <div class="cook-time">
+        <div class="label required">Cook Time</div>
+        <div class="minute" *ngFor="let minute of minutes; let index = index;"
+             [ngClass]="{'selected': createdMainProduct.product.pr_cook_time === ''+ index }"
+             (click)="selectCookTime(index)">
+          {{ index }}
+        </div>
+      </div>
+
+      <div class="radio-elements required">
+        <div class="radio-element">
+          <label class="text" for="_1">text</label>
+          <input type="radio" id="_1">
+        </div>
+        <div class="radio-element">
+          <label class="text" for="_2">text</label>
+          <input type="radio" id="_2">
+        </div>
+        <div class="radio-element">
+          <label class="text" for="_3">text</label>
+          <input type="radio" id="_3">
+        </div>
+        <div class="radio-element">
+          <label class="text" for="_4">text</label>
+          <input type="radio" id="_4">
+        </div>
+        <div class="radio-element">
+          <label class="text" for="_5">text</label>
+          <input type="radio" id="_5">
+        </div>
+      </div>
+
+    </div>
+
+    <div class="new-sub-category">
+      <div class="add-new-sub-category-button">
+        <button (click)="addNewSubCategory()" [disabled]="isAddSuCategoryButtonDisabled()">+ add sub category</button>
+        <span class="label">
+          sub categories
+        </span>
+      </div>
+
+      <div class="sub-categories">
+        <div class="sub-category" *ngIf="newSubCategory">
+          <div class="name">
+            <div class="input-line required">
+              <input type="text" appInput [(ngModel)]="newSubCategory.extra_cat_name" [placeholderMessage]="'sub category name'">
+            </div>
+          </div>
+          <div class="button">
+            <button [disabled]="!newSubCategory.extra_cat_name" (click)="saveNewSubCategory(newSubCategory)">save</button>
+          </div>
+        </div>
+
+        <div class="sub-categories" *ngIf="createdMainProduct.extra_categories?.length > 0">
+          <div class="sub-category" *ngFor="let subCategory of createdMainProduct.extra_categories">
+            {{ subCategory.extra_cat_name }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="component-footer">
+    <button (click)="saveProduct()" [disabled]="isSubmitButtonDisabled()">save</button>
+    <span (click)="goBack()">go back</span>
+  </div>
+</div>

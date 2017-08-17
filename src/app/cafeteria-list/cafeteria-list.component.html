@@ -1,0 +1,139 @@
+<div class="cafeteria-list-component">
+  <div class="component-title component-center-element">
+    <div>
+      ברוכים הבאים,  אנחנו שמחים שבחרת במערכת torLess. על מנת שתוכל/י
+    </div>
+  </div>
+
+  <div class="list-options">
+    <div class="list-element">
+      <div class="element-label">
+        <span>1</span>
+      </div>
+      <div class="element-text">
+        הקמת סניף ראשון
+      </div>
+    </div>
+    <div class="list-element">
+      <div class="element-label">
+        <span>2</span>
+      </div>
+      <div class="element-text">
+        יצירת  תפריט לסניף
+      </div>
+    </div>
+  </div>
+
+  <div class="component-button-container">
+    <div class="button-description">
+.אנחנו נלווה אותך לכל אורך התהליך ונדאג שתסיים/י אותו במהירות
+    </div>
+    <button (click)="selectNewCafeteriaType()">
+      <span>+</span>
+      לחץ/י להקמת סניף ראשון
+    </button>
+  </div>
+
+  <div class="table-images-container">
+    <div class="table-image">
+      <img src="./assets/icon/table-image.png">
+    </div>
+    <div class="list-element">
+      <img src="./assets/icon/table-image.png">
+    </div>
+  </div>
+
+  <div class="real-time-information-component">
+    <div class="component-description">
+     <div class="label">
+       מידע זמן אמת
+     </div>
+      <div class="dropdown">
+(כל הקפיטריות (0
+      </div>
+    </div>
+    <div class="blocks-container">
+      <div *ngFor="let cafeteria of cafeteriaList" class="real-time-information-block">
+        <!--<div class="title">הזמנות בטיפול</div>-->
+        <div class="title">
+          {{cafeteria.caf_name}}
+        </div>
+        <div class="content">-</div>
+        <div class="footer">
+          <div>
+            קפיטריה מובילה בהזמנות: אין נתונים
+          </div>
+        </div>
+      </div>
+      <div class="real-time-information-block">
+        <div class="title">מתוכן, הזמנות באיחור</div>
+        <div class="content">-</div>
+        <div class="footer">
+          <div>
+            משך איחור ממוצע - לא ידוע
+          </div>
+        </div>
+      </div>
+      <div class="real-time-information-block">
+        <div class="title">חוסרים ומעכבים תפעוליים</div>
+        <div class="content">-</div>
+        <div class="footer">
+          <div>
+            אין נתונים
+          </div>
+        </div>
+      </div>
+      <div class="real-time-information-block">
+        <div class="title">הודעות שלא נקראו</div>
+        <div class="content">
+          -
+        </div>
+        <div class="footer">
+         <div>
+           <div danger>
+             הודעות מלקוחות - <span bold>אין הודעות </span>
+           </div>
+           <div>     הודעות מערכת - <span bold>אין הודעות</span></div>
+         </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="time-information">
+    <div class="component-description">
+      <div class="label">
+        מידע לאורך זמן
+      </div>
+      <div class="dropdown">
+        קפיטריה ב’ בנין 678 מכללת ספי...0
+      </div>
+      <div class="dropdown">
+        היום ה-22/12/2016
+      </div>
+    </div>
+
+    <div class="time-information-component-content">
+      <div class="block">
+        <div class="block-header">הזמנות שנעשו</div>
+        <div class="block-content">-</div>
+      </div>
+      <div class="block">
+        <div class="block-header">מחיר הזמנה ממוצעת</div>
+        <div class="block-content">-</div>
+      </div>
+      <div class="block">
+        <div class="block-header">חיסכון זמן ללקוחותייך (שעות)</div>
+        <div class="block-content">-</div>
+      </div>
+      <div class="block" right-border>
+        <div class="block-header">הכנסות מ-Torless</div>
+        <div class="block-content">-</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="canvas-block">
+
+  </div>
+</div>

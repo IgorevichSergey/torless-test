@@ -1,0 +1,116 @@
+.create-manager-component {
+  position: relative;
+  width: 60%;
+  max-width: 940px;
+  margin: 10px auto;
+
+  @media screen and (max-width: 760px) {
+    width: 90%;
+  }
+
+  .component-title {
+    text-align: right;
+    font-size: 1.4rem;
+    font-weight: 900;
+    margin-bottom: 40px;
+  }
+
+  .component-content {
+    .left-side-form {
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    .manager-details-form {
+      position: absolute;
+      width: 50%;
+      right: 0;
+
+      .form-label {
+        text-align: right;
+        margin-bottom: 20px;
+        font-size: 1.1rem;
+        font-weight: 700;
+      }
+    }
+
+  }
+
+
+  .input-line {
+    position: relative;
+    margin-bottom: 40px;
+    align-self: flex-end;
+
+    input {
+      width: 100%;
+      height: 34px;
+      font-size: 1.1rem;
+      font-weight: 300;
+      background: inherit;
+    }
+  }
+
+  .submit-block {
+    position: relative;
+    margin-bottom: 40px;
+
+    .description,
+    .submit-button-container {
+      width: 100%;
+      align-self: flex-end;
+    }
+
+    .description {
+      font-size: 0.8rem;
+      margin-bottom: 10px;
+    }
+
+    .submit-button-container {
+      button {
+        width: 100%;
+        height: 44px;
+        background: #fff557;
+        font-size: 0.9rem;
+        font-weight: 900;
+        &:active {
+          background: darken(#fff557, 10%)
+        }
+      }
+      .repeat-button {
+        position: absolute;
+        cursor: pointer;
+        right: -55px;
+        height: 44px;
+        line-height: 44px;
+        top: 0;
+        user-select: none;
+        color: #2f2f2f;
+        span:hover {
+          border-bottom: 1px solid #2f2f2f;
+        }
+      }
+
+    }
+  }
+
+  .required:after {
+    content: '';
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: #ff5b57;
+    right: 0;
+    bottom: 1px;
+  }
+  .required-top:before {
+    content: '';
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: #ff5b57;
+    right: 0;
+    top: -5px;
+  }
+}

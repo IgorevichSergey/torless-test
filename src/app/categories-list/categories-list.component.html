@@ -1,0 +1,55 @@
+<div class="categories-list-component">
+
+  <div class="header">
+    <div class="button">
+      <button (click)="addNewCategory()" [disabled]="newCategory">+ add category</button>
+    </div>
+    <div class="title">Categories</div>
+  </div>
+
+  <div class="categories" *ngIf="newCategory">
+    <div class="category">
+      <div class="name">
+        <div class="input-line">
+          <input type="text" appInput [(ngModel)]="newCategory.ct_name" [placeholderMessage]="'category name'">
+        </div>
+      </div>
+
+      <div class="amount">
+        0
+      </div>
+
+      <div class="save">
+        <button (click)="saveNewCategory(newCategory)" [disabled]="!newCategory.ct_name">save</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="categories" *ngIf="categories?.length > 0" dnd-sortable-container [sortableData]="categories">
+
+    <div class="category" *ngFor="let category of categories; let i = index" dnd-sortable [sortableIndex]="i" (onDropSuccess)="categoriesDropped()">
+      <div class="edit-button">
+        <button (click)="goToProducts(category.cat_id)">products</button>
+      </div>
+      <div class="name">
+        {{ category.category_name }}
+      </div>
+
+      <div class="amount">
+        {{ category.prod_col }}
+      </div>
+
+      <div class="save">
+        <span>save</span>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="footer" *ngIf="categories?.length >= 5">
+    <div class="button">
+      <button (click)="addNewCategory()" [disabled]="newCategory">+ add category</button>
+    </div>
+  </div>
+
+</div>

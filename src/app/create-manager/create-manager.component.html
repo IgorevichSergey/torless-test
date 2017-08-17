@@ -1,0 +1,71 @@
+<div class="create-manager-component">
+  <div class="component-title">
+    הקמת סניף
+  </div>
+  <app-progress-bar [complete]="complete"></app-progress-bar>
+
+
+  <div class="component-content">
+    <div class="left-side-form">
+      test
+    </div>
+
+    <div class="manager-details-form">
+      <!--cafeteria details-->
+      <div class="form-label">
+      cafeteria manager
+      </div>
+
+      <div class="input-line required">
+        <input type="text" appInput [(ngModel)]="createdManagerUser.mn_name" [placeholderMessage]="'name'">
+      </div>
+
+      <div class="input-line required">
+        <input type="text" appInput [(ngModel)]="createdManagerUser.mn_last_name" [placeholderMessage]="'last name'">
+      </div>
+
+      <div class="input-line">
+        <input type="text" appInput [placeholderMessage]="'id'">
+      </div>
+
+      <div class="input-line">
+        <input type="text" appInput [placeholderMessage]="'???'">
+      </div>
+
+      <div class="input-line required">
+        <input type="text" appInput [(ngModel)]="createdManagerUser.mn_email" [placeholderMessage]="'email'">
+      </div>
+
+      <div class="input-line required">
+        <input type="text" appInput [(ngModel)]="createdManagerUser.mn_phone" [placeholderMessage]="'phone'">
+      </div>
+
+      text
+
+      <div class="input-line required">
+        <input type="text" appInput [placeholderMessage]="'email'">
+      </div>
+
+      <div class="input-line required">
+        <input type="password" appInput [(ngModel)]="createdManagerUser.mn_pass" [placeholderMessage]="'password'">
+      </div>
+
+      <div class="input-line required">
+        <input type="password" appInput [(ngModel)]="confirmPassword" [placeholderMessage]="'confirm password'">
+      </div>
+
+
+
+      <div class="submit-block">
+        <div class="submit-button-container">
+          <button (click)="createManager(createdManagerUser)" [disabled]="isButtonDisabled()">הרשם/י</button>
+          <div class="repeat-button">
+            <span (click)="goBack()">חזור/י</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>

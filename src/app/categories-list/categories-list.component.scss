@@ -1,0 +1,84 @@
+.categories-list-component {
+  position: relative;
+  width: 60%;
+  max-width: 940px;
+  margin: 10px auto;
+
+  @media screen and (max-width: 760px) {
+    width: 90%;
+  }
+
+  .header,
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    .button {
+      text-align: left;
+      button {
+        width: 100%;
+        max-width: 300px;
+        height: 44px;
+        background: #000;
+        color: grey;
+        //background: #fff557;
+        font-size: 0.9rem;
+        font-weight: 900;
+        &:active {
+          background: lighten(#000, 10%);
+        }
+      }
+    }
+    .title {
+      font-size: 1.3rem;
+      font-weight: 900;
+      text-align: right;
+      align-self: flex-end;
+    }
+  }
+
+  .categories {
+    .category {
+      display: flex;
+      position: relative;
+      flex-direction: row-reverse;
+      background: #fff;
+      padding: 20px;
+      text-align: right;
+      margin-bottom: 20px;
+
+      .name {
+        width: 40%;
+        align-self: center;
+      }
+      .amount {
+        align-self: center;
+      }
+      .save {
+        margin-right: auto;
+        margin-left: 20%;
+        user-select: none;
+        cursor: pointer;
+        align-self: center;
+      }
+
+      .edit-button {
+        position: absolute;
+        left: 20px;
+      }
+    }
+  }
+
+  .input-line {
+    position: relative;
+    align-self: flex-end;
+
+    input {
+      width: 90%;
+      height: 34px;
+      font-size: 1.1rem;
+      font-weight: 300;
+      background: inherit;
+    }
+  }
+}

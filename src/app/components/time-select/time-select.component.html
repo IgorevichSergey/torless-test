@@ -1,0 +1,47 @@
+<div class="time-select-component modal-container" *ngIf="visible">
+  <div class="time-select-modal">
+    <div class="modal-header">
+      time select header
+      <span class="close-button" (click)="close()">
+        x
+      </span>
+    </div>
+
+    <div class="modal-body">
+      <div class="day-select">
+        <div class="days">
+          <div class="day" [ngClass]="{'selected': selectedDay === 1}">1</div>
+          <div class="day" [ngClass]="{'selected': selectedDay === 2}">2</div>
+          <div class="day" [ngClass]="{'selected': selectedDay === 3}">3</div>
+          <div class="day" [ngClass]="{'selected': selectedDay === 4}">4</div>
+          <div class="day" [ngClass]="{'selected': selectedDay === 5}">5</div>
+          <div class="day" [ngClass]="{'selected': selectedDay === 6}">6</div>
+          <div class="day" [ngClass]="{'selected': selectedDay === 7}">7</div>
+        </div>
+      </div>
+
+      <div class="time-select">
+        <div class="buttons">
+          <button>1</button>
+          <button>2</button>
+        </div>
+        <div class="inputs">
+          <div class="input-line">
+            <input type="text" [(ngModel)]="workTime.begin" appInput [placeholderMessage]="'begin'">
+          </div>
+
+          <div class="input-line">
+            <input type="text" [(ngModel)]="workTime.end" appInput [placeholderMessage]="'end'">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <div class="buttons">
+        <button submit (click)="submitTime()" [disabled]="!workTime.begin || !workTime.end">submit</button>
+        <button scip (click)="close()">close</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,267 @@
+.add-product-component {
+  position: relative;
+  width: 60%;
+  max-width: 940px;
+  margin: 10px auto;
+
+  @media screen and (max-width: 760px) {
+    width: 90%;
+  }
+
+  .component-header {
+    text-align: right;
+    .button-container {
+      margin-bottom: 30px;
+      button {
+        height: 34px;
+      }
+    }
+    .text-container {
+      margin-bottom: 30px;
+      font-weight: 900;
+      font-size: 1.2rem;
+    }
+  }
+
+  .component-body {
+    .new-product {
+      padding: 20px;
+      background: #fff;
+      margin-bottom: 20px;
+
+      .name-line {
+        display: flex;
+        flex-direction: row-reverse;
+
+        .input-line {
+          width: 50%;
+          margin-bottom: 20px;
+        }
+
+        .check-elements {
+          width: 50%;
+          text-align: center;
+          align-self: center;
+          .check-element {
+            display: inline-block;
+            &:after {
+              content: '\2713';
+              left: calc(50% - 10px);
+              bottom: 20px;
+              color: grey;
+            }
+          }
+        }
+      }
+
+      .border-bottom {
+        width: calc(100% + 40px);
+        border-bottom: 1px solid #000;
+        display: block;
+        margin-left: -20px;
+        margin-bottom: 40px;
+      }
+
+      .cook-time {
+        width: 50%;
+        display: flex;
+        margin-left: auto;
+        margin-bottom: 40px;
+        flex-direction: row-reverse;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        .label {
+          width: 100%;
+          position: relative;
+          text-align: right;
+          margin-bottom: 10px;
+          padding-bottom: 5px;
+        }
+
+        .minute {
+          width: calc(100% / 9 - 4px);
+          margin-bottom: 2px;
+          height: 34px;
+          line-height: 34px;
+          vertical-align: center;
+          border: 1px solid lighten(grey, 30%);
+          text-align: center;
+          font-weight: 900;
+          color: grey;
+          user-select: none;
+          cursor: pointer;
+
+        }
+        .minute.selected {
+          background: #000;
+          color: #fff;
+        }
+      }
+
+      .radio-elements {
+        position: relative;
+        display: flex;
+        flex-direction: row-reverse;
+        flex-wrap: wrap;
+        width: 50%;
+        margin-left: auto;
+        margin-bottom: 40px;
+        padding-bottom: 5px;
+
+        .radio-element {
+          width: calc(100% / 3 - 5px);
+          flex-wrap: wrap;
+          justify-content: space-between;
+          text-align: right;
+          cursor: pointer;
+          user-select: none;
+
+          .text {
+            color: grey;
+            cursor: pointer;
+          }
+
+          &:hover {
+            .text {
+              color: darken(grey, 10%);
+            }
+          }
+        }
+      }
+    }
+
+    .new-sub-category {
+      .add-new-sub-category-button {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 40px;
+        .label {
+          color: #000;
+          font-size: 1.4rem;
+          font-weight: 900;
+          align-self: center;
+        }
+        button {
+          height: 34px;
+          color: grey;
+          background: #000;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: auto;
+          &:active {
+            background: lighten(#000, 10%)
+          }
+        }
+        button[disabled] {
+          cursor: not-allowed;
+          background: lighten(#000, 30%)
+        }
+      }
+
+      .sub-categories {
+        margin-bottom: 40px;
+        .sub-category {
+          display: flex;
+          flex-direction: row-reverse;
+          justify-content: space-between;
+          padding: 20px;
+          margin-bottom: 20px;
+          background: #fff;
+
+          .name {
+            width: 50%;
+            .input-line {
+              margin-bottom: 0;
+            }
+          }
+          .button {
+            align-self: center;
+            button {
+              width: auto;
+              height: auto;
+              color: grey;
+              background: inherit;
+              margin-bottom: 0;
+            }
+            button[disabled] {
+              cursor: not-allowed;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .component-footer {
+    text-align: right;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: row-reverse;
+
+    span {
+      margin: 0 20px;
+      align-self: center;
+      user-select: none;
+      cursor: pointer;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    button[disabled] {
+      background: lighten(#fff557, 10%);
+      cursor: not-allowed;
+    }
+  }
+
+  button {
+    width: 100%;
+    max-width: 150px;
+    height: 44px;
+    background: #fff557;
+    font-size: 0.9rem;
+    font-weight: 900;
+    &:active {
+      background: darken(#fff557, 10%);
+    }
+  }
+
+
+  .input-line {
+    position: relative;
+    width: 50%;
+    margin-left: auto;
+    margin-bottom: 40px;
+    align-self: flex-end;
+
+    input {
+      width: 100%;
+      height: 34px;
+      font-size: 1.1rem;
+      font-weight: 300;
+      background: inherit;
+    }
+  }
+  .required:after {
+    content: '';
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: #ff5b57;
+    right: 0;
+    bottom: 1px;
+  }
+  .required-top:before {
+    content: '';
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: #ff5b57;
+    right: 0;
+    top: -5px;
+  }
+}
+
+
+

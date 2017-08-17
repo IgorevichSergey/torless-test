@@ -1,0 +1,106 @@
+<div class="registration-component">
+  <div class="registration-header">
+    <div class="label">הרשמה</div>
+    <div class="description">צ’יק צ’אק ואנחנו מתחילים לעבוד ביחד ולהרוויח. רק מלא/י כמ</div>
+  </div>
+
+  <div class="registration-content">
+    <div class="create-connection">
+      <div class="notice">
+        <div class="bold">תהליך ההרשמה לתורלס הוא</div>
+        <div class="bold">.חד פעמי</div>
+        <div class="normal">בעתיד, תוכל/י לבצע עידכונים וש</div>
+      </div>
+      <div class="link">
+        לעזרה - צור/י קשר
+      </div>
+    </div>
+
+    <div class="registration-block">
+      <div class="business-details">
+        <div class="label">
+          פרטי העסק
+        </div>
+        <!--todo: add image uploader-->
+        <div class="input-line required">
+          company name
+          <input type="text" appInput [(ngModel)]="createdUser.company.comapny_name" [placeholderMessage]="'שם חברה'" [error]="registrationError" >
+        </div>
+        <div class="input-line required">
+          VAT number
+          <input dir="rtl" type="number" appInput [(ngModel)]="createdUser.company.comapny_vat_number" [placeholderMessage]="'מס’ ח”פ'" [errorMessage]="'ח”פ לא תקין'" [error]="registrationError">
+        </div>
+        <div class="input-line required">
+          address
+          <input type="text" appInput [(ngModel)]="createdUser.company.comapny_address" [placeholderMessage]="'כתובת'" [error]="registrationError">
+        </div>
+        <div class="input-line required">
+          city
+          <input type="text" appInput [(ngModel)]="createdUser.company.comapny_city" [placeholderMessage]="'עיר'" [error]="registrationError">
+        </div>
+        <div class="input-line">
+          post code
+          <input type="text" appInput [(ngModel)]="createdUser.company.comapny_zip_code" [placeholderMessage]="'מיקוד'" [error]="registrationError">
+        </div>
+      </div>
+
+      <div class="chief-account-details">
+        <div class="label">
+          פרטי מנהל/ת החשבון הראשי
+          <!--todo: add information block-->
+        </div>
+
+        <div class="input-line required">
+          first name
+          <input type="text" appInput [(ngModel)]="createdUser.user.us_name" [placeholderMessage]="'שם פרטי'" [error]="registrationError" >
+        </div>
+        <div class="input-line required">
+          last name
+          <input type="text" appInput [(ngModel)]="createdUser.user.us_last_name" [placeholderMessage]="'שם משפחה'" [error]="registrationError">
+        </div>
+        <div class="input-line required">
+          id number
+          <input type="text" appInput [(ngModel)]="createdUser.user.us_passport_id" [placeholderMessage]="'מס’ תעודת זהות'" [error]="registrationError">
+        </div>
+        <div class="input-line required">
+          role
+          <input type="text" appInput [(ngModel)]="createdUser.user.us_position" [placeholderMessage]="'תפקיד'" [error]="registrationError" >
+        </div>
+        <div class="input-line required">
+          email
+          <input type="text" appInput [(ngModel)]="createdUser.user.us_email" (blur)="checkEmail(createdUser.user.us_email)" [placeholderMessage]="'אימייל'" [error]="formErrors.emailField" [errorMessage]="formErrorMessages.email" >
+        </div>
+        <div class="input-line required">
+          phone
+          <input type="text" appInput [(ngModel)]="createdUser.user.us_phone" [placeholderMessage]="'מספר טלפון נייד'" [error]="registrationError">
+        </div>
+      </div>
+
+      <div class="securing">
+        <div class="label">
+          אבטחה
+        </div>
+
+        <div class="input-line required">
+          <!--username-->
+          <input type="text" appInput [placeholderMessage]="'שם משתמש'" [error]="registrationError" >
+        </div>
+        <div class="input-line required">
+          password
+          <input type="text" appInput [(ngModel)]="createdUser.user.us_pass" [placeholderMessage]="'סיסמה'" [error]="registrationError">
+        </div>
+      </div>
+
+      <div class="submit-block">
+        <div class="description">
+          בלחיצה, אני מסכים/ה לתנאי השימוש ולתקנון תורלס
+        </div>
+        <div class="submit-button-container">
+          <button (click)="registerUser(createdUser)">הרשם/י</button>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>

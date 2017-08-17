@@ -1,0 +1,47 @@
+<div class="login-component">
+
+  <div class="component-title component-center-element">
+    <div>
+      torLess ברוכים הבאים למערכת
+    </div>
+    <div>
+      להזמין * לשלם * ולדלג על התור
+    </div>
+  </div>
+
+
+  <div class="component-content">
+    <div class="register-container">
+      <div class="register-label">
+         הרשם/י עכשיו ותתחיל/י להרויח עדיין לא רשום/ה ל-torLess?
+      </div>
+      <div class="button-container component-button-container">
+        <button (click)="goToRegistration()">הרשם/י עכשיו</button>
+      </div>
+    </div>
+
+
+    <div class="login-container component-center-element">
+      <div class="login-label">
+        :כבר איתנו? התחבר/י
+      </div>
+      <div class="login-input-field component-input login">
+        <input type="text" [(ngModel)]="user.us_log_email" appInput [placeholderMessage]="'שם משתמש'" [errorMessage]="'שם משתמש לא קיים'" [error]="loginError">
+      </div>
+      <div class="login-input-field component-input password">
+        <span class="forgot-password">
+          שכחתי סיסמה
+        </span>
+        <input type="password" [(ngModel)]="user.us_log_pass" appInput [placeholderMessage]="'סיסמה'" [errorMessage]="'אולי טעיתם פה?'" [error]="loginError">
+      </div>
+      <div class="button-container component-button-container">
+        <button (click)="login(user)" [disabled]="submitButtonDisabled(user)">התחבר/י</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--<ul class="list-group" dnd-sortable-container [sortableData]="listOne">-->
+  <!--<li *ngFor="let item of listOne; let i = index" class="list-group-item" dnd-sortable [sortableIndex]="i">{{item}}</li>-->
+<!--</ul>-->

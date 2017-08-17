@@ -1,0 +1,14 @@
+.path-component {
+  position: absolute;
+  color: #7c7c7c;
+
+  .previous {
+    color: #000000;
+    border-bottom: 2px solid #838383;
+    cursor: pointer;
+  }
+  .current {
+    color: #9b9b9b;
+    cursor: pointer;
+  }
+}

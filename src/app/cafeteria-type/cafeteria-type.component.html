@@ -1,0 +1,47 @@
+<div class="cafeteria-type-component">
+  <div class="component-title">
+ הקמת סניף
+  </div>
+  <div style="width: 50%; margin-left: auto;">
+    <app-progress-bar [complete]="complete"></app-progress-bar>
+  </div>
+
+
+  <div class="activity-types-block">
+    <!-- cafeteria -->
+    <div class="activity-block" (click)="selectElement(1)" [ngClass]="{'checked': selectedCafeteriaType === 1}">
+      <div class="text">
+        קפיטריה
+      </div>
+    </div>
+    <!-- salad-bar -->
+    <div class="activity-block" (click)="selectElement(2)" [ngClass]="{'checked': selectedCafeteriaType === 2}">
+      <div class="text">
+        סלט-בר
+      </div>
+    </div>
+    <!-- manza -->
+    <div class="activity-block" (click)="selectElement(3)" [ngClass]="{'checked': selectedCafeteriaType === 3}">
+      <div class="text">
+        מנזה
+      </div>
+    </div>
+  </div>
+
+  <div class="duplication-options" *ngIf="selectedCafeteriaType && cafeterias?.length > 0">
+    <select [(ngModel)]="selectedCafeteriaId">
+      <option disabled>שכפל/י סניף קיים</option>
+      <option *ngFor="let cafeteria of cafeterias" [value]="cafeteria.id">
+        {{ cafeteria.caf_name }}
+      </option>
+      <!--<option>קפיטריה סוהו, מכללת ספיר, בנין 22</option>-->
+      <!--<option>קפיטריה סוהו, מכללת ספיר, בנין 22</option>-->
+    </select>
+  </div>
+
+  <div class="button-container">
+    <button [disabled]="!selectedCafeteriaType" (click)="submitCafeteriaType(selectedCafeteriaType)">
+      שמור/י והמשך/י
+    </button>
+  </div>
+</div>

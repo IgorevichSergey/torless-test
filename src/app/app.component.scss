@@ -1,0 +1,135 @@
+.app-component {
+  position: relative;
+}
+
+.header {
+  position: relative;
+  display: flex;
+  padding: 20px 5px;
+  white-space: nowrap;
+  background: #353b41;
+
+  .connect-registration {
+    display: flex;
+    justify-content: flex-end;
+    margin-left: auto;
+    .connect {
+      align-self: center;
+      cursor: pointer;
+      color: #8f8f8f;
+      border-bottom: 1px solid #8f8f8f;
+      &:hover {
+        color: #fff;
+        border-bottom: 1px solid #fff;
+      }
+    }
+
+    .registration {
+      margin-left: 23px;
+      align-self: center;
+      cursor: pointer;
+      color: #8f8f8f;
+      border-bottom: 1px solid #8f8f8f;
+      &:hover {
+        color: #fff;
+        border-bottom: 1px solid #fff;
+      }
+    }
+
+    .triangle-container {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      min-width: 44px;
+      margin-left: 45px;
+      background: #8f8f8f;
+      cursor: pointer;
+
+      .counter {
+        display: inline-block;
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        color: #353b41;
+        font-size: 0.7rem;
+      }
+
+      img {
+        width: 50%;
+        align-items: center;
+      }
+    }
+
+    @media screen and (max-width: 940px) {
+      //width: auto;
+      position: absolute;
+      left: 10px;
+    }
+  }
+
+  .pages {
+    display: flex;
+    justify-content: center;
+    width: 60%;
+    div {
+      margin: 0 25px;
+      align-self: center;
+      cursor: pointer;
+      &:hover {
+        color: #fff;
+      }
+    }
+
+    @media screen and (max-width: 940px) {
+      width: 100%;
+      order: 1;
+      right: 10px;
+      padding-top: 64px;
+    }
+  }
+
+  .logo {
+    display: flex;
+    justify-content: flex-end;
+    cursor: pointer;
+    user-select: none;
+    width: 20%;
+    div {
+      width: 80%;
+      height: calc(100% + 20px);
+      background: #000000;
+      align-self: center;
+      display: flex;
+      justify-content: center;
+      span {
+        align-self: center;
+        font-size: 2.2rem;
+        color: #353b41;
+        @media screen and (max-width: 940px) {
+          font-size: 1.8rem;
+        }
+      }
+      @media screen and (max-width: 940px) {
+        padding: 5px 10px 5px 35px;
+      }
+    }
+
+    @media screen and (max-width: 940px) {
+      position: absolute;
+      right: 10px;
+    }
+  }
+}
+.content-header {
+  width: 60%;
+  position: relative;
+  margin: 10px auto 30px;
+  height: 25px;
+  /* display: flex; */
+
+  @media screen and (max-width: 940px) {
+    width: 90%;
+  }
+}

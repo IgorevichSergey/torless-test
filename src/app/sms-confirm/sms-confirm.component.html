@@ -1,0 +1,34 @@
+<div class="sms-confirm-component">
+
+  <div class="component-title component-center-element">
+    <div class="title-label">
+      הצלחת! חשבונך נפתח
+    </div>
+    <div class="title-description">
+.       רק עוד משהו אחרון לפני שמתחילים לרוויח - יותר
+    </div>
+  </div>
+
+
+  <div class="component-content">
+
+    <div class="sms-confirm-container component-center-element">
+      <div class="sms-confirm-label">
+        SMS-        הזן/י כאן את הקוד שנישלח אליך ב
+      </div>
+      <div class="sms-confirm-input-field component-input sms-confirm">
+        <input dir="rtl" type="number" [(ngModel)]="smsCode" appInput [placeholderMessage]="'שם משתמש'">
+        <span class="success-icon" *ngIf="!confirmError && confirmSuccess">
+          <img src="./assets/icon/success.png">
+        </span>
+        <span class="error-icon" *ngIf="confirmError && !confirmSuccess">
+          <img src="./assets/icon/close.png">
+        </span>
+        <span class="resend-sms">שילחו לי שוב את הקוד</span>
+      </div>
+      <div class="button-container component-button-container">
+        <button (click)="confirm(smsCode)" [disabled]="!smsCode">התחבר/י</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+<div class="product-list-component">
+  <div class="button back-button">
+    <button>menu</button>
+  </div>
+  <div class="header">
+    <div class="button">
+      <button (click)="goToAddProductPage()">+ add product</button>
+    </div>
+    <div class="title">Products</div>
+  </div>
+  <div class="products">
+    <div class="product" *ngFor="let product of products;">
+      <div class="name" *ngIf="!product.edit">
+        <span>{{ product.prod_name || 'NA' }}</span>
+      </div>
+      <div class="input-line" *ngIf="product.edit">
+        <input type="text" appInput [(ngModel)]="productBuffer.prod_name" [placeholderMessage]="'product name'" (blur)="saveProduct()">
+      </div>
+
+      <div class="images">
+        <span class="check-element"></span>
+        <span class="check-element"></span>
+      </div>
+
+      <div class="buttons">
+        <span (click)="setEditMode(product)">edit</span>
+        <span (click)="removeProduct(product)">remove</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer" *ngIf="products?.length > 4">
+    <div class="button">
+      <button (click)="goToAddProductPage()">+ add product</button>
+    </div>
+  </div>
+</div>
