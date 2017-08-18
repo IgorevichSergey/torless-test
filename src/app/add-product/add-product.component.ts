@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { ProductService } from '../services';
 
-import { CreatedMainProduct, CreatedExtraCategory, CreatedDoubleExtraProduct } from '../custom-classes';
+import { CreatedProduct, ExtraCategories, DoubleExtraProduct, ExtraInfo } from '../custom-classes';
 
 
 @Component({
@@ -12,7 +12,7 @@ import { CreatedMainProduct, CreatedExtraCategory, CreatedDoubleExtraProduct } f
   styleUrls: ['./add-product.component.scss']
 })
 export class AddProductComponent implements OnInit {
-  public createdMainProduct: CreatedMainProduct = new CreatedMainProduct();
+  public createdProduct: CreatedProduct = new CreatedProduct();
   public minutes: number[] = new Array(18);
 
   private _cafeteriaId: number;
@@ -33,17 +33,17 @@ export class AddProductComponent implements OnInit {
 
     this.productService.getMainProduct(243).then((response) => {
       console.log('response ==> ', response);
-    })
+    });
   }
 
 
   public saveProduct() {
-    this.createdMainProduct.pr_caf_id = this._cafeteriaId;
-    this.createdMainProduct.pr_cat_id = this._categoryId;
-    this.createdMainProduct.product.pr_price = '' + this.createdMainProduct.product.pr_price;
+    this.createdProduct.pr_caf_id = '' + this._cafeteriaId;
+    this.createdProduct.pr_cat_id = '' + this._categoryId;
+    this.createdProduct.product.pr_price = '' + this.createdProduct.product.pr_price;
 
-    console.log('this.createdMainProduct', this.createdMainProduct);
-    this.productService.createMainProduct(this.createdMainProduct).then((response) => {
+    console.log('this.createdProduct', this.createdProduct);
+    this.productService.createMainProduct(this.createdProduct).then((response) => {
       console.log('response ==> ', response);
       this.goBack();
     }, (error) => {
@@ -56,24 +56,32 @@ export class AddProductComponent implements OnInit {
   }
 
   public selectCookTime(minute: number): void {
-    this.createdMainProduct.product.pr_cook_time = '' + minute;
+    this.createdProduct.product.pr_cook_time = '' + minute;
   }
 
   public addNewExtraCategory(): void {
-    this.createdMainProduct.extra_categories.push(new CreatedExtraCategory());
+    this.createdProduct.extra_categories.push(new ExtraCategories());
+
+    // todo: сделать что то с этим говнищем
+    this.createdProduct.extra_categories[0].extra_info.push(new ExtraInfo());
   }
 
-  public addDoubleExtraProduct(doubleExtraProducts: CreatedDoubleExtraProduct[]): void {
-    doubleExtraProducts.push(new CreatedDoubleExtraProduct());
+  public addDoubleExtraProduct(doubleExtraProducts: DoubleExtraProduct[]): void {
+    doubleExtraProducts.push(new DoubleExtraProduct());
+  }
+
+  public addExtraInfo(extra_info) {
+    extra_info.push(new ExtraInfo());
+    console.log('click')
   }
 
   public isSubmitButtonDisabled(): boolean {
     let result: boolean = false;
 
-    if (!this.createdMainProduct.product.pr_name ||
-      !this.createdMainProduct.product.pr_price ||
-      !this.createdMainProduct.product.pr_cook_time ||
-      !this.createdMainProduct.product.pr_descr) {
+    if (!this.createdProduct.product.pr_name ||
+      !this.createdProduct.product.pr_price ||
+      !this.createdProduct.product.pr_cook_time ||
+      !this.createdProduct.product.pr_descr) {
       result = true;
     }
 

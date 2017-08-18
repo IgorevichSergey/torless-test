@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { ProductService } from '../services';
 
-import { CreatedMainProduct, CreatedDoubleExtraProduct, CreatedExtraCategory } from '../custom-classes';
+import { CreatedProduct, DoubleExtraProduct, ExtraCategories } from '../custom-classes';
 
 import * as _ from 'lodash';
 
@@ -13,7 +13,7 @@ import * as _ from 'lodash';
   styleUrls: ['./edit-product.component.scss']
 })
 export class EditProductComponent implements OnInit {
-  public updatedMainProduct: CreatedMainProduct;
+  public updatedMainProduct: CreatedProduct;
   public minutes: number[] = new Array(18);
 
   private _cafeteriaId: number;
@@ -64,12 +64,12 @@ export class EditProductComponent implements OnInit {
   }
 
   public addNewExtraCategory(): void {
-    this.updatedMainProduct.extra_categories.push(new CreatedExtraCategory());
+    this.updatedMainProduct.extra_categories.push(new ExtraCategories());
   }
 
-  public addDoubleExtraProduct(doubleExtraProducts: CreatedDoubleExtraProduct[]): void {
+  public addDoubleExtraProduct(doubleExtraProducts: DoubleExtraProduct[]): void {
     console.log('doubleExtraProducts ==> ', doubleExtraProducts)
-    doubleExtraProducts.push(new CreatedDoubleExtraProduct());
+    doubleExtraProducts.push(new DoubleExtraProduct());
   }
 
   public isSubmitButtonDisabled(): boolean {
@@ -89,11 +89,11 @@ export class EditProductComponent implements OnInit {
   ///
 
 
-  private _parseDataFromServer(products: any[]): CreatedMainProduct {
-    let result: CreatedMainProduct = new CreatedMainProduct();
+  private _parseDataFromServer(products: any[]): CreatedProduct {
+    let result: CreatedProduct = new CreatedProduct();
 
-    result.pr_caf_id = this._cafeteriaId;
-    result.pr_cat_id = this._categoryId;
+    result.pr_caf_id = '' + this._cafeteriaId;
+    result.pr_cat_id = '' + this._categoryId;
 
     result.product.pr_name = products[0].prod_name;
     result.product.pr_descr = products[0].prod_descr;

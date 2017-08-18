@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import { environment } from '../../../environments/environment';
 
-import { CreatedMainProduct } from '../../custom-classes';
+import { CreatedProduct } from '../../custom-classes';
 
 @Injectable()
 export class ProductService {
@@ -15,9 +15,9 @@ export class ProductService {
     this._host = environment.host;
   }
 
-  public createMainProduct(createdMainProduct: CreatedMainProduct): Promise<any> {
+  public createMainProduct(createdProduct: CreatedProduct): Promise<any> {
     const token: string = localStorage.getItem('torless_token');
-    const data: string = JSON.stringify({tag: 'create_main_product', token: token, pr_caf_id: createdMainProduct.pr_caf_id, pr_cat_id:  createdMainProduct.pr_cat_id, product: createdMainProduct.product, extra_categories: createdMainProduct.extra_categories});
+    const data: string = JSON.stringify({tag: 'create_main_product', token: token, pr_caf_id: createdProduct.pr_caf_id, pr_cat_id:  createdProduct.pr_cat_id, product: createdProduct.product, extra_categories: createdProduct.extra_categories});
 
     return new Promise((resolve, reject) => {
       this._setRequest(data).then((response) => {

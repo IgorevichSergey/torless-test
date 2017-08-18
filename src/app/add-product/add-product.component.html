@@ -12,7 +12,7 @@
     <div class="new-product">
       <div class="name-line">
         <div class="input-line required">
-          <input type="text" appInput [(ngModel)]="createdMainProduct.product.pr_name" [placeholderMessage]="'product name'">
+          <input type="text" appInput [(ngModel)]="createdProduct.product.pr_name" [placeholderMessage]="'product name'">
         </div>
         <div class="check-elements">
           <span class="check-element"></span>
@@ -25,17 +25,17 @@
       <div class="border-bottom"></div>
 
       <div class="input-line required">
-        <input type="text" appInput [(ngModel)]="createdMainProduct.product.pr_descr" [placeholderMessage]="'product details'">
+        <input type="text" appInput [(ngModel)]="createdProduct.product.pr_descr" [placeholderMessage]="'product details'">
       </div>
 
       <div class="input-line required">
-        <input type="number" dir="rtl" appInput [(ngModel)]="createdMainProduct.product.pr_price" [placeholderMessage]="'product price'">
+        <input type="number" dir="rtl" appInput [(ngModel)]="createdProduct.product.pr_price" [placeholderMessage]="'product price'">
       </div>
 
       <div class="cook-time">
         <div class="label required">Cook Time</div>
         <div class="minute" *ngFor="let minute of minutes; let index = index;"
-             [ngClass]="{'selected': createdMainProduct.product.pr_cook_time === ''+ index }"
+             [ngClass]="{'selected': createdProduct.product.pr_cook_time === ''+ index }"
              (click)="selectCookTime(index)">
           {{ index }}
         </div>
@@ -77,7 +77,7 @@
       </div>
     </div>
 
-    <div class="extra-category__content" *ngFor="let extra_category of createdMainProduct.extra_categories">
+    <div class="extra-category__content" *ngFor="let extra_category of createdProduct.extra_categories">
       <div class="label">
         <button class="remove-button">
           <img src="./assets/icon/trash.svg">
@@ -97,53 +97,59 @@
               description
             </div>
           </div>
-          <div class="extra-product__inner">
-            <div class="input-line">
-              <input type="text" appInput [(ngModel)]="extra_category.extra_pr_name" [placeholderMessage]="'name'">
+
+          <div *ngFor="let extra_info of extra_category.extra_info">
+            <div class="extra-product__inner">
+              <div class="input-line">
+                <input type="text" appInput [(ngModel)]="extra_info.extra_pr_name" [placeholderMessage]="'name'">
+              </div>
+
+              <div class="input-line">
+                <input type="text" dir="rtl" appInput [(ngModel)]="extra_info.extra_pr_descr" [placeholderMessage]="'description'">
+              </div>
+
+              <div class="price-input-line" *ngIf="extra_info.double_extra_products?.length === 0">
+                <input type="text" dir="rtl" [(ngModel)]="extra_info.extra_pr_price">
+              </div>
             </div>
 
-            <div class="input-line">
-              <input type="text" dir="rtl" appInput [(ngModel)]="extra_category.extra_pr_descr" [placeholderMessage]="'description'">
-            </div>
+            <div class="double-extra-products__container">
+              <div class="double-extra-products__item">
+                <div class="double-extra-products__item--outer" *ngIf="extra_info.double_extra_products?.length > 0">
+                  <div class="description">
+                    description
+                  </div>
+                </div>
 
-            <div class="price-input-line" *ngIf="extra_category.double_extra_products?.length === 0">
-              <input type="text" dir="rtl" [(ngModel)]="extra_category.extra_pr_price">
+                <div class="double-extra-products__item--inner" *ngFor="let double_extra of extra_info.double_extra_products">
+                  <div class="input-line">
+                    <input type="text" appInput [(ngModel)]="double_extra.double_extra_pr_name" [placeholderMessage]="'double extra product name'">
+                  </div>
+                  <div class="price-input-line">
+                    <input type="text" dir="rtl" [(ngModel)]="double_extra.double_extra_pr_price">
+                  </div>
+                </div>
+
+                <div class="double-extra-products__item--button" (click)="addDoubleExtraProduct(extra_info.double_extra_products)">
+                  button
+                </div>
+
+              </div>
             </div>
           </div>
 
-          <div class="double-extra-products__container">
-            <div class="double-extra-products__item">
-              <div class="double-extra-products__item--outer" *ngIf="extra_category.double_extra_products?.length > 0">
-                <div class="description">
-                  description
-                </div>
-              </div>
 
-              <div class="double-extra-products__item--inner" *ngFor="let double_extra of extra_category.double_extra_products">
-                <div class="input-line">
-                  <input type="text" appInput [(ngModel)]="double_extra.double_extra_pr_name" [placeholderMessage]="'double extra product name'">
-                </div>
-                <div class="price-input-line">
-                  <input type="text" dir="rtl" [(ngModel)]="double_extra.double_extra_pr_price">
-                </div>
-              </div>
 
-              <div class="double-extra-products__item--button" (click)="addDoubleExtraProduct(extra_category.double_extra_products)">
-                button
-              </div>
-
-            </div>
-          </div>
 
           <!--TODO: after BE connect uncomment-->
-          <div class="extra-product__button">
+          <div class="extra-product__button" (click)="addExtraInfo(extra_category.extra_info)">
             button 1
           </div>
         </div>
       </div>
     </div>
 
-    <div class="extra-category__header" *ngIf="createdMainProduct.extra_categories?.length > 4">
+    <div class="extra-category__header" *ngIf="createdProduct.extra_categories?.length > 4">
       <button class="add-button">
         add extra category
       </button>
