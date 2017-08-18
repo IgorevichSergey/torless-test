@@ -59,6 +59,10 @@ export class ProductListComponent implements OnInit {
     this.products.splice(index, 1);
   }
 
+  public editProduct(product): void {
+    this.router.navigate(['edit-product', this._cafeteriaId, this._categoryId, product.prod_id]);
+  }
+
   ////
   private _getProducts(): void {
     console.log('this._cafeteriaId', this._cafeteriaId)
