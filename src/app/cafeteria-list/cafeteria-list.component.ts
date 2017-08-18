@@ -24,6 +24,19 @@ export class CafeteriaListComponent implements OnInit {
     this.router.navigateByUrl('/cafeteria-type');
   }
 
+  public editCafeteria(cafeteria) {
+    console.log('cafeteria ==> ', cafeteria);
+    this.router.navigate(['edit-cafeteria', cafeteria.id]);
+  }
+
+  public showCafeteriaMenu(cafeteria) {
+    // console.log('show menu for cafeteria ==> ', cafeteria);
+    this.cafeteriaService.getCafeteriaById(cafeteria.id).then((response) => {
+      // console.log('response', response.data.cafeteria);
+      this.router.navigate(['product-list', response.data.cafeteria.id, response.data.cafeteria.caf_type]);
+    });
+  }
+
 
   /////
   private _getCafeteriaList(): void {

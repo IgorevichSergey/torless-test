@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 
-import { AddProductRoutingModule } from './add-product-routing.module';
-import { AddProductComponent } from './add-product.component';
+import { EditProductRoutingModule } from './edit-product-routing.module';
+import { EditProductComponent } from './edit-product.component';
 
 import { DirectivesModule } from '../directives';
 import { ComponentsModule } from '../components';
@@ -12,13 +12,13 @@ import { ComponentsModule } from '../components';
 @NgModule({
   imports: [
     CommonModule,
-    AddProductRoutingModule,
+    EditProductRoutingModule,
     FormsModule,
     ComponentsModule,
     DirectivesModule
   ],
   declarations: [
-    AddProductComponent
+    EditProductComponent
   ]
 })
-export class AddProductModule { }
+export class EditProductModule { }

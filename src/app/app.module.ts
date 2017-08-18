@@ -22,18 +22,33 @@ import { ProductListModule } from './product-list/product-list.module';
 import { CategoriesListModule } from './categories-list/categories-list.module';
 import { CreateManagerModule } from './create-manager/create-manager.module';
 import { AddProductModule } from './add-product/add-product.module';
+import { EditCafeteriaModule } from './edit-cafeteria/edit-cafeteria.module';
+import { EditProductModule } from './edit-product/edit-product.module';
 
 // COMPONENTS
 import { ComponentsModule  } from './components';
 
 // SERVICES
-import { ProductService, CategoryService, CafeteriaService, UserService, UniversityService, AuthGuardService, TimeSelectService } from './services';
+import {
+  ProductService,
+  CategoryService,
+  CafeteriaService,
+  UserService,
+  UniversityService,
+  AuthGuardService,
+  TimeSelectService
+} from './services';
 
 // DIRECTIVES
 import { DirectivesModule } from './directives/index';
 import { CategoriesListComponent } from './categories-list/categories-list.component';
 import { CreateManagerComponent } from './create-manager/create-manager.component';
 import { AddProductComponent } from './add-product/add-product.component';
+import { EditCafeteriaComponent } from './edit-cafeteria/edit-cafeteria.component';
+import { EditProductComponent } from './edit-product/edit-product.component';
+
+// 3rd
+// import { LodashModule } from 'ng2-lodash';
 
 
 @NgModule({
@@ -55,6 +70,8 @@ import { AddProductComponent } from './add-product/add-product.component';
     CategoriesListModule,
     CreateManagerModule,
     AddProductModule,
+    EditCafeteriaModule,
+    EditProductModule,
     ComponentsModule,
     DirectivesModule,
     HttpModule

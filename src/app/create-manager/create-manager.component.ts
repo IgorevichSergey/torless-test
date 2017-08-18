@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { CreatedManagerUser } from '../custom-classes';
 
@@ -16,25 +16,34 @@ export class CreateManagerComponent implements OnInit {
   public createdManagerUser: CreatedManagerUser = new CreatedManagerUser();
   public confirmPassword: string;
 
+  private _cafeteriaId: number;
+
   constructor(
     private router: Router,
+    private activatedRoute: ActivatedRoute,
     private userService: UserService
   ) { }
 
   ngOnInit() {
+    this.activatedRoute.params
+      .subscribe((param) => {
+        this._cafeteriaId = +param.id;
+      });
   }
 
   createManager(createdManagerUser: CreatedManagerUser) {
     this.userService.registerManagerUser(createdManagerUser).then((data) => {
       console.log('data', data);
-      this._goTo('/categories-list');
+      this.router.navigate(['categories-list', this._cafeteriaId]);
+      // this._goTo('/categories-list');
     }, (error) => {
       console.log('error', error);
-    })
+    });
   }
 
   goBack() {
-    this._goTo('/categories-list');
+    // this._goTo('/categories-list');
+    this.router.navigate(['categories-list', this._cafeteriaId]);
   }
 
   isButtonDisabled(): boolean {

@@ -1,18 +1,18 @@
-<div class="add-product-component">
+<div class="edit-product-component">
   <div class="component-header">
     <div class="button-container">
-      <button (click)="goBack()">menu</button>
+      <button (click)="goBack()" [disabled]="!updatedMainProduct">menu</button>
     </div>
     <div class="text-container">
       text
     </div>
   </div>
 
-  <div class="component-body">
+  <div class="component-body" *ngIf="updatedMainProduct">
     <div class="new-product">
       <div class="name-line">
         <div class="input-line required">
-          <input type="text" appInput [(ngModel)]="createdMainProduct.product.pr_name" [placeholderMessage]="'product name'">
+          <input type="text" appInput [(ngModel)]="updatedMainProduct.product.pr_name" [placeholderMessage]="'product name'">
         </div>
         <div class="check-elements">
           <span class="check-element"></span>
@@ -25,17 +25,17 @@
       <div class="border-bottom"></div>
 
       <div class="input-line required">
-        <input type="text" appInput [(ngModel)]="createdMainProduct.product.pr_descr" [placeholderMessage]="'product details'">
+        <input type="text" appInput [(ngModel)]="updatedMainProduct.product.pr_descr" [placeholderMessage]="'product details'">
       </div>
 
       <div class="input-line required">
-        <input type="number" dir="rtl" appInput [(ngModel)]="createdMainProduct.product.pr_price" [placeholderMessage]="'product price'">
+        <input type="number" dir="rtl" appInput [(ngModel)]="updatedMainProduct.product.pr_price" [placeholderMessage]="'product price'">
       </div>
 
       <div class="cook-time">
         <div class="label required">Cook Time</div>
         <div class="minute" *ngFor="let minute of minutes; let index = index;"
-             [ngClass]="{'selected': createdMainProduct.product.pr_cook_time === ''+ index }"
+             [ngClass]="{'selected': '' + updatedMainProduct.product.pr_cook_time === ''+ index }"
              (click)="selectCookTime(index)">
           {{ index }}
         </div>
@@ -77,7 +77,7 @@
       </div>
     </div>
 
-    <div class="extra-category__content" *ngFor="let extra_category of createdMainProduct.extra_categories">
+    <div class="extra-category__content" *ngFor="let extra_category of updatedMainProduct.extra_categories">
       <div class="label">
         <button class="remove-button">
           <img src="./assets/icon/trash.svg">
@@ -137,13 +137,13 @@
 
           <!--TODO: after BE connect uncomment-->
           <!--<div class="extra-product__button">-->
-            <!--button 1-->
+          <!--button 1-->
           <!--</div>-->
         </div>
       </div>
     </div>
 
-    <div class="extra-category__header" *ngIf="createdMainProduct.extra_categories?.length > 4">
+    <div class="extra-category__header" *ngIf="updatedMainProduct.extra_categories?.length > 4">
       <button class="add-button">
         add extra category
       </button>
@@ -151,7 +151,7 @@
 
   </div>
 
-  <div class="component-footer">
+  <div class="component-footer" *ngIf="updatedMainProduct">
     <button (click)="saveProduct()" [disabled]="isSubmitButtonDisabled()">save</button>
     <span (click)="goBack()">go back</span>
   </div>

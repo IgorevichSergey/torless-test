@@ -225,12 +225,16 @@
         //margin-top: auto;
         text-align: center;
         //height: calc(30px - 20px);
+        cursor: pointer;
+        user-select: none;
       }
       .content {
         padding: 25px;
         //margin-top: auto;
         text-align: center;
         //height: calc(150px - 50px);
+        cursor: pointer;
+        user-select: none;
       }
       .footer {
         display: flex;
@@ -240,6 +244,8 @@
         padding: 10px;
         font-size: 0.8rem;
         color: #c9c9c9;
+        cursor: pointer;
+        user-select: none;
         div {
           text-align: center;
           align-self: center;

@@ -3,12 +3,12 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuardService } from '../services';
 
 // COMPONENT
-import { CreateManagerComponent } from './create-manager.component';
+import { EditCafeteriaComponent } from './edit-cafeteria.component';
 
 const routes: Routes = [
   {
-    path: 'create-cafeteria-manager/:id',
-    component: CreateManagerComponent,
+    path: 'edit-cafeteria/:id',
+    component: EditCafeteriaComponent,
     canActivate: [AuthGuardService]
   }
 ];
@@ -17,4 +17,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class CreateManagerRoutingModule { }
+export class EditCafeteriaRoutingModule { }

@@ -61,6 +61,8 @@ export class ProductListComponent implements OnInit {
 
   ////
   private _getProducts(): void {
+    console.log('this._cafeteriaId', this._cafeteriaId)
+    console.log('this._categoryId', this._categoryId)
     this.productService.getProductsForCategory(this._cafeteriaId, this._categoryId).then((response) => {
       this.products = response.data.products;
       console.log('this.products', this.products)

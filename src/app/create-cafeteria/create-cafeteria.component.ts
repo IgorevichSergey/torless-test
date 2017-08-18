@@ -66,7 +66,8 @@ export class CreateCafeteriaComponent implements OnInit {
 
     this.cafeteriaService.createCafeteria(this.createdCafeteria).then((response) => {
       console.log('response', response);
-      this._goTo('/create-manager');
+      this.router.navigate(['create-cafeteria-manager', response.data.caf_id]);
+      // this._goTo('/create-cafeteria-manager');
     }, (error) => {
       console.log('error', error);
     });

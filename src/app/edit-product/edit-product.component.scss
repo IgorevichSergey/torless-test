@@ -1,4 +1,4 @@
-.add-product-component {
+.edit-product-component {
   position: relative;
   width: 60%;
   max-width: 940px;
@@ -306,74 +306,6 @@
       cursor: pointer;
       user-select: none;
     }
-
-    //.new-extra-category {
-    //  .add-new-extra-category-button {
-    //    display: flex;
-    //    justify-content: space-between;
-    //    margin-bottom: 40px;
-    //    .label {
-    //      color: #000;
-    //      font-size: 1.4rem;
-    //      font-weight: 900;
-    //      align-self: center;
-    //    }
-    //    button {
-    //      height: 34px;
-    //      color: grey;
-    //      background: #000;
-    //      white-space: nowrap;
-    //      text-overflow: ellipsis;
-    //      overflow: auto;
-    //      &:active {
-    //        background: lighten(#000, 10%)
-    //      }
-    //    }
-    //    button[disabled] {
-    //      cursor: not-allowed;
-    //      background: lighten(#000, 30%)
-    //    }
-    //  }
-    //
-    //
-    //
-    //  //.extra-categories {
-    //  //  margin-bottom: 40px;
-    //  //  .extra-category {
-    //  //    display: flex;
-    //  //    flex-direction: row-reverse;
-    //  //    justify-content: space-between;
-    //  //    padding: 20px;
-    //  //    margin-bottom: 20px;
-    //  //    background: #fff;
-    //  //
-    //  //    .extra-category-name {
-    //  //      width: 50%;
-    //  //      .input-line {
-    //  //        margin-bottom: 0;
-    //  //      }
-    //  //    }
-    //  //    .extra-category-button {
-    //  //      align-self: center;
-    //  //      button {
-    //  //        width: auto;
-    //  //        height: auto;
-    //  //        color: grey;
-    //  //        background: inherit;
-    //  //        margin-bottom: 0;
-    //  //      }
-    //  //      button[disabled] {
-    //  //        cursor: not-allowed;
-    //  //      }
-    //  //    }
-    //  //
-    //  //    .extra-product {
-    //  //      background: grey;
-    //  //      padding: 20px 40px;
-    //  //    }
-    //  //  }
-    //  //}
-    //}
 
 
   }

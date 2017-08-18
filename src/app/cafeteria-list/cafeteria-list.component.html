@@ -55,48 +55,49 @@
     <div class="blocks-container">
       <div *ngFor="let cafeteria of cafeteriaList" class="real-time-information-block">
         <!--<div class="title">הזמנות בטיפול</div>-->
-        <div class="title">
+        <div class="title" (click)="editCafeteria(cafeteria)">
           {{cafeteria.caf_name}}
         </div>
-        <div class="content">-</div>
-        <div class="footer">
+        <div class="content" (click)="editCafeteria(cafeteria)">-</div>
+        <div class="footer" (click)="showCafeteriaMenu(cafeteria)">
           <div>
-            קפיטריה מובילה בהזמנות: אין נתונים
+            <!--קפיטריה מובילה בהזמנות: אין נתונים-->
+            {{cafeteria.caf_name + '\'s'}} menu
           </div>
         </div>
       </div>
-      <div class="real-time-information-block">
-        <div class="title">מתוכן, הזמנות באיחור</div>
-        <div class="content">-</div>
-        <div class="footer">
-          <div>
-            משך איחור ממוצע - לא ידוע
-          </div>
-        </div>
-      </div>
-      <div class="real-time-information-block">
-        <div class="title">חוסרים ומעכבים תפעוליים</div>
-        <div class="content">-</div>
-        <div class="footer">
-          <div>
-            אין נתונים
-          </div>
-        </div>
-      </div>
-      <div class="real-time-information-block">
-        <div class="title">הודעות שלא נקראו</div>
-        <div class="content">
-          -
-        </div>
-        <div class="footer">
-         <div>
-           <div danger>
-             הודעות מלקוחות - <span bold>אין הודעות </span>
-           </div>
-           <div>     הודעות מערכת - <span bold>אין הודעות</span></div>
-         </div>
-        </div>
-      </div>
+      <!--<div class="real-time-information-block">-->
+        <!--<div class="title">מתוכן, הזמנות באיחור</div>-->
+        <!--<div class="content">-</div>-->
+        <!--<div class="footer">-->
+          <!--<div>-->
+            <!--משך איחור ממוצע - לא ידוע-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div class="real-time-information-block">-->
+        <!--<div class="title">חוסרים ומעכבים תפעוליים</div>-->
+        <!--<div class="content">-</div>-->
+        <!--<div class="footer">-->
+          <!--<div>-->
+            <!--אין נתונים-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div class="real-time-information-block">-->
+        <!--<div class="title">הודעות שלא נקראו</div>-->
+        <!--<div class="content">-->
+          <!-- - -->
+        <!--</div>-->
+        <!--<div class="footer">-->
+         <!--<div>-->
+           <!--<div danger>-->
+             <!--הודעות מלקוחות - <span bold>אין הודעות </span>-->
+           <!--</div>-->
+           <!--<div>     הודעות מערכת - <span bold>אין הודעות</span></div>-->
+         <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
     </div>
   </div>
 

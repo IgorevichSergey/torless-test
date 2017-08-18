@@ -21,6 +21,21 @@ interface ICreatedMainProduct {
   product: IProduct;
   extra_categories: IExtraCategory[];
 }
+export class CreatedDoubleExtraProduct implements IDoubleExtraProduct {
+  constructor(
+    public double_extra_pr_name = '',
+    public double_extra_pr_price = ''
+  ) {}
+}
+export class CreatedExtraCategory implements IExtraCategory {
+  constructor(
+    public extra_cat_name = '',
+    public extra_pr_name = '',
+    public extra_pr_price = '',
+    public extra_pr_descr = '',
+    public double_extra_products = []
+  ) {}
+}
 export class CreatedMainProduct implements ICreatedMainProduct {
   constructor(
     public pr_caf_id = null,

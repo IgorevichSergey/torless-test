@@ -45,8 +45,6 @@ export class CategoriesListComponent implements OnInit {
   }
 
   public goToProducts(catId): void {
-    // this._goTo('/product-list');
-    // ['MyCompB', {id: "someId", id2: "another ID"}]
     this.router.navigate(['product-list', this._cafeteriaId, catId]);
   }
 
