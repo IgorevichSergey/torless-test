@@ -30,11 +30,7 @@ export class CafeteriaListComponent implements OnInit {
   }
 
   public showCafeteriaMenu(cafeteria) {
-    // console.log('show menu for cafeteria ==> ', cafeteria);
-    this.cafeteriaService.getCafeteriaById(cafeteria.id).then((response) => {
-      // console.log('response', response.data.cafeteria);
-      this.router.navigate(['product-list', response.data.cafeteria.id, response.data.cafeteria.caf_type]);
-    });
+    this.router.navigate(['categories-list', cafeteria.id]);
   }
 
 
