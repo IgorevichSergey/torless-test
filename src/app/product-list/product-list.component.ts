@@ -60,8 +60,9 @@ export class ProductListComponent implements OnInit {
   }
 
   public editProduct(product): void {
-    console.log('product ==> ', product);
-    this.router.navigate(['edit-product', this._cafeteriaId, this._categoryId, product.prod_id]);
+    if(product.prod_id) {
+      this.router.navigate(['edit-product', this._cafeteriaId, this._categoryId, product.prod_id]);
+    }
   }
 
   ////

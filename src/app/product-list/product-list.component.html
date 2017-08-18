@@ -9,7 +9,7 @@
     <div class="title">Products</div>
   </div>
   <div class="products">
-    <div class="product" *ngFor="let product of products;" (click)="editProduct(product)">
+    <div class="product" *ngFor="let product of products;" >
       <div class="name" *ngIf="!product.edit">
         <span>{{ product.prod_name || 'NA' }}</span>
       </div>
@@ -23,7 +23,7 @@
       </div>
 
       <div class="buttons">
-        <span (click)="setEditMode(product)">edit</span>
+        <span (click)="editProduct(product)">edit</span>
         <span (click)="removeProduct(product)">remove</span>
       </div>
     </div>
