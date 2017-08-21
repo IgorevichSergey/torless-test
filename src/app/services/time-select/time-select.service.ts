@@ -7,8 +7,8 @@ export class TimeSelectService {
 
   constructor() { }
 
-  public show(dayNumber: number) {
-    this.timeSelectModal$.emit({visible: true, dayNumber: dayNumber});
+  public show(dayNumber: number, time?: any) {
+    this.timeSelectModal$.emit({visible: true, dayNumber: dayNumber, time: time});
 
     return new Promise((resolve, reject) => {
       this.timerModalListener$.subscribe((data) => {

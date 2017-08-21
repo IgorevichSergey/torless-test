@@ -25,6 +25,9 @@
       </div>
 
       <div class="select-line required">
+        <div>
+          Universities
+        </div>
         <select [(ngModel)]="createdCafeteria.cafeteria.caf_university_id" (change)="selectUniversity($event)">
           <option *ngFor="let university of universities" [value]="university.university_id">
             {{ university.university_name }}
@@ -33,6 +36,9 @@
       </div>
 
       <div class="select-line required">
+        <div>
+          University Buildings
+        </div>
         <select [(ngModel)]="createdCafeteria.cafeteria.caf_university_building_id">
           <option *ngFor="let universityBuilding of universityBuildings" [value]="universityBuilding.building_id">
             {{ universityBuilding.building_name }}
@@ -41,6 +47,9 @@
       </div>
 
       <div class="select-line required">
+        <div>
+          Kosher Type
+        </div>
         <select [(ngModel)]="createdCafeteria.cafeteria.caf_kosher_type">
           <option [value]="0">first</option>
           <option [value]="1">second</option>

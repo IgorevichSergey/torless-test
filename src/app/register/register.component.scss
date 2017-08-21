@@ -120,6 +120,10 @@
               background: darken(#fff557, 10%)
             }
           }
+          button[disabled] {
+            background: lighten(#fff557, 10%);
+            cursor: not-allowed;
+          }
         }
       }
 

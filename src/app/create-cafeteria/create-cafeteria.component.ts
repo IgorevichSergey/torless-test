@@ -74,7 +74,7 @@ export class CreateCafeteriaComponent implements OnInit {
   }
 
   public showTimeSelectModal(dayNumber: number, event): void {
-    this.timeSelectService.show(dayNumber).then((response) => {
+    this.timeSelectService.show(dayNumber, this.createdCafeteria.work_time[dayNumber - 1]).then((response) => {
       this._setSelectedTime(this.createdCafeteria.work_time, {
         day_number: dayNumber,
         time_start: (response as any).begin,

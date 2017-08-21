@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 
 import { CafeteriaService } from '../services';
 
+import * as _ from 'lodash';
+
 @Component({
   selector: 'app-cafeteria-list',
   templateUrl: './cafeteria-list.component.html',
@@ -37,10 +39,18 @@ export class CafeteriaListComponent implements OnInit {
   /////
   private _getCafeteriaList(): void {
     this.cafeteriaService.getUserCafeterias().then((response) => {
-      console.log('response', response);
-      this.cafeteriaList = response.data;
+
+      this.cafeteriaList = this._filter(response.data || []);
+
+      console.log('this.cafeteriaList', this.cafeteriaList);
     }, (error) => {
       console.log('error', error);
+    });
+  }
+
+  private _filter(array: any[]): any[] {
+    return _.filter(array, (item) => {
+      return item.id;
     });
   }
 

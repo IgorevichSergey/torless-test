@@ -4,6 +4,8 @@ import { Router, NavigationExtras, Params } from '@angular/router';
 
 import { CafeteriaService } from '../services';
 
+import * as _ from 'lodash';
+
 @Component({
   selector: 'app-create-branch',
   templateUrl: './cafeteria-type.component.html',
@@ -26,8 +28,7 @@ export class CafeteriaTypeComponent implements OnInit {
 
   selectElement(typeId: number): void {
     this.cafeteriaService.getUserCafeterias().then((res) => {
-      this.cafeterias = res.data;
-      console.log('res.data', res.data);
+      this.cafeterias = this._filter(res.data);
       this.selectedCafeteriaType = typeId;
     }, (err) => {
       this.selectedCafeteriaType = typeId;
@@ -43,6 +44,12 @@ export class CafeteriaTypeComponent implements OnInit {
       queryParams = { queryParams: {id: this.selectedCafeteriaId} };
     }
     this.router.navigate(['/create-cafeteria', typeId], queryParams);
+  }
+
+  private _filter(array: any[]): any[] {
+    return _.filter(array, (item) => {
+      return item.id;
+    });
   }
 
 }

@@ -1,8 +1,12 @@
 <div class="product-list-component">
   <div class="button back-button">
-    <button>menu</button>
+    <button (click)="goToCategoriesList()">menu</button>
+  </div>
+  <div>
+    <span (click)="goToCafeteriasList()">go to cafeterias list</span>
   </div>
   <div class="header">
+
     <div class="button">
       <button (click)="goToAddProductPage()">+ add product</button>
     </div>

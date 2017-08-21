@@ -30,10 +30,6 @@ export class AddProductComponent implements OnInit {
         this._cafeteriaId = +param.cafId;
         this._categoryId = +param.catId;
       });
-
-    this.productService.getMainProduct(243).then((response) => {
-      console.log('response ==> ', response);
-    });
   }
 
 
@@ -42,7 +38,6 @@ export class AddProductComponent implements OnInit {
     this.createdProduct.pr_cat_id = '' + this._categoryId;
     this.createdProduct.product.pr_price = '' + this.createdProduct.product.pr_price;
 
-    console.log('this.createdProduct', this.createdProduct);
     this.productService.createMainProduct(this.createdProduct).then((response) => {
       console.log('response ==> ', response);
       this.goBack();
@@ -60,10 +55,13 @@ export class AddProductComponent implements OnInit {
   }
 
   public addNewExtraCategory(): void {
+    let lastIndex: number = 0;
     this.createdProduct.extra_categories.push(new ExtraCategories());
 
+    lastIndex = this.createdProduct.extra_categories.length - 1;
+
     // todo: сделать что то с этим говнищем
-    this.createdProduct.extra_categories[0].extra_info.push(new ExtraInfo());
+    this.createdProduct.extra_categories[lastIndex].extra_info.push(new ExtraInfo());
   }
 
   public addDoubleExtraProduct(doubleExtraProducts: DoubleExtraProduct[]): void {
@@ -72,7 +70,6 @@ export class AddProductComponent implements OnInit {
 
   public addExtraInfo(extra_info) {
     extra_info.push(new ExtraInfo());
-    console.log('click')
   }
 
   public isSubmitButtonDisabled(): boolean {
@@ -86,6 +83,10 @@ export class AddProductComponent implements OnInit {
     }
 
     return result;
+  }
+
+  public removeExtraCategory(index: number): void {
+    this.createdProduct.extra_categories.splice(index, 1);
   }
 
 

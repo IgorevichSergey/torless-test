@@ -29,7 +29,7 @@
       </div>
 
       <div class="input-line">
-        <input type="text" appInput [placeholderMessage]="'???'">
+        <input type="number" dir="rtl" appInput [placeholderMessage]="'passport ID'">
       </div>
 
       <div class="input-line required">
@@ -41,10 +41,6 @@
       </div>
 
       text
-
-      <div class="input-line required">
-        <input type="text" appInput [placeholderMessage]="'email'">
-      </div>
 
       <div class="input-line required">
         <input type="password" appInput [(ngModel)]="createdManagerUser.mn_pass" [placeholderMessage]="'password'">

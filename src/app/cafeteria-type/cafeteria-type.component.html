@@ -27,10 +27,10 @@
       </div>
     </div>
   </div>
-
   <div class="duplication-options" *ngIf="selectedCafeteriaType && cafeterias?.length > 0">
+    <div>Existing cafetiere</div>
     <select [(ngModel)]="selectedCafeteriaId">
-      <option disabled>שכפל/י סניף קיים</option>
+      <option selected="true" disabled="disabled" value="test">שכפל/י סניף קיים</option>
       <option *ngFor="let cafeteria of cafeterias" [value]="cafeteria.id">
         {{ cafeteria.caf_name }}
       </option>

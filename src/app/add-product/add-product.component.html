@@ -77,9 +77,9 @@
       </div>
     </div>
 
-    <div class="extra-category__content" *ngFor="let extra_category of createdProduct.extra_categories">
+    <div class="extra-category__content" *ngFor="let extra_category of createdProduct.extra_categories; let index = index;">
       <div class="label">
-        <button class="remove-button">
+        <button class="remove-button" (click)="removeExtraCategory(index)">
           <img src="./assets/icon/trash.svg">
         </button>
         <div class="info-icon">i</div>
@@ -131,7 +131,7 @@
                 </div>
 
                 <div class="double-extra-products__item--button" (click)="addDoubleExtraProduct(extra_info.double_extra_products)">
-                  button
+                  add double extra category
                 </div>
 
               </div>
@@ -143,7 +143,7 @@
 
           <!--TODO: after BE connect uncomment-->
           <div class="extra-product__button" (click)="addExtraInfo(extra_category.extra_info)">
-            button 1
+            add category
           </div>
         </div>
       </div>

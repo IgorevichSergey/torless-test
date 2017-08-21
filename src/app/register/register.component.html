@@ -82,13 +82,15 @@
         </div>
 
         <div class="input-line required">
-          <!--username-->
-          <input type="text" appInput [placeholderMessage]="'שם משתמש'" [error]="registrationError" >
-        </div>
-        <div class="input-line required">
           password
-          <input type="password" appInput [(ngModel)]="createdUser.user.us_pass" [placeholderMessage]="'סיסמה'" [error]="registrationError">
+          <input type="password" appInput [(ngModel)]="createdUser.user.us_pass" [placeholderMessage]="'סיסמה'" [error]="confirmPasswordError" [errorMessage]="'passwords do not match'" (blur)="passwordsCheck(createdUser.user.us_pass, confirmedPassword)">
         </div>
+
+        <div class="input-line required">
+          <!--username-->
+          <input type="text" appInput [(ngModel)]="confirmedPassword" [placeholderMessage]="'שם משתמש'" [error]="confirmPasswordError" [errorMessage]="'passwords do not match'" (blur)="passwordsCheck(createdUser.user.us_pass, confirmedPassword)">
+        </div>
+
       </div>
 
       <div class="submit-block">
@@ -96,7 +98,7 @@
           בלחיצה, אני מסכים/ה לתנאי השימוש ולתקנון תורלס
         </div>
         <div class="submit-button-container">
-          <button (click)="registerUser(createdUser)">הרשם/י</button>
+          <button (click)="registerUser(createdUser)" [disabled]="isButtonDisabled(createdUser.user)">הרשם/י</button>
         </div>
       </div>
     </div>

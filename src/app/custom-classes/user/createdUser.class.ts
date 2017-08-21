@@ -16,8 +16,7 @@ interface ICreatedUser {
     comapny_zip_code?: string;
   };
 }
-// "user":{"us_name":"test name", "us_last_name":"test last name", "us_position":"test position", "us_phone":"122234234", "us_passport_id":"121121121", "us_email":"email@mailinator.com", "us_pass":"123qweqwe"},
-// "company": {"comapny_name":"test company name", "comapny_vat_number":"123123123", "comapny_address":"test company address", "comapny_city":"test city", "comapny_zip_code":"12345"}
+
 export class CreatedUser implements ICreatedUser {
   constructor(
     public user: {

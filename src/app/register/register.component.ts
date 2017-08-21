@@ -12,6 +12,8 @@ import { CreatedUser } from '../custom-classes';
 export class RegisterComponent implements OnInit {
   public createdUser: CreatedUser = new CreatedUser();
   public registrationError: boolean = false;
+  public confirmedPassword: string = '';
+  public confirmPasswordError: boolean = false;
 
   public emailErrorMessage: string;
 
@@ -65,6 +67,22 @@ export class RegisterComponent implements OnInit {
       }
     }
 
+  }
+
+  public passwordsCheck(firstPass, secondPass): void {
+    this.confirmPasswordError = ((firstPass !== secondPass) && firstPass !== '' && secondPass !== '');
+  }
+
+  public isButtonDisabled(user): boolean {
+    let result: boolean = (this.confirmedPassword !== user.us_pass);
+
+    for (let key in user) {
+      if (!user[key]) {
+        result = true;
+      }
+    }
+
+    return result;
   }
 
 

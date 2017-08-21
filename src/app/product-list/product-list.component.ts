@@ -65,6 +65,14 @@ export class ProductListComponent implements OnInit {
     }
   }
 
+  public goToCategoriesList(): void {
+    this.router.navigate(['categories-list', this._cafeteriaId]);
+  }
+
+  public goToCafeteriasList(): void {
+    this.router.navigate(['cafeteria-list']);
+  }
+
   ////
   private _getProducts(): void {
     console.log('this._cafeteriaId', this._cafeteriaId)
