@@ -13,11 +13,12 @@ import * as _ from 'lodash';
   styleUrls: ['./edit-product.component.scss']
 })
 export class EditProductComponent implements OnInit {
-  public updatedMainProduct: CreatedProduct;
+  public updatedMainProduct: any; // todo: set UpdatedMainProduct interface
   public minutes: number[] = new Array(18);
 
   private _cafeteriaId: number;
   private _categoryId: number;
+  private _productId: number;
 
   constructor(
     private router: Router,
@@ -28,26 +29,30 @@ export class EditProductComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.params
       .subscribe((param) => {
+      console.log('param', param)
+        this._productId = +param.id;
         this._cafeteriaId = +param.cafId;
         this._categoryId = +param.catId;
 
-        this.productService.getMainProduct(+param.id).then((response) => {
+        this.productService.getMainProduct(this._productId).then((response) => {
           console.log('response ==> ', response);
-          this.updatedMainProduct = this._parseDataFromServer(response.data);
+          console.log('response.data', response.data)
+          this.updatedMainProduct = this._parseBEData(response.data);
         });
       });
-// 243
 
   }
 
 
-  public saveProduct() {
+  public updateProduct() {
     // this.updatedMainProduct.pr_caf_id = this._cafeteriaId;
     // this.updatedMainProduct.pr_cat_id = this._categoryId;
-    this.updatedMainProduct.product.pr_price = '' + this.updatedMainProduct.product.pr_price;
 
     console.log('this.updatedMainProduct', this.updatedMainProduct);
-    this.productService.createMainProduct(this.updatedMainProduct).then((response) => {
+    console.log('this._cafeteriaId', this._cafeteriaId);
+    console.log('this._categoryId', this._categoryId);
+    console.log('this._productId', this._productId);
+    this.productService.updateProduct(this.updatedMainProduct, this._cafeteriaId, this._categoryId, this._productId).then((response) => {
       console.log('response ==> ', response);
       this.goBack();
     }, (error) => {
@@ -56,7 +61,7 @@ export class EditProductComponent implements OnInit {
   }
 
   public goBack() {
-    this.router.navigate(['product-list', this.updatedMainProduct.pr_caf_id, this.updatedMainProduct.pr_cat_id]);
+    this.router.navigate(['product-list', this._cafeteriaId, this._categoryId]);
   }
 
   public selectCookTime(minute: number): void {
@@ -88,19 +93,16 @@ export class EditProductComponent implements OnInit {
 
   ///
 
-
-  private _parseDataFromServer(products: any[]): CreatedProduct {
-    let result: CreatedProduct = new CreatedProduct();
-
-    result.pr_caf_id = '' + this._cafeteriaId;
-    result.pr_cat_id = '' + this._categoryId;
-
-    result.product.pr_name = products[0].prod_name;
-    result.product.pr_descr = products[0].prod_descr;
-    result.product.pr_price = products[0].prod_price;
-    result.product.pr_cook_time = products[0].prod_cook_time;
+  private _parseBEData(beData): any {
+    let result: any = {};
+    result.extra_categories = beData.extra_categories;
+    result.product = {
+      pr_name: beData.product.prod_name,
+      pr_price: beData.product.prod_price,
+      pr_cook_time: String(beData.product.prod_cook_time),
+      pr_descr: beData.product.prod_descr
+    };
 
     return result;
   }
-
 }

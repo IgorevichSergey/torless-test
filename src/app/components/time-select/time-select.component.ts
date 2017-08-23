@@ -31,11 +31,14 @@ export class TimeSelectComponent implements OnInit, AfterViewInit {
     this.timeSelectService.timeSelectModal$.subscribe((data) => {
       this.visible = data.visible;
       this.selectedDay = data.dayNumber;
+
       if (data.time) {
         this.workTime.begin = data.time.time_start;
         this.workTime.end = data.time.time_end;
       }
+      this.work = !(this.workTime.begin === '00:00:00' && this.workTime.end === '00:00:00');
     });
+
   }
 
   ngAfterViewInit() {
@@ -45,6 +48,7 @@ export class TimeSelectComponent implements OnInit, AfterViewInit {
   close(): void {
     this.timeSelectService.timerModalListener$.emit({eventName: 'close'});
     this.visible = false;
+    this.work = true;
     this.workTime = {
       begin: '',
       end: ''

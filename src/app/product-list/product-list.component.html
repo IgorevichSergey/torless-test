@@ -22,8 +22,8 @@
       </div>
 
       <div class="images">
-        <span class="check-element"></span>
-        <span class="check-element"></span>
+        <span class="check-element" [ngClass]="{'active': product.prod_type === -2, 'disabled': product.prod_type !== -2}" (click)="emptyProduct(product)"></span>
+        <span class="check-element" [ngClass]="{'active': product.prod_type === 1, 'disabled': product.prod_type === -2}" (click)="fullProduct(product)"></span>
       </div>
 
       <div class="buttons">

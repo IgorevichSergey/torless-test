@@ -95,6 +95,16 @@
             color: grey;
           }
         }
+        .check-element.active {
+          &:after {
+            color: #0c9908;
+          }
+        }
+        .check-element.disabled {
+          &:after {
+            color: lighten(grey, 10%);
+          }
+        }
       }
 
       .buttons {

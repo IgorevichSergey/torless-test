@@ -56,6 +56,58 @@ export class ProductService {
     });
   }
 
+  public deleteProduct(productId: number): Promise<any> {
+    const token: string = localStorage.getItem('torless_token');
+    const data: string = JSON.stringify({tag: 'delete_product', token: token, prod_id: productId});
+
+    return new Promise((resolve, reject) => {
+      this._setRequest(data).then((response) => {
+        resolve(response);
+      }, (error) => {
+        reject(error);
+      });
+    });
+  }
+
+  public emptyProduct(productId: number): Promise<any> {
+    const token: string = localStorage.getItem('torless_token');
+    const data: string = JSON.stringify({tag: 'empty_product', token: token, prod_id: productId});
+
+    return new Promise((resolve, reject) => {
+      this._setRequest(data).then((response) => {
+        resolve(response);
+      }, (error) => {
+        reject(error);
+      });
+    });
+  }
+
+  public fullProduct(productId: number): Promise<any> {
+    const token: string = localStorage.getItem('torless_token');
+    const data: string = JSON.stringify({tag: 'full_product', token: token, prod_id: productId});
+
+    return new Promise((resolve, reject) => {
+      this._setRequest(data).then((response) => {
+        resolve(response);
+      }, (error) => {
+        reject(error);
+      });
+    });
+  }
+
+  public updateProduct(updatedProduct: any, cafeteriaId: number, categoryId: number, productId: number): Promise<any> {
+    const token: string = localStorage.getItem('torless_token');
+    const data: string = JSON.stringify({tag: 'update_main_product', token: token, pr_caf_id: cafeteriaId, pr_cat_id: categoryId, pr_prod_id: productId, product: updatedProduct.product, extra_categories: updatedProduct.extra_categories});
+
+    return new Promise((resolve, reject) => {
+      this._setRequest(data).then((response) => {
+        resolve(response);
+      }, (error) => {
+        reject(error);
+      });
+    });
+  }
+
   /////
   private _setRequest(data: string): Promise<any> {
     const body: URLSearchParams = new URLSearchParams();

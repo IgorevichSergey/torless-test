@@ -1,7 +1,7 @@
 <div class="edit-product-component">
   <div class="component-header">
     <div class="button-container">
-      <button (click)="goBack()" [disabled]="!updatedMainProduct">menu</button>
+      <button (click)="goBack()">menu</button>
     </div>
     <div class="text-container">
       text
@@ -152,7 +152,7 @@
   </div>
 
   <div class="component-footer" *ngIf="updatedMainProduct">
-    <button (click)="saveProduct()" [disabled]="isSubmitButtonDisabled()">save</button>
+    <button (click)="updateProduct()" [disabled]="isSubmitButtonDisabled()">update</button>
     <span (click)="goBack()">go back</span>
   </div>
 </div>

@@ -54,9 +54,25 @@ export class ProductListComponent implements OnInit {
   }
 
   public removeProduct(product): void {
-    let index: number = this._findIndex(this.products, (item) => {return item.prod_id === product.prod_id});
+    this.productService.deleteProduct(product.prod_id).then((response) => {
+      let index: number = this._findIndex(this.products, (item) => {return item.prod_id === product.prod_id});
+      this.products.splice(index, 1);
+    });
 
-    this.products.splice(index, 1);
+  }
+
+  public emptyProduct(product): void {
+    this.productService.emptyProduct(product.prod_id).then((response) => {
+      let index: number = this._findIndex(this.products, (item) => {return item.prod_id === product.prod_id});
+      this.products[index].prod_type = -2;
+    });
+  }
+
+  public fullProduct(product): void {
+    this.productService.fullProduct(product.prod_id).then((response) => {
+      let index: number = this._findIndex(this.products, (item) => {return item.prod_id === product.prod_id});
+      this.products[index].prod_type = 1;
+    });
   }
 
   public editProduct(product): void {
