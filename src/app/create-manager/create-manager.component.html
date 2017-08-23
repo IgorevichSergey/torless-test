@@ -33,7 +33,7 @@
       </div>
 
       <div class="input-line required">
-        <input type="text" appInput [(ngModel)]="createdManagerUser.mn_email" [placeholderMessage]="'email'">
+        <input type="text" appInput [(ngModel)]="createdManagerUser.mn_email"  (blur)="checkEmail(createdManagerUser.mn_email)"  [placeholderMessage]="'email'" [error]="formErrors.emailField" [errorMessage]="formErrorMessages.email">
       </div>
 
       <div class="input-line required">

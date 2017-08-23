@@ -52,6 +52,10 @@ export class CategoriesListComponent implements OnInit {
     console.log('this.categories', this.categories);
   }
 
+  public tmpCafeteriaList() {
+    this.router.navigate(['cafeteria-list']);
+  }
+
   ///
   private _getCategoriesForCafeteria(caf_id: number): void {
     this.categoryService.getCategoriesForCafeteria(caf_id).then((response) => {

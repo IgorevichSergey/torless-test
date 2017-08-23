@@ -31,7 +31,7 @@ export class RegisterComponent implements OnInit {
   };
 
 
-  private _emailRegExp: RegExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  private _emailRegExp: RegExp = /(.+)@(.+){2,}\.(.+){2,}/;
 
 
   constructor(

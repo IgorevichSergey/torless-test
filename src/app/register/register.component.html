@@ -88,7 +88,7 @@
 
         <div class="input-line required">
           <!--username-->
-          <input type="text" appInput [(ngModel)]="confirmedPassword" [placeholderMessage]="'שם משתמש'" [error]="confirmPasswordError" [errorMessage]="'passwords do not match'" (blur)="passwordsCheck(createdUser.user.us_pass, confirmedPassword)">
+          <input type="password" appInput [(ngModel)]="confirmedPassword" [placeholderMessage]="'שם משתמש'" [error]="confirmPasswordError" [errorMessage]="'passwords do not match'" (blur)="passwordsCheck(createdUser.user.us_pass, confirmedPassword)">
         </div>
 
       </div>
