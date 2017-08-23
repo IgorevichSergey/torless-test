@@ -32,7 +32,7 @@
         <span class="forgot-password">
           שכחתי סיסמה
         </span>
-        <input type="password" [(ngModel)]="user.us_log_pass" appInput [placeholderMessage]="'סיסמה'" [errorMessage]="'אולי טעיתם פה?'" [error]="loginError">
+        <input type="password" [(ngModel)]="user.us_log_pass" appInput [placeholderMessage]="'סיסמה'" [errorMessage]="'אולי טעיתם פה?'" [error]="loginError" autocomplete="off">
       </div>
       <div class="button-container component-button-container">
         <button (click)="login(user)" [disabled]="submitButtonDisabled(user)">התחבר/י</button>
