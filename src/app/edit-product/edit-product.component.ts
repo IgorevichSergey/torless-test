@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { ProductService } from '../services';
 
-import { CreatedProduct, DoubleExtraProduct, ExtraCategories } from '../custom-classes';
+import { ExtraInfo, DoubleExtraProduct, ExtraCategories } from '../custom-classes';
 
 import * as _ from 'lodash';
 
@@ -88,6 +88,15 @@ export class EditProductComponent implements OnInit {
     }
 
     return result;
+  }
+
+  public addExtraInfo(extra_info) {
+    extra_info.push({
+      extra_pr_name: '',
+      extra_pr_descr: '',
+      extra_pr_price: '',
+      double_extra_products: []
+    });
   }
 
 
