@@ -1,0 +1,21 @@
+<div class="select-component">
+  <div *ngIf="!model" class="select-component__placeholder" (click)="elementFocus(true)" #placeholderElement>
+    {{ placeholder }}
+  </div>
+  <div *ngIf="model" class="select-component__value" (click)="elementFocus(true)" #placeholderElement>
+    {{ model }}
+  </div>
+
+  <div class="select-component__triangle" (click)="showList(true)"></div>
+
+  <input dir="rtl" type="text" [(ngModel)]="filterParams.value" #inputElement>
+
+  <div class="select-component__list" *ngIf="list" #listElement>
+    <div class="list-element" *ngFor="let item of list | filter: filterParams;" (click)="selectItem(item)">
+      {{ key ? item[key] : item }}
+    </div>
+    <div class="list-element" *ngIf="(list | filter: filterParams)?.length === 0">
+      No items with '{{filterParams.value}}' params
+    </div>
+  </div>
+</div>

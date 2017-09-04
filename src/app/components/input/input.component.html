@@ -1,0 +1,22 @@
+<div class="input-component">
+  <div class="input-component__placeholder" (click)="fieldFocus($event.target, true)">
+    {{ placeholder }}
+  </div>
+
+  <input dir="rtl" [type]="type" [(ngModel)]="model" (ngModelChange)="modelChanged($event)" (blur)="inputBlur(model)">
+
+  <div class="input-component__error-message" [ngClass]="{'visible': showError}">
+    {{ errorText }}
+  </div>
+
+  <div *ngIf="showLink" class="input-component__input-link"
+       [ngClass]="{
+        'top-left': linkPosition === 'top-left',
+        'bottom-right': linkPosition === 'bottom-right',
+        'bottom-left': linkPosition === 'bottom-left'
+        }"
+       (click)="inputLinkClick()">
+    {{ linkText }}
+  </div>
+
+</div>
