@@ -1,0 +1,56 @@
+<div class="login-component">
+
+  <div class="component-title center-element">
+    <div>
+      torLess ברוכים הבאים למערכת
+    </div>
+    <div>
+      להזמין * לשלם * ולדלג על התור
+    </div>
+  </div>
+
+
+  <div class="component-content">
+    <div class="register-container">
+      <div class="register-label">
+         הרשם/י עכשיו ותתחיל/י להרויח עדיין לא רשום/ה ל-torLess?
+      </div>
+      <div class="button-container component-button-container">
+        <button (click)="goToRegistration()">הרשם/י עכשיו</button>
+      </div>
+    </div>
+
+    <div class="login-container center-element">
+      <div class="login-label">
+        :כבר איתנו? התחבר/י
+      </div>
+      <app-input type="text"
+                 placeholder="שם משתמש"
+                 errorText="שם משתמש לא קיים"
+                 [showError]="loginError"
+                 [(model)]="user.us_log_email"
+                 (output)="user.us_log_email = $event"
+                 (invalid)="invalidForm = $event"
+      >
+      </app-input>
+
+      <app-input type="password"
+                 placeholder="סיסמה"
+                 errorText="אולי טעיתם פה?"
+                 [showError]="loginError"
+                 [(model)]="user.us_log_pass"
+                 [showLink]="true"
+                 linkText="שכחתי סיסמה"
+                 linkPosition="top-left"
+                 (linkAction)="forgotPassword()"
+                 (output)="user.us_log_pass = $event"
+                 (invalid)="invalidForm = $event"
+      >
+      </app-input>
+
+      <div class="button-container component-button-container">
+        <button (click)="login(user)" [disabled]="submitButtonDisabled(user) && !invalidForm">התחבר/י</button>
+      </div>
+    </div>
+  </div>
+</div>

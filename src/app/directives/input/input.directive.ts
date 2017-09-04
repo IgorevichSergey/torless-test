@@ -83,6 +83,7 @@ export class InputDirective implements AfterViewInit, OnChanges {
       this._removeInputBorder();
     }
   }
+
   private _addErrorText() {
     if(this.errorMessage) {
       this._errorElement = this.renderer.createElement(this.elementRef.nativeElement.parentNode, 'div');

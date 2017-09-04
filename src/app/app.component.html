@@ -1,45 +1,60 @@
-<div class="app-component">
-  <div class="header">
-    <div class="connect-registration left">
-      <!--connect-->
-      <div class="connect">התחברו</div>
-      <!--registration-->
-      <div class="registration">הרשמו</div>
-      <!--triangle with count-->
-      <div class="triangle-container">
-        <img src="./assets/icon/danger.svg">
-        <span class="counter">
+<div class="torless">
+  <div class="torless__header">
+
+    <div class="top-header">
+      <div class="connect-registration left">
+        <!--connect-->
+        <div class="connect">התחברו</div>
+        <!--registration-->
+        <div class="registration">הרשמו</div>
+        <!--triangle with count-->
+        <div class="triangle-container">
+          <img src="./assets/icon/danger.svg">
+          <span class="counter">
         0
       </span>
+        </div>
+      </div>
+
+      <div class="pages center">
+        <!--advertising-->
+        <div>פרסום</div>
+        <!--reports-->
+        <div>דוחות</div>
+        <!--cafeterias-->
+        <div>(0)  קפיטריות</div>
+        <!--main-->
+        <div >ראשי</div>
+      </div>
+
+      <div class="logo right">
+        <div>
+          <span>לוגו</span>
+        </div>
       </div>
     </div>
-
-    <div class="pages center">
-      <!--advertising-->
-      <div>פרסום</div>
-      <!--reports-->
-      <div>דוחות</div>
-      <!--cafeterias-->
-      <div>(0)  קפיטריות</div>
-      <!--main-->
-      <div >ראשי</div>
+    <div class="sub-header">
+      <app-path *ngIf="visible.breadcrumbs"></app-path>
+      <app-information *ngIf="visible.info" [hintText]="'test 1, test 2'"></app-information>
+      <app-user-image *ngIf="visible.companyLogo"></app-user-image>
     </div>
 
-    <div class="logo right">
-      <div>
-        <span>לוגו</span>
-      </div>
+
+  </div>
+
+
+  <div class="torless__body">
+    <div class="content-body torless__container">
+      <router-outlet></router-outlet>
     </div>
 
   </div>
-  <div class="content">
-    <div class="content-header">
-      <app-path></app-path>
-      <app-information [hintText]="'test 1, test 2'"></app-information>
-      <app-user-image></app-user-image>
-    </div>
-    <router-outlet></router-outlet>
+
+  <div class="torless__footer">
+    footer
   </div>
+
+
   <app-time-select></app-time-select>
 </div>
 

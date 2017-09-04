@@ -11,19 +11,19 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 // PAGES MODULES
-import { LoginModule } from './login/login.module';
-import { RegisterModule } from './register/register.module';
-import { SmsConfirmModule } from './sms-confirm/sms-confirm.module';
-import { CafeteriaListModule } from './cafeteria-list/cafeteria-list.module';
-import { CafeteriaTypeModule } from './cafeteria-type/cafeteria-type.module';
-import { CreateCafeteriaModule } from './create-cafeteria/create-cafeteria.module';
-import { CreateMainCategoryModule } from './create-main-category/create-main-category.module';
-import { ProductListModule } from './product-list/product-list.module';
-import { CategoriesListModule } from './categories-list/categories-list.module';
-import { CreateManagerModule } from './create-manager/create-manager.module';
-import { AddProductModule } from './add-product/add-product.module';
-import { EditCafeteriaModule } from './edit-cafeteria/edit-cafeteria.module';
-import { EditProductModule } from './edit-product/edit-product.module';
+import { LoginModule } from './pages/login/login.module';
+import { RegisterModule } from './pages/register/register.module';
+import { SmsConfirmModule } from './pages/sms-confirm/sms-confirm.module';
+import { CafeteriaListModule } from './pages/cafeteria-list/cafeteria-list.module';
+import { CafeteriaTypeModule } from './pages/cafeteria-type/cafeteria-type.module';
+import { CreateCafeteriaModule } from './pages/create-cafeteria/create-cafeteria.module';
+import { CreateMainCategoryModule } from './pages/create-main-category/create-main-category.module';
+import { ProductListModule } from './pages/product-list/product-list.module';
+import { CategoriesListModule } from './pages/categories-list/categories-list.module';
+import { CreateManagerModule } from './pages/create-manager/create-manager.module';
+import { AddProductModule } from './pages/add-product/add-product.module';
+import { EditCafeteriaModule } from './pages/edit-cafeteria/edit-cafeteria.module';
+import { EditProductModule } from './pages/edit-product/edit-product.module';
 
 // COMPONENTS
 import { ComponentsModule  } from './components';
@@ -41,11 +41,14 @@ import {
 
 // DIRECTIVES
 import { DirectivesModule } from './directives/index';
-import { CategoriesListComponent } from './categories-list/categories-list.component';
-import { CreateManagerComponent } from './create-manager/create-manager.component';
-import { AddProductComponent } from './add-product/add-product.component';
-import { EditCafeteriaComponent } from './edit-cafeteria/edit-cafeteria.component';
-import { EditProductComponent } from './edit-product/edit-product.component';
+
+// PIPES
+import { PipesModule } from './pipes/index';
+import { CategoriesListComponent } from './pages/categories-list/categories-list.component';
+import { CreateManagerComponent } from './pages/create-manager/create-manager.component';
+import { AddProductComponent } from './pages/add-product/add-product.component';
+import { EditCafeteriaComponent } from './pages/edit-cafeteria/edit-cafeteria.component';
+import { EditProductComponent } from './pages/edit-product/edit-product.component';
 
 // 3rd
 // import { LodashModule } from 'ng2-lodash';
@@ -74,6 +77,7 @@ import { EditProductComponent } from './edit-product/edit-product.component';
     EditProductModule,
     ComponentsModule,
     DirectivesModule,
+    PipesModule,
     HttpModule
   ],
   providers: [

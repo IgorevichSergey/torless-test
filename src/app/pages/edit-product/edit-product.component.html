@@ -1,0 +1,160 @@
+<div class="edit-product-component">
+  <div class="component-header">
+    <div class="button-container">
+      <button (click)="goBack()">menu</button>
+    </div>
+    <div class="text-container">
+      text
+    </div>
+  </div>
+
+  <div class="component-body" *ngIf="updatedMainProduct">
+    <div class="new-product">
+      <div class="name-line">
+        <div class="input-line required">
+          <input type="text" appInput [(ngModel)]="updatedMainProduct.product.pr_name" [placeholderMessage]="'product name'">
+        </div>
+        <div class="check-elements">
+          <span class="check-element"></span>
+          <span class="check-element"></span>
+        </div>
+
+
+      </div>
+
+      <div class="border-bottom"></div>
+
+      <div class="input-line required">
+        <input type="text" appInput [(ngModel)]="updatedMainProduct.product.pr_descr" [placeholderMessage]="'product details'">
+      </div>
+
+      <div class="input-line required">
+        <input type="number" dir="rtl" appInput [(ngModel)]="updatedMainProduct.product.pr_price" [placeholderMessage]="'product price'">
+      </div>
+
+      <div class="cook-time">
+        <div class="label required">Cook Time</div>
+        <div class="minute" *ngFor="let minute of minutes; let index = index;"
+             [ngClass]="{'selected': '' + updatedMainProduct.product.pr_cook_time === ''+ index }"
+             (click)="selectCookTime(index)">
+          {{ index }}
+        </div>
+      </div>
+
+      <div class="radio-elements required">
+        <div class="radio-element">
+          <label class="text" for="_1">text</label>
+          <input type="radio" id="_1">
+        </div>
+        <div class="radio-element">
+          <label class="text" for="_2">text</label>
+          <input type="radio" id="_2">
+        </div>
+        <div class="radio-element">
+          <label class="text" for="_3">text</label>
+          <input type="radio" id="_3">
+        </div>
+        <div class="radio-element">
+          <label class="text" for="_4">text</label>
+          <input type="radio" id="_4">
+        </div>
+        <div class="radio-element">
+          <label class="text" for="_5">text</label>
+          <input type="radio" id="_5">
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="extra-category__header">
+      <button class="add-button" (click)="addNewExtraCategory()">
+        add extra category
+      </button>
+      <div class="info-icon">i</div>
+      <div class="label-text">
+        extra categories
+      </div>
+    </div>
+
+    <div class="extra-category__content" *ngFor="let extra_category of updatedMainProduct.extra_categories; let index = index;">
+      <div class="label">
+        <button class="remove-button">
+          <img src="./assets/icon/trash.svg">
+        </button>
+        <div class="info-icon">i</div>
+        <div class="name-line">
+          <div class="input-line">
+            <input type="text" appInput [(ngModel)]="extra_category.extra_cat_name" [placeholderMessage]="'category name'">
+          </div>
+        </div>
+      </div>
+      <div class="body" *ngIf="extra_category?.extra_cat_name.length > 0">
+        <div class="extra-product">
+          <div class="extra-product__outer">
+            <div class="info-icon">i</div>
+            <div class="description">
+              description
+            </div>
+          </div>
+
+          <div *ngFor="let extra_info of extra_category.extra_info">
+            <div class="extra-product__inner">
+              <div class="input-line">
+                <input type="text" appInput [(ngModel)]="extra_info.extra_pr_name" [placeholderMessage]="'name'">
+              </div>
+
+              <div class="input-line">
+                <input type="text" dir="rtl" appInput [(ngModel)]="extra_info.extra_pr_descr" [placeholderMessage]="'description'">
+              </div>
+
+              <div class="price-input-line" *ngIf="extra_info.double_extra_products?.length === 0">
+                <input type="text" dir="rtl" [(ngModel)]="extra_info.extra_pr_price">
+              </div>
+            </div>
+
+            <div class="double-extra-products__container">
+              <div class="double-extra-products__item">
+                <div class="double-extra-products__item--outer" *ngIf="extra_info.double_extra_products?.length > 0">
+                  <div class="description">
+                    description
+                  </div>
+                </div>
+
+                <div class="double-extra-products__item--inner" *ngFor="let double_extra of extra_info.double_extra_products">
+                  <div class="input-line">
+                    <input type="text" appInput [(ngModel)]="double_extra.double_extra_pr_name" [placeholderMessage]="'double extra product name'">
+                  </div>
+                  <div class="price-input-line">
+                    <input type="text" dir="rtl" [(ngModel)]="double_extra.double_extra_pr_price">
+                  </div>
+                </div>
+
+                <div class="double-extra-products__item--button" (click)="addDoubleExtraProduct(extra_info.double_extra_products)">
+                  add double extra category
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="extra-product__button" (click)="addExtraInfo(extra_category.extra_info)">
+            add extra product
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="extra-category__header" *ngIf="updatedMainProduct.extra_categories?.length > 4">
+      <button class="add-button">
+        add extra category
+      </button>
+    </div>
+
+  </div>
+
+  <div class="component-footer" *ngIf="updatedMainProduct">
+    <button (click)="updateProduct()" [disabled]="isSubmitButtonDisabled()">update</button>
+    <span (click)="goBack()">go back</span>
+  </div>
+</div>

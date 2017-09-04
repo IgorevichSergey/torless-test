@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { InputDirective } from './input/input.directive';
+import { FilterPipe } from './ngForFilter/filter.pipe';
 import { CommonModule } from '@angular/common';
 
 @NgModule({
@@ -8,10 +8,10 @@ import { CommonModule } from '@angular/common';
     CommonModule
   ],
   declarations: [
-    InputDirective
+    FilterPipe
   ],
   exports: [
-    InputDirective
+    FilterPipe
   ]
 })
-export class DirectivesModule {}
+export class PipesModule {}
