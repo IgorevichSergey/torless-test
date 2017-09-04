@@ -1,132 +1,94 @@
 
 .login-component {
 
-  // остается
-  .center-element {
-    width: 40%;
-    margin: 0 auto;
-
-    @media screen and (max-width: 940px) {
-      width: 100%;
-      max-width: 300px;
-    }
+  .body-container {
+    position: relative;
   }
 
-  // вынести
-  .component-button-container {
-    button {
-      width: 100%;
-      height: 44px;
-      background: #fff557;
-      font-size: 0.9rem;
-      font-weight: 900;
-      &:active {
-        background: darken(#fff557, 10%)
-      }
-    }
-    button[disabled] {
-      cursor: not-allowed;
-    }
-  }
-
-  // вынести
-  .component-title {
+  &__title {
     text-align: center;
     font-size: 1.3rem;
     margin-bottom: 40px;
+    width: 45%;
   }
 
+  &__form {
+    margin-bottom: 40px;
+    width: 45%;
+    @media screen and (max-width: 940px) {
+      width: 100%;
+    }
+  }
 
-  //.login-header {
-  //  position: relative;
-  //  display: flex;
-  //  margin: 0 0 20px 0;
-  //
-  //
-  //
-  //  .info {
-  //    margin: 0 auto;
-  //  }
-  //}
-
-  // переименовать
-  .component-content {
-    position: relative;
+  &__left-side {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 25%;
+    max-width: 270px;
+    font-size: 0.8rem;
+    text-align: center;
+    .label {
+      width: 80%;
+      font-weight: 900;
+      margin-bottom: 20px;
+    }
 
     @media screen and (max-width: 940px) {
-      display: flex;
-      flex-direction: column-reverse;
+      position: relative;
+      margin: 0 auto 40px;
+      width: 100%;
+      max-width: 350px;
     }
-
-
-    // придумать имя переименовать а заетем вынести в отдельный файл
-    .register-container {
-      position: absolute;
-      width: 25%;
-      margin: 0 auto;
-
-      @media screen and (max-width: 940px) {
-        position: relative;
-        width: 100%;
-        max-width: 300px;
-      }
-
-      .register-label {
-        text-align: center;
-        font-size: 0.9rem;
-        font-weight: 900;
-        margin-bottom: 20px;
-      }
-    }
-
-    // придумать имя переименовать а заетем вынести в отдельный файл
-    .login-container {
-      @media screen and (max-width: 940px) {
-        margin-bottom: 40px;
-      }
-      .login-label {
-        text-align: end;
-        color: #484848;
-        margin-bottom: 25px;
-      }
-
-      .button-container {
-        button {
-
-        }
-      }
-    }
-
   }
-}
 
-
-
-/* Draggable*/ // зачем это тут вообще?
-
-.drag-border {
-  border: #ff525b dashed 2px;
-}
-
-.drag-handle {
-  cursor: move; /* fallback if grab cursor is unsupported */
-  cursor: grab;
-  cursor: -moz-grab;
-  cursor: -webkit-grab;
-}
-
-.drag-handle:active {
-  cursor: grabbing;
-  cursor: -moz-grabbing;
-  cursor: -webkit-grabbing;
-}
-
-/* Droppable */
-
-.drag-hint-border {
-  border: #3c763d dashed 2px;
-}
-
-.drag-over-border {
-  border: #fbbc05 dashed 2px;
+  // переименовать
+  //.component-content {
+  //  position: relative;
+  //
+  //  @media screen and (max-width: 940px) {
+  //    display: flex;
+  //    flex-direction: column-reverse;
+  //  }
+  //
+  //
+  //  // придумать имя переименовать а заетем вынести в отдельный файл
+  //  .register-container {
+  //    position: absolute;
+  //    width: 25%;
+  //    margin: 0 auto;
+  //
+  //    @media screen and (max-width: 940px) {
+  //      position: relative;
+  //      width: 100%;
+  //      max-width: 300px;
+  //    }
+  //
+  //    .register-label {
+  //      text-align: center;
+  //      font-size: 0.9rem;
+  //      font-weight: 900;
+  //      margin-bottom: 20px;
+  //    }
+  //  }
+  //
+  //  // придумать имя переименовать а заетем вынести в отдельный файл
+  //  .login-container {
+  //    @media screen and (max-width: 940px) {
+  //      margin-bottom: 40px;
+  //    }
+  //    .login-label {
+  //      text-align: end;
+  //      color: #484848;
+  //      margin-bottom: 25px;
+  //    }
+  //
+  //    .button-container {
+  //      button {
+  //
+  //      }
+  //    }
+  //  }
+  //
+  //}
 }

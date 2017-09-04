@@ -9,7 +9,7 @@ import { UserService } from '../../services';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss', '../pages.scss']
 })
 export class LoginComponent implements OnInit {
   public user: LoginUser = new LoginUser(); // 'torless_1@mailinator.com', 'qwerty123' //('sergiosy@sergiosy.com', '111111');
@@ -17,37 +17,6 @@ export class LoginComponent implements OnInit {
   public invalidForm: boolean = false;
 
   // listOne: Array<string> = ['Coffee', 'Orange Juice', 'Red Wine', 'Unhealty drink!', 'Water'];
-
-
-  test: any;
-  list: any[] = [
-    {
-      name: 'first'
-    },
-    {
-      name: 'second'
-    },
-    {
-      name: 'third'
-    },
-    {
-      name: 'fourth'
-    },
-    {
-      name: 'fifth'
-    },
-    {
-      name: 'sixth'
-    },
-    {
-      name: 'seventh'
-    },
-    {
-      name: 'eighth'
-    }
-  ];
-
-  selectEl = 'eighth';
 
   constructor(
     private userService: UserService,
