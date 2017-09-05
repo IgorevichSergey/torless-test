@@ -85,6 +85,11 @@ export class RegisterComponent implements OnInit {
     return result;
   }
 
+  public termsAndConditions(): void {
+    // todo: replace, or think about it
+    window.open('https://igorevichsergey.github.io/torless-test//terms-and-conditions', '_blank');
+  }
+
 
   /////
   private _goTo(url: string, params?: NavigationExtras): void {

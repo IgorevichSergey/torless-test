@@ -43,8 +43,7 @@ export class UserService {
   }
 
   public isLoggedIn(): boolean {
-    let result: boolean = localStorage.getItem('torless_token') ? true : false;
-    return result;
+    return localStorage.getItem('torless_token') ? true : false;
   }
 
   public registerManagerUser(createdManagerUser: CreatedManagerUser): Promise<any> {
@@ -101,6 +100,58 @@ export class UserService {
       });
     });
 
+  }
+
+  public getManagerList(): Promise<any> {
+    const _token: string = localStorage.getItem('torless_token');
+    const data: string = JSON.stringify({tag: 'get_manager_list', 'token': _token});
+
+    return new Promise((resolve, reject) => {
+      this._setRequest(data).then((response) => {
+        resolve(response);
+      }, (error) => {
+        reject(error);
+      });
+    });
+  }
+
+  public getManagerById(id: number): Promise<any> {
+    const _token: string = localStorage.getItem('torless_token');
+    const data: string = JSON.stringify({tag: 'get_manager_user', 'token': _token, 'user_id': id});
+
+    return new Promise((resolve, reject) => {
+      this._setRequest(data).then((response) => {
+        resolve(response);
+      }, (error) => {
+        reject(error);
+      });
+    });
+  }
+
+  public editManager(managerId: number, cafeteriaId: number, manager: any): Promise<any> {
+    const _token: string = localStorage.getItem('torless_token');
+    const data: string = JSON.stringify({tag: 'update_manager_user', 'token': _token, 'user_id': managerId, 'caf_id': cafeteriaId, 'manager_user': {'mn_name': manager.name, 'mn_last_name': manager.last_name, 'mn_phone': manager.phone, 'mn_email': manager.email, 'mn_pass': manager.password}});
+
+    return new Promise((resolve, reject) => {
+      this._setRequest(data).then((response) => {
+        resolve(response);
+      }, (error) => {
+        reject(error);
+      });
+    });
+  }
+
+  public confirmEmail(email: string): Promise<any> {
+    const _token: string = localStorage.getItem('torless_token');
+    const data: string = JSON.stringify({tag: 'confirm_mail', 'token': _token, 'ch_mail': email});
+
+    return new Promise((resolve, reject) => {
+      this._setRequest(data).then((response) => {
+        resolve(response);
+      }, (error) => {
+        reject(error);
+      });
+    });
   }
 
   /////

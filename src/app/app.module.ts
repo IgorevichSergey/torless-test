@@ -25,6 +25,11 @@ import { AddProductModule } from './pages/add-product/add-product.module';
 import { EditCafeteriaModule } from './pages/edit-cafeteria/edit-cafeteria.module';
 import { EditProductModule } from './pages/edit-product/edit-product.module';
 
+import { ManagerListModule } from './pages/manager-list/manager-list.module';
+import { EditManagerModule } from './pages/edit-manager/edit-manager.module';
+import { ConfirmEmailModule } from './pages/confirm-email/confirm-email.module';
+import { RemovedProductsModule } from './pages/removed-products/removed-products.module';
+
 // COMPONENTS
 import { ComponentsModule  } from './components';
 
@@ -49,6 +54,14 @@ import { CreateManagerComponent } from './pages/create-manager/create-manager.co
 import { AddProductComponent } from './pages/add-product/add-product.component';
 import { EditCafeteriaComponent } from './pages/edit-cafeteria/edit-cafeteria.component';
 import { EditProductComponent } from './pages/edit-product/edit-product.component';
+
+
+
+// import { TermsConditionsComponent } from './pages/terms-conditions/terms-conditions.component';
+// import { ManagerListComponent } from './pages/manager-list/manager-list.component';
+// import { EditManagerComponent } from './pages/edit-manager/edit-manager.component';
+// import { ConfirmEmailComponent } from './pages/confirm-email/confirm-email.component';
+// import { RemovedProductsComponent } from './pages/removed-products/removed-products.component';
 
 // 3rd
 // import { LodashModule } from 'ng2-lodash';
@@ -75,6 +88,10 @@ import { EditProductComponent } from './pages/edit-product/edit-product.componen
     AddProductModule,
     EditCafeteriaModule,
     EditProductModule,
+    ManagerListModule,
+    EditManagerModule,
+    ConfirmEmailModule,
+    RemovedProductsModule,
     ComponentsModule,
     DirectivesModule,
     PipesModule,

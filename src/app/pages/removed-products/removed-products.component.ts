@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Router, RouterModule} from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { ProductService } from '../../services';
 
 @Component({
-  selector: 'app-product-list',
-  templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.scss']
+  selector: 'app-removed-products',
+  templateUrl: './removed-products.component.html',
+  styleUrls: ['./removed-products.component.scss']
 })
-export class ProductListComponent implements OnInit {
+export class RemovedProductsComponent implements OnInit {
   public products: any[];
   public productBuffer: any;
 
@@ -28,6 +28,8 @@ export class ProductListComponent implements OnInit {
       .subscribe((param) => {
         this._cafeteriaId = +param.cafId;
         this._categoryId = +param.catId;
+        console.log('this._cafeteriaId', this._cafeteriaId)
+        console.log('this._categoryId', this._categoryId)
         this._getProducts();
       });
   }
@@ -55,7 +57,7 @@ export class ProductListComponent implements OnInit {
 
   public removeProduct(product): void {
     this.productService.deleteProduct(product.prod_id).then((response) => {
-      let index: number = this._findIndex(this.products, (item) => {return item.prod_id === product.prod_id});
+      const index: number = this._findIndex(this.products, (item) => {return item.prod_id === product.prod_id});
       this.products.splice(index, 1);
     });
 
@@ -63,14 +65,14 @@ export class ProductListComponent implements OnInit {
 
   public emptyProduct(product): void {
     this.productService.emptyProduct(product.prod_id).then((response) => {
-      let index: number = this._findIndex(this.products, (item) => {return item.prod_id === product.prod_id});
+      const index: number = this._findIndex(this.products, (item) => {return item.prod_id === product.prod_id});
       this.products[index].prod_type = -2;
     });
   }
 
   public fullProduct(product): void {
     this.productService.fullProduct(product.prod_id).then((response) => {
-      let index: number = this._findIndex(this.products, (item) => {return item.prod_id === product.prod_id});
+      const index: number = this._findIndex(this.products, (item) => {return item.prod_id === product.prod_id});
       this.products[index].prod_type = 1;
     });
   }
@@ -95,7 +97,7 @@ export class ProductListComponent implements OnInit {
 
   ////
   private _getProducts(): void {
-    this.productService.getProductsForCategory(this._cafeteriaId, this._categoryId).then((response) => {
+    this.productService.getRemovedProducts(this._cafeteriaId).then((response) => {
       this.products = response.data.products;
     }, (error) => {
       console.log('error ==> ', error);
@@ -107,8 +109,8 @@ export class ProductListComponent implements OnInit {
   }
 
   private _copy(obj: any): any {
-    let result: any = {};
-    for (const key in obj) {
+    const result: any = {};
+    for(const key in obj) {
       result[key] = obj[key];
     }
     return result;

@@ -94,8 +94,15 @@
       </div>
 
       <div class="submit-block">
-        <div class="description">
-          בלחיצה, אני מסכים/ה לתנאי השימוש ולתקנון תורלס
+        <div dir="rtl" class="description">
+          <span>בלחיצה, אני מסכים/ה</span>
+          <span (click)="termsAndConditions()" class="link">לתנאי השימוש</span>
+          <span (click)="termsAndConditions()" class="link">ולתקנון</span>
+          <span>תורלס</span>
+
+
+
+
         </div>
         <div class="submit-button-container">
           <button (click)="registerUser(createdUser)" [disabled]="isButtonDisabled(createdUser.user)">הרשם/י</button>

@@ -39,7 +39,7 @@ export class CafeteriaListComponent implements OnInit {
   /////
   private _getCafeteriaList(): void {
     this.cafeteriaService.getUserCafeterias().then((response) => {
-
+console.log('response ===> ', response);
       this.cafeteriaList = this._filter(response.data || []);
 
       console.log('this.cafeteriaList', this.cafeteriaList);

@@ -15,6 +15,21 @@ export const PAGES_CONFIG = {
       info: true,
       breadcrumbs: true,
       companyLogo: false
+    },
+    '/cafeteria-list': {
+      info: true,
+      breadcrumbs: true,
+      companyLogo: true
+    },
+    '/edit-cafeteria': {
+      info: true,
+      breadcrumbs: true,
+      companyLogo: true
+    },
+    '/manager-list': {
+      info: true,
+      breadcrumbs: true,
+      companyLogo: true
     }
   }
 };

@@ -4,25 +4,27 @@
     <div class="top-header">
       <div class="connect-registration left">
         <!--connect-->
-        <div class="connect">התחברו</div>
+        <div *ngIf="!loggedIn" [ngClass]="{'active': isActiveLink('/login')}" class="connect" (click)="goTo('/login')">התחברו</div>
         <!--registration-->
-        <div class="registration">הרשמו</div>
+        <div *ngIf="!loggedIn" [ngClass]="{'active': isActiveLink('/registration')}" class="registration" (click)="goTo('/registration')">הרשמו</div>
+        <!--log out-->
+        <div *ngIf="loggedIn" class="log-out" (click)="logOut()">להתנתק</div>
         <!--triangle with count-->
         <div class="triangle-container">
           <img src="./assets/icon/danger.svg">
           <span class="counter">
-        0
-      </span>
+            0
+          </span>
         </div>
       </div>
 
-      <div class="pages center">
+      <div *ngIf="loggedIn" class="pages center">
         <!--advertising-->
         <div>פרסום</div>
         <!--reports-->
         <div>דוחות</div>
         <!--cafeterias-->
-        <div>(0)  קפיטריות</div>
+        <div  [ngClass]="{'active': isActiveLink('/cafeteria-list')}" (click)="goTo('/cafeteria-list')">({{cafeteriasLength}})  קפיטריות</div>
         <!--main-->
         <div >ראשי</div>
       </div>

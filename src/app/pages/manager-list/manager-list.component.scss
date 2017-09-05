@@ -1,0 +1,37 @@
+.manager-list-component {
+  .managers {
+    background: #fff;
+    padding: 15px 10px;
+  }
+  .manager {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    &__name {
+      width: calc(45% - 5px);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    &__email {
+      width: calc(45% - 5px);
+      white-space: nowrap;
+      padding-right: 5px;
+      padding-left: 5px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    &__edit {
+      width: calc(10% - 5px);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      text-align: right;
+      .link:hover {
+        cursor: pointer;
+        text-decoration: underline;
+      }
+    }
+  }
+}

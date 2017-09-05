@@ -1,0 +1,27 @@
+<div class="manager-list-component">
+  <div class="managers">
+    <div class="manager">
+      <!--todo: возможно проще будет сверстать это таблицей-->
+      <div class="manager__name">
+        Name
+      </div>
+      <div class="manager__email">
+        Email
+      </div>
+      <div class="manager__edit">
+        Edit
+      </div>
+    </div>
+    <div class="manager" *ngFor="let manager of managers">
+      <div class="manager__name">
+        {{ manager.name + ' ' + manager.last_name }}
+      </div>
+      <div class="manager__email">
+        {{ manager.email }}
+      </div>
+      <div class="manager__edit">
+        <span class="link" (click)="editManager(manager)">edit</span>
+      </div>
+    </div>
+  </div>
+</div>

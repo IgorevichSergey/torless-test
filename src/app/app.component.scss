@@ -12,6 +12,7 @@
     .top-header {
       position: relative;
       display: flex;
+      min-height: 44px;
       padding: 20px 5px;
       white-space: nowrap;
       background: #353b41;
@@ -19,7 +20,8 @@
       .connect-registration {
         display: flex;
         justify-content: flex-end;
-        margin-left: auto;
+        margin-right: auto;
+        margin-left: 20px;
         .connect {
           align-self: center;
           cursor: pointer;
@@ -33,6 +35,17 @@
 
         .registration {
           margin-left: 23px;
+          align-self: center;
+          cursor: pointer;
+          color: #8f8f8f;
+          border-bottom: 1px solid #8f8f8f;
+          &:hover {
+            color: #fff;
+            border-bottom: 1px solid #fff;
+          }
+        }
+
+        .log-out {
           align-self: center;
           cursor: pointer;
           color: #8f8f8f;
@@ -127,6 +140,12 @@
           position: absolute;
           right: 10px;
         }
+      }
+
+      .active {
+        pointer-events: none;
+        color: #fff!important;
+        border-bottom: 1px solid #fff!important;
       }
     }
     /**
