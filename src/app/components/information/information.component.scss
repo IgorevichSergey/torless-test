@@ -1,20 +1,24 @@
 .information-block {
-  position: relative;
-  cursor: pointer;
-  user-select: none;
-  width: 25px;
-  height: 25px;
-  margin: 10px auto;
+  display: inline-block;
+  width: 31.5%;
+  text-align: center;
+  height: auto;
+  margin: 0;
+  vertical-align: top;
 
   .visible-part {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-
-    width: 25px;
-    height: 25px;
-    border-radius: 100%;
-
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    width: 1.9rem;
+    height: 1.9rem;
+    text-align: center;
+    font-family: sans-serif;
+    box-sizing: border-box;
+    padding-top: 0.07rem;
+    font-weight: 100;
+    font-size: 1.2rem;
+    border-radius: 50%;
     background: #ffffff;
     span {
       color: #8f8f8f;
