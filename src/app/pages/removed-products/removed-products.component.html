@@ -17,9 +17,9 @@
       <div class="name" *ngIf="!product.edit">
         <span>{{ product.prod_name || 'NA' }}</span>
       </div>
-      <div class="input-line" *ngIf="product.edit">
-        <input type="text" appInput [(ngModel)]="productBuffer.prod_name" [placeholderMessage]="'product name'" (blur)="saveProduct()">
-      </div>
+      <!--<div class="input-line" *ngIf="product.edit">-->
+        <!--<input type="text" appInput [(ngModel)]="productBuffer.prod_name" [placeholderMessage]="'product name'" (blur)="saveProduct()">-->
+      <!--</div>-->
 
       <div class="images">
         <span class="check-element" [ngClass]="{'active': product.prod_type === -2, 'disabled': product.prod_type !== -2}" (click)="emptyProduct(product)"></span>
@@ -27,8 +27,7 @@
       </div>
 
       <div class="buttons">
-        <span (click)="editProduct(product)">edit</span>
-        <span (click)="removeProduct(product)">remove</span>
+        <span (click)="restoreProduct(product)">restore</span>
       </div>
     </div>
   </div>

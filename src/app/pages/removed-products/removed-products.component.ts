@@ -95,10 +95,15 @@ export class RemovedProductsComponent implements OnInit {
     this.router.navigate(['removed-products', this._cafeteriaId, this._categoryId]);
   }
 
+  public restoreProduct(product: any): void {
+    this.productService.restoreProduct()
+  }
+
   ////
   private _getProducts(): void {
     this.productService.getRemovedProducts(this._cafeteriaId).then((response) => {
-      this.products = response.data.products;
+      console.log('response', response);
+      this.products = response.data;
     }, (error) => {
       console.log('error ==> ', error);
     });

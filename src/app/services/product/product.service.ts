@@ -121,6 +121,20 @@ export class ProductService {
     });
   }
 
+  public restoreProduct(): void { //: Promise<any> {
+    console.log('restore product');
+    // const _token: string = localStorage.getItem('torless_token');
+    // const data: string = JSON.stringify({'tag': 'get_deleted_products', 'token': _token, 'caf_id': cafeteriaId});
+    //
+    // return new Promise((resolve, reject) => {
+    //   this._setRequest(data).then((response) => {
+    //     resolve(response);
+    //   }, (error) => {
+    //     reject(error);
+    //   });
+    // });
+  }
+
   /////
   private _setRequest(data: string): Promise<any> {
     const body: URLSearchParams = new URLSearchParams();
