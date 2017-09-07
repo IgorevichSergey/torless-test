@@ -1,5 +1,10 @@
 .categories-list-component {
-
+  .header~div{
+    span{
+      margin-bottom: 2rem;
+    display: block;
+    }
+  }
   .header,
   .footer {
     display: flex;
@@ -16,6 +21,9 @@
         //background: #fff557;
         font-size: 0.9rem;
         font-weight: 900;
+            max-width: none;
+    width: 15rem;
+    margin-top: 2.7rem;
         &:active {
           background: lighten(#000, 10%);
         }
@@ -31,32 +39,75 @@
 
   .categories {
     .category {
-      display: flex;
-      position: relative;
-      flex-direction: row-reverse;
-      background: #fff;
-      padding: 20px;
-      text-align: right;
-      margin-bottom: 20px;
+    display: block;
+    position: relative;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: reverse;
+    -ms-flex-direction: row-reverse;
+    flex-direction: row-reverse;
+    background: #fff;
+    padding: 20px;
+    text-align: right;
+    margin-bottom: 20px;
+    height: 3.5rem;
 
       .name {
         width: 40%;
         align-self: center;
+            font-family: sans-serif;
+    padding-right: 3rem;
+    width: 22rem;
+    font-size: 1.6rem;
+    padding-bottom: 1rem;
+    font-family: sans-serif;
+    padding-right: 3rem;
+    width: 22rem;
+    font-size: 1.6rem;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+    float: right;
       }
       .amount {
         align-self: center;
+            font-family: sans-serif;
+    margin-right: 4rem;
+    display: inline-block;
+    font-size: 1.4rem;
+        text-align: left;
+    font-family: sans-serif;
+    margin-right: 4rem;
+    display: inline-block;
+    font-size: 1.4rem;
+        text-align: left;
+    font-family: sans-serif;
+    margin-right: 4rem;
+    display: inline-block;
+    font-size: 1.8rem;
+    margin-top: 0.7rem;
       }
       .save {
         margin-right: auto;
-        margin-left: 20%;
+        margin-left: 0%;
         user-select: none;
+        float: left;
         cursor: pointer;
         align-self: center;
+        button{
+              width: 14.3rem;
+    font-size: 1.6rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+        }
       }
 
       .edit-button {
         position: absolute;
         left: 20px;
+        button{
+              width: 20rem;
+    height: 3rem;
+    font-size: 1.6rem;
+        }
       }
     }
   }
