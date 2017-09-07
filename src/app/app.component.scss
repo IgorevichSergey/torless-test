@@ -5,23 +5,30 @@
   /**
     styles for site header
    */
+  .header__nav__item{
+    font-size: 1.3rem;
+    margin-right: 1.2rem;
+  }
   &__header {
     /**
       styles for top header element (with a dark background)
      */
     .top-header {
-      position: relative;
-      display: flex;
-      min-height: 44px;
-      padding: 20px 5px;
-      white-space: nowrap;
-      background: #353b41;
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 0.4rem 0.7rem;
+    white-space: nowrap;
+    background: #353b41;
+    box-sizing: border-box;
+    height: 4.5rem;
 
       .connect-registration {
         display: flex;
         justify-content: flex-end;
         margin-right: auto;
-        margin-left: 20px;
+        margin-left: 13rem;
         .connect {
           align-self: center;
           cursor: pointer;
@@ -34,7 +41,7 @@
         }
 
         .registration {
-          margin-left: 23px;
+          margin-left: 0;
           align-self: center;
           cursor: pointer;
           color: #8f8f8f;
@@ -60,10 +67,10 @@
           position: relative;
           display: flex;
           justify-content: center;
-          width: 44px;
-          height: 44px;
-          min-width: 44px;
-          margin-left: 45px;
+          margin-left: 1.7rem;
+          margin-top: 0.5rem;
+          height: 2.7rem;
+          width: 2.7rem;
           background: #8f8f8f;
           cursor: pointer;
 
@@ -111,22 +118,44 @@
       }
 
       .logo {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
+        -webkit-box-pack: end;
+        -ms-flex-pack: end;
         justify-content: flex-end;
         cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
         user-select: none;
-        width: 20%;
+        width: 12.8rem;
+        border:1px solid #000000;
+        background: #000000;
+        transition-duration:0.3s;
+        &:hover{
+          span{
+            color:#000;
+          }
+          background:none;
+        };
         div {
-          width: 80%;
-          height: calc(100% + 20px);
-          background: #000000;
-          align-self: center;
-          display: flex;
-          justify-content: center;
+        width: 100%;
+        height: 100%;
+        -ms-flex-item-align: center;
+        align-self: center;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
           span {
-            align-self: center;
-            font-size: 2.2rem;
+            font-size: 2rem;
+            text-align: center;
+            padding-left: 1rem;
             color: #353b41;
+            line-height: 3.7rem;
             @media screen and (max-width: 940px) {
               font-size: 1.8rem;
             }
@@ -152,10 +181,8 @@
       styles for sub-header, containing breadcrumbs, info-icon, company-logo
      */
     .sub-header {
-      width: 60%;
-      position: relative;
-      margin: 10px auto 30px;
-      height: 25px;
+      width: 100%;
+      margin-top: 0.6rem;
 
       @media screen and (max-width: 940px) {
         width: 90%;
@@ -169,11 +196,12 @@
    */
   &__body {
     position: relative;
-    height: auto;
-    min-height: 90%;
-    width: 60%;
-    max-width: 940px;
-    margin: 10px auto 40px;
+    width: 100%;
+    text-align: left;
+    min-height: auto;
+    margin: 0;
+    max-width: none;
+    margin-top: 1.7rem;
 
     @media screen and (max-width: 760px) {
       width: 90%;

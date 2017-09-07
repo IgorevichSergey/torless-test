@@ -4,9 +4,9 @@
     <div class="top-header">
       <div class="connect-registration left">
         <!--connect-->
-        <div *ngIf="!loggedIn" [ngClass]="{'active': isActiveLink('/login')}" class="connect" (click)="goTo('/login')">התחברו</div>
+        <div *ngIf="!loggedIn" [ngClass]="{'active': isActiveLink('/login')}" class="connect header__nav__item" (click)="goTo('/login')">התחברו</div>
         <!--registration-->
-        <div *ngIf="!loggedIn" [ngClass]="{'active': isActiveLink('/registration')}" class="registration" (click)="goTo('/registration')">הרשמו</div>
+        <div *ngIf="!loggedIn" [ngClass]="{'active': isActiveLink('/registration')}" class="registration header__nav__item" (click)="goTo('/registration')">הרשמו</div>
         <!--log out-->
         <div *ngIf="loggedIn" class="log-out" (click)="logOut()">להתנתק</div>
         <!--triangle with count-->
@@ -35,29 +35,32 @@
         </div>
       </div>
     </div>
-    <div class="sub-header">
-      <app-path *ngIf="visible.breadcrumbs"></app-path>
-      <app-information *ngIf="visible.info" [hintText]="'test 1, test 2'"></app-information>
-      <app-user-image *ngIf="visible.companyLogo"></app-user-image>
+    <div class="main__content__block">
+      <div class="main__container">
+
+        <div class="sub-header">
+            <app-path *ngIf="visible.breadcrumbs"></app-path>
+            <app-information *ngIf="visible.info" [hintText]="'test 1, test 2'"></app-information>
+            <app-user-image *ngIf="visible.companyLogo"></app-user-image>
+          </div>
+
+          <div class="torless__body">
+
+            <div class="content-body torless__container">
+              <router-outlet></router-outlet>
+            </div>
+
+          </div>
+
+          <!--<app-time-select></app-time-select>-->
+          <app-modal-container></app-modal-container>
+        </div>
+       </div>
+        <div class="torless__footer">
+          footer
+        </div>
     </div>
 
-
-  </div>
-
-
-  <div class="torless__body">
-    <div class="content-body torless__container">
-      <router-outlet></router-outlet>
-    </div>
-
-  </div>
-
-  <div class="torless__footer">
-    footer
-  </div>
-
-
-  <app-time-select></app-time-select>
 </div>
 
 

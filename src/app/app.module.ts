@@ -41,7 +41,8 @@ import {
   UserService,
   UniversityService,
   AuthGuardService,
-  TimeSelectService
+  TimeSelectService,
+  ModalService
 } from './services';
 
 // DIRECTIVES
@@ -49,11 +50,18 @@ import { DirectivesModule } from './directives/index';
 
 // PIPES
 import { PipesModule } from './pipes/index';
+
 import { CategoriesListComponent } from './pages/categories-list/categories-list.component';
 import { CreateManagerComponent } from './pages/create-manager/create-manager.component';
 import { AddProductComponent } from './pages/add-product/add-product.component';
 import { EditCafeteriaComponent } from './pages/edit-cafeteria/edit-cafeteria.component';
 import { EditProductComponent } from './pages/edit-product/edit-product.component';
+import { ModalContainerComponent } from './modals/modal-container/modal-container.component';
+import { TimeSelectModalComponent } from './modals/time-select-modal/time-select-modal.component';
+import { ConfirmModalComponent } from './modals/confirm-modal/confirm-modal.component';
+
+// MODALS
+import { ModalsModule } from './modals';
 
 
 
@@ -92,6 +100,7 @@ import { EditProductComponent } from './pages/edit-product/edit-product.componen
     EditManagerModule,
     ConfirmEmailModule,
     RemovedProductsModule,
+    ModalsModule,
     ComponentsModule,
     DirectivesModule,
     PipesModule,
@@ -104,7 +113,8 @@ import { EditProductComponent } from './pages/edit-product/edit-product.componen
     CafeteriaService,
     UserService,
     UniversityService,
-    TimeSelectService
+    TimeSelectService,
+    ModalService
   ],
   bootstrap: [AppComponent]
 })

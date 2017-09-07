@@ -5,7 +5,10 @@ import { Observable } from 'rxjs/Observable';
 import { PAGES_CONFIG } from './constants';
 
 // Services
-import { UserService, CafeteriaService } from './services';
+import { UserService, CafeteriaService, ModalService } from './services';
+
+
+import { ConfirmModalComponent } from './modals/confirm-modal/confirm-modal.component';
 
 @Component({
   selector: 'app-root',
@@ -28,7 +31,8 @@ export class AppComponent {
   constructor(
     private router: Router,
     private userService: UserService,
-    private cafeteriaService: CafeteriaService
+    private cafeteriaService: CafeteriaService,
+    private modalService: ModalService
 
   ) {
     /**
@@ -52,9 +56,12 @@ export class AppComponent {
   }
 
   public logOut(): void {
-    // todo: confirm modal
-    this.userService.logout().then(() => {
-      this.router.navigateByUrl('/login');
+    this.modalService.create(ConfirmModalComponent).then(() => {
+      this.userService.logout().then(() => {
+        this.router.navigateByUrl('/login');
+      });
+    }, () => {
+      console.log('error');
     });
   }
 

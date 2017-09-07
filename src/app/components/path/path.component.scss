@@ -1,6 +1,10 @@
 .path-component {
-  position: absolute;
-  color: #7c7c7c;
+    position: relative;
+    margin-top: 0.6rem;
+    display: inline-block;
+    vertical-align: top;
+    width: 24%;
+    margin-right: 10%;
 
   .previous {
     color: #000000;
