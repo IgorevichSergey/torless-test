@@ -18,6 +18,7 @@ import { ModalService } from '../../services';
 })
 export class ModalContainerComponent {
   currentComponent: any = null;
+  public cssClass: string;
 
   @ViewChild('modalContainer', { read: ViewContainerRef }) modalContainer: ViewContainerRef;
   @ViewChild('modalCover') modalCover: ElementRef;
@@ -29,23 +30,33 @@ export class ModalContainerComponent {
     private renderer: Renderer,
     private modalService: ModalService
   ) {
-    modalService.modal$.subscribe((modalData: { providers: ResolvedReflectiveProvider[], component: any }) => {
-      this.__prepareModal(modalData);
+    modalService.modal$.subscribe((modalData: { providers: Object, component: any, cssClass: string }) => {
+      this.__prepareModal({
+        providers: modalData.providers,
+        component: modalData.component
+      });
+      this.cssClass = modalData.cssClass;
       this.__makeVisible();
 
       modalService.closeModal$.subscribe(() => {
         this.__makeHidden();
+        this.cssClass = '';
       });
     });
 
 
   }
 
-  private __prepareModal(options: { providers: ResolvedReflectiveProvider[], component: any }): void {
-    const injector = ReflectiveInjector.fromResolvedProviders(options.providers, this.modalContainer.parentInjector),
+  private __prepareModal(options: { providers: Object, component: any }): void {
+    const injector = ReflectiveInjector.fromResolvedProviders([], this.modalContainer.parentInjector),
           factory = this.resolver.resolveComponentFactory(options.component),
            // Create the component using the factory and the injector
           createdComponent = factory.create(injector);
+
+    for (const key in options.providers) {
+      (createdComponent.instance as any)[key] = options.providers[key];
+    }
+
 
     // Insert the component into the dom container
     this.modalContainer.insert(createdComponent.hostView);

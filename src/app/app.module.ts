@@ -41,6 +41,7 @@ import {
   UserService,
   UniversityService,
   AuthGuardService,
+  LoggedInGuardService,
   TimeSelectService,
   ModalService
 } from './services';
@@ -107,6 +108,7 @@ import { ModalsModule } from './modals';
     HttpModule
   ],
   providers: [
+    LoggedInGuardService,
     AuthGuardService,
     ProductService,
     CategoryService,

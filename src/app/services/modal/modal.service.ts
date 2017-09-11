@@ -18,11 +18,9 @@ export class ModalService {
   }
 
 
-  public create(component: any, data: Object = {}): Promise<any> {
+  public create(component: any, data: Object = {}, cssClass?: string): Promise<any> {
     return new Promise((resolve, reject) => {
-      const _modalData: { providers: ResolvedReflectiveProvider[], component: any } = this.__modalData(component, data);
-
-      this.modal$.emit(_modalData);
+      this.modal$.emit({ providers: data, component: component, cssClass: cssClass });
 
       this.closeModal$.subscribe((response?: boolean) => {
         this.closeModal$.observers.length = 0;
@@ -42,14 +40,4 @@ export class ModalService {
 
 
   ///
-  private __modalData(component: any, data?: Object): { providers: ResolvedReflectiveProvider[], component: any } {
-    const inputProviders: {provide: string; useValue: any}[] = Object.keys(data).map((key) => { return { provide: key, useValue: data[key] }; });
-    // const factory = this.resolver.resolveComponentFactory(component);
-
-    return {
-      providers: ReflectiveInjector.resolve(inputProviders),
-      component: component
-    };
-  }
-
 }

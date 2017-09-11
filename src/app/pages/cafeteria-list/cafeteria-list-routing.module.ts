@@ -9,7 +9,7 @@ const routes: Routes = [
   {
     path: 'cafeteria-list',
     component: CafeteriaListComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [ AuthGuardService ]
   }
 ];
 

@@ -1,5 +1,5 @@
 <div class="modal-cover" #modalCover>
-  <div class="modal-context" #modalContext>
+  <div class="modal-context" #modalContext [ngClass]="{'small': cssClass === 'small', 'middle': cssClass === 'middle', 'large': cssClass === 'large'}">
     <div #modalContainer></div>
   </div>
 </div>
