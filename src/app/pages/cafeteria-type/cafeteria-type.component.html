@@ -6,8 +6,10 @@
     <app-progress-bar [complete]="complete"></app-progress-bar>
   </div>
 
+    <div class="activity-types-block__title">מה תחום פעילות הסניף?</div>
 
   <div class="activity-types-block">
+
     <!-- cafeteria -->
     <div class="activity-block" (click)="selectElement(1)" [ngClass]="{'checked': selectedCafeteriaType === 1}">
       <div class="text">

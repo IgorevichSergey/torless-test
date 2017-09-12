@@ -22,11 +22,15 @@
 }
 .torless__footer{
 	font-family: sans-serif;
-	position: fixed;
+	/*position: fixed;*/
 	bottom: 0;
 	text-align: center;
 	left: 0;
 	width: 100%;
+	position: relative;
+	box-sizing: border-box;
+	bottom: auto;
+	top: auto;
 }
 
 .app-input-placeholder{

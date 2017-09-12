@@ -1,5 +1,64 @@
 .registration-component {
   padding-right: 0rem;
+  .upload__image__container{
+    margin-top: -1.5rem;
+    text-align: right;
+  }
+  .upload__image__btn__text{
+    font-size: 1.4rem;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: -0.05rem;
+    margin-top: 1rem;
+  }
+  .upload__image__corss__container{
+        position: relative;
+    width: 1.3rem;
+    height: 0.5rem;
+    background: #fff557;
+    margin: 0 auto;
+    margin-top: 3.9rem;
+    &:after{
+      content:'';
+      background: #fff557;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left:50%;
+      transform: translateX(-50%) rotate(90deg);
+    };
+  }
+  .upload__image__text{
+    vertical-align: top;
+    display: inline-block;
+        width: 53%;
+    padding-right: 1rem;
+    box-sizing: border-box;
+    direction: rtl;
+    font-size: 1rem;
+    font-family: sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.1rem;
+    line-height: 1.3;
+    margin-top: -0.35rem;
+    p:not(:nth-last-child(1)){
+      margin-top: 0;
+      margin-bottom: -0.8rem;
+    }
+  }
+  .upload__image__btn{
+    cursor: pointer;
+    background: #000;
+    color: #8f8f8f;
+  }
+  /*8f8f8f*/
+  .upload__image__btn{
+    vertical-align: top;
+    display: inline-block;
+    width: 36%;
+    height: 9.5rem;
+    margin-bottom: 4.5rem;
+  }
   .input-line{
     font-size: 1.6rem;
     margin-bottom: 0;
@@ -7,6 +66,10 @@
     span{
       display: none;
     }
+  }
+  .registration-block .label{
+        margin-top: 2.8rem;
+    margin-bottom: 2.4rem;
   }
   .registration-header {
     text-align: right;
@@ -25,7 +88,8 @@
   }
 
   .registration-content {
-    margin-top: 2.3rem;
+    /*margin-top: 2.3rem;*/
+    margin-top: 0;
     position: relative;
 
     .create-connection {
@@ -43,6 +107,7 @@
         padding: 0.7rem 1.5rem;
         border: 4px solid #fff557;
         margin-bottom: 0rem;
+        margin-top: 1.1rem;
 
         .bold {
     font-weight: 900;
@@ -75,7 +140,8 @@
 
     .registration-block {
       padding: 0;
-      margin-top: 1.1rem;
+      /*margin-top: 1.1rem;*/
+      margin-top: 0;
       float: right;
       display: inline-block;
       vertical-align: top;
@@ -84,7 +150,7 @@
       .label {
           font-size: 1.4rem;
     font-weight: 100;
-    margin-bottom: 15.6rem;
+    /*margin-bottom: 15.6rem;*/
       }
 
 

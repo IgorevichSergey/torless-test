@@ -19,9 +19,11 @@
     }
 
     .cafeteria-details-form {
-      position: absolute;
+      /*position: absolute;*/
       width: 40%;
       text-align: right;
+      position: relative;
+      float: right;
       right: 0;
       margin-top: 3.4rem;
 

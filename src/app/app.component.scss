@@ -1,3 +1,5 @@
+
+
 .torless {
   position: relative;
   height: 100%;
@@ -33,7 +35,7 @@
         display: flex;
         justify-content: flex-end;
         margin-right: auto;
-        margin-left: 13rem;
+        margin-left: 5rem;
         .connect {
           align-self: center;
           cursor: pointer;
@@ -105,6 +107,7 @@
         display: flex;
         justify-content: center;
         width: 60%;
+        margin: 0 auto;
         div {
           margin: 0 25px;
           align-self: center;
@@ -224,5 +227,43 @@
     padding: 20px;
     background: #353b41;
     color: #fff;
+  }
+}
+
+  .main__container{
+    /*padding-right: 6rem;*/
+  }
+
+@media screen and (max-width: 1024px){
+
+  .torless__header{
+    .logo{
+      height: 3.6rem;
+      text-align: center;
+    }
+    .top-header .pages{
+      height: 3rem;
+      text-align: left;
+      display: block;
+      padding-top: 5rem;
+      &.center{
+        text-align: left;
+        display: inline-block;
+        padding-top: 4.7rem;
+        width: auto;
+        div{
+          display: inline-block;
+          vertical-align: top;
+          position: relative;
+        }
+      }
+    }
+    .top-header {
+      height: auto;
+      padding-bottom: 0rem;
+      .connect-registration{
+        margin-left: 1rem;
+      }
+    }
   }
 }
