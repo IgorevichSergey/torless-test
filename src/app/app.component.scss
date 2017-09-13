@@ -1,5 +1,8 @@
 
-
+  .main__container{
+    padding-right: 6rem;
+    padding-left: 6rem;
+  }
 .torless {
   position: relative;
   height: 100%;
@@ -106,7 +109,7 @@
       .pages {
         display: flex;
         justify-content: center;
-        width: 60%;
+        width: 40%;
         margin: 0 auto;
         div {
           margin: 0 25px;
@@ -230,9 +233,7 @@
   }
 }
 
-  .main__container{
-    /*padding-right: 6rem;*/
-  }
+
 
 @media screen and (max-width: 1024px){
 

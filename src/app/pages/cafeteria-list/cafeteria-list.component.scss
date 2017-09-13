@@ -241,6 +241,7 @@
 
   .blocks-container {
     display: flex;
+    overflow: hidden;
     flex-direction: row-reverse;
     justify-content: space-between;
     margin-top:0.8rem;
@@ -251,6 +252,7 @@
       display: flex;
       flex-direction: column;
       margin-bottom: 20px;
+      margin: 0 0.5rem;
       .title {
         padding: 0.5rem;
         font-size: 1.4rem;
@@ -277,7 +279,7 @@
         display: flex;
         justify-content: center;
         height: 100%;
-        border-top: 1px solid #c9c9c9;
+        /*border-top: 1px solid #c9c9c9;*/
         padding: 10px;
         font-size: 1.2rem;
         color: #c9c9c9;

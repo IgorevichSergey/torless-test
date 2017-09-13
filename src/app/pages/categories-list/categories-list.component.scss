@@ -1,4 +1,24 @@
 .categories-list-component {
+  .app-input-placeholder{
+    font-size: 1.2rem;
+    font-weight: 300;
+  }
+  .input-line{
+    input{
+      font-weight: 600;
+    }
+  }
+  .category{
+    button{
+          font-size: 1.4rem;
+    padding-top: 0rem;
+    color: #000;
+    box-sizing: border-box;
+    border: 1px solid #fff557;
+    transition-duration: 0.3s;
+    background: #fff557;
+    }
+  }
   .header~div{
     span{
       margin-bottom: 2rem;
@@ -115,7 +135,7 @@
   .input-line {
     position: relative;
     align-self: flex-end;
-
+    font-weight: 600;
     input {
       width: 90%;
       height: 34px;
