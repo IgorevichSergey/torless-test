@@ -3,7 +3,7 @@
     {{ placeholder }}
   </div>
 
-  <input dir="rtl" [type]="type" [(ngModel)]="model" (ngModelChange)="modelChanged(model)" (blur)="inputBlur(model)">
+  <textarea dir="rtl" [(ngModel)]="model" (ngModelChange)="modelChanged(model)" (blur)="inputBlur(model)"></textarea>
 
   <div class="input-component__error-message" [ngClass]="{'visible': showError}">
     {{ errorText }}

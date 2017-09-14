@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthGuardService } from '../../services';
+
+// GUARDS
+import { AuthGuardService, TmpTimerService } from '../../services';
 
 // COMPONENT
 import { ManagerListComponent } from './manager-list.component';
@@ -9,7 +11,7 @@ const routes: Routes = [
   {
     path: 'manager-list',
     component: ManagerListComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [ AuthGuardService, TmpTimerService ]
   }
 ];
 

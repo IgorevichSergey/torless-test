@@ -17,9 +17,94 @@
     align-self: center;
     margin-top: 200%;
     transition: margin-top 0.2s;
+    width: auto;
+
+    &.small {
+      width: 40%;
+    }
+
+    &.middle {
+      width: 60%;
+    }
+
+    &.large {
+      width: 80%;
+    }
+
     &.visible {
       margin-top: 0;
     }
   }
 
+}
+
+.torless-modal {
+  background: #ffffff;
+
+  &__header {
+    position: relative;
+    background: #32393f;
+    padding: 10px;
+    text-align: center;
+    color: #fff;
+    font-weight: 900;
+    margin-bottom: 60px;
+    direction: rtl;
+
+    .text {
+      font-size: 1.1rem;
+      width: 90%;
+      margin: 0 auto;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
+    .close-button {
+      position: absolute;
+      color: #fff557;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+
+
+      &:after {
+        content: '✖';
+        vertical-align: middle;
+      }
+    }
+  }
+
+  &__body {
+    padding: 0 35px 60px;
+    direction: rtl;
+    text-align: right;
+  }
+
+  &__footer {
+    padding: 0 35px 35px;
+    display: flex;
+
+    .response-button {
+      background: #fff557;
+      padding: 10px 20px;
+      cursor: pointer;
+      user-select: none;
+
+      &:active {
+        background: darken(#fff557, 10%);
+      }
+    }
+
+    .reject-button {
+      align-self: center;
+      margin: 0 30px;
+      cursor: pointer;
+      user-select: none;
+      &:hover,
+      &:active {
+        text-decoration: underline;
+      }
+    }
+  }
 }

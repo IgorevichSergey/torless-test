@@ -1,16 +1,16 @@
 import { Component, Input, Output, EventEmitter, Renderer, ElementRef, OnInit, AfterViewInit, HostListener, HostBinding, OnChanges } from '@angular/core';
+import set = Reflect.set;
 
 @Component({
-  selector: 'app-input',
-  templateUrl: './input.component.html',
-  styleUrls: ['./input.component.scss']
+  selector: 'app-textarea',
+  templateUrl: './textarea.component.html',
+  styleUrls: ['./textarea.component.scss']
 })
-export class InputComponent implements AfterViewInit, OnChanges {
+export class TextareaComponent implements AfterViewInit, OnChanges {
   /**
    * input part
    */
   @Input('model') model: any;
-  @Input('type') type: string;
   @Input('placeholder') placeholder: string;
 
   /**
@@ -31,6 +31,7 @@ export class InputComponent implements AfterViewInit, OnChanges {
    */
   @Input('pattern') pattern: RegExp;
   @Input('validationError') validationError: string;
+
 
   /**
    * formatter
@@ -75,17 +76,29 @@ export class InputComponent implements AfterViewInit, OnChanges {
 //
 
   modelChanged(model) {
-    setTimeout((() => {
-      if (this.formatter) {
-        this.model = this.formatter(model);
-      }
+    // console.log('event ==> ', event);
+    // this.model = this.test(event);
 
-      this.output.emit(this.model);
-    }).bind(this), 1);
+      this.output.emit(model);
+
+// if (this.formatter) {
+//   setTimeout((() => {
+//
+//     this.model = this.formatter(model);
+//     // console.log('this.model', this.model)
+//     this.output.emit(this.model);
+//
+//   }).bind(this), 1);
+// } else {
+//   this.output.emit(this.model);
+// }
+
+
+
   }
 
   ngOnChanges(values) {
-    console.log('values ===> ', values);
+    // console.log('textarea values ===> ', values);
     // if (values && values.error && values.error.currentValue) {
     //   this._setErrorInputField(true);
     // }
@@ -96,8 +109,8 @@ export class InputComponent implements AfterViewInit, OnChanges {
     //   this._removeErrorText();
     //   this._addErrorText();
     // }
-    // if (values && values.ngModel && values.ngModel.currentValue && values.ngModel.currentValue !== values.ngModel.previousValue && this._placeholderElement) {
-    //   this.renderer.setElementClass(this._placeholderElement, 'focused', true);
+    // if (values && values.model && values.model.currentValue && values.model.currentValue !== values.model.previousValue ) {
+    //   this.model = values.model.currentValue;
     // }
   }
 //
@@ -120,21 +133,40 @@ export class InputComponent implements AfterViewInit, OnChanges {
   fieldFocus(element: HTMLElement, add: boolean) {
     this.renderer.setElementClass(element, 'focused', add);
     if (add) {
-      this.renderer.invokeElementMethod(this.elementRef.nativeElement.querySelector('input'), 'focus');
+      this.renderer.invokeElementMethod(this.elementRef.nativeElement.querySelector('textarea'), 'focus');
     }
   }
 
   inputBlur(model) {
-   const placeholderElement: HTMLElement = this.elementRef.nativeElement.querySelector('.input-component__placeholder');
-   if (!model && model !== 0) {
-     this.fieldFocus(placeholderElement, false);
-   } else if (this.pattern) {
-     this.invalid.emit(this.pattern.test(model));
-   }
+    const placeholderElement: HTMLElement = this.elementRef.nativeElement.querySelector('.input-component__placeholder');
+    if (!model && model !== 0) {
+      this.fieldFocus(placeholderElement, false);
+    } else if (this.pattern) {
+      this.invalid.emit(this.pattern.test(model));
+    }
   }
 
   inputLinkClick() {
     this.linkAction.emit();
+  }
+
+  // todo: use as PhoneFormat
+  test(t: any): any {
+    const numbers: string = t ? t.replace(/\D/g, '') : '',
+          dashes: Object = {
+            4: '-',
+            7: '-',
+            9: '-'
+          },
+          len = (numbers.length <= 10) ? numbers.length : 10;
+    let result: string = '';
+
+    for (let i = 0; i < len; i++) {
+      result += (dashes[i] || '') + numbers[i];
+    }
+    console.log('result ===> ', result);
+    // console.log('t', t);
+    return result;
   }
 
 //

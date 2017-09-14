@@ -31,17 +31,17 @@ export class InputDirective implements AfterViewInit, OnChanges {
   }
 
   ngOnChanges(values) {
-    if(values && values.error && values.error.currentValue) {
+    if (values && values.error && values.error.currentValue) {
       this._setErrorInputField(true);
     }
-    if(values && values.error && values.error.previousValue && !values.error.currentValue) {
+    if (values && values.error && values.error.previousValue && !values.error.currentValue) {
       this._setErrorInputField(false);
     }
-    if(values && values.errorMessage && values.errorMessage.previousValue && values.errorMessage.currentValue !== values.errorMessage.previousValue) {
+    if (values && values.errorMessage && values.errorMessage.previousValue && values.errorMessage.currentValue !== values.errorMessage.previousValue) {
       this._removeErrorText();
       this._addErrorText();
     }
-    if(values && values.ngModel && values.ngModel.currentValue && values.ngModel.currentValue !== values.ngModel.previousValue && this._placeholderElement) {
+    if (values && values.ngModel && values.ngModel.currentValue && values.ngModel.currentValue !== values.ngModel.previousValue && this._placeholderElement) {
       this.renderer.setElementClass(this._placeholderElement, 'focused', true);
     }
   }

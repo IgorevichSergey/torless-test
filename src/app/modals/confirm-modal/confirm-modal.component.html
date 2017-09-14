@@ -1,4 +1,21 @@
-<p>
-  <span (click)="close();">close me</span>
-  <span (click)="submit();">submit</span>
-</p>
+<div class="torless-modal">
+  <div class="torless-modal__header">
+    <div class="text">
+      {{ headerText }}
+    </div>
+    <div class="close-button" (click)="close()"></div>
+  </div>
+
+  <div class="torless-modal__body" >
+   {{ bodyText }}
+  </div>
+
+  <div class="torless-modal__footer" (click)="submit()">
+    <div class="response-button">
+      תְגוּבָה
+    </div>
+    <div class="reject-button" (click)="close()">
+      לִדחוֹת
+    </div>
+  </div>
+</div>

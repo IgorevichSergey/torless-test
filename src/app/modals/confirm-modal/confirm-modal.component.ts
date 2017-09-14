@@ -1,21 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { ModalService } from '../../services';
 
 @Component({
   selector: 'app-confirm-modal',
   templateUrl: './confirm-modal.component.html',
-  styleUrls: ['./confirm-modal.component.scss']
+  styleUrls: ['./confirm-modal.component.scss', '../modal-container/modal-container.component.scss']
 })
-export class ConfirmModalComponent implements OnInit {
+export class ConfirmModalComponent {
+  public headerText: string;
+  public bodyText: string;
 
   constructor(
     private modalService: ModalService
   ) {
     console.log('confirm modal init');
-  }
-
-  ngOnInit() {
   }
 
   close() {

@@ -1,0 +1,37 @@
+<div class="torless-modal">
+  <div class="torless-modal__header">
+    <div class="text">
+      צור קשר
+    </div>
+    <div class="close-button" (click)="close()"></div>
+  </div>
+
+  <div class="torless-modal__body">
+    <app-input type="text"
+               placeholder="שם משתמש"
+               errorText="שם משתמש לא קיים"
+               [showError]="emailError"
+               [(model)]="email"
+               (output)="email = $event"
+               (invalid)="invalidForm = $event">
+    </app-input>
+    <app-textarea
+               placeholder="שם משתמש"
+               phoneFormat="true"
+               errorText="שם משתמש לא קיים"
+               [showError]="messageError"
+               [(model)]="message"
+               (output)="message = $event"
+               (invalid)="invalidForm = $event">
+    </app-textarea>
+  </div>
+
+  <div class="torless-modal__footer">
+    <div class="response-button" (click)="submit()">
+      לשלוח
+    </div>
+    <div class="reject-button" (click)="close()">
+      לִדחוֹת
+    </div>
+  </div>
+</div>
