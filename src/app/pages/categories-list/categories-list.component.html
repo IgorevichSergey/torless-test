@@ -2,7 +2,7 @@
 
   <div class="header">
     <div class="button">
-      <button (click)="addNewCategory()" [disabled]="newCategory">+ add category</button>
+      <button (click)="addNewCategory()" [disabled]="newCategory"><span class="btn__plas__icon">+</span> add category</button>
     </div>
     <div class="title">Categories</div>
   </div>
@@ -35,6 +35,8 @@
       <div class="edit-button">
         <button (click)="goToProducts(category.cat_id)">products</button>
       </div>
+    <a href="#" class="list__cat__link"> some link</a>
+
       <div class="name">
         {{ category.category_name }}
       </div>
@@ -49,11 +51,15 @@
     </div>
   </div>
 
+  <div class="header">
+    <div class="button">
+      <button (click)="addNewCategory()" [disabled]="newCategory"><span class="btn__plas__icon">+</span> add category</button>
+    </div>
+  </div>
+
 
   <div class="footer" *ngIf="categories?.length >= 5">
-    <div class="button">
-      <button (click)="addNewCategory()" [disabled]="newCategory">+ add category</button>
-    </div>
+ 
   </div>
 
 </div>

@@ -3,10 +3,21 @@
     font-size: 1.2rem;
     font-weight: 300;
   }
+  .list__cat__link{
+        display: inline-block;
+    font-family: sans-serif;
+    color: #000;
+    margin-right: 3rem;
+  }
   .input-line{
     input{
       font-weight: 600;
     }
+  }
+  .btn__plas__icon{
+    display: inline !important;
+    margin: 0 !important;
+      color:#fff557;
   }
   .category{
     button{
