@@ -5,6 +5,7 @@ import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import { TimeSelectComponent } from './time-select/time-select.component';
 import { InputComponent } from './input/input.component';
 import { SelectComponent } from './select/select.component';
+import { TextareaComponent } from './textarea/textarea.component';
 
 export { InformationComponent, PathComponent, UserImageComponent, ProgressBarComponent, InputComponent };
 
@@ -32,6 +33,7 @@ import { PipesModule } from '../pipes';
     UserImageComponent,
     ProgressBarComponent,
     InputComponent,
+    TextareaComponent,
     SelectComponent,
     TimeSelectComponent
   ],
@@ -41,6 +43,7 @@ import { PipesModule } from '../pipes';
     UserImageComponent,
     ProgressBarComponent,
     InputComponent,
+    TextareaComponent,
     SelectComponent,
     TimeSelectComponent
   ]

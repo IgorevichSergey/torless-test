@@ -21,6 +21,8 @@ export class UserService {
 
     return new Promise((resolve, reject) => {
       this._setRequest(data).then((response) => {
+        const loggedInDate: string = '' + new Date().getTime();
+        localStorage.setItem('torless_loggedInTime', loggedInDate);
         localStorage.setItem('torless_token', response.data.token);
         resolve(response);
       }, (error) => {
@@ -44,6 +46,25 @@ export class UserService {
 
   public isLoggedIn(): boolean {
     return localStorage.getItem('torless_token') ? true : false;
+  }
+
+  public loggedTime(): number {
+    return +localStorage.getItem('torless_loggedInTime');
+  }
+
+  public isTokenValid(): Promise<any> {
+    const _token: string = localStorage.getItem('torless_token');
+    const data: string = JSON.stringify({tag: 'is_token_live', token: _token});
+
+    return new Promise((resolve, reject) => {
+      this._setRequest(data).then((response) => {
+        resolve(response);
+      }, (error) => {
+        this.logout().then(() => {
+          reject(error);
+        });
+      });
+    });
   }
 
   public registerManagerUser(createdManagerUser: CreatedManagerUser): Promise<any> {
@@ -81,6 +102,7 @@ export class UserService {
     return new Promise((resolve, reject) => {
       this._setRequest(data).then((response) => {
         localStorage.removeItem('torless_token');
+        localStorage.removeItem('torless_loggedInTime');
         resolve(response);
       }, (error) => {
         reject(error);

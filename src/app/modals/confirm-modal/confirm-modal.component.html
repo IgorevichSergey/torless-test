@@ -1,7 +1,3 @@
-<!--<p>-->
-  <!--<span (click)="close();">close me</span>-->
-  <!--<span (click)="submit();">submit</span>-->
-<!--</p>-->
 <div class="torless-modal">
   <div class="torless-modal__header">
     <div class="text">
@@ -14,7 +10,7 @@
    {{ bodyText }}
   </div>
 
-  <div class="torless-modal__footer">
+  <div class="torless-modal__footer" (click)="submit()">
     <div class="response-button">
       תְגוּבָה
     </div>

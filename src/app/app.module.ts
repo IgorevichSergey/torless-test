@@ -43,7 +43,8 @@ import {
   AuthGuardService,
   LoggedInGuardService,
   TimeSelectService,
-  ModalService
+  ModalService,
+  TmpTimerService
 } from './services';
 
 // DIRECTIVES
@@ -116,7 +117,8 @@ import { ModalsModule } from './modals';
     UserService,
     UniversityService,
     TimeSelectService,
-    ModalService
+    ModalService,
+    TmpTimerService
   ],
   bootstrap: [AppComponent]
 })

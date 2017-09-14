@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
-import { UserService } from '../../services';
+import { UserService, ModalService } from '../../services';
 
 import { CreatedUser } from '../../custom-classes';
+
+import { ContactUsModalComponent } from '../../modals/contact-us-modal/contact-us-modal.component';
 
 @Component({
   selector: 'app-register',
@@ -36,6 +38,7 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private userService: UserService,
+    private modalService: ModalService,
     private router: Router
   ) { }
 
@@ -49,6 +52,14 @@ export class RegisterComponent implements OnInit {
       this._goTo('/cafeteria-type');
     }, (error) => {
       this.registrationError = true;
+    });
+  }
+
+  contactUsModal() {
+    this.modalService.create(ContactUsModalComponent, null, 'middle').then(() => {
+console.log("sumbit CB")
+    }, () => {
+console.log("error CB")
     });
   }
 

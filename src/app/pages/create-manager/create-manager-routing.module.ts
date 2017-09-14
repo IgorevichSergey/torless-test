@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthGuardService } from '../../services';
+// GUARDS
+import { AuthGuardService, TmpTimerService } from '../../services';
 
 // COMPONENT
 import { CreateManagerComponent } from './create-manager.component';
@@ -9,7 +10,7 @@ const routes: Routes = [
   {
     path: 'create-cafeteria-manager/:id',
     component: CreateManagerComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService, TmpTimerService]
   }
 ];
 

@@ -7,12 +7,13 @@ import {
 
 import { ConfirmModalComponent } from '../confirm-modal/confirm-modal.component';
 import { TimeSelectModalComponent } from '../time-select-modal/time-select-modal.component';
+import { ContactUsModalComponent } from '../contact-us-modal/contact-us-modal.component';
 
 import { ModalService } from '../../services';
 
 @Component({
   selector: 'app-modal-container',
-  entryComponents: [ConfirmModalComponent, TimeSelectModalComponent],
+  entryComponents: [ConfirmModalComponent, TimeSelectModalComponent, ContactUsModalComponent],
   templateUrl: './modal-container.component.html',
   styleUrls: ['./modal-container.component.scss']
 })
