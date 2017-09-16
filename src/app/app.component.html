@@ -40,7 +40,9 @@
 
         <div class="sub-header">
             <app-path *ngIf="visible.breadcrumbs"></app-path>
-            <app-information *ngIf="visible.info" [hintText]="'test 1, test 2'"></app-information>
+            <div style="position: absolute; left: 50%; top: 10px;">
+              <app-information *ngIf="visible.info" [hintText]="visible.hintText" hintPosition="top center"></app-information>
+            </div>
             <app-user-image *ngIf="visible.companyLogo"></app-user-image>
           </div>
 

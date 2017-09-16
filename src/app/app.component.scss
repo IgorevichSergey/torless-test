@@ -33,6 +33,7 @@
     background: #353b41;
     box-sizing: border-box;
     height: 4.5rem;
+      min-height: 72px;
 
       .connect-registration {
         display: flex;
@@ -196,8 +197,9 @@
       styles for sub-header, containing breadcrumbs, info-icon, company-logo
      */
     .sub-header {
+      position: relative;
       width: 100%;
-      margin-top: 0.6rem;
+      //margin-top: 0.6rem;
 
       @media screen and (max-width: 940px) {
         width: 90%;

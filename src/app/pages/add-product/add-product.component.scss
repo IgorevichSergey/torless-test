@@ -2,74 +2,225 @@
   .app-input-placeholder{
     font-size: 1.4rem;
   }
-  .upload__image__container{
-    margin-top: 1rem;
-    text-align: right;
-        width: auto;
-    margin: 0;
-    float: none;
-  }
-  .upload__image__btn__text{
-    font-size: 1.4rem;
-    font-weight: 600;
-    text-align: center;
-    letter-spacing: -0.05rem;
-    margin-top: 1rem;
-  }
-  .upload__image__corss__container{
-        position: relative;
-    width: 1.3rem;
-    height: 0.5rem;
-    background: #fff557;
-    margin: 0 auto;
-    margin-top:11rem;
-    &:after{
-      content:'';
-      background: #fff557;
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      left:50%;
-      transform: translateX(-50%) rotate(90deg);
+
+  .upload-image {
+    display: flex;
+    justify-content: flex-end;
+    input[type="file"] {
+      width: 0;
+    }
+    &__text {
+      text-align: right;
+      padding-right: 10px;
+      vertical-align: top;
+      display: inline-block;
+      box-sizing: border-box;
+      font-size: 1rem;
+      font-family: sans-serif;
+      letter-spacing: -0.1rem;
+      line-height: 1.3;
+      color: #9a9a9a;
+      font-weight: normal;
+      div:not(:nth-last-child(1)){
+        margin-top: 0;
+        margin-bottom: 0.4rem;
+      }
+
+      .links {
+        text-decoration: underline;
+        div {
+          cursor: pointer;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+
+      .radio {
+        white-space: nowrap;
+        label {
+          color: #000;
+          font-weight: 900;
+        }
+
+      }
+    }
+
+    &__button {
+      width: 400px;
+      height: 400px;
+      background: #000;
+      cursor: pointer;
+      user-select: none;
+      display: flex;
+      &--inner {
+        align-self: center;
+        text-align: center;
+        width: 100%;
+        .text {
+          color: #909090;
+          font-weight: 600;
+          &:before {
+            content: '+\a' attr(title);
+            white-space: pre;
+            color: #fff557;
+            font-weight: bolder;
+            font-size: 4rem;
+
+          }
+        }
+      }
     }
   }
-  .extra-category__header{
-    display: block;
-    text-align: right;
-  }
-  .upload__image__text{
-    vertical-align: top;
-    display: inline-block;
-        width: 35%;
-    padding-right: 1rem;
-    box-sizing: border-box;
-    direction: rtl;
-    font-size: 1rem;
-    font-family: sans-serif;
-    font-weight: 600;
-    letter-spacing: -0.1rem;
-    line-height: 1.3;
-    margin-top: -0.35rem;
-    p:not(:nth-last-child(1)){
-      margin-top: 0;
-      margin-bottom: 1rem;
-    }
-  }
-  .upload__image__btn{
-    cursor: pointer;
-    background: #000;
-    color: #8f8f8f;
-        width: 25rem;
-    height: 25rem;
-  }
-  /*8f8f8f*/
-  .upload__image__btn{
-    vertical-align: top;
-    display: inline-block;
-    width: 25rem;
-    height: 25rem;
-    margin-bottom: 4.5rem;
-  }
+  //.upload__image__container{
+  //  margin-top: 1rem;
+  //  text-align: right;
+  //  width: auto;
+  //  margin: 0;
+  //  float: none;
+  //}
+  //.upload__image__btn__text{
+  //  font-size: 1.4rem;
+  //  font-weight: 600;
+  //  text-align: center;
+  //  letter-spacing: -0.05rem;
+  //  margin-top: 1rem;
+  //}
+  //.upload__image__corss__container{
+  //  position: relative;
+  //  width: 1.3rem;
+  //  height: 0.5rem;
+  //  background: #fff557;
+  //  margin: 0 auto;
+  //  margin-top:11rem;
+  //  &:after{
+  //    content:'';
+  //    background: #fff557;
+  //    position: absolute;
+  //    width: 100%;
+  //    height: 100%;
+  //    left:50%;
+  //    transform: translateX(-50%) rotate(90deg);
+  //  }
+  //}
+  //.extra-category__header{
+  //  display: block;
+  //  text-align: right;
+  //}
+  //.upload__image__text{
+  //  vertical-align: top;
+  //  display: inline-block;
+  //  width: 35%;
+  //  padding-right: 1rem;
+  //  box-sizing: border-box;
+  //  direction: rtl;
+  //  font-size: 1rem;
+  //  font-family: sans-serif;
+  //  font-weight: 600;
+  //  letter-spacing: -0.1rem;
+  //  line-height: 1.3;
+  //  margin-top: -0.35rem;
+  //  p:not(:nth-last-child(1)){
+  //    margin-top: 0;
+  //    margin-bottom: 1rem;
+  //  }
+  //}
+  //.upload__image__btn{
+  //  cursor: pointer;
+  //  background: #000;
+  //  color: #8f8f8f;
+  //  width: 25rem;
+  //  height: 25rem;
+  //}
+  ///*8f8f8f*/
+  //.upload__image__btn{
+  //  vertical-align: top;
+  //  display: inline-block;
+  //  width: 25rem;
+  //  height: 25rem;
+  //  margin-bottom: 4.5rem;
+  //}
+
+  //.upload__image__container {
+  //  margin-top: -1.5rem;
+  //  text-align: right;
+  //  input[type="file"] {
+  //    width: 0;
+  //  }
+  //}
+  //.upload__image__btn__text {
+  //  font-size: 1rem;
+  //  font-weight: 600;
+  //  text-align: center;
+  //
+  //  &:before {
+  //    content: '+\a' attr(title);
+  //    white-space: pre;
+  //    color: #fff557;
+  //    font-weight: bolder;
+  //    font-size: 4rem;
+  //  }
+  //}
+  //.upload__image__corss__container{
+  //  position: relative;
+  //  width: 1.3rem;
+  //  height: 0.5rem;
+  //  background: #fff557;
+  //  margin: 0 auto;
+  //  margin-top: 3.9rem;
+  //  &:after{
+  //    content:'';
+  //    background: #fff557;
+  //    position: absolute;
+  //    width: 100%;
+  //    height: 100%;
+  //    left:50%;
+  //    transform: translateX(-50%) rotate(90deg);
+  //  }
+  //}
+  //.upload__image__text{
+  //  vertical-align: top;
+  //  display: inline-block;
+  //  padding-right: 1rem;
+  //  box-sizing: border-box;
+  //  direction: rtl;
+  //  font-size: 1rem;
+  //  font-family: sans-serif;
+  //  letter-spacing: -0.1rem;
+  //  line-height: 1.3;
+  //  color: #9a9a9a;
+  //  font-weight: normal;
+  //  div:not(:nth-last-child(1)){
+  //    margin-top: 0;
+  //    margin-bottom: 0.4rem;
+  //  }
+  //  &__links {
+  //    text-decoration: underline;
+  //    cursor: pointer;
+  //  }
+  //}
+  //.upload__image__btn{
+  //  cursor: pointer;
+  //  user-select: none;
+  //  background: #000;
+  //  color: #8f8f8f;
+  //}
+  ///*8f8f8f*/
+  //.upload__image__btn{
+  //  vertical-align: top;
+  //  display: inline-block;
+  //  width: 400px;
+  //  height: 400px;
+  //  margin-bottom: 4.5rem;
+  //  &__inner {
+  //    display: flex;
+  //    flex-direction: column;
+  //  }
+  //  img {
+  //    width: 100%;
+  //    height: 100%;
+  //  }
+  //}
   .input-line{
     font-size: 1.6rem;
     margin-bottom: 0;
@@ -82,21 +233,15 @@
     text-align: right;
     .button-container {
       margin-bottom: 30px;
-      button {
-        height: 34px;
-            width: 22rem;
-    max-width: none;
-    height: 3rem;
-    font-size: 1.2rem;
-    width: 17rem;
-      }
+      width: 40%;
+      margin-left: auto;
     }
     .text-container {
       margin-bottom: 30px;
       font-weight: 900;
       font-size: 1.2rem;
-          font-size: 2.5rem;
-    margin-top: 2.7rem;
+      font-size: 2.5rem;
+      margin-top: 2.7rem;
     }
   }
 
@@ -112,6 +257,7 @@
       margin-bottom: 20px;
       padding: 0 4rem;
       padding-top: 1.1rem;
+      padding-bottom: 3rem;
       .name-line {
         display: flex;
         flex-direction: row-reverse;
@@ -121,15 +267,15 @@
           margin-bottom: 20px;
         }
         .chech__cont{
-              font-size: 0.8rem;
-    margin-bottom: 1.5rem;
+          font-size: 0.8rem;
+          margin-bottom: 1.5rem;
           display: inline-block;
           cursor: pointer;
           vertical-align: top;
-                      span{
-              display: block;
-              float: none;
-            }
+          span{
+            display: block;
+            float: none;
+          }
         }
         .check-elements {
           /*width: 50%;*/
@@ -149,9 +295,9 @@
               bottom: 20px;
               color: grey;
               display: inline-block;
-    font-size: 2.5rem;
-    margin-left: 2rem;
-    margin-right: 1rem;
+              font-size: 2.5rem;
+              margin-left: 2rem;
+              margin-right: 1rem;
             }
           }
         }
@@ -183,28 +329,28 @@
           position: relative;
           text-align: right;
           margin-bottom: 10px;
-              font-size: 1.4rem;
-    font-family: sans-serif;
+          font-size: 1.4rem;
+          font-family: sans-serif;
           padding-bottom: 5px;
         }
 
         .minute {
-    width: 3.2rem;
-    margin-bottom: 1px;
-    height: 3.2rem;
-    line-height: 3rem;
-    vertical-align: center;
-    border: 1px solid #cdcccc;
-    text-align: center;
-    font-weight: 900;
-    font-family: sans-serif;
-    color: grey;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    cursor: pointer;
-    font-size: 1.4rem;
+          width: 3.2rem;
+          margin-bottom: 1px;
+          height: 3.2rem;
+          line-height: 3rem;
+          vertical-align: center;
+          border: 1px solid #cdcccc;
+          text-align: center;
+          font-weight: 900;
+          font-family: sans-serif;
+          color: grey;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+          cursor: pointer;
+          font-size: 1.4rem;
 
         }
         .minute.selected {
@@ -274,9 +420,9 @@
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
-              width: 22rem;
-    height: 3rem;
-    font-size: 1.2rem;
+          width: 22rem;
+          height: 3rem;
+          font-size: 1.2rem;
           &[disabled] {
             background: lighten(#000, 20%);
             cursor: not-allowed;
@@ -515,18 +661,18 @@
     flex-direction: row-reverse;
     button{
       font-size: 1.2rem;
-    width: 22rem;
-    max-width: none;
-        height: 2.4rem;
-    width: 17rem;
+      width: 22rem;
+      max-width: none;
+      height: 2.4rem;
+      width: 17rem;
     }
     span {
       margin: 0 20px;
       align-self: center;
       user-select: none;
       cursor: pointer;
-          font-size: 1.4rem;
-    font-family: sans-serif;
+      font-size: 1.4rem;
+      font-family: sans-serif;
       &:hover {
         text-decoration: underline;
       }
@@ -545,7 +691,7 @@
     background: #fff557;
     font-size: 0.9rem;
     font-weight: 900;
-       max-width: none;
+    max-width: none;
     height: 3rem;
     font-size: 1.2rem;
     &:active {

@@ -5,9 +5,10 @@ import { Component, Input, Renderer, ElementRef, AfterViewInit, OnInit } from '@
   templateUrl: './information.component.html',
   styleUrls: ['./information.component.scss']
 })
-export class InformationComponent implements AfterViewInit, OnInit {
+export class InformationComponent implements AfterViewInit {
   @Input('hintText') hintText: string;
-  hintsArray: string[];
+  @Input('hintPosition') hintPosition: string = 'top left';
+  @Input('color') color: string = '#909090';
 
   constructor(
     private elementref: ElementRef,
@@ -18,13 +19,16 @@ export class InformationComponent implements AfterViewInit, OnInit {
   }
 
   ngAfterViewInit() {
-    this.renderer.setElementStyle(this.elementref.nativeElement, 'margin', '0 auto');
-    console.log('this.hintText', this.hintText);
-  }
+    // this.renderer.setElementStyle(this.elementref.nativeElement, 'position', 'absolute');
+    // if (this.elementHorizontalPosition === 'center') {
+    //   this.renderer.setElementStyle(this.elementref.nativeElement, 'left', '50%');
+    // } else if (this.elementHorizontalPosition === 'left') {
+    //   this.renderer.setElementStyle(this.elementref.nativeElement, 'left', '0');
+    // }
+    // if (this.elementVerticalPosition === 'bottom') {
+    //   this.renderer.setElementStyle(this.elementref.nativeElement, 'margin-top', 'inherit');
+    // }
 
-  ngOnInit() {
-    this.hintsArray = this.hintText.split(',').filter((item) => {
-        return (item && item !== ' ');
-    });
+    console.log('this.hintText', this.hintText);
   }
 }

@@ -1,57 +1,76 @@
-.information-block {
+.information-element {
+  position: relative;
   display: inline-block;
-  width: 31.5%;
-  text-align: center;
-  height: auto;
-  margin: 0;
-  vertical-align: top;
+  user-select: none;
+  height: 24px;
 
   .visible-part {
     display: inline-block;
-    vertical-align: top;
-    position: relative;
-    width: 1.9rem;
-    height: 1.9rem;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    line-height: 24px;
     text-align: center;
-    font-family: sans-serif;
-    box-sizing: border-box;
-    padding-top: 0.07rem;
-    font-weight: 100;
-    font-size: 1.2rem;
-    border-radius: 50%;
     background: #ffffff;
-    span {
-      color: #8f8f8f;
-      font-weight: 900;
-      align-self: center;
-    }
-
+    color: #909090;
+    font-weight: 900;
+    font-size: 17px;
+    border-radius: 100%;
+    border: 1px solid #eaeaea;
   }
 
   .hidden-part {
     display: none;
     position: absolute;
-    background: #fff;
-    padding: 5px;
-    top: 35px;
-    left: -146px;
+    z-index: 20;
     width: 300px;
     text-align: right;
-    border-radius: 3px;
-    box-shadow: 0 1px 10px rgba(0,0,0,0.5);
+    background: #ffffff;
+    box-shadow: 0 0 10px rgb(0,0,0);
+    border-radius: 2px;
+    padding: 5px;
 
-    .text {
-      color: #7c7c7c;
+    &.center {
+      left: calc((310px - 24px)/2 * -1);
+      &:after {
+        left: calc(50% - 8px);
+      }
     }
-  }
 
-  .hidden-part:after {
-    content: '';
-    position: absolute;
-    left: calc(50% - 7px);
-    top: -20px;
-    border: 10px solid transparent;
-    border-bottom: 10px solid #fff;
+    &.left {
+      left: calc((310px - 24px * 1.5) * -1);
+      &:after {
+        right: 16px;
+      }
+    }
+
+    &.right {
+      right: calc((310px - 24px * 1.5) * -1);
+      &:after {
+        left: 16px;
+      }
+    }
+
+    &.top {
+      top: calc((15px + 24px) * -1);
+      &:after {
+        content: '';
+        position: absolute; /* Абсолютное позиционирование */
+        bottom: -16px;
+        border: 8px solid transparent;
+        border-top: 8px solid #ffffff;
+      }
+    }
+
+    &.bottom {
+      bottom: calc((15px + 24px) * -1);
+    }
+
+    .hint-text {
+      color: #909090;
+      font-size: 17px;
+    }
+
   }
 
   &:hover {
@@ -60,9 +79,4 @@
     }
   }
 
-  @media screen and (max-width: 760px) {
-    display: none;
-  }
 }
-
-

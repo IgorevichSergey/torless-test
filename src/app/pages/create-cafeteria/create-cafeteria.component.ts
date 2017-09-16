@@ -18,6 +18,9 @@ export class CreateCafeteriaComponent implements OnInit {
   public universities: any[];
   public universityBuildings: any[];
 
+  public uploadedFile: File;
+  public uploadedImage: string;
+
   private _cafeteriaTypeId: number;
 
   constructor(
@@ -111,6 +114,45 @@ export class CreateCafeteriaComponent implements OnInit {
 
   public goBack(): void {
     this._goTo('/cafeteria-type');
+  }
+
+
+  public openFileUploader(fileUploader: HTMLElement | any): void {
+    if (fileUploader.files && fileUploader.files[0]) {
+      const files: FileList = fileUploader.files;
+      const file: File = files[0];
+      const reader: FileReader = new FileReader();
+      reader.readAsDataURL(file);
+
+      reader.onload = (() => {
+        this.uploadedFile = file;
+        this.uploadedImage = reader.result;
+
+        // image size check 150x150
+        // const img: HTMLImageElement = new Image();
+        // img.src = reader.result;
+        // img.onload = () => {
+        //   if (img.width <= 150 && img.height <= 150) {
+        //     // prev.src = this.src;
+        //     this.uploadedImage = img.src;
+        //   } else {
+        //     console.log('ERROR');
+        //   }
+        // };
+
+      }).bind(this);
+
+      reader.onerror = ((error) => {
+        console.log('Error: ', error);
+      });
+
+    }
+
+  }
+
+  public deleteImage(): void {
+    this.uploadedImage = null;
+    this.uploadedFile = null;
   }
 
 

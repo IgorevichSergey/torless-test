@@ -8,12 +8,14 @@ import { LoginUser, CreatedUser, CreatedManagerUser } from '../../custom-classes
 @Injectable()
 export class UserService {
   private _host: string;
+  private _imageHost: string;
   private _headers: Headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
 
   constructor(
     private http: Http
   ) {
     this._host = environment.host;
+    this._imageHost = environment.companyImage;
   }
 
   public login(user: LoginUser): Promise<any> {
@@ -173,6 +175,27 @@ export class UserService {
       }, (error) => {
         reject(error);
       });
+    });
+  }
+
+  public saveCompanyImage(file: File, token: string): Promise<any> {
+    const formData = new FormData();
+
+    formData.append('file', file);
+    formData.append('token', token);
+
+    return new Promise((resolve, reject) => {
+      this.http.post(this._imageHost, formData)
+        .map(response => response.json())
+        .subscribe((response) => {
+          if (response.success) {
+            resolve(response);
+          } else {
+            reject(response);
+          }
+        }, (error) => {
+          reject(error);
+        });
     });
   }
 

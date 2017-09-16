@@ -2,10 +2,10 @@
 
   <div class="component-header">
     <div class="button-container">
-      <button (click)="goBack()">menu</button>
+      <button class="torless-button" (click)="goBack()">חזרה לקטגוריות</button>
     </div>
     <div class="text-container">
-      text
+      הוסף מוצר
     </div>
   </div>
 
@@ -40,7 +40,12 @@
       </div>
 
       <div class="cook-time">
-        <div class="label required">Cook Time</div>
+        <div class="label required">
+          <span>דקות ליצירת המוצר</span>
+          <span>
+            <app-information [hintText]="'some text'" hintPosition="top center" color="#ff5b57"></app-information>
+          </span>
+        </div>
         <div class="minute" *ngFor="let minute of minutes; let index = index;"
              [ngClass]="{'selected': createdProduct.product.pr_cook_time === ''+ index }"
              (click)="selectCookTime(index)">
@@ -71,30 +76,76 @@
         </div>
       </div>
 
-        <div class="upload__image__container">
-          <div class="upload__image__text">
-          <p>
+      <div class="upload-image">
+        <input type="file" (change)="openFileUploader(fileUploader)" accept="image/jpeg,image/png,image/jpg" data-max-size="1024" #fileUploader>
+        <div class="upload-image__text">
+          <div>
             הלוגו יופיע בכל פרסומי הקפיטריה, <br>
             על כן, אנחנו ממליצים לצרף קובץ איכותי<br>
-          </p>
-          <p>
+          </div>
+
+          <div>
             מידת הלוגו 150X150 פיקסלים<br>
             בפורמט JPG / PNG
-          </p>
-          <div>
+          </div>
+
+          <div class="radio">
             <label>‘התמונה להמחשה בלבד’</label>
             <input type="radio" name="">
+
           </div>
-          <a href="">החלף/י תמונה</a>
-          <div></div>
-          <a href="">הסר/י תמונה</a>
+
+          <div class="links">
+            <div (click)="fileUploader.click()">שנה תמונה</div>
+            <div (click)="deleteImage()">למחוק תמונה</div>
           </div>
-          <div class="upload__image__btn">
-            <div class="upload__image__corss__container">
-            </div>
-            <p class="upload__image__btn__text">הוסף/י לוגו לרשת</p>
-          </div>  
         </div>
+
+        <div class="upload-image__button">
+          <div class="upload-image__button--inner" *ngIf="!uploadedImage" (click)="fileUploader.click()">
+            <div class="text">הוסף/י לוגו לרשת</div>
+          </div>
+
+          <img [src]="uploadedImage" *ngIf="uploadedImage">
+        </div>
+
+
+      </div>
+
+        <!--<div class="upload__image__container">-->
+          <!--<input type="file" (change)="openFileUploader(fileUploader)" accept="image/jpeg,image/png,image/jpg" data-max-size="1024" #fileUploader>-->
+          <!--&lt;!&ndash;<div class="upload__image__text">&ndash;&gt;-->
+            <!--&lt;!&ndash;<div>&ndash;&gt;-->
+              <!--&lt;!&ndash;הלוגו יופיע בכל פרסומי הקפיטריה, <br>&ndash;&gt;-->
+              <!--&lt;!&ndash;על כן, אנחנו ממליצים לצרף קובץ איכותי<br>&ndash;&gt;-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+            <!--&lt;!&ndash;<div>&ndash;&gt;-->
+              <!--&lt;!&ndash;מידת הלוגו 150X150 פיקסלים<br>&ndash;&gt;-->
+              <!--&lt;!&ndash;בפורמט JPG / PNG&ndash;&gt;-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+            <!--&lt;!&ndash;<div>&ndash;&gt;-->
+              <!--&lt;!&ndash;<input type="radio" name="">&ndash;&gt;-->
+              <!--&lt;!&ndash;<label>‘התמונה להמחשה בלבד’</label>&ndash;&gt;-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+            <!--&lt;!&ndash;<div class="upload__image__text__links" *ngIf="uploadedImage">&ndash;&gt;-->
+              <!--&lt;!&ndash;<div (click)="fileUploader.click()">שנה תמונה</div>&ndash;&gt;-->
+              <!--&lt;!&ndash;<div (click)="deleteImage()">למחוק תמונה</div>&ndash;&gt;-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+          <!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+          <!--<div class="upload__image__btn">-->
+            <!--&lt;!&ndash;<div class="upload__image__corss__container">&ndash;&gt;-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+            <!--&lt;!&ndash;<p class="upload__image__btn__text">הוסף/י לוגו לרשת</p>&ndash;&gt;-->
+
+            <!--<div class="upload__image__btn__inner" *ngIf="!uploadedImage" (click)="fileUploader.click()">-->
+              <!--<div class="upload__image__btn__text">הוסף/י לוגו לרשת</div>-->
+            <!--</div>-->
+            <!--<img [src]="uploadedImage" *ngIf="uploadedImage">-->
+          <!--</div>-->
+        <!--</div>-->
 
         <div></div>
 

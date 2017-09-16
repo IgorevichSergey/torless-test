@@ -23,23 +23,33 @@
           פרטי העסק
         </div>
         <div class="upload__image__container">
+          <input type="file" (change)="openFileUploader(fileUploader)" accept="image/jpeg,image/png,image/jpg" data-max-size="1024" #fileUploader>
           <div class="upload__image__text">
-          <p>
-            הלוגו יופיע בכל פרסומי הקפיטריה, <br>
-            על כן, אנחנו ממליצים לצרף קובץ איכותי<br>
-          </p>
-          <p>
-            מידת הלוגו 150X150 פיקסלים<br>
-            בפורמט JPG / PNG
-          </p>
-          </div>
-          <div class="upload__image__btn">
-            <div class="upload__image__corss__container">
+            <div>
+              הלוגו יופיע בכל פרסומי הקפיטריה, <br>
+              על כן, אנחנו ממליצים לצרף קובץ איכותי<br>
             </div>
-            <p class="upload__image__btn__text">הוסף/י לוגו לרשת</p>
+            <div>
+              מידת הלוגו 150X150 פיקסלים<br>
+              בפורמט  JPG / PNG
+            </div>
+
+            <div class="upload__image__text__links" *ngIf="uploadedImage">
+              <div (click)="fileUploader.click()">שנה תמונה</div>
+              <div (click)="deleteImage()">למחוק תמונה</div>
+            </div>
           </div>
+
+
+          <div class="upload__image__btn">
+            <div class="upload__image__btn__inner" *ngIf="!uploadedImage" (click)="fileUploader.click()">
+              <div class="upload__image__btn__text">הוסף/י לוגו לרשת</div>
+            </div>
+            <img [src]="uploadedImage" *ngIf="uploadedImage">
+          </div>
+
         </div>
-        <!--todo: add image uploader-->
+
         <div class="input-line required">
           <span>company name</span>
           <input type="text" appInput [(ngModel)]="createdUser.company.comapny_name" [placeholderMessage]="'שם חברה'" [error]="registrationError" >
@@ -64,8 +74,10 @@
 
       <div class="chief-account-details">
         <div class="label">
+        <div class="information-container">
+          <app-information [hintText]="'פרטי מנהל/ת החשבון הראשי'" hintPosition="top center" elementVerticalPosition="top" elementHorizontalPosition="left" color="#ff5b57"></app-information>
+        </div>
           פרטי מנהל/ת החשבון הראשי
-          <!--todo: add information block-->
         </div>
 
         <div class="input-line required">

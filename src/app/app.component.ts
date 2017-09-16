@@ -19,10 +19,11 @@ export class AppComponent {
   public loggedIn: boolean;
   public cafeteriasLength: number = 0;
 
-  public visible: {[key: string]: boolean} = {
+  public visible: {[key: string]: boolean | string} = {
     info: false,
     breadcrumbs: false,
-    companyLogo: false
+    companyLogo: false,
+    hintText: ''
   };
 
 

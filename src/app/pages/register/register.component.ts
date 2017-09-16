@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PlatformLocation } from '@angular/common';
 import { NavigationExtras, Router } from '@angular/router';
 import { UserService, ModalService } from '../../services';
 
@@ -16,6 +17,9 @@ export class RegisterComponent implements OnInit {
   public registrationError: boolean = false;
   public confirmedPassword: string = '';
   public confirmPasswordError: boolean = false;
+
+  public uploadedImage: string;
+  public uploadedFile: File;
 
   public emailErrorMessage: string;
 
@@ -39,17 +43,33 @@ export class RegisterComponent implements OnInit {
   constructor(
     private userService: UserService,
     private modalService: ModalService,
-    private router: Router
-  ) { }
+    private router: Router,
+    private platformLocation: PlatformLocation
+  ) {
+
+    console.log('platformLocation.getBaseHrefFromDOM()', platformLocation.getBaseHrefFromDOM());
+    // console.log(platformLocation.location.href);
+    // console.log(platformLocation.location.origin);
+  }
 
   ngOnInit() {}
 
   registerUser(createdUser: CreatedUser): void {
     this.userService.registration(createdUser).then((response) => {
       this.registrationError = false;
-      console.log('response', response);
+      console.log('response', response.data.token);
+      if (this.uploadedFile) {
+        this.userService.saveCompanyImage(this.uploadedFile, response.data.token).then(() => {
+          //
+        }, (error) => {
+          //
+        });
+      }
+
+
       // todo: go to next page
-      this._goTo('/cafeteria-type');
+      // this._goTo('/cafeteria-type');
+      console.log('todo: save new image');
     }, (error) => {
       this.registrationError = true;
     });
@@ -97,8 +117,45 @@ console.log("error CB")
   }
 
   public termsAndConditions(): void {
-    // todo: replace, or think about it
-    window.open('https://igorevichsergey.github.io/torless-test//terms-and-conditions', '_blank');
+    window.open(this.platformLocation.getBaseHrefFromDOM() + 'terms-and-conditions', '_blank');
+  }
+
+  public openFileUploader(fileUploader: HTMLElement | any): void {
+    if (fileUploader.files && fileUploader.files[0]) {
+      const files: FileList = fileUploader.files;
+      const file: File = files[0];
+      const reader: FileReader = new FileReader();
+      reader.readAsDataURL(file);
+
+      reader.onload = (() => {
+        this.uploadedFile = file;
+        this.uploadedImage = reader.result;
+
+        // image size check 150x150
+        // const img: HTMLImageElement = new Image();
+        // img.src = reader.result;
+        // img.onload = () => {
+        //   if (img.width <= 150 && img.height <= 150) {
+        //     // prev.src = this.src;
+        //     this.uploadedImage = img.src;
+        //   } else {
+        //     console.log('ERROR');
+        //   }
+        // };
+
+      }).bind(this);
+
+      reader.onerror = ((error) => {
+        console.log('Error: ', error);
+      });
+
+    }
+
+  }
+
+  public deleteImage(): void {
+    this.uploadedImage = null;
+    this.uploadedFile = null;
   }
 
 
