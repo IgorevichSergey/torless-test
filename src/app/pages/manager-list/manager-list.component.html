@@ -1,26 +1,25 @@
 <div class="manager-list-component">
-  <div class="managers">
-    <div class="manager">
-      <!--todo: возможно проще будет сверстать это таблицей-->
-      <div class="manager__name">
-        Name
-      </div>
-      <div class="manager__email">
-        Email
-      </div>
-      <div class="manager__edit">
-        Edit
-      </div>
-    </div>
-    <div class="manager" *ngFor="let manager of managers">
-      <div class="manager__name">
+  <div class="torless-page__header">
+    <button (click)="addManager()" class="torless-page__add-new-element">
+      <span class="plus">+</span>
+      <span class="text">ליצור מנהל</span>
+    </button>
+    <div class="title">רשימת מנהלים</div>
+  </div>
+
+  <div class="torless-page__list">
+    <div class="element" *ngFor="let manager of managers">
+      <div class="name">
         {{ manager.name + ' ' + manager.last_name }}
       </div>
-      <div class="manager__email">
+      <div class="email">
         {{ manager.email }}
       </div>
-      <div class="manager__edit">
-        <span class="link" (click)="editManager(manager)">edit</span>
+      <div class="buttons">
+        <button class="buttons__edit" (click)="editManager(manager)">
+          <img src="./assets/icon/edit.svg">
+          <div>מנהל עריכה</div>
+        </button>
       </div>
     </div>
   </div>

@@ -30,7 +30,6 @@ export class CafeteriaService {
   }
 
 
-  // todo token not used?
   public getUserCafeterias(): Promise<any> {
     const token: string = localStorage.getItem('torless_token');
     const data: string = JSON.stringify({tag: 'get_user_cafeterias', token: token});

@@ -3,6 +3,7 @@
     margin-top: -1.5rem;
     text-align: right;
     width: 200%;
+    margin-left: -100%;
 
     input[type="file"] {
       width: 0;
@@ -180,13 +181,11 @@
 
     .component-title {
       text-align: right;
-      font-size: 1.4rem;
       font-weight: 900;
       margin-bottom: 40px;
       font-size: 2.4rem;
       font-family: sans-serif;
       margin-top: 5.6rem;
-      margin-bottom: 1.6rem;
     }
 
     .component-content {
@@ -209,7 +208,6 @@
         .form-label {
           text-align: right;
           margin-bottom: 2.5rem;
-          font-size: 1.1rem;
           font-weight: 700;
           font-size: 1.4rem;
         }
@@ -356,7 +354,6 @@
           width: 80%;
           height: 3.5rem;
           background: #fff557;
-          font-size: 0.9rem;
           margin-bottom: 10rem;
           font-weight: 900;
           font-size: 1.4rem;
@@ -405,7 +402,7 @@
     }
   }
 
-  .button-description{
+  .button-description {
     font-size: 1.8rem;
     letter-spacing: -0.06rem;
   }

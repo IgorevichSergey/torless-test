@@ -9,6 +9,7 @@ export class InformationComponent implements AfterViewInit {
   @Input('hintText') hintText: string;
   @Input('hintPosition') hintPosition: string = 'top left';
   @Input('color') color: string = '#909090';
+  @Input('iconColor') iconColor: string = '#909090';
 
   constructor(
     private elementref: ElementRef,

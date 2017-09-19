@@ -21,14 +21,17 @@
 
     &.small {
       width: 40%;
+      max-width: 450px;
     }
 
     &.middle {
       width: 60%;
+      max-width: 580px;
     }
 
     &.large {
       width: 80%;
+      max-width: 760px;
     }
 
     &.visible {
@@ -50,6 +53,7 @@
     font-weight: 900;
     margin-bottom: 60px;
     direction: rtl;
+    min-height: 21px;
 
     .text {
       font-size: 1.1rem;

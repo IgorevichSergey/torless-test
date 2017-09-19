@@ -1,40 +1,55 @@
-<div class="product-list-component">
+<div class="removed-product-list-component">
   <div class="button back-button">
-    <button (click)="goToCategoriesList()">menu</button>
+    <button (click)="goToCategoriesList()">חזרה לתפריט</button>
   </div>
-  <div>
-    <div (click)="goToCafeteriasList()">go to cafeterias list</div>
-  </div>
-  <div class="header">
 
-    <div class="button">
-      <button (click)="goToAddProductPage()">+ add product</button>
-    </div>
-    <div class="title">Products</div>
+  <div class="torless-page__header">
+    <div class="title">רשימת מוצרים שהוסרו</div>
   </div>
-  <div class="products">
-    <div class="product" *ngFor="let product of products;" >
+
+  <div class="close hairline">
+
+  </div>
+
+  <div class="torless-page__list">
+    <div class="element" *ngFor="let product of products;">
+
+      <div class="dots">
+        <img src="./assets/icon/more.svg">
+      </div>
+
       <div class="name" *ngIf="!product.edit">
         <span>{{ product.prod_name || 'NA' }}</span>
       </div>
-      <!--<div class="input-line" *ngIf="product.edit">-->
-        <!--<input type="text" appInput [(ngModel)]="productBuffer.prod_name" [placeholderMessage]="'product name'" (blur)="saveProduct()">-->
+
+      <div class="image">
+        <img src="./assets/icon/product-example.png">
+      </div>
+
+      <!--<div class="checkboxes">-->
+        <!--<button class="check-element" (click)="emptyProduct(product)">-->
+          <!--<img *ngIf="product.prod_type === -2" src="./assets/icon/enabled.svg">-->
+          <!--<img *ngIf="product.prod_type !== -2" src="./assets/icon/disabled.svg">-->
+          <!--<div>מוצר ריק</div>-->
+        <!--</button>-->
+        <!--<button class="check-element" (click)="fullProduct(product)">-->
+          <!--<img *ngIf="product.prod_type === 1" src="./assets/icon/enabled.svg">-->
+          <!--<img *ngIf="product.prod_type === -2" src="./assets/icon/disabled.svg">-->
+          <!--<div>מוצר מלא</div>-->
+        <!--</button>-->
       <!--</div>-->
 
-      <div class="images">
-        <span class="check-element" [ngClass]="{'active': product.prod_type === -2, 'disabled': product.prod_type !== -2}" (click)="emptyProduct(product)"></span>
-        <span class="check-element" [ngClass]="{'active': product.prod_type === 1, 'disabled': product.prod_type === -2}" (click)="fullProduct(product)"></span>
-      </div>
-
       <div class="buttons">
-        <span (click)="restoreProduct(product)">restore</span>
+        <button class="buttons__edit" (click)="editProduct(product)">
+          <img src="./assets/icon/edit.svg">
+          <div>מוצר עריכה</div>
+        </button>
+        <button class="buttons__remove" (click)="restoreProduct(product)">
+          <img src="./assets/icon/trash.svg">
+          <div>שחזור המוצר</div>
+        </button>
       </div>
     </div>
   </div>
 
-  <div class="footer" *ngIf="products?.length > 4">
-    <div class="button">
-      <button (click)="goToAddProductPage()">+ add product</button>
-    </div>
-  </div>
 </div>

@@ -52,7 +52,7 @@
     }
 
     &.top {
-      top: calc((15px + 24px) * -1);
+      bottom: 32px;
       &:after {
         content: '';
         position: absolute; /* Абсолютное позиционирование */

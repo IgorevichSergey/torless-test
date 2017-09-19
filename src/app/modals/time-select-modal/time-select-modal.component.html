@@ -1,3 +1,56 @@
-<p>
-  time-select-modal works!
-</p>
+<div class="torless-modal time-select-modal">
+  <div class="torless-modal__header">
+    <div class="text">
+      בחר זמן
+    </div>
+    <div class="close-button" (click)="close()"></div>
+  </div>
+
+  <div class="torless-modal__body" >
+    <div class="buttons">
+      <button class="button" [ngClass]="{'selected': workingDay}" (click)="makeWorking(false)">
+        <!--not working-->
+        לא עובד
+      </button>
+      <button class="button" [ngClass]="{'selected': workingDay}" (click)="makeWorking(true)">
+        <!--working-->
+        עובד
+      </button>
+    </div>
+    <div class="form" *ngIf="hours">
+      <app-select [model]="workingTime[selectedDay].time_start" [list]="hours" key="time" placeholder="תחילת העבודה" (output)="workingTime[selectedDay].begin = $event"></app-select>
+    </div>
+    <div class="day-select">
+      <div class="day selected">
+        <div class="icon">א</div>
+      </div>
+      <div class="day">
+        <div class="icon">ב</div>
+      </div>
+      <div class="day">
+        <div class="icon">ג</div>
+      </div>
+      <div class="day">
+        <div class="icon">ד</div>
+      </div>
+      <div class="day">
+        <div class="icon">ה</div>
+      </div>
+      <div class="day">
+        <div class="icon">ו</div>
+      </div>
+      <div class="day">
+        <div class="icon">ש</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="torless-modal__footer" (click)="submit()">
+    <div class="response-button">
+      תְגוּבָה
+    </div>
+    <div class="reject-button" (click)="close()">
+      לִדחוֹת
+    </div>
+  </div>
+</div>

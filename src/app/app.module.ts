@@ -91,7 +91,7 @@ import { ModalsModule } from './modals';
     CafeteriaListModule,
     CafeteriaTypeModule,
     CreateCafeteriaModule,
-    CreateMainCategoryModule,
+    // CreateMainCategoryModule,
     ProductListModule,
     CategoriesListModule,
     CreateManagerModule,

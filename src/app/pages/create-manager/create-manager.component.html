@@ -2,8 +2,9 @@
   <div class="component-title">
     הקמת סניף
   </div>
-  <app-progress-bar [complete]="complete"></app-progress-bar>
-
+  <div style="width: 40%; margin-left: auto;">
+    <app-progress-bar [width]="100" [dots]="3"></app-progress-bar>
+  </div>
 
   <div class="component-content">
     <div class="left-side-form">
@@ -32,7 +33,7 @@
     <div class="manager-details-form">
       <!--cafeteria details-->
       <div class="form-label">
-      cafeteria manager
+        מנהל הקפטריה
       </div>
 
       <div class="input-line required">
@@ -59,7 +60,9 @@
         <input type="text" appInput [(ngModel)]="createdManagerUser.mn_phone" [placeholderMessage]="'phone'">
       </div>
 
-      text
+      <div style="margin-bottom: 1.5rem; font-weight: 800; font-size: 1.3rem">
+        סיסמה
+      </div>
 
       <div class="input-line required">
         <input type="password" appInput [(ngModel)]="createdManagerUser.mn_pass" [placeholderMessage]="'password'">
@@ -68,8 +71,6 @@
       <div class="input-line required">
         <input type="password" appInput [(ngModel)]="confirmPassword" [placeholderMessage]="'confirm password'">
       </div>
-
-
 
       <div class="submit-block">
         <div class="submit-button-container">

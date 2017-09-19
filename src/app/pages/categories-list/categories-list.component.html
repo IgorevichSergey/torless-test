@@ -1,65 +1,129 @@
 <div class="categories-list-component">
 
-  <div class="header">
-    <div class="button">
-      <button (click)="addNewCategory()" [disabled]="newCategory"><span class="btn__plas__icon">+</span> add category</button>
+  <div class="torless-page__header">
+    <button (click)="addNewCategory()" class="torless-page__add-new-element">
+      <span class="plus">+</span>
+      <span class="text"> הוסף קטגוריה</span>
+    </button>
+    <div class="title">
+      קטגוריות
     </div>
-    <div class="title">Categories</div>
   </div>
 
-  <div>
-    <span (click)="tmpCafeteriaList()">go to cafeterias list</span>
+  <div class="torless-list">
+    <div class="element" *ngFor="let product of products;" >
+      <div class="dots">
+        <img src="./assets/icon/more.svg">
+      </div>
+      <div class="name" *ngIf="!product.edit">
+        <span>{{ product.prod_name || 'NA' }}</span>
+      </div>
+      <div class="input-line" *ngIf="product.edit">
+        <input type="text" appInput [(ngModel)]="productBuffer.prod_name" [placeholderMessage]="'product name'" (blur)="saveProduct()">
+      </div>
+
+
+      <div class="image">
+        <img src="./assets/icon/product-example.png">
+      </div>
+
+      <div class="checkboxes">
+        <button class="check-element" (click)="emptyProduct(product)">
+          <img *ngIf="product.prod_type === -2" src="./assets/icon/enabled.svg">
+          <img *ngIf="product.prod_type !== -2" src="./assets/icon/disabled.svg">
+          <div>מוצר ריק</div>
+        </button>
+        <button class="check-element" (click)="fullProduct(product)">
+          <img *ngIf="product.prod_type === 1" src="./assets/icon/enabled.svg">
+          <img *ngIf="product.prod_type === -2" src="./assets/icon/disabled.svg">
+          <div>מוצר מלא</div>
+        </button>
+        <!--<span class="check-element" [ngClass]="{'active': product.prod_type === -2, 'disabled': product.prod_type !== -2}" (click)="emptyProduct(product)"></span>-->
+        <!--<span class="check-element" [ngClass]="{'active': product.prod_type === 1, 'disabled': product.prod_type === -2}" (click)="fullProduct(product)"></span>-->
+      </div>
+
+      <div class="buttons">
+        <button class="buttons__edit" (click)="editProduct(product)">
+          <img src="./assets/icon/edit.svg">
+          <div>מוצר עריכה</div>
+        </button>
+        <button class="buttons__remove" (click)="removeProduct(product)">
+          <img src="./assets/icon/trash.svg">
+          <div>למחוק מוצר</div>
+        </button>
+        <!--<span (click)="editProduct(product)">edit</span>-->
+        <!--<span (click)="removeProduct(product)">remove</span>-->
+      </div>
+    </div>
   </div>
 
-  <div class="categories" *ngIf="newCategory">
-    <div class="category">
-      <div class="name">
-        <div class="input-line">
-          <input type="text" appInput [(ngModel)]="newCategory.ct_name" [placeholderMessage]="'category name'">
-        </div>
+  <!--<div>-->
+    <!--<span (click)="tmpCafeteriaList()">go to cafeterias list</span>-->
+  <!--</div>-->
+
+  <div class="torless-page__list new-element" *ngIf="newCategory">
+    <div class="element">
+      <div style="position: absolute; top: -12px; right: 18px;">
+        <app-information [hintText]="'test'" hintPosition="top left" iconColor="#ff5b57"></app-information>
+        <app-information [hintText]="'test 2 sdfsd nsokldfjd ssdklfsd fld sfldsjf dsfds fsdlfdslfjsd fsd fsdklfjsd fsd kfjskldjfsd f sdfjdskjfs; df;kdksjfkdsflk;sd fs;fkl;sdhfjlkdhsfl sdlfhklshfklshf l;sfklsdhfhsdf sddflhsdklfhlsdk hfldsk hfsldk flkdshflkdshf ldshflksdhflksdhf'" hintPosition="top left" iconColor="#ff5b57"></app-information>
+      </div>
+      <div class="dots">
+        <img src="./assets/icon/more.svg">
+      </div>
+      <div class="input-line">
+        <input type="text" [(ngModel)]="newCategory.ct_name" placeholder="שם קטגוריה">
       </div>
 
       <div class="amount">
-        0
+        <span class="number">0</span>
+        <span class="description">מספר</span>
       </div>
 
-      <div class="save">
-        <button (click)="saveNewCategory(newCategory)" [disabled]="!newCategory.ct_name">save</button>
+
+      <div class="buttons">
+        <button class="save-button" (click)="saveNewCategory(newCategory)" [disabled]="!newCategory.ct_name">
+          רשימת מוצרים
+        </button>
+        <span class="remove-category" (click)="removeNewCategory()">להסיר קטגוריה</span>
       </div>
+
+
     </div>
   </div>
 
-  <div class="categories" *ngIf="categories?.length > 0" dnd-sortable-container [sortableData]="categories">
+  <div class="torless-page__list" *ngIf="categories?.length > 0" dnd-sortable-container [sortableData]="categories">
 
-    <div class="category" *ngFor="let category of categories; let i = index" dnd-sortable [sortableIndex]="i" (onDropSuccess)="categoriesDropped()">
-      <div class="edit-button">
-        <button (click)="goToProducts(category.cat_id)">products</button>
+    <div class="element" *ngFor="let category of categories; let i = index" dnd-sortable [sortableIndex]="i" (onDropSuccess)="categoriesDropped()">
+      <div class="dots">
+        <img src="./assets/icon/more.svg">
       </div>
-    <a href="#" class="list__cat__link"> some link</a>
+      <div class="name" *ngIf="!category.edit">
+        <span (click)="setEditMode(category)">{{ category.category_name || 'NA' }}</span>
+      </div>
 
-      <div class="name">
-        {{ category.category_name }}
+      <div class="input-line" *ngIf="category.edit">
+        <input type="text" [(ngModel)]="editBuffer.category_name" placeholder="שם קטגוריה" (blur)="editCategory(editBuffer)">
       </div>
+
 
       <div class="amount">
-        {{ category.prod_col }}
+        <span class="number">{{ category.prod_col }}</span>
+        <span class="description">מספר</span>
       </div>
 
-      <div class="save">
-        <span>save</span>
+      <div class="buttons">
+        <button class="redirect-button" (click)="goToProducts(category.cat_id)">
+          לשמור קטגוריה חדשה
+        </button>
+        <span class="remove-category">להסיר קטגוריה</span>
       </div>
     </div>
   </div>
-
-  <div class="header">
-    <div class="button">
-      <button (click)="addNewCategory()" [disabled]="newCategory"><span class="btn__plas__icon">+</span> add category</button>
-    </div>
-  </div>
-
 
   <div class="footer" *ngIf="categories?.length >= 5">
- 
+    <button (click)="addNewCategory()" class="torless-page__add-new-element">
+      <span class="plus">+</span>
+      <span class="text">הוסף קטגוריה</span>
+    </button>
   </div>
-
 </div>

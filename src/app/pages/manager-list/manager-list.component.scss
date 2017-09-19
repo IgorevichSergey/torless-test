@@ -1,36 +1,26 @@
 .manager-list-component {
-  .managers {
-    background: #fff;
-    padding: 15px 10px;
-  }
-  .manager {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    margin-bottom: 15px;
-    &__name {
-      width: calc(45% - 5px);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+  padding-top: calc(1.7rem + 44px);
+  .torless-page {
+    &__header {
+      .title {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        font-size: 1.6rem;
+      }
     }
-    &__email {
-      width: calc(45% - 5px);
-      white-space: nowrap;
-      padding-right: 5px;
-      padding-left: 5px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    &__edit {
-      width: calc(10% - 5px);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      text-align: right;
-      .link:hover {
-        cursor: pointer;
-        text-decoration: underline;
+    &__list {
+      .name {
+        width: calc(100% / 2 - 50px);
+      }
+      .email {
+        width: calc(100% / 2 - 50px);
+        align-self: center;
+        text-align: center;
+      }
+
+      .buttons {
+        width: 50px;
+        margin-right: auto;
       }
     }
   }

@@ -34,8 +34,7 @@ import { PipesModule } from '../pipes';
     ProgressBarComponent,
     InputComponent,
     TextareaComponent,
-    SelectComponent,
-    TimeSelectComponent
+    SelectComponent
   ],
   exports: [
     InformationComponent,
@@ -44,8 +43,7 @@ import { PipesModule } from '../pipes';
     ProgressBarComponent,
     InputComponent,
     TextareaComponent,
-    SelectComponent,
-    TimeSelectComponent
+    SelectComponent
   ]
 })
 export class ComponentsModule {}

@@ -9,7 +9,7 @@ import { UserService } from '../../services';
   styleUrls: ['./edit-manager.component.scss']
 })
 export class EditManagerComponent implements OnInit {
-  manager: any;
+  manager: any = {};
 
   public confirmPassword: string;
 

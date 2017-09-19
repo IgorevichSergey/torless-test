@@ -15,6 +15,7 @@ import * as _ from 'lodash';
 export class EditProductComponent implements OnInit {
   public updatedMainProduct: any; // todo: set UpdatedMainProduct interface
   public minutes: number[] = new Array(18);
+  public uploadedImage: string;
 
   private _cafeteriaId: number;
   private _categoryId: number;
@@ -80,7 +81,9 @@ export class EditProductComponent implements OnInit {
   public isSubmitButtonDisabled(): boolean {
     let result: boolean = false;
 
-    if (!this.updatedMainProduct.product.pr_name ||
+    if (!this.updatedMainProduct ||
+      !this.updatedMainProduct.product ||
+      !this.updatedMainProduct.product.pr_name ||
       !this.updatedMainProduct.product.pr_price ||
       !this.updatedMainProduct.product.pr_cook_time ||
       !this.updatedMainProduct.product.pr_descr) {
@@ -97,6 +100,10 @@ export class EditProductComponent implements OnInit {
       extra_pr_price: '',
       double_extra_products: []
     });
+  }
+
+  public removeExtraCategory(index: number): void {
+    this.updatedMainProduct.extra_categories.splice(index, 1);
   }
 
 

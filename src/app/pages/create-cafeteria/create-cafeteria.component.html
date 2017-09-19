@@ -2,7 +2,10 @@
   <div class="component-title">
     הקמת סניף
   </div>
-  <app-progress-bar [complete]="complete"></app-progress-bar>
+
+  <div style="width: 40%; margin-left: auto;">
+    <app-progress-bar  [width]="(100/3)*2" [dots]="3"></app-progress-bar>
+  </div>
 
 
   <div class="component-content">

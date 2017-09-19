@@ -1,0 +1,25 @@
+<div class="torless-modal select-cafeteria-modal">
+  <div class="torless-modal__header">
+    <div class="text">
+      בחר בקפיטריה
+    </div>
+    <div class="close-button" (click)="close()"></div>
+  </div>
+
+  <div class="torless-modal__body">
+      <div class="list">
+        <div class="list-element" *ngFor="let cafeteria of cafeterias" (click)="selectCafeteria(cafeteria)" [ngClass]="{'selected': cafeteria.id === selectedCafeteria?.id}">
+          {{ cafeteria.caf_name }}
+        </div>
+      </div>
+  </div>
+
+  <div class="torless-modal__footer">
+    <button class="response-button" (click)="submit()" [disabled]="!selectedCafeteria">
+      לשלוח
+    </button>
+    <div class="reject-button" (click)="close()">
+      לִדחוֹת
+    </div>
+  </div>
+</div>

@@ -1,158 +1,95 @@
+@mixin optional-at-root($sel) {
+  @at-root #{if(not &, $sel, selector-append(&, $sel))} {
+    @content;
+  }
+}
+
+@mixin placeholder {
+  @include optional-at-root('::-webkit-input-placeholder') {
+    @content;
+  }
+
+  @include optional-at-root(':-moz-placeholder') {
+    @content;
+  }
+
+  @include optional-at-root('::-moz-placeholder') {
+    @content;
+  }
+
+  @include optional-at-root(':-ms-input-placeholder') {
+    @content;
+  }
+}
+
 .categories-list-component {
-  .app-input-placeholder{
-    font-size: 1.2rem;
-    font-weight: 300;
-  }
-  .list__cat__link{
-        display: inline-block;
-    font-family: sans-serif;
-    color: #000;
-    margin-right: 3rem;
-  }
-  .input-line{
-    input{
-      font-weight: 600;
+  .new-element {
+    margin-bottom: 40px;
+    .element {
+      position: relative;
     }
-  }
-  .btn__plas__icon{
-    display: inline !important;
-    margin: 0 !important;
-      color:#fff557;
-  }
-  .category{
-    button{
-          font-size: 1.4rem;
-    padding-top: 0rem;
-    color: #000;
-    box-sizing: border-box;
-    border: 1px solid #fff557;
-    transition-duration: 0.3s;
-    background: #fff557;
-    }
-  }
-  .header~div{
-    span{
-      margin-bottom: 2rem;
-    display: block;
-    }
-  }
-  .header,
-  .footer {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    .button {
-      text-align: left;
-      button {
-        width: 100%;
-        max-width: 300px;
-        height: 44px;
-        background: #000;
-        color: grey;
-        //background: #fff557;
-        font-size: 0.9rem;
-        font-weight: 900;
-            max-width: none;
-    width: 15rem;
-    margin-top: 2.7rem;
-        &:active {
-          background: lighten(#000, 10%);
-        }
-      }
-    }
-    .title {
-      font-size: 1.3rem;
-      font-weight: 900;
-      text-align: right;
-      align-self: flex-end;
-    }
-  }
 
-  .categories {
-    .category {
-    display: block;
-    position: relative;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: reverse;
-    -ms-flex-direction: row-reverse;
-    flex-direction: row-reverse;
-    background: #fff;
-    padding: 20px;
-    text-align: right;
-    margin-bottom: 20px;
-    height: 3.5rem;
-
+  }
+  .torless-page {
+    &__list {
       .name {
-        width: 40%;
-        align-self: center;
-            font-family: sans-serif;
-    padding-right: 3rem;
-    width: 22rem;
-    font-size: 1.6rem;
-    padding-bottom: 1rem;
-    font-family: sans-serif;
-    padding-right: 3rem;
-    width: 22rem;
-    font-size: 1.6rem;
-    padding-bottom: 1rem;
-    padding-top: 1rem;
-    float: right;
+        font-size: 1.5rem;
+      }
+      input {
+        color: #000;
+        font-weight: 800;
+
+        @include placeholder {
+          color: #bababa;
+          font-size: 1.6rem;
+          font-weight: 300;
+        }
       }
       .amount {
-        align-self: center;
-            font-family: sans-serif;
-    margin-right: 4rem;
-    display: inline-block;
-    font-size: 1.4rem;
-        text-align: left;
-    font-family: sans-serif;
-    margin-right: 4rem;
-    display: inline-block;
-    font-size: 1.4rem;
-        text-align: left;
-    font-family: sans-serif;
-    margin-right: 4rem;
-    display: inline-block;
-    font-size: 1.8rem;
-    margin-top: 0.7rem;
-      }
-      .save {
         margin-right: auto;
-        margin-left: 0%;
-        user-select: none;
-        float: left;
-        cursor: pointer;
+        flex-direction: row-reverse;
+        display: flex;
         align-self: center;
-        button{
-              width: 14.3rem;
-    font-size: 1.6rem;
-    padding-top: 0.75rem;
-    padding-bottom: 0.75rem;
+        color: #a3a3a3;
+        font-family: sans-serif;
+        user-select: none;
+
+        .description {
+          font-size: 1rem;
+          letter-spacing: -1px;
+          &:after {
+            content: '--';
+            color: #fff;
+          }
         }
       }
 
-      .edit-button {
-        position: absolute;
-        left: 20px;
-        button{
-              width: 20rem;
-    height: 3rem;
-    font-size: 1.6rem;
+
+      .buttons {
+        margin-right: auto;
+        font-family: sans-serif;
+        .remove-category {
+          display: inline-block;
+          margin-left: 15px;
+          color: #a3a3a3;
+          vertical-align: middle;
+          letter-spacing: -1px;
+          font-size: 1rem;
+          user-select: none;
+          cursor: pointer;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+        .save-button,
+        .redirect-button {
+          width: 230px;
+          padding: 10px;
+          color: #000;
+          background: #fff557;
+          font-size: 1.1rem;
         }
       }
-    }
-  }
-
-  .input-line {
-    position: relative;
-    align-self: flex-end;
-    font-weight: 600;
-    input {
-      width: 90%;
-      height: 34px;
-      font-size: 1.1rem;
-      font-weight: 300;
-      background: inherit;
     }
   }
 }

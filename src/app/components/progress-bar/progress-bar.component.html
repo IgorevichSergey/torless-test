@@ -1,10 +1,6 @@
-<div class="progress-bar"
-     [ngClass]="{'_25': complete === 25, '_50': complete === 50, '_75': complete === 75, '_100': complete === 100}">
-  <div class="background-container"></div>
-  <div>
-    <div class="point"></div>
-    <div class="point"></div>
-    <div class="point"></div>
-    <div class="point"></div>
+<div class="progress-bar">
+  <div class="background-container" [style.width]="width + '%'"></div>
+  <div class="points">
+    <div class="point" *ngFor="let dot of dotsArray; let index = index;" [style.right]="getRightPosition(index)" [ngClass]="{'filled': isFilled(index)}"></div>
   </div>
 </div>

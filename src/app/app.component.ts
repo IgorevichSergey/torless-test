@@ -60,7 +60,7 @@ export class AppComponent {
     this.modalService.create(ConfirmModalComponent, {
         headerText: 'Confirm modal header text!',
         bodyText: 'האם אתה בטוח שברצונך לצאת?'
-    }, 'large').then(() => {
+    }, 'small').then(() => {
       this.userService.logout().then(() => {
         this.router.navigateByUrl('/login');
       });

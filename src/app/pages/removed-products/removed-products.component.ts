@@ -6,7 +6,7 @@ import { ProductService } from '../../services';
 @Component({
   selector: 'app-removed-products',
   templateUrl: './removed-products.component.html',
-  styleUrls: ['./removed-products.component.scss']
+  styleUrls: ['./removed-products.component.scss', '../pages.scss']
 })
 export class RemovedProductsComponent implements OnInit {
   public products: any[];

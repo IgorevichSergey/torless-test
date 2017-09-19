@@ -40,8 +40,37 @@ export const PAGES_CONFIG = {
     '/add-product': {
       info: false,
       breadcrumbs: true,
-      companyLogo: true,
-      hintText: 'רשימת מנהלים'
+      companyLogo: true
+    },
+    '/product-list': {
+      info: false,
+      breadcrumbs: true,
+      companyLogo: true
+    },
+    '/removed-products': {
+      info: false,
+      breadcrumbs: true,
+      companyLogo: true
+    },
+    '/categories-list': {
+      info: false,
+      breadcrumbs: true,
+      companyLogo: true
+    },
+    '/cafeteria-type': {
+      info: false,
+      breadcrumbs: true,
+      companyLogo: true
+    },
+    '/create-cafeteria': {
+      info: false,
+      breadcrumbs: true,
+      companyLogo: true
+    },
+    '/edit-manager': {
+      info: false,
+      breadcrumbs: true,
+      companyLogo: true
     }
   }
 };

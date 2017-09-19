@@ -2,8 +2,7 @@
   position: relative;
   height: 2px;
   background: #c8c8c8;
-  width: calc(100% - 6px);
-  width: 22rem;
+  width: 100%;
   margin-left: auto;
   margin-bottom: 40px;
   .background-container {
@@ -23,71 +22,9 @@
     height: 12px;
     border-radius: 100%;
     background: #c8c8c8;
+    &.filled {
+      background: #fff557;
+    }
   }
-  .point:nth-child(1) {
-    right: calc(25% - 5px);
-    transition-delay: 0.125s;
-  }
-  .point:nth-child(2) {
-    right: calc(50% - 5px);
-    transition-delay: 0.25s;
-  }
-  .point:nth-child(3) {
-    right: calc(75% - 5px);
-    transition-delay: 0.375s;
-  }
-  .point:nth-child(4) {
-    right: calc(100% - 5px);
-    transition-delay: 0.5s;
-  }
-}
-.progress-bar._25 {
-  .background-container {
-    width: 25%;
-  }
-  .point:nth-child(1) {
-    background: #fff557;
-  }
-}
-.progress-bar._50 {
-  .background-container {
-    width: 50%;
-  }
-  .point:nth-child(1) {
-    background: #fff557;
-  }
-  .point:nth-child(2) {
-    background: #fff557;
-  }
-}
-.progress-bar._75 {
-  .background-container {
-    width: 75%;
-  }
-  .point:nth-child(1) {
-    background: #fff557;
-  }
-  .point:nth-child(2) {
-    background: #fff557;
-  }
-  .point:nth-child(3) {
-    background: #fff557;
-  }
-}
-.progress-bar._100 {
-  .background-container {
-    width: 100%;
-  }
-  .point:nth-child(1) {
-    background: #fff557;
-  }
-  .point:nth-child(2) {
-    background: #fff557;
-  }
-  .point:nth-child(3) {
-    background: #fff557;
-  }
-  .point:nth-child(4) {
-    background: #fff557;
-  }
+
 }

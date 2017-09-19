@@ -1,4 +1,165 @@
 <div class="update-cafeteria-component">
+  <!--<div class="component-title">-->
+    <!--הקמת סניף-->
+  <!--</div>-->
+
+
+  <!--<div class="component-content" *ngIf="updatedCafeteria">-->
+    <!--<div class="left-side-form">-->
+      <!--&lt;!&ndash; test &ndash;&gt;-->
+       <!--<div class="create-connection">-->
+        <!--<div class="notice">-->
+          <!--<div class="bold">תהליך ההרשמה לתורלס הוא</div>-->
+          <!--<div class="bold">.חד פעמי</div>-->
+          <!--<div class="normal">בעתיד, תוכל/י לבצע עידכונים וש</div>-->
+        <!--</div>-->
+
+          <!--<div class="notice notice__second">-->
+            <!--<div class="bold">נא הכינו את המידע הנ”ל:</div>-->
+
+            <!--<div class="normal create__big__area">-->
+
+              <!--<span>רשימת קטגוריות המוצרים </span><br><span>שמות כל המוצרים</span><br><span>תיאור מפורט של כל המוצרים</span></div>-->
+
+          <!--</div>-->
+
+        <!--<div class="link">-->
+          <!--לעזרה - צור/י קשר-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+
+    <!--<div class="cafeteria-details-form">-->
+      <!--&lt;!&ndash;cafeteria details&ndash;&gt;-->
+      <!--<div class="form-label">-->
+        <!--פרטי הקפיטריה-->
+      <!--</div>-->
+
+
+
+      <!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+      <!--<div class="input-line required">-->
+        <!--<input type="text" appInput [(ngModel)]="updatedCafeteria.cafeteria.up_caf_name" [placeholderMessage]="'שם חברה'">-->
+      <!--</div>-->
+
+      <!--<div class="input-line required">-->
+        <!--<input type="text" appInput [(ngModel)]="updatedCafeteria.cafeteria.up_caf_address" [placeholderMessage]="'address'">-->
+      <!--</div>-->
+
+      <!--<div class="select-line required">-->
+        <!--<select [(ngModel)]="updatedCafeteria.cafeteria.up_caf_university_id" (change)="getBuildingsByUniversityId(updatedCafeteria.cafeteria.up_caf_university_id)">-->
+          <!--<option *ngFor="let university of universities" [value]="university.university_id">-->
+            <!--{{ university.university_name }}-->
+          <!--</option>-->
+        <!--</select>-->
+      <!--</div>-->
+
+      <!--<div class="select-line required">-->
+        <!--<select [(ngModel)]="updatedCafeteria.cafeteria.up_caf_university_building_id">-->
+          <!--<option *ngFor="let universityBuilding of universityBuildings" [value]="universityBuilding.building_id">-->
+            <!--{{ universityBuilding.building_name }}-->
+          <!--</option>-->
+        <!--</select>-->
+      <!--</div>-->
+
+      <!--<div class="select-line required">-->
+        <!--<select [(ngModel)]="updatedCafeteria.cafeteria.up_caf_kosher_type">-->
+          <!--<option [value]="0">first</option>-->
+          <!--<option [value]="1">second</option>-->
+          <!--<option [value]="2">third</option>-->
+          <!--<option [value]="3">fourth</option>-->
+          <!--<option [value]="4">fifth</option>-->
+        <!--</select>-->
+      <!--</div>-->
+
+      <!--<div class="radio-line">-->
+        <!--<div class="radio-button-element">-->
+          <!--&lt;!&ndash; not vegeterian &ndash;&gt;-->
+          <!--<span class="button-description">-->
+           <!--אין מאכלים צמחוניים-->
+          <!--</span>-->
+          <!--&lt;!&ndash;<input type="radio"  name="sex" >Female&ndash;&gt;-->
+
+          <!--<input type="radio" [(ngModel)]="updatedCafeteria.cafeteria.up_caf_veg_type" [value]="0">-->
+        <!--</div>-->
+
+        <!--<div class="radio-button-element">-->
+          <!--&lt;!&ndash; vegeterian &ndash;&gt;-->
+          <!--<span class="button-description">-->
+            <!--יש מנות צמחוניות-->
+          <!--</span>-->
+          <!--<input type="radio" [(ngModel)]="updatedCafeteria.cafeteria.up_caf_veg_type" [value]="1">-->
+          <!--&lt;!&ndash;<input type="radio">&ndash;&gt;-->
+        <!--</div>-->
+      <!--</div>-->
+
+      <!--<div class="days-of-branch-activity">-->
+        <!--<div class="label">-->
+          <!--ימי פעילות הסניף-->
+        <!--</div>-->
+        <!--<div class="days required-top">-->
+          <!--<div class="day" (click)="showTimeSelectModal(1, $event)">-->
+            <!--<div class="time" *ngIf="showTimeText(1)">-->
+              <!--{{ getTimeByDayNumber(1) }}-->
+            <!--</div>-->
+            <!--<div class="icon">א</div>-->
+          <!--</div>-->
+          <!--<div class="day" (click)="showTimeSelectModal(2, $event)">-->
+            <!--<div class="time" *ngIf="showTimeText(2)">-->
+              <!--{{ getTimeByDayNumber(2) }}-->
+            <!--</div>-->
+            <!--<div class="icon">ב</div>-->
+          <!--</div>-->
+          <!--<div class="day" (click)="showTimeSelectModal(3, $event)">-->
+            <!--<div class="time" *ngIf="showTimeText(3)">-->
+              <!--{{ getTimeByDayNumber(3) }}-->
+            <!--</div>-->
+            <!--<div class="icon">ג</div>-->
+          <!--</div>-->
+          <!--<div class="day" (click)="showTimeSelectModal(4, $event)">-->
+            <!--<div class="time" *ngIf="showTimeText(4)">-->
+              <!--{{ getTimeByDayNumber(4) }}-->
+            <!--</div>-->
+            <!--<div class="icon">ד</div>-->
+          <!--</div>-->
+          <!--<div class="day" (click)="showTimeSelectModal(5, $event)">-->
+            <!--<div class="time" *ngIf="showTimeText(5)">-->
+              <!--{{ getTimeByDayNumber(5) }}-->
+            <!--</div>-->
+            <!--<div class="icon">ה</div>-->
+          <!--</div>-->
+          <!--<div class="day" (click)="showTimeSelectModal(6, $event)">-->
+            <!--<div class="time" *ngIf="showTimeText(6)">-->
+              <!--{{ getTimeByDayNumber(6) }}-->
+            <!--</div>-->
+            <!--<div class="icon">ו</div>-->
+          <!--</div>-->
+          <!--<div class="day" (click)="showTimeSelectModal(7, $event)">-->
+            <!--<div class="time" *ngIf="showTimeText(7)">-->
+              <!--{{ getTimeByDayNumber(7) }}-->
+            <!--</div>-->
+            <!--<div class="icon">ש</div>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+
+      <!--<div class="textarea-line">-->
+        <!--<textarea appInput [(ngModel)]="updatedCafeteria.cafeteria.up_caf_description" [placeholderMessage]="'description'"></textarea>-->
+      <!--</div>-->
+
+      <!--<div class="submit-block">-->
+        <!--<div class="submit-button-container">-->
+          <!--<button (click)="updateCafeteria(updatedCafeteria)">הרשם/י</button>-->
+          <!--<div class="repeat-button">-->
+            <!--<span (click)="goBack()">חזור/י</span>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+
+    <!--</div>-->
+  <!--</div>-->
+
   <div class="component-title">
     הקמת סניף
   </div>
@@ -6,27 +167,28 @@
 
   <div class="component-content" *ngIf="updatedCafeteria">
     <div class="left-side-form">
-      <!-- test -->
-       <div class="create-connection">
+
+      <div class="create-connection">
         <div class="notice">
           <div class="bold">תהליך ההרשמה לתורלס הוא</div>
           <div class="bold">.חד פעמי</div>
           <div class="normal">בעתיד, תוכל/י לבצע עידכונים וש</div>
         </div>
 
-          <div class="notice notice__second">
-            <div class="bold">נא הכינו את המידע הנ”ל:</div>
+        <div class="notice notice__second">
+          <div class="bold">נא הכינו את המידע הנ”ל:</div>
 
-            <div class="normal create__big__area">
+          <div class="normal create__big__area">
 
-              <span>רשימת קטגוריות המוצרים </span><br><span>שמות כל המוצרים</span><br><span>תיאור מפורט של כל המוצרים</span></div>
+            <span>רשימת קטגוריות המוצרים </span><br><span>שמות כל המוצרים</span><br><span>תיאור מפורט של כל המוצרים</span></div>
 
-          </div>
+        </div>
 
         <div class="link">
           לעזרה - צור/י קשר
         </div>
       </div>
+
     </div>
 
     <div class="cafeteria-details-form">
@@ -34,10 +196,6 @@
       <div class="form-label">
         פרטי הקפיטריה
       </div>
-
-
-
-      <!--</div>-->
 
       <div class="input-line required">
         <input type="text" appInput [(ngModel)]="updatedCafeteria.cafeteria.up_caf_name" [placeholderMessage]="'שם חברה'">
@@ -48,6 +206,9 @@
       </div>
 
       <div class="select-line required">
+        <div>
+          Universities
+        </div>
         <select [(ngModel)]="updatedCafeteria.cafeteria.up_caf_university_id" (change)="getBuildingsByUniversityId(updatedCafeteria.cafeteria.up_caf_university_id)">
           <option *ngFor="let university of universities" [value]="university.university_id">
             {{ university.university_name }}
@@ -56,6 +217,9 @@
       </div>
 
       <div class="select-line required">
+        <div>
+          University Buildings
+        </div>
         <select [(ngModel)]="updatedCafeteria.cafeteria.up_caf_university_building_id">
           <option *ngFor="let universityBuilding of universityBuildings" [value]="universityBuilding.building_id">
             {{ universityBuilding.building_name }}
@@ -64,6 +228,9 @@
       </div>
 
       <div class="select-line required">
+        <div>
+          Kosher Type
+        </div>
         <select [(ngModel)]="updatedCafeteria.cafeteria.up_caf_kosher_type">
           <option [value]="0">first</option>
           <option [value]="1">second</option>
@@ -146,6 +313,32 @@
 
       <div class="textarea-line">
         <textarea appInput [(ngModel)]="updatedCafeteria.cafeteria.up_caf_description" [placeholderMessage]="'description'"></textarea>
+      </div>
+
+      <div class="upload__image__container">
+        <input type="file" (change)="openFileUploader(fileUploader)" accept="image/jpeg,image/png,image/jpg" data-max-size="1024" #fileUploader>
+        <div class="upload__image__text">
+          <div>
+            הלוגו יופיע בכל פרסומי הקפיטריה, <br>
+            על כן, אנחנו ממליצים לצרף קובץ איכותי<br>
+          </div>
+          <div>
+            מידת הלוגו 150X150 פיקסלים<br>
+            בפורמט JPG / PNG
+          </div>
+
+          <div class="upload__image__text__links" *ngIf="uploadedImage">
+            <div (click)="fileUploader.click()">שנה תמונה</div>
+            <div (click)="deleteImage()">למחוק תמונה</div>
+          </div>
+        </div>
+        <div class="upload__image__btn">
+          <div class="upload__image__btn__inner" *ngIf="!uploadedImage" (click)="fileUploader.click()">
+            <div class="upload__image__btn__text">הוסף/י לוגו לרשת</div>
+          </div>
+          <img [src]="uploadedImage" *ngIf="uploadedImage">
+        </div>
+
       </div>
 
       <div class="submit-block">

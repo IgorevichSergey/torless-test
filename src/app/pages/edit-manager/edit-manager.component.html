@@ -1,18 +1,104 @@
+<!--<div class="edit-manager-component">-->
+  <!--<div class="component-title">-->
+    <!--הקמת סניף-->
+  <!--</div>-->
+
+
+  <!--<div class="component-content" *ngIf="manager">-->
+    <!--<div class="left-side-form">-->
+      <!--test-->
+    <!--</div>-->
+
+    <!--<div class="manager-details-form">-->
+      <!--&lt;!&ndash;cafeteria details&ndash;&gt;-->
+      <!--<div class="form-label">-->
+        <!--cafeteria manager-->
+      <!--</div>-->
+
+      <!--<div class="input-line required">-->
+        <!--<input type="text" appInput [(ngModel)]="manager.mn_name" [placeholderMessage]="'name'">-->
+      <!--</div>-->
+
+      <!--<div class="input-line required">-->
+        <!--<input type="text" appInput [(ngModel)]="manager.mn_last_name" [placeholderMessage]="'last name'">-->
+      <!--</div>-->
+
+      <!--<div class="input-line">-->
+        <!--<input type="text" appInput [placeholderMessage]="'id'">-->
+      <!--</div>-->
+
+      <!--<div class="input-line">-->
+        <!--<input type="number" dir="rtl" appInput [placeholderMessage]="'passport ID'">-->
+      <!--</div>-->
+
+      <!--<div class="input-line required">-->
+        <!--<input type="text" appInput [(ngModel)]="manager.mn_email"  (blur)="checkEmail(manager.mn_email)"  [placeholderMessage]="'email'" [error]="formErrors.emailField" [errorMessage]="formErrorMessages.email">-->
+      <!--</div>-->
+
+      <!--<div class="input-line required">-->
+        <!--<input type="text" appInput [(ngModel)]="manager.mn_phone" [placeholderMessage]="'phone'">-->
+      <!--</div>-->
+
+      <!--text-->
+
+      <!--<div class="input-line required">-->
+        <!--<input type="password" appInput [(ngModel)]="manager.mn_pass" [placeholderMessage]="'password'">-->
+      <!--</div>-->
+
+      <!--<div class="input-line required">-->
+        <!--<input type="password" appInput [(ngModel)]="confirmPassword" [placeholderMessage]="'confirm password'">-->
+      <!--</div>-->
+
+
+
+      <!--<div class="submit-block">-->
+        <!--<div class="submit-button-container">-->
+          <!--<button (click)="updateManager(manager)" [disabled]="isButtonDisabled()">הרשם/י</button>-->
+          <!--<div class="repeat-button">-->
+            <!--<span (click)="goBack()">חזור/י</span>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+
+    <!--</div>-->
+  <!--</div>-->
+
+<!--</div>-->
+
+
 <div class="edit-manager-component">
   <div class="component-title">
-    הקמת סניף
+    מנהל עריכה
   </div>
 
-
-  <div class="component-content" *ngIf="manager">
+  <div class="component-content">
     <div class="left-side-form">
-      test
+      <div class="create-connection">
+        <div class="notice">
+          <div class="bold">תהליך ההרשמה לתורלס הוא</div>
+          <div class="bold">.חד פעמי</div>
+          <div class="normal">בעתיד, תוכל/י לבצע עידכונים וש</div>
+        </div>
+
+        <div class="notice notice__second">
+          <div class="bold">נא הכינו את המידע הנ”ל:</div>
+
+          <div class="normal create__big__area">
+
+            <span>רשימת קטגוריות המוצרים </span><br><span>שמות כל המוצרים</span><br><span>תיאור מפורט של כל המוצרים</span></div>
+
+        </div>
+
+        <div class="link">
+          לעזרה - צור/י קשר
+        </div>
+      </div>
     </div>
 
     <div class="manager-details-form">
       <!--cafeteria details-->
       <div class="form-label">
-        cafeteria manager
+        מנהל הקפטריה
       </div>
 
       <div class="input-line required">
@@ -32,14 +118,16 @@
       </div>
 
       <div class="input-line required">
-        <input type="text" appInput [(ngModel)]="manager.mn_email"  (blur)="checkEmail(manager.mn_email)"  [placeholderMessage]="'email'" [error]="formErrors.emailField" [errorMessage]="formErrorMessages.email">
+        <input type="text" appInput [(ngModel)]="manager.mn_email"  (blur)="checkEmail(createdManagerUser.mn_email)"  [placeholderMessage]="'email'" [error]="formErrors.emailField" [errorMessage]="formErrorMessages.email">
       </div>
 
       <div class="input-line required">
         <input type="text" appInput [(ngModel)]="manager.mn_phone" [placeholderMessage]="'phone'">
       </div>
 
-      text
+      <div style="margin-bottom: 1.5rem; font-weight: 800; font-size: 1.3rem">
+        סיסמה
+      </div>
 
       <div class="input-line required">
         <input type="password" appInput [(ngModel)]="manager.mn_pass" [placeholderMessage]="'password'">
@@ -49,13 +137,11 @@
         <input type="password" appInput [(ngModel)]="confirmPassword" [placeholderMessage]="'confirm password'">
       </div>
 
-
-
       <div class="submit-block">
         <div class="submit-button-container">
-          <button (click)="updateManager(manager)" [disabled]="isButtonDisabled()">הרשם/י</button>
+          <button (click)="updateManager(manager)" [disabled]="isButtonDisabled()">עדכון</button>
           <div class="repeat-button">
-            <span (click)="goBack()">חזור/י</span>
+            <span (click)="goBack()">חזור</span>
           </div>
         </div>
       </div>

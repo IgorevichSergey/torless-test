@@ -16,13 +16,16 @@
           <input type="text" appInput [(ngModel)]="createdProduct.product.pr_name" [placeholderMessage]="'product name'">
         </div>
         <div class="check-elements">
-        <div class="chech__cont">
-          <span class="check-element"></span>
-          <span>check<br>item</span>
-        </div>
-        <div class="chech__cont">
-          <span class="check-element"></span>
-          <span>check<br>item</span>
+          <div class="check-element">
+            <img class="check-element__icon" *ngIf="true" src="./assets/icon/check-red.svg" >
+            <img class="check-element__icon" *ngIf="false" src="./assets/icon/disabled.svg" >
+            <div class="check-element__text" [ngClass]="{'checked': true}">זה לא במלאי</div>
+          </div>
+
+          <div class="check-element">
+            <img class="check-element__icon" *ngIf="false" src="./assets/icon/check-red.svg" >
+            <img class="check-element__icon" *ngIf="true" src="./assets/icon/disabled.svg" >
+            <div class="check-element__text" [ngClass]="{'checked': false}">הוא במלאי</div>
           </div>
         </div>
 
@@ -41,10 +44,10 @@
 
       <div class="cook-time">
         <div class="label required">
+           <span>
+            <app-information [hintText]="'some text'" hintPosition="top center" iconColor="#ff5b57"></app-information>
+           </span>
           <span>דקות ליצירת המוצר</span>
-          <span>
-            <app-information [hintText]="'some text'" hintPosition="top center" color="#ff5b57"></app-information>
-          </span>
         </div>
         <div class="minute" *ngFor="let minute of minutes; let index = index;"
              [ngClass]="{'selected': createdProduct.product.pr_cook_time === ''+ index }"
@@ -112,53 +115,19 @@
 
       </div>
 
-        <!--<div class="upload__image__container">-->
-          <!--<input type="file" (change)="openFileUploader(fileUploader)" accept="image/jpeg,image/png,image/jpg" data-max-size="1024" #fileUploader>-->
-          <!--&lt;!&ndash;<div class="upload__image__text">&ndash;&gt;-->
-            <!--&lt;!&ndash;<div>&ndash;&gt;-->
-              <!--&lt;!&ndash;הלוגו יופיע בכל פרסומי הקפיטריה, <br>&ndash;&gt;-->
-              <!--&lt;!&ndash;על כן, אנחנו ממליצים לצרף קובץ איכותי<br>&ndash;&gt;-->
-            <!--&lt;!&ndash;</div>&ndash;&gt;-->
-            <!--&lt;!&ndash;<div>&ndash;&gt;-->
-              <!--&lt;!&ndash;מידת הלוגו 150X150 פיקסלים<br>&ndash;&gt;-->
-              <!--&lt;!&ndash;בפורמט JPG / PNG&ndash;&gt;-->
-            <!--&lt;!&ndash;</div>&ndash;&gt;-->
-            <!--&lt;!&ndash;<div>&ndash;&gt;-->
-              <!--&lt;!&ndash;<input type="radio" name="">&ndash;&gt;-->
-              <!--&lt;!&ndash;<label>‘התמונה להמחשה בלבד’</label>&ndash;&gt;-->
-            <!--&lt;!&ndash;</div>&ndash;&gt;-->
-
-            <!--&lt;!&ndash;<div class="upload__image__text__links" *ngIf="uploadedImage">&ndash;&gt;-->
-              <!--&lt;!&ndash;<div (click)="fileUploader.click()">שנה תמונה</div>&ndash;&gt;-->
-              <!--&lt;!&ndash;<div (click)="deleteImage()">למחוק תמונה</div>&ndash;&gt;-->
-            <!--&lt;!&ndash;</div>&ndash;&gt;-->
-
-          <!--&lt;!&ndash;</div>&ndash;&gt;-->
-
-          <!--<div class="upload__image__btn">-->
-            <!--&lt;!&ndash;<div class="upload__image__corss__container">&ndash;&gt;-->
-            <!--&lt;!&ndash;</div>&ndash;&gt;-->
-            <!--&lt;!&ndash;<p class="upload__image__btn__text">הוסף/י לוגו לרשת</p>&ndash;&gt;-->
-
-            <!--<div class="upload__image__btn__inner" *ngIf="!uploadedImage" (click)="fileUploader.click()">-->
-              <!--<div class="upload__image__btn__text">הוסף/י לוגו לרשת</div>-->
-            <!--</div>-->
-            <!--<img [src]="uploadedImage" *ngIf="uploadedImage">-->
-          <!--</div>-->
-        <!--</div>-->
-
-        <div></div>
-
     </div>
 
 
     <div class="extra-category__header">
-      <button class="add-button" (click)="addNewExtraCategory()">
-        add extra category
+      <button (click)="addNewExtraCategory()" class="torless-page__add-new-element">
+        <span class="plus">+</span>
+        <span class="text">הוסף תת קטגוריה</span>
       </button>
-      <div class="info-icon">i</div>
+      <div class="info-icon">
+        <app-information [hintText]="'some text'" hintPosition="top center" iconColor="#ff5b57"></app-information>
+      </div>
       <div class="label-text">
-        extra categories
+        קטגוריות נוספות
       </div>
     </div>
 
@@ -167,7 +136,9 @@
         <button class="remove-button" (click)="removeExtraCategory(index)">
           <img src="./assets/icon/trash.svg">
         </button>
-        <div class="info-icon">i</div>
+        <div class="information-container">
+          <app-information [hintText]="'some text'" hintPosition="top center" iconColor="#ff5b57"></app-information>
+        </div>
         <div class="name-line">
           <div class="input-line">
             <input type="text" appInput [(ngModel)]="extra_category.extra_cat_name" [placeholderMessage]="'category name'">
@@ -177,13 +148,16 @@
       <div class="body" *ngIf="extra_category?.extra_cat_name.length > 0">
         <div class="extra-product">
           <div class="extra-product__outer">
-            <div class="info-icon">i</div>
+            <div class="information-container">
+              <app-information [hintText]="'some text'" hintPosition="top center" iconColor="#ff5b57"></app-information>
+            </div>
             <div class="description">
-              description
+              <!--todo: remove-->
+              טקסט הבדיקה
             </div>
           </div>
 
-          <div *ngFor="let extra_info of extra_category.extra_info">
+          <div *ngFor="let extra_info of extra_category.extra_info" style="margin-bottom: 30px;">
             <div class="extra-product__inner">
               <div class="input-line">
                 <input type="text" appInput [(ngModel)]="extra_info.extra_pr_name" [placeholderMessage]="'name'">
@@ -202,7 +176,8 @@
               <div class="double-extra-products__item">
                 <div class="double-extra-products__item--outer" *ngIf="extra_info.double_extra_products?.length > 0">
                   <div class="description">
-                    description
+                    <!--todo: remove-->
+                    טקסט הבדיקה
                   </div>
                 </div>
 
@@ -216,35 +191,40 @@
                 </div>
 
                 <div class="double-extra-products__item--button" (click)="addDoubleExtraProduct(extra_info.double_extra_products)">
-                  add double extra category
+                  <!--todo: remove-->
+                  <span class="text">טקסט הבדיקה</span>
+                  <span class="plus">+</span>
                 </div>
 
               </div>
             </div>
           </div>
 
-
-
-
           <!--TODO: after BE connect uncomment-->
           <div class="extra-product__button" (click)="addExtraInfo(extra_category.extra_info)">
-            add extra product
+            <!--todo: remove-->
+            <span class="text">טקסט הבדיקה</span>
+            <span class="plus">+</span>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="extra-category__header" *ngIf="createdProduct.extra_categories?.length > 4">
-      <button class="add-button">
-        add extra category
-      </button>
-    </div>
+    <button (click)="addNewExtraCategory()" class="torless-page__add-new-element" *ngIf="createdProduct.extra_categories?.length > 4" style="margin-bottom: 55px;">
+      <span class="plus">+</span>
+      <span class="text">הוסף תת קטגוריה</span>
+    </button>
 
   </div>
 
   <div class="component-footer">
-    <button (click)="saveProduct()" [disabled]="isSubmitButtonDisabled()">save</button>
-    <span (click)="goBack()">go back</span>
+    <span (click)="goBack()" class="back-button">תחזור</span>
+    <button (click)="saveProduct()" [disabled]="isSubmitButtonDisabled()" class="torless-page__add-new-element">
+      <span class="text">לשמור מוצר</span>
+      <span class="icon">
+        <img src="./assets/icon/save.svg">
+      </span>
+    </button>
   </div>
 
 </div>

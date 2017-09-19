@@ -1,10 +1,13 @@
 import { Component, OnInit, Renderer } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { CafeteriaService, TimeSelectService, UniversityService } from '../../services';
+import { CafeteriaService, TimeSelectService, UniversityService, ModalService } from '../../services';
 
 // custom classes
 import { CreatedCafeteria } from '../../custom-classes';
+
+// modal
+import { TimeSelectModalComponent } from '../../modals/time-select-modal/time-select-modal.component';
 
 @Component({
   selector: 'app-create-cafeteria',
@@ -29,7 +32,8 @@ export class CreateCafeteriaComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private cafeteriaService: CafeteriaService,
     private universityService: UniversityService,
-    private timeSelectService: TimeSelectService
+    private timeSelectService: TimeSelectService,
+    private modalService: ModalService
   ) { }
 
   ngOnInit() {
@@ -77,16 +81,24 @@ export class CreateCafeteriaComponent implements OnInit {
   }
 
   public showTimeSelectModal(dayNumber: number, event): void {
-    this.timeSelectService.show(dayNumber, this.createdCafeteria.work_time[dayNumber - 1]).then((response) => {
-      this._setSelectedTime(this.createdCafeteria.work_time, {
-        day_number: dayNumber,
-        time_start: (response as any).begin,
-        time_end: (response as any).end
-      });
-      this.selectDay(event);
-    }, (error) => {
-      console.log('error', error);
+    this.modalService.create(TimeSelectModalComponent, {
+      workTime: this.createdCafeteria.work_time,
+      selectedDay: dayNumber
+    }, 'middle').then((response) => {
+      console.log('response', response);
+    }, (errors) => {
+      console.log('errors', errors);
     });
+    // this.timeSelectService.show(dayNumber, this.createdCafeteria.work_time[dayNumber - 1]).then((response) => {
+    //   this._setSelectedTime(this.createdCafeteria.work_time, {
+    //     day_number: dayNumber,
+    //     time_start: (response as any).begin,
+    //     time_end: (response as any).end
+    //   });
+    //   this.selectDay(event);
+    // }, (error) => {
+    //   console.log('error', error);
+    // });
   }
 
   public showTimeText(dayNumber): boolean {

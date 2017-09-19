@@ -15,6 +15,9 @@ export class AddProductComponent implements OnInit {
   public createdProduct: CreatedProduct = new CreatedProduct();
   public minutes: number[] = new Array(18);
 
+  public uploadedFile: File;
+  public uploadedImage: string;
+
   private _cafeteriaId: number;
   private _categoryId: number;
 
@@ -87,6 +90,39 @@ export class AddProductComponent implements OnInit {
 
   public removeExtraCategory(index: number): void {
     this.createdProduct.extra_categories.splice(index, 1);
+  }
+
+  public openFileUploader(fileUploader: HTMLElement | any): void {
+    if (fileUploader.files && fileUploader.files[0]) {
+      const files: FileList = fileUploader.files;
+      const file: File = files[0];
+      const reader: FileReader = new FileReader();
+      reader.readAsDataURL(file);
+
+      reader.onload = (() => {
+        this.uploadedFile = file;
+        this.uploadedImage = reader.result;
+
+        // image size check 150x150
+        // const img: HTMLImageElement = new Image();
+        // img.src = reader.result;
+        // img.onload = () => {
+        //   if (img.width <= 150 && img.height <= 150) {
+        //     // prev.src = this.src;
+        //     this.uploadedImage = img.src;
+        //   } else {
+        //     console.log('ERROR');
+        //   }
+        // };
+
+      }).bind(this);
+
+      reader.onerror = ((error) => {
+        console.log('Error: ', error);
+      });
+
+    }
+
   }
 
 

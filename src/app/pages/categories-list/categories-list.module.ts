@@ -7,6 +7,7 @@ import { CategoriesListRoutingModule } from './categories-list-routing.module';
 import { CategoriesListComponent } from './categories-list.component';
 
 import { DirectivesModule } from '../../directives';
+import { ComponentsModule } from '../../components';
 
 import { DndModule } from 'ng2-dnd';
 
@@ -16,6 +17,7 @@ import { DndModule } from 'ng2-dnd';
     CategoriesListRoutingModule,
     FormsModule,
     DirectivesModule,
+    ComponentsModule,
     DndModule.forRoot()
   ],
   declarations: [
