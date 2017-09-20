@@ -132,7 +132,7 @@ console.log("error CB")
         this.uploadedImage = reader.result;
 
         let token = localStorage.getItem('torless_token') ? localStorage.getItem('torless_token') : '6104ff56de74232da2495690d165c54b';
-        this.userService.saveCompanyImage(this.uploadedFile, '6104ff56de74232da2495690d165c54b').then((response) => {
+        this.userService.saveCompanyImage(this.uploadedFile, token).then((response) => {
           console.log('response ===> ', response);
         }, (error) => {
           console.log('error ===> ', error);
