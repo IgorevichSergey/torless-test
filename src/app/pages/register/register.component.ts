@@ -59,10 +59,10 @@ export class RegisterComponent implements OnInit {
       this.registrationError = false;
       console.log('response', response.data.token);
       if (this.uploadedFile) {
-        this.userService.saveCompanyImage(this.uploadedFile, response.data.token).then(() => {
-          //
+        this.userService.saveCompanyImage(this.uploadedFile, response.data.token).then((response) => {
+          console.log('response ===> ', response);
         }, (error) => {
-          //
+          console.log('error ===> ', error);
         });
       }
 
@@ -130,6 +130,12 @@ console.log("error CB")
       reader.onload = (() => {
         this.uploadedFile = file;
         this.uploadedImage = reader.result;
+        //
+        // this.userService.saveCompanyImage(this.uploadedFile, '6104ff56de74232da2495690d165c54b').then((response) => {
+        //   console.log('response ===> ', response);
+        // }, (error) => {
+        //   console.log('error ===> ', error);
+        // });
 
         // image size check 150x150
         // const img: HTMLImageElement = new Image();

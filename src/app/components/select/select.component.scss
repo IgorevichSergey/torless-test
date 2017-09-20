@@ -26,6 +26,20 @@
     }
   }
 
+  &__close {
+    position: absolute;
+    top: 0;
+    height: 34px;
+    line-height: 34px;
+
+    &:after {
+      content: '\D7';
+      font-size: 0.9rem;
+      color: #909090;
+
+    }
+  }
+
   &__placeholder {
     position: absolute;
     height: 34px;
@@ -41,25 +55,28 @@
     color: #a2a2a2;
 
     &.focused {
-      top: -16px;
+      top: -5px;
       right: 0;
       font-size: 0.7rem;
+      height: auto;
+      line-height: inherit;
     }
   }
 
   &__value {
-    position: absolute;
+    //position: absolute;
     height: 34px;
     line-height: 34px;
     width: 100%;
-    top: 0;
-    right: 0;
+    //top: 0;
+    //right: 0;
     vertical-align: middle;
     text-align: right;
     user-select: none;
     font-size: 1rem;
     transition: top 0.2s, font-size 0.2s;
     color: #000;
+    border-bottom: 1px solid red;
 
     &.focused {
       top: -16px;

@@ -100,6 +100,7 @@ export class EditManagerComponent implements OnInit {
   private __getManager(id: number): void {
     this.userService.getManagerById(id).then((response) => {
       console.log('response', response);
+      this.manager = response.data;
     }, () => {
       console.log('reject')
       this.manager = {};

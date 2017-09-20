@@ -18,7 +18,15 @@
       </button>
     </div>
     <div class="form" *ngIf="hours">
-      <app-select [model]="workingTime[selectedDay].time_start" [list]="hours" key="time" placeholder="תחילת העבודה" (output)="workingTime[selectedDay].begin = $event"></app-select>
+      <!--<select appSelect [search]="search" [(ngModel)]="selectedDay">-->
+        <!--<option value="1">1</option>-->
+        <!--<option value="2">2</option>-->
+        <!--<option value="3">3</option>-->
+        <!--<option value="4">4</option>-->
+      <!--</select>-->
+      <app-select [list]="['1', '2']" [placeholder]="'select placeholder'" (setItem)="test = $event">
+
+      </app-select>
     </div>
     <div class="day-select">
       <div class="day selected">

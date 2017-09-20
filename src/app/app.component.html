@@ -19,12 +19,12 @@
       </div>
 
       <div *ngIf="loggedIn" class="pages center">
-        <!--advertising-->
-        <div>פרסום</div>
+        <!--manager list-->
+        <div [ngClass]="{'active': isActiveLink('/manager-list')}" (click)="goTo('/manager-list')">רשימת משתמשים</div>
         <!--reports-->
         <div>דוחות</div>
         <!--cafeterias-->
-        <div  [ngClass]="{'active': isActiveLink('/cafeteria-list')}" (click)="goTo('/cafeteria-list')">({{cafeteriasLength}})  קפיטריות</div>
+        <div [ngClass]="{'active': isActiveLink('/cafeteria-list')}" (click)="goTo('/cafeteria-list')">({{cafeteriasLength}})  קפיטריות</div>
         <!--main-->
         <div >ראשי</div>
       </div>

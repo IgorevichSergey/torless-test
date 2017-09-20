@@ -1,21 +1,30 @@
 <div class="select-component">
-  <div *ngIf="!model" class="select-component__placeholder" (click)="elementFocus(true)" #placeholderElement>
+
+  <div class="select-component__placeholder" (click)="setFocus(!inputFocused); inputFocus()" [ngClass]="{'focused': inputFocused}">
     {{ placeholder }}
   </div>
-  <div *ngIf="model" class="select-component__value" (click)="elementFocus(true)" #placeholderElement>
-    {{ model }}
+
+  <div *ngIf="value" class="select-component__close" (click)="resetValue()"></div>
+  <input *ngIf="!value" dir="rtl" type="text" #input
+         [(ngModel)]="search" (focus)="setFocus(true)" (keyup)="filterGenerate(search)" (focus)="showList(true)">
+
+
+
+  <div *ngIf="!value" class="select-component__triangle" (click)="showList(true)"></div>
+  <div *ngIf="value" class="select-component__value">
+    {{ value }}
   </div>
 
-  <div class="select-component__triangle" (click)="showList(true)"></div>
 
-  <input dir="rtl" type="text" [(ngModel)]="filterParams.value" #inputElement>
 
-  <div class="select-component__list" *ngIf="list" #listElement>
+
+
+  <div class="select-component__list" *ngIf="list" [ngClass]="{'visible': visibleList}">
     <div class="list-element" *ngFor="let item of list | filter: filterParams;" (click)="selectItem(item)">
       {{ key ? item[key] : item }}
     </div>
     <div class="list-element" *ngIf="(list | filter: filterParams)?.length === 0">
-      No items with '{{filterParams.value}}' params
+      אין פריטים עם פרמטר '{{filterParams.value}}'
     </div>
   </div>
 </div>

@@ -141,7 +141,8 @@ export class UserService {
 
   public getManagerById(id: number): Promise<any> {
     const _token: string = localStorage.getItem('torless_token');
-    const data: string = JSON.stringify({tag: 'get_manager_user', 'token': _token, 'user_id': id});
+
+    const data: string = JSON.stringify({tag: 'get_manager_by_id', 'token': _token, 'manager_id': id});
 
     return new Promise((resolve, reject) => {
       this._setRequest(data).then((response) => {

@@ -56,7 +56,7 @@
         </div>
         <div class="input-line required">
          <span> VAT number</span>
-          <input dir="rtl" type="number" appInput [(ngModel)]="createdUser.company.comapny_vat_number" [placeholderMessage]="'מס’ ח”פ'" [errorMessage]="'ח”פ לא תקין'" [error]="registrationError">
+          <input dir="rtl" type="number" appInput [(ngModel)]="createdUser.company.comapny_vat_number" [placeholderMessage]="'מס’ ח”פ'" [message]="'ח”פ לא תקין'" [error]="registrationError">
         </div>
         <div class="input-line required">
           <span>address</span>
@@ -98,7 +98,7 @@
         </div>
         <div class="input-line required">
           <span>email</span>
-          <input type="text" appInput [(ngModel)]="createdUser.user.us_email" (blur)="checkEmail(createdUser.user.us_email)" [placeholderMessage]="'אימייל'" [error]="formErrors.emailField" [errorMessage]="formErrorMessages.email" >
+          <input type="text" appInput [(ngModel)]="createdUser.user.us_email" (blur)="checkEmail(createdUser.user.us_email)" [placeholderMessage]="'אימייל'" [error]="formErrors.emailField" [message]="formErrorMessages.email" >
         </div>
         <div class="input-line required">
           <span>phone</span>
@@ -113,12 +113,12 @@
 
         <div class="input-line required">
           <span>password</span>
-          <input type="password" appInput [(ngModel)]="createdUser.user.us_pass" [placeholderMessage]="'סיסמה'" [error]="confirmPasswordError" [errorMessage]="'passwords do not match'" (blur)="passwordsCheck(createdUser.user.us_pass, confirmedPassword)">
+          <input type="password" appInput [(ngModel)]="createdUser.user.us_pass" [placeholderMessage]="'סיסמה'" [error]="confirmPasswordError" [message]="'passwords do not match'" (blur)="passwordsCheck(createdUser.user.us_pass, confirmedPassword)">
         </div>
 
         <div class="input-line required">
           <!--username-->
-          <input type="password" appInput [(ngModel)]="confirmedPassword" [placeholderMessage]="'שם משתמש'" [error]="confirmPasswordError" [errorMessage]="'passwords do not match'" (blur)="passwordsCheck(createdUser.user.us_pass, confirmedPassword)">
+          <input type="password" appInput [(ngModel)]="confirmedPassword" [placeholderMessage]="'שם משתמש'" [error]="confirmPasswordError" [message]="'passwords do not match'" (blur)="passwordsCheck(createdUser.user.us_pass, confirmedPassword)">
         </div>
 
       </div>

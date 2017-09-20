@@ -8,11 +8,12 @@ import {
 })
 export class InputDirective implements AfterViewInit, OnChanges {
   @Input('placeholderMessage') placeholderMessage: string;
-  @Input('errorMessage') errorMessage: string;
-  @Input('invalidMessage') invalidMessage: string;
+
+  @Input('message') message: string;
+
+  // @Input('invalidMessage') invalidMessage: string;
 
   @Input('error') error: boolean;
-  @Input('invalid') invalid: boolean;
 
   @Input('ngModel') ngModel: any;
 
@@ -37,7 +38,7 @@ export class InputDirective implements AfterViewInit, OnChanges {
     if (values && values.error && values.error.previousValue && !values.error.currentValue) {
       this._setErrorInputField(false);
     }
-    if (values && values.errorMessage && values.errorMessage.previousValue && values.errorMessage.currentValue !== values.errorMessage.previousValue) {
+    if (values && values.message && values.message.previousValue && values.message.currentValue !== values.message.previousValue) {
       this._removeErrorText();
       this._addErrorText();
     }
@@ -56,7 +57,7 @@ export class InputDirective implements AfterViewInit, OnChanges {
       this.renderer.invokeElementMethod(this.elementRef.nativeElement, 'focus');
     });
 
-    if(this.ngModel) {
+    if (this.ngModel) {
       this.renderer.setElementClass(this._placeholderElement, 'focused', true);
     }
   }
@@ -66,7 +67,7 @@ export class InputDirective implements AfterViewInit, OnChanges {
   }
 
   @HostListener('blur') onBlur() {
-    if(!this.elementRef.nativeElement.value) {
+    if (!this.elementRef.nativeElement.value) {
       this.renderer.setElementClass(this._placeholderElement, 'focused', false);
       this._setErrorInputField(false);
     }
@@ -75,7 +76,7 @@ export class InputDirective implements AfterViewInit, OnChanges {
 
   ///////
   private _setErrorInputField(status: boolean): void {
-    if(status) {
+    if (status) {
       this._addErrorText();
       this._addInputBorder('#ff5b57');
     } else {
@@ -85,9 +86,9 @@ export class InputDirective implements AfterViewInit, OnChanges {
   }
 
   private _addErrorText() {
-    if(this.errorMessage) {
+    if (this.message) {
       this._errorElement = this.renderer.createElement(this.elementRef.nativeElement.parentNode, 'div');
-      this._errorElement.innerHTML = this.errorMessage;
+      this._errorElement.innerHTML = this.message;
       this.renderer.setElementClass(this._errorElement, 'app-input-error-message', true);
     }
   }

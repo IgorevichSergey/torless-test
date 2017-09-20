@@ -14,11 +14,14 @@ export class TimeSelectModalComponent {
 
   hours: any[] = [];
 
+  test: string;
+
+
+
   constructor(
     private modalService: ModalService
   ) {
     this.__workingHoursGenerate();
-    console.log('this.hours', this.hours);
   }
 
 
