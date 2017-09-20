@@ -130,12 +130,13 @@ console.log("error CB")
       reader.onload = (() => {
         this.uploadedFile = file;
         this.uploadedImage = reader.result;
-        //
-        // this.userService.saveCompanyImage(this.uploadedFile, '6104ff56de74232da2495690d165c54b').then((response) => {
-        //   console.log('response ===> ', response);
-        // }, (error) => {
-        //   console.log('error ===> ', error);
-        // });
+
+        let token = localStorage.getItem('torless_token') ? localStorage.getItem('torless_token') : '6104ff56de74232da2495690d165c54b';
+        this.userService.saveCompanyImage(this.uploadedFile, '6104ff56de74232da2495690d165c54b').then((response) => {
+          console.log('response ===> ', response);
+        }, (error) => {
+          console.log('error ===> ', error);
+        });
 
         // image size check 150x150
         // const img: HTMLImageElement = new Image();
