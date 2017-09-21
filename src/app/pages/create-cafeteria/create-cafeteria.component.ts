@@ -109,8 +109,11 @@ export class CreateCafeteriaComponent implements OnInit {
           console.warn('img error', imgError);
         });
       } else {
-        this.router.navigate(['create-cafeteria-manager', response.data.caf_id]);
+        // todo: uncomment after BE fix
+        // this.router.navigate(['create-cafeteria-manager', response.data.caf_id]);
       }
+
+      this.router.navigate(['create-cafeteria-manager', response.data.caf_id]);
       // this._goTo('/create-cafeteria-manager');
     }, (error) => {
       console.log('error', error);

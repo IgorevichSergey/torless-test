@@ -53,6 +53,8 @@ export class AddProductComponent implements OnInit {
       } else {
         this.goBack();
       }
+      // todo: delete after BE connect
+      this.goBack();
     }, (error) => {
       console.log('error ===> ', error);
     });

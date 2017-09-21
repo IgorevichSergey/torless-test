@@ -61,17 +61,16 @@ export class RegisterComponent implements OnInit {
       console.log('response', response.data.token);
       if (this.uploadedFile) {
         this.userService.saveCompanyImage(this.uploadedFile, response.data.token).then((imgResponse) => {
-
           this._goTo('/cafeteria-type');
         }, (error) => {
           console.log('error ===> ', error);
         });
       } else {
         console.log('go to cafeteria type');
-        this._goTo('/cafeteria-type');
+
       }
-
-
+      // todo: move to ELSE after BE fix
+      this._goTo('/cafeteria-type');
       // todo: go to next page
       // this._goTo('/cafeteria-type');
       console.log('todo: save new image');
