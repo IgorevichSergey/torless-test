@@ -4,6 +4,8 @@
   text-align: right;
   width: 200%;
   margin-left: -100%;
+  display: flex;
+  justify-content: flex-end;
 
   input[type="file"] {
     width: 0;

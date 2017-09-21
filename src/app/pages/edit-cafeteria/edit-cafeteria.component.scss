@@ -5,9 +5,13 @@
   width: 200%;
   margin-left: -100%;
 
+  display: flex;
+  justify-content: flex-end;
+
   input[type="file"] {
     width: 0;
   }
+
 }
 .upload__image__btn__text {
   font-size: 1rem;
