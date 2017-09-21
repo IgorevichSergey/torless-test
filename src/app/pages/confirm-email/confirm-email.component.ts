@@ -9,7 +9,7 @@ import { UserService } from '../../services';
   styleUrls: ['./confirm-email.component.scss']
 })
 export class ConfirmEmailComponent implements OnInit {
-  public email: number;
+  public email: string;
   public confirmError: boolean = false;
   public confirmSuccess: boolean = false;
 

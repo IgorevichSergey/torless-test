@@ -134,6 +134,11 @@ export class AddProductComponent implements OnInit {
 
   }
 
+  deleteImage() {
+    this.uploadedFile = null;
+    this.uploadedImage = null;
+  }
+
 
   ///
 

@@ -1,114 +1,114 @@
-<div class="cafeteria-list-component">
-  <div class="component-title component-center-element">
-    <div>
-      ברוכים הבאים,  אנחנו שמחים שבחרת במערכת torLess. על מנת שתוכל/י
-    </div>
+<!--<div class="cafeteria-list-component">-->
+  <!--<div class="component-title component-center-element">-->
+    <!--<div>-->
+      <!--ברוכים הבאים,  אנחנו שמחים שבחרת במערכת torLess. על מנת שתוכל/י-->
+    <!--</div>-->
 
-  </div>
+  <!--</div>-->
 
-  <div class="list-options">
-    <div class="list-element">
-      <div class="element-label">
-        <span>1</span>
-      </div>
-      <div class="element-text">
-        הקמת סניף ראשון
-      </div>
-    </div>
-    <div class="list-element">
-      <div class="element-label">
-        <span>2</span>
-      </div>
-      <div class="element-text">
-        יצירת  תפריט לסניף
-      </div>
-    </div>
-  </div>
+  <!--<div class="list-options">-->
+    <!--<div class="list-element">-->
+      <!--<div class="element-label">-->
+        <!--<span>1</span>-->
+      <!--</div>-->
+      <!--<div class="element-text">-->
+        <!--הקמת סניף ראשון-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--<div class="list-element">-->
+      <!--<div class="element-label">-->
+        <!--<span>2</span>-->
+      <!--</div>-->
+      <!--<div class="element-text">-->
+        <!--יצירת  תפריט לסניף-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
 
-  <div class="component-button-container">
-    <div class="button-description">
-.אנחנו נלווה אותך לכל אורך התהליך ונדאג שתסיים/י אותו במהירות
-    </div>
-    <button (click)="selectNewCafeteriaType()">
-      <span>+</span>
-      לחץ/י להקמת סניף ראשון
-    </button>
-  </div>
+  <!--<div class="component-button-container">-->
+    <!--<div class="button-description">-->
+<!--.אנחנו נלווה אותך לכל אורך התהליך ונדאג שתסיים/י אותו במהירות-->
+    <!--</div>-->
+    <!--<button (click)="selectNewCafeteriaType()">-->
+      <!--<span>+</span>-->
+      <!--לחץ/י להקמת סניף ראשון-->
+    <!--</button>-->
+  <!--</div>-->
 
-  <div class="table-images-container">
-    <div class="table-image">
-      <img src="./assets/icon/table-image.png">
-    </div>
-    <div class="list-element">
-      <img src="./assets/icon/table-image.png">
-    </div>
-  </div>
+  <!--<div class="table-images-container">-->
+    <!--<div class="table-image">-->
+      <!--<img src="./assets/icon/table-image.png">-->
+    <!--</div>-->
+    <!--<div class="list-element">-->
+      <!--<img src="./assets/icon/table-image.png">-->
+    <!--</div>-->
+  <!--</div>-->
 
-  <div class="real-time-information-component">
-    <div class="component-description">
-     <div class="label">
-       מידע זמן אמת
-     </div>
-      <div class="dropdown">
-(כל הקפיטריות (0
-      </div>
-    </div>
-    <div class="blocks-container">
-      <div *ngFor="let cafeteria of cafeteriaList" class="real-time-information-block">
-        <!--<div class="title">הזמנות בטיפול</div>-->
-        [eq!!!!!
-        gbplf!!!!
-        <div class="title" (click)="editCafeteria(cafeteria)">
-          {{cafeteria.caf_name}}
-        </div>
-        <div class="content" (click)="editCafeteria(cafeteria)">-</div>
-        <div class="footer" (click)="showCafeteriaMenu(cafeteria)">
-          <div>
-            <!--קפיטריה מובילה בהזמנות: אין נתונים-->
-            {{cafeteria.caf_name + '\'s'}} menu
-          </div>
-        </div>
-      </div>
-      <div *ngIf="cafeteriaList?.length === 0">
-        no items
-      </div>
-    </div>
-  </div>
+  <!--<div class="real-time-information-component">-->
+    <!--<div class="component-description">-->
+     <!--<div class="label">-->
+       <!--מידע זמן אמת-->
+     <!--</div>-->
+      <!--<div class="dropdown">-->
+<!--(כל הקפיטריות (0-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--<div class="blocks-container">-->
+      <!--<div *ngFor="let cafeteria of cafeteriaList" class="real-time-information-block">-->
+        <!--&lt;!&ndash;<div class="title">הזמנות בטיפול</div>&ndash;&gt;-->
+        <!--[eq!!!!!-->
+        <!--gbplf!!!!-->
+        <!--<div class="title" (click)="editCafeteria(cafeteria)">-->
+          <!--{{cafeteria.caf_name}}-->
+        <!--</div>-->
+        <!--<div class="content" (click)="editCafeteria(cafeteria)">-</div>-->
+        <!--<div class="footer" (click)="showCafeteriaMenu(cafeteria)">-->
+          <!--<div>-->
+            <!--&lt;!&ndash;קפיטריה מובילה בהזמנות: אין נתונים&ndash;&gt;-->
+            <!--{{cafeteria.caf_name + '\'s'}} menu-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div *ngIf="cafeteriaList?.length === 0">-->
+        <!--no items-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
 
-  <div class="time-information">
-    <div class="component-description">
-      <div class="label">
-        מידע לאורך זמן
-      </div>
-      <div class="dropdown">
-        קפיטריה ב’ בנין 678 מכללת ספי...0
-      </div>
-      <div class="dropdown">
-        היום ה-22/12/2016
-      </div>
-    </div>
+  <!--<div class="time-information">-->
+    <!--<div class="component-description">-->
+      <!--<div class="label">-->
+        <!--מידע לאורך זמן-->
+      <!--</div>-->
+      <!--<div class="dropdown">-->
+        <!--קפיטריה ב’ בנין 678 מכללת ספי...0-->
+      <!--</div>-->
+      <!--<div class="dropdown">-->
+        <!--היום ה-22/12/2016-->
+      <!--</div>-->
+    <!--</div>-->
 
-    <div class="time-information-component-content">
-      <div class="block">
-        <div class="block-header">הזמנות שנעשו</div>
-        <div class="block-content">-</div>
-      </div>
-      <div class="block">
-        <div class="block-header">מחיר הזמנה ממוצעת</div>
-        <div class="block-content">-</div>
-      </div>
-      <div class="block">
-        <div class="block-header">חיסכון זמן ללקוחותייך (שעות)</div>
-        <div class="block-content">-</div>
-      </div>
-      <div class="block" right-border>
-        <div class="block-header">הכנסות מ-Torless</div>
-        <div class="block-content">-</div>
-      </div>
-    </div>
-  </div>
+    <!--<div class="time-information-component-content">-->
+      <!--<div class="block">-->
+        <!--<div class="block-header">הזמנות שנעשו</div>-->
+        <!--<div class="block-content">-</div>-->
+      <!--</div>-->
+      <!--<div class="block">-->
+        <!--<div class="block-header">מחיר הזמנה ממוצעת</div>-->
+        <!--<div class="block-content">-</div>-->
+      <!--</div>-->
+      <!--<div class="block">-->
+        <!--<div class="block-header">חיסכון זמן ללקוחותייך (שעות)</div>-->
+        <!--<div class="block-content">-</div>-->
+      <!--</div>-->
+      <!--<div class="block" right-border>-->
+        <!--<div class="block-header">הכנסות מ-Torless</div>-->
+        <!--<div class="block-content">-</div>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
 
-  <div class="canvas-block">
+  <!--<div class="canvas-block">-->
 
-  </div>
-</div>
+  <!--</div>-->
+<!--</div>-->
