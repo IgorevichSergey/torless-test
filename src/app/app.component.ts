@@ -53,6 +53,7 @@ export class AppComponent {
         this.__subHeaderElementsVisible(data.url);
         this.__isLoggedIn();
         this.__getCafeteriasList(this.loggedIn);
+        this.__getInfo();
       });
   }
 
@@ -108,5 +109,11 @@ export class AppComponent {
       });
     }
 
+  }
+
+  private __getInfo(): void {
+    this.cafeteriaService.getInfo().then((response) => {
+      console.log('response info ===> ', response);
+    });
   }
 }

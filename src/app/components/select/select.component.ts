@@ -5,18 +5,23 @@ import {Component, Input, Output, EventEmitter, HostListener, AfterViewInit, OnC
   templateUrl: './select.component.html',
   styleUrls: ['./select.component.scss']
 })
-export class SelectComponent implements AfterViewInit {
+export class SelectComponent implements AfterViewInit, OnChanges {
+  // item list
   @Input('list') list: any[];
+  // displayed value key
   @Input('key') key: string;
+  // placeholder message
   @Input('placeholder') placeholder: string;
+  // changed value
+  @Input('value') value: string;
+  // value key
+  @Input('valueKey') valueKey: string;
+  // set item output eventemitter
   @Output('setItem') setItem: EventEmitter<any> = new EventEmitter();
 
   @ViewChild('input') input: ElementRef;
 
-  value: string;
-  inputFocused: boolean;
-
-
+  public inputFocused: boolean;
 
   // filter values
   public search: string;
@@ -28,8 +33,7 @@ export class SelectComponent implements AfterViewInit {
   constructor(
     private elementRef: ElementRef
   ) {
-    console.log('add select init')
-
+    console.log('add select init');
   }
 
   ngAfterViewInit() {
@@ -43,6 +47,18 @@ export class SelectComponent implements AfterViewInit {
         }
       }
     }).bind(this));
+
+    if (this.value) {
+      this.setFocus(true);
+    }
+  }
+
+
+  ngOnChanges(values) {
+    console.log('values', values);
+    if (values && values.value && values.value.currentValue && (values.value.currentValue !== values.value.previousValue)) {
+      this.setFocus(true);
+    }
   }
 
   public filterGenerate(search: string): void {
@@ -53,7 +69,7 @@ export class SelectComponent implements AfterViewInit {
   }
 
   public selectItem(item: any): void {
-    this.value = item;
+    this.value = this.key ? item[this.key] : item;
     this.filterParams = null;
     this.visibleList = false;
     this.search = '';
@@ -187,40 +203,15 @@ export class SelectComponent implements AfterViewInit {
     this.inputFocused = focus;
   }
 
+  placeholderFocus(): void {
+    this.inputFocused = true;
+  }
+
   inputFocus(): void {
     if (this.input) {
-      console.log('input',  this.input);
       this.input.nativeElement.focus();
       this.inputFocused = true;
     }
   }
-//
-//   selectItem(item: any) {
-//     if (this.key) {
-//       this.model = item[this.key];
-//       this.output.emit(item[this.key]);
-//     } else {
-//       this.model = item;
-//       this.output.emit(item);
-//     }
-//     this.elementFocus(false);
-//   }
-//
-//
-//
-//   /////
-//   private __setModel(model: any): void {
-//     this.list.forEach((item) => {
-//         if (this.key) {
-//           if (item[this.key] === model) {
-//             this.model = item[this.key];
-//           }
-//         } else {
-//           if (item === model) {
-//             this.model = item;
-//           }
-//         }
-//     });
-//   }
 
 }

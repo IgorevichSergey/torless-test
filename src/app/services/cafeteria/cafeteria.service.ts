@@ -7,12 +7,14 @@ import { CreatedCafeteria, UpdatedCafeteria, CreatedProduct } from '../../custom
 @Injectable()
 export class CafeteriaService {
   private _host: string;
+  private _imageHost: string;
   private _headers: Headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
 
   constructor(
     private http: Http
   ) {
     this._host = environment.host;
+    this._imageHost = environment.cafeteriaImage;
   }
 
   public createCafeteria(createdCafeteria: CreatedCafeteria): Promise<any> {
@@ -68,6 +70,43 @@ export class CafeteriaService {
       }, (error) => {
         reject(error);
       });
+    });
+  }
+
+
+  public getInfo(): Promise<any> {
+    const token: string = localStorage.getItem('torless_token');
+    const data: string = JSON.stringify({tag: 'get_company_name', token: token});
+
+    return new Promise((resolve, reject) => {
+      this._setRequest(data).then((response) => {
+        resolve(response);
+      }, (error) => {
+        reject(error);
+      });
+    });
+  }
+
+  public saveImage(file: File, cafeteriaId: number): Promise<any> {
+    const formData = new FormData(),
+          token: string = localStorage.getItem('torless_token');
+
+    formData.append('file', file);
+    formData.append('token', token);
+    formData.append('cafeteria_id', '' + cafeteriaId);
+
+    return new Promise((resolve, reject) => {
+      this.http.post(this._imageHost, formData)
+        .map(response => response.json())
+        .subscribe((response) => {
+          if (response.success) {
+            resolve(response);
+          } else {
+            reject(response);
+          }
+        }, (error) => {
+          reject(error);
+        });
     });
   }
 

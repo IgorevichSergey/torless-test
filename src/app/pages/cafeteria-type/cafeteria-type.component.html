@@ -15,11 +15,17 @@
       <div class="text">
         קפיטריה
       </div>
+      <div class="check-icon" *ngIf="selectedCafeteriaType === 1">
+        <img src="./assets/icon/checked.svg">
+      </div>
     </div>
     <!-- salad-bar -->
     <div class="activity-block" (click)="selectElement(2)" [ngClass]="{'checked': selectedCafeteriaType === 2}">
       <div class="text">
         סלט-בר
+      </div>
+      <div class="check-icon" *ngIf="selectedCafeteriaType === 2">
+        <img src="./assets/icon/checked.svg">
       </div>
     </div>
     <!-- manza -->
@@ -27,18 +33,13 @@
       <div class="text">
         מנזה
       </div>
+      <div class="check-icon" *ngIf="selectedCafeteriaType === 3">
+        <img src="./assets/icon/checked.svg">
+      </div>
     </div>
   </div>
   <div class="duplication-options" *ngIf="selectedCafeteriaType && cafeterias?.length > 0">
-    <!-- <div>Existing cafetiere</div> -->
-    <select [(ngModel)]="selectedCafeteriaId">
-      <option selected="true" disabled="disabled" value="test">שכפל/י סניף קיים</option>
-      <option *ngFor="let cafeteria of cafeterias" [value]="cafeteria.id">
-        {{ cafeteria.caf_name }}
-      </option>
-      <!--<option>קפיטריה סוהו, מכללת ספיר, בנין 22</option>-->
-      <!--<option>קפיטריה סוהו, מכללת ספיר, בנין 22</option>-->
-    </select>
+    <app-select [list]="cafeterias" key="caf_name" [placeholder]="'סוג הקפטריה'" (setItem)="selectCafeteria($event)"></app-select>
   </div>
 
   <div class="button-container">

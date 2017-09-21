@@ -40,27 +40,6 @@
                [error]="loginError"
                [message]="'אולי טעיתם פה?'">
       </div>
-      <!--<app-input type="text"-->
-                 <!--placeholder="שם משתמש"-->
-                 <!--errorText="שם משתמש לא קיים"-->
-                 <!--[showError]="loginError"-->
-                 <!--[(model)]="user.us_log_email"-->
-                 <!--(output)="user.us_log_email = $event"-->
-                 <!--(invalid)="invalidForm = $event">-->
-      <!--</app-input>-->
-
-      <!--<app-input type="password"-->
-                 <!--placeholder="סיסמה"-->
-                 <!--errorText="אולי טעיתם פה?"-->
-                 <!--[showError]="loginError"-->
-                 <!--[(model)]="user.us_log_pass"-->
-                 <!--[showLink]="true"-->
-                 <!--linkText="שכחתי סיסמה"-->
-                 <!--linkPosition="top-left"-->
-                 <!--(linkAction)="forgotPassword()"-->
-                 <!--(output)="user.us_log_pass = $event"-->
-                 <!--(invalid)="invalidForm = $event">-->
-      <!--</app-input>-->
 
       <button class="torless-button" (click)="login(user)" [disabled]="submitButtonDisabled(user) && !invalidForm">התחבר/י</button>
     </div>

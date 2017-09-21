@@ -53,35 +53,38 @@
         <div>
           Universities
         </div>
-        <select [(ngModel)]="createdCafeteria.cafeteria.caf_university_id" (change)="selectUniversity($event)">
-          <option *ngFor="let university of universities" [value]="university.university_id">
-            {{ university.university_name }}
-          </option>
-        </select>
+        <app-select [list]="universities" [value]="getBy(universities, createdCafeteria.cafeteria.caf_university_id, 'university_id', 'university_name')" key="university_name" [placeholder]="'בנייני האוניברסיטה'" (setItem)="selectUniversity($event)"></app-select>
+        <!--<select [(ngModel)]="createdCafeteria.cafeteria.caf_university_id" (change)="selectUniversity($event)">-->
+          <!--<option *ngFor="let university of universities" [value]="university.university_id">-->
+            <!--{{ university.university_name }}-->
+          <!--</option>-->
+        <!--</select>-->
       </div>
 
       <div class="select-line required">
         <div>
           University Buildings
         </div>
-        <select [(ngModel)]="createdCafeteria.cafeteria.caf_university_building_id">
-          <option *ngFor="let universityBuilding of universityBuildings" [value]="universityBuilding.building_id">
-            {{ universityBuilding.building_name }}
-          </option>
-        </select>
+        <app-select [list]="universityBuildings" [value]="getBy(universityBuildings, createdCafeteria.cafeteria.caf_university_building_id, 'building_id', 'building_name')" key="building_name" [placeholder]="'בנייני האוניברסיטה'" (setItem)="selectCafeteriaBuilding($event)"></app-select>
+        <!--<select [(ngModel)]="createdCafeteria.cafeteria.caf_university_building_id">-->
+          <!--<option *ngFor="let universityBuilding of universityBuildings" [value]="universityBuilding.building_id">-->
+            <!--{{ universityBuilding.building_name }}-->
+          <!--</option>-->
+        <!--</select>-->
       </div>
 
       <div class="select-line required">
         <div>
           Kosher Type
         </div>
-        <select [(ngModel)]="createdCafeteria.cafeteria.caf_kosher_type">
-          <option [value]="0">first</option>
-          <option [value]="1">second</option>
-          <option [value]="2">third</option>
-          <option [value]="3">fourth</option>
-          <option [value]="4">fifth</option>
-        </select>
+        <app-select [list]="kosherTypes" key="name" [value]="getBy(kosherTypes, createdCafeteria.cafeteria.caf_kosher_type, 'id', 'name')" [placeholder]="'כשרות'" (setItem)="selectKosherType($event)"></app-select>
+        <!--<select [(ngModel)]="createdCafeteria.cafeteria.caf_kosher_type">-->
+          <!--<option [value]="0">first</option>-->
+          <!--<option [value]="1">second</option>-->
+          <!--<option [value]="2">third</option>-->
+          <!--<option [value]="3">fourth</option>-->
+          <!--<option [value]="4">fifth</option>-->
+        <!--</select>-->
       </div>
 
       <div class="radio-line">
@@ -110,47 +113,47 @@
           ימי פעילות הסניף
         </div>
         <div class="days required-top">
-          <div class="day" (click)="showTimeSelectModal(1, $event)">
+          <div class="day">
             <div class="time" *ngIf="showTimeText(1)">
               {{ getTimeByDayNumber(1) }}
             </div>
-            <div class="icon">א</div>
+            <div class="icon" (click)="showTimeSelectModal(1, $event)" [ngClass]="{'selected': showTimeText(1)}">א</div>
           </div>
-          <div class="day" (click)="showTimeSelectModal(2, $event)">
+          <div class="day">
             <div class="time" *ngIf="showTimeText(2)">
               {{ getTimeByDayNumber(2) }}
             </div>
-            <div class="icon">ב</div>
+            <div class="icon" (click)="showTimeSelectModal(2, $event)" [ngClass]="{'selected': showTimeText(2)}">ב</div>
           </div>
-          <div class="day" (click)="showTimeSelectModal(3, $event)">
+          <div class="day">
             <div class="time" *ngIf="showTimeText(3)">
               {{ getTimeByDayNumber(3) }}
             </div>
-            <div class="icon">ג</div>
+            <div class="icon" (click)="showTimeSelectModal(3, $event)" [ngClass]="{'selected': showTimeText(3)}">ג</div>
           </div>
-          <div class="day" (click)="showTimeSelectModal(4, $event)">
+          <div class="day">
             <div class="time" *ngIf="showTimeText(4)">
               {{ getTimeByDayNumber(4) }}
             </div>
-            <div class="icon">ד</div>
+            <div class="icon" (click)="showTimeSelectModal(4, $event)" [ngClass]="{'selected': showTimeText(4)}">ד</div>
           </div>
-          <div class="day" (click)="showTimeSelectModal(5, $event)">
+          <div class="day">
             <div class="time" *ngIf="showTimeText(5)">
               {{ getTimeByDayNumber(5) }}
             </div>
-            <div class="icon">ה</div>
+            <div class="icon" (click)="showTimeSelectModal(5, $event)" [ngClass]="{'selected': showTimeText(5)}">ה</div>
           </div>
-          <div class="day" (click)="showTimeSelectModal(6, $event)">
+          <div class="day">
             <div class="time" *ngIf="showTimeText(6)">
               {{ getTimeByDayNumber(6) }}
             </div>
-            <div class="icon">ו</div>
+            <div class="icon" (click)="showTimeSelectModal(6, $event)" [ngClass]="{'selected': showTimeText(6)}">ו</div>
           </div>
-          <div class="day" (click)="showTimeSelectModal(7, $event)">
+          <div class="day">
             <div class="time" *ngIf="showTimeText(7)">
               {{ getTimeByDayNumber(7) }}
             </div>
-            <div class="icon">ש</div>
+            <div class="icon" (click)="showTimeSelectModal(7, $event)" [ngClass]="{'selected': showTimeText(7)}">ש</div>
           </div>
         </div>
       </div>

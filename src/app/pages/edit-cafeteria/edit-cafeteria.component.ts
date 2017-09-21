@@ -20,6 +20,30 @@ export class EditCafeteriaComponent implements OnInit {
   public uploadedImage: string;
   public uploadedFile: File;
 
+  // temporary. todo: remove after BE connect
+  kosherTypes = [
+    {
+      id: 0,
+      name: 'first'
+    },
+    {
+      id: 1,
+      name: 'second'
+    },
+    {
+      id: 2,
+      name: 'third'
+    },
+    {
+      id: 3,
+      name: 'fourth'
+    },
+    {
+      id: 4,
+      name: 'fifth'
+    }
+  ];
+
   constructor(
     private renderer: Renderer,
     private router: Router,
@@ -92,9 +116,22 @@ export class EditCafeteriaComponent implements OnInit {
   }
 
   public updateCafeteria(updatedCafeteria: UpdatedCafeteria): void {
+    console.log('updatedCafeteria ==> ', updatedCafeteria)
     this.cafeteriaService.updateCafeteria(updatedCafeteria).then((data) => {
       console.log('update data', data);
-      this.goBack();
+      // if (this.uploadedFile) {
+      //   this.cafeteriaService.saveImage(this.uploadedFile, this._cafeteriaId).then((imgResponse) => {
+      //     console.log('img response', imgResponse);
+      //     this.goBack();
+      //   }, (imgError) => {
+      //     console.warn('img error', imgError);
+      //   });
+      // } else {
+      //   this.goBack();
+      // }
+
+    }, (error) => {
+      console.log('update error', error);
     });
   }
 
@@ -133,6 +170,37 @@ export class EditCafeteriaComponent implements OnInit {
 
     }
 
+  }
+
+  public selectUniversity(event) {
+    console.log('selectUniversity event', event);
+    this.updatedCafeteria.cafeteria.up_caf_university_id = event ? event.caf_university_id : null;
+    if (this.updatedCafeteria.cafeteria.up_caf_university_id) {
+      this._getUniversityBuildingById(this.updatedCafeteria.cafeteria.up_caf_university_id).then((universityBuildings) => {
+        this.universityBuildings = universityBuildings;
+      });
+    }
+  }
+
+  public selectKosherType(event): void {
+    this.updatedCafeteria.cafeteria.up_caf_kosher_type = event ? event.id : null;
+  }
+
+  public selectCafeteriaBuilding(event): void {
+    this.updatedCafeteria.cafeteria.up_caf_university_building_id = event ? event.building_id : null;
+  }
+
+  public getBy(array: any[], value: string | number, key: string, displayedValue: string): string | number {
+    let index: number = this._findIndex(array, (item) => {
+        return item[key] === value;
+      }),
+      result: string | number;
+
+    if ((index || index === 0) && index > -1) {
+      result = array[index][displayedValue];
+    }
+
+    return result;
   }
 
 

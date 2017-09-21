@@ -26,9 +26,14 @@ export class CafeteriaTypeComponent implements OnInit {
 
   ngOnInit() {}
 
+  selectCafeteria(event) {
+    this.selectedCafeteriaId = event ?  event.id : null;
+  }
+
   selectElement(typeId: number): void {
     this.cafeteriaService.getUserCafeterias().then((res) => {
       this.cafeterias = this._filter(res.data);
+      console.log('this.cafeterias', this.cafeterias);
       this.selectedCafeteriaType = typeId;
     }, (err) => {
       this.selectedCafeteriaType = typeId;

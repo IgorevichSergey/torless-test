@@ -7,12 +7,14 @@ import { CreatedProduct } from '../../custom-classes';
 @Injectable()
 export class ProductService {
   private _host: string;
+  private _imageHost: string;
   private _headers: Headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
 
   constructor(
     private http: Http
   ) {
     this._host = environment.host;
+    this._imageHost = environment.productImage;
   }
 
   public createMainProduct(createdProduct: CreatedProduct): Promise<any> {
@@ -133,6 +135,29 @@ export class ProductService {
     //     reject(error);
     //   });
     // });
+  }
+
+  public saveImage(file: File, productId: number): Promise<any> {
+    const formData = new FormData(),
+      token: string = localStorage.getItem('torless_token');
+
+    formData.append('file', file);
+    formData.append('token', token);
+    formData.append('product_id', '' + productId);
+
+    return new Promise((resolve, reject) => {
+      this.http.post(this._imageHost, formData)
+        .map(response => response.json())
+        .subscribe((response) => {
+          if (response.success) {
+            resolve(response);
+          } else {
+            reject(response);
+          }
+        }, (error) => {
+          reject(error);
+        });
+    });
   }
 
   /////

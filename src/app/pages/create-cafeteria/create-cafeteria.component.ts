@@ -26,6 +26,30 @@ export class CreateCafeteriaComponent implements OnInit {
 
   private _cafeteriaTypeId: number;
 
+  // temporary. todo: remove after BE connect
+  kosherTypes = [
+    {
+      id: 0,
+      name: 'first'
+    },
+    {
+      id: 1,
+      name: 'second'
+    },
+    {
+      id: 2,
+      name: 'third'
+    },
+    {
+      id: 3,
+      name: 'fourth'
+    },
+    {
+      id: 4,
+      name: 'fifth'
+    }
+  ];
+
   constructor(
     private renderer: Renderer,
     private router: Router,
@@ -62,10 +86,14 @@ export class CreateCafeteriaComponent implements OnInit {
     this.renderer.setElementClass(event.target, 'selected', addClass);
   }
 
-  public selectUniversity(event: Event) {
-    this._getUniversityBuildingById(this.createdCafeteria.cafeteria.caf_university_id).then((universityBuildings) => {
-      this.universityBuildings = universityBuildings;
-    });
+  public selectUniversity(event) {
+    console.log('selectUniversity event', event);
+    this.createdCafeteria.cafeteria.caf_university_id = event ? event.caf_university_id : null;
+    if (this.createdCafeteria.cafeteria.caf_university_id) {
+      this._getUniversityBuildingById(this.createdCafeteria.cafeteria.caf_university_id).then((universityBuildings) => {
+        this.universityBuildings = universityBuildings;
+      });
+    }
   }
 
   public createCafeteria(createdCafeteria: CreatedCafeteria): void {
@@ -73,7 +101,16 @@ export class CreateCafeteriaComponent implements OnInit {
 
     this.cafeteriaService.createCafeteria(this.createdCafeteria).then((response) => {
       console.log('response', response);
-      this.router.navigate(['create-cafeteria-manager', response.data.caf_id]);
+      if (this.uploadedFile) {
+        this.cafeteriaService.saveImage(this.uploadedFile, response.data.caf_id).then((imgResponse) => {
+          console.log('img response', imgResponse);
+          this.router.navigate(['create-cafeteria-manager', response.data.caf_id]);
+        }, (imgError) => {
+          console.warn('img error', imgError);
+        });
+      } else {
+        this.router.navigate(['create-cafeteria-manager', response.data.caf_id]);
+      }
       // this._goTo('/create-cafeteria-manager');
     }, (error) => {
       console.log('error', error);
@@ -84,8 +121,8 @@ export class CreateCafeteriaComponent implements OnInit {
     this.modalService.create(TimeSelectModalComponent, {
       workTime: this.createdCafeteria.work_time,
       selectedDay: dayNumber
-    }, 'middle').then((response) => {
-      console.log('response', response);
+    }, 'middle').then((response: { day_number: number; time_start: string; time_end: string; offDay?: boolean;}[]) => {
+      this.createdCafeteria.work_time = response;
     }, (errors) => {
       console.log('errors', errors);
     });
@@ -115,8 +152,13 @@ export class CreateCafeteriaComponent implements OnInit {
           return day.day_number === dayNumber;
         });
 
-    if(index >= 0) {
-      result = `${this.createdCafeteria.work_time[index].time_start} - ${this.createdCafeteria.work_time[index].time_end}`
+    if (index >= 0) {
+      if ((this.createdCafeteria.work_time[index] as any).offDay) {
+        result = 'יום חפשי';
+      } else {
+        result = `${this.createdCafeteria.work_time[index].time_start} - ${this.createdCafeteria.work_time[index].time_end}`;
+      }
+
     } else {
       result = 'NA';
     }
@@ -167,6 +209,27 @@ export class CreateCafeteriaComponent implements OnInit {
     this.uploadedFile = null;
   }
 
+  public selectKosherType(event): void {
+    this.createdCafeteria.cafeteria.caf_kosher_type = event ? event.id : null;
+  }
+
+  public selectCafeteriaBuilding(event): void {
+    this.createdCafeteria.cafeteria.caf_university_building_id = event ? event.building_id : null;
+  }
+
+  public getBy(array: any[], value: string | number, key: string, displayedValue: string): string | number {
+    let index: number = this._findIndex(array, (item) => {
+          return item[key] === value;
+        }),
+        result: string | number;
+
+    if ((index || index === 0) && index > -1) {
+      result = array[index][displayedValue];
+    }
+
+    return result;
+  }
+
 
   /////
   private _copyExistingCafeteria(existingCafeteria) {
@@ -190,6 +253,7 @@ export class CreateCafeteriaComponent implements OnInit {
     });
 
     this._getUniversityBuildingById(this.createdCafeteria.cafeteria.caf_university_id).then((universityBuildings) => {
+      console.log('universityBuildings', universityBuildings);
       this.universityBuildings = universityBuildings;
     });
   }
@@ -197,6 +261,7 @@ export class CreateCafeteriaComponent implements OnInit {
   private _getUniversities() {
     this.universityService.getUniversityList().then((response) => {
       // todo: RENAME response.data.cafeteria -> response.data.universities
+      console.log('universities', response.data.universities);
       this.universities = response.data.universities;
     });
   }

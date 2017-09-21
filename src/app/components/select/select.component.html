@@ -1,6 +1,6 @@
 <div class="select-component">
 
-  <div class="select-component__placeholder" (click)="setFocus(!inputFocused); inputFocus()" [ngClass]="{'focused': inputFocused}">
+  <div class="select-component__placeholder" (click)="placeholderFocus(); inputFocus()" [ngClass]="{'focused': inputFocused}">
     {{ placeholder }}
   </div>
 
@@ -8,22 +8,16 @@
   <input *ngIf="!value" dir="rtl" type="text" #input
          [(ngModel)]="search" (focus)="setFocus(true)" (keyup)="filterGenerate(search)" (focus)="showList(true)">
 
-
-
   <div *ngIf="!value" class="select-component__triangle" (click)="showList(true)"></div>
   <div *ngIf="value" class="select-component__value">
     {{ value }}
   </div>
 
-
-
-
-
   <div class="select-component__list" *ngIf="list" [ngClass]="{'visible': visibleList}">
     <div class="list-element" *ngFor="let item of list | filter: filterParams;" (click)="selectItem(item)">
       {{ key ? item[key] : item }}
     </div>
-    <div class="list-element" *ngIf="(list | filter: filterParams)?.length === 0">
+    <div dir="rtl" class="list-element" *ngIf="(list | filter: filterParams)?.length === 0">
       אין פריטים עם פרמטר '{{filterParams.value}}'
     </div>
   </div>

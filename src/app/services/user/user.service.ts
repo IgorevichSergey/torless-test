@@ -38,6 +38,8 @@ export class UserService {
 
     return new Promise((resolve, reject) => {
       this._setRequest(data).then((response) => {
+        const loggedInDate: string = '' + new Date().getTime();
+        localStorage.setItem('torless_loggedInTime', loggedInDate);
         localStorage.setItem('torless_token', response.data.token);
         resolve(response);
       }, (error) => {

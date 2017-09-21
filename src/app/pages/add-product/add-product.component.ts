@@ -43,7 +43,16 @@ export class AddProductComponent implements OnInit {
 
     this.productService.createMainProduct(this.createdProduct).then((response) => {
       console.log('response ==> ', response);
-      this.goBack();
+      if (this.uploadedFile) {
+        this.productService.saveImage(this.uploadedFile, response.data.prod_id).then((imgResponse) => {
+          console.log('imgResponse', imgResponse);
+          this.goBack();
+        }, (imgError) => {
+          console.warn('imgError', imgError);
+        });
+      } else {
+        this.goBack();
+      }
     }, (error) => {
       console.log('error ===> ', error);
     });

@@ -8,55 +8,56 @@
 
   <div class="torless-modal__body" >
     <div class="buttons">
-      <button class="button" [ngClass]="{'selected': workingDay}" (click)="makeWorking(false)">
-        <!--not working-->
-        לא עובד
-      </button>
       <button class="button" [ngClass]="{'selected': workingDay}" (click)="makeWorking(true)">
         <!--working-->
         עובד
       </button>
-    </div>
-    <div class="form" *ngIf="hours">
-      <!--<select appSelect [search]="search" [(ngModel)]="selectedDay">-->
-        <!--<option value="1">1</option>-->
-        <!--<option value="2">2</option>-->
-        <!--<option value="3">3</option>-->
-        <!--<option value="4">4</option>-->
-      <!--</select>-->
-      <app-select [list]="['1', '2']" [placeholder]="'select placeholder'" (setItem)="test = $event">
+      <button class="button" [ngClass]="{'selected': !workingDay}" (click)="makeWorking(false)">
+        <!--not working-->
+        לא עובד
+      </button>
 
-      </app-select>
     </div>
+    <div class="form" *ngIf="hours && workingDay">
+      <div class="select-container">
+        <app-select [list]="hours" [value]="getValue('time_start')" [placeholder]="'פתוח ב'" (setItem)="setTime($event, 'time_start')"></app-select>
+      </div>
+
+      <div class="select-container">
+        <app-select [list]="hours" [value]="getValue('time_end')" [placeholder]="'סגור ב'" (setItem)="setTime($event, 'time_end')"></app-select>
+      </div>
+    </div>
+
+
     <div class="day-select">
-      <div class="day selected">
+      <div class="day" (click)="selectDay(1)" [ngClass]="{'selected': selectedDay === 1}">
         <div class="icon">א</div>
       </div>
-      <div class="day">
+      <div class="day" (click)="selectDay(2)" [ngClass]="{'selected': selectedDay === 2}">
         <div class="icon">ב</div>
       </div>
-      <div class="day">
+      <div class="day" (click)="selectDay(3)" [ngClass]="{'selected': selectedDay === 3}">
         <div class="icon">ג</div>
       </div>
-      <div class="day">
+      <div class="day" (click)="selectDay(4)" [ngClass]="{'selected': selectedDay === 4}">
         <div class="icon">ד</div>
       </div>
-      <div class="day">
+      <div class="day" (click)="selectDay(5)" [ngClass]="{'selected': selectedDay === 5}">
         <div class="icon">ה</div>
       </div>
-      <div class="day">
+      <div class="day" (click)="selectDay(6)" [ngClass]="{'selected': selectedDay === 6}">
         <div class="icon">ו</div>
       </div>
-      <div class="day">
+      <div class="day" (click)="selectDay(7)" [ngClass]="{'selected': selectedDay === 7}">
         <div class="icon">ש</div>
       </div>
     </div>
   </div>
 
-  <div class="torless-modal__footer" (click)="submit()">
-    <div class="response-button">
+  <div class="torless-modal__footer">
+    <button class="response-button" (click)="submit()" [disabled]="isButtonDisabled()">
       תְגוּבָה
-    </div>
+    </button>
     <div class="reject-button" (click)="close()">
       לִדחוֹת
     </div>

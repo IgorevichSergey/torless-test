@@ -1,7 +1,5 @@
 .select-component {
   position: relative;
-  margin-bottom: 40px;
-
 
   input {
     background: inherit;
@@ -17,6 +15,7 @@
     top: 0;
     height: 34px;
     line-height: 34px;
+    cursor: pointer;
 
     &:after {
       content: '\25bc';
@@ -31,6 +30,7 @@
     top: 0;
     height: 34px;
     line-height: 34px;
+    cursor: pointer;
 
     &:after {
       content: '\D7';
@@ -55,7 +55,7 @@
     color: #a2a2a2;
 
     &.focused {
-      top: -5px;
+      top: -10px;
       right: 0;
       font-size: 0.7rem;
       height: auto;
@@ -76,7 +76,7 @@
     font-size: 1rem;
     transition: top 0.2s, font-size 0.2s;
     color: #000;
-    border-bottom: 1px solid red;
+    border-bottom: 1px solid #c8c8c8;
 
     &.focused {
       top: -16px;
@@ -104,7 +104,6 @@
       white-space: nowrap;
       text-overflow: ellipsis;
       overflow: hidden;
-      direction: rtl;
       user-select: none;
       cursor: pointer;
       &:hover {

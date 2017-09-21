@@ -57,13 +57,18 @@ export class RegisterComponent implements OnInit {
   registerUser(createdUser: CreatedUser): void {
     this.userService.registration(createdUser).then((response) => {
       this.registrationError = false;
+      console.log('response ===> ', response);
       console.log('response', response.data.token);
       if (this.uploadedFile) {
-        this.userService.saveCompanyImage(this.uploadedFile, response.data.token).then((response) => {
-          console.log('response ===> ', response);
+        this.userService.saveCompanyImage(this.uploadedFile, response.data.token).then((imgResponse) => {
+
+          this._goTo('/cafeteria-type');
         }, (error) => {
           console.log('error ===> ', error);
         });
+      } else {
+        console.log('go to cafeteria type');
+        this._goTo('/cafeteria-type');
       }
 
 
@@ -131,8 +136,8 @@ console.log("error CB")
         this.uploadedFile = file;
         this.uploadedImage = reader.result;
 
-        let token = localStorage.getItem('torless_token') ? localStorage.getItem('torless_token') : '6104ff56de74232da2495690d165c54b';
-        this.userService.saveCompanyImage(this.uploadedFile, token).then((response) => {
+        // let token = localStorage.getItem('torless_token') ? localStorage.getItem('torless_token') : '6104ff56de74232da2495690d165c54b';
+        this.userService.saveCompanyImage(this.uploadedFile, '9cb923ae0f8c4993dadecf1bef0b6f27').then((response) => {
           console.log('response ===> ', response);
         }, (error) => {
           console.log('error ===> ', error);

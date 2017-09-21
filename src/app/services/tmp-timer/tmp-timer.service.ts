@@ -17,6 +17,7 @@ export class TmpTimerService implements CanActivate {
           timeHoursDiff: number = (Math.abs(loggedTime - currentTime) / (1000 * 3600));
 
     if (timeHoursDiff >= 1) {
+      console.log('tmp service error')
       this.userService.logout().then(() => {
         this.router.navigateByUrl('/login');
       });
