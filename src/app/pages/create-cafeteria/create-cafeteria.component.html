@@ -46,13 +46,13 @@
       </div>
 
       <div class="input-line required">
-        <input type="text" appInput [(ngModel)]="createdCafeteria.cafeteria.caf_address" [placeholderMessage]="'address'">
+        <input type="text" appInput [(ngModel)]="createdCafeteria.cafeteria.caf_address" [placeholderMessage]="'כתובת'">
       </div>
 
       <div class="select-line required">
-        <div>
-          Universities
-        </div>
+        <!--<div>-->
+          <!--Universities-->
+        <!--</div>-->
         <app-select [list]="universities" [value]="getBy(universities, createdCafeteria.cafeteria.caf_university_id, 'university_id', 'university_name')" key="university_name" [placeholder]="'בנייני האוניברסיטה'" (setItem)="selectUniversity($event)"></app-select>
         <!--<select [(ngModel)]="createdCafeteria.cafeteria.caf_university_id" (change)="selectUniversity($event)">-->
           <!--<option *ngFor="let university of universities" [value]="university.university_id">-->
@@ -62,9 +62,9 @@
       </div>
 
       <div class="select-line required">
-        <div>
-          University Buildings
-        </div>
+        <!--<div>-->
+          <!--University Buildings-->
+        <!--</div>-->
         <app-select [list]="universityBuildings" [value]="getBy(universityBuildings, createdCafeteria.cafeteria.caf_university_building_id, 'building_id', 'building_name')" key="building_name" [placeholder]="'בנייני האוניברסיטה'" (setItem)="selectCafeteriaBuilding($event)"></app-select>
         <!--<select [(ngModel)]="createdCafeteria.cafeteria.caf_university_building_id">-->
           <!--<option *ngFor="let universityBuilding of universityBuildings" [value]="universityBuilding.building_id">-->
@@ -74,9 +74,9 @@
       </div>
 
       <div class="select-line required">
-        <div>
-          Kosher Type
-        </div>
+        <!--<div>-->
+          <!--Kosher Type-->
+        <!--</div>-->
         <app-select [list]="kosherTypes" key="name" [value]="getBy(kosherTypes, createdCafeteria.cafeteria.caf_kosher_type, 'id', 'name')" [placeholder]="'כשרות'" (setItem)="selectKosherType($event)"></app-select>
         <!--<select [(ngModel)]="createdCafeteria.cafeteria.caf_kosher_type">-->
           <!--<option [value]="0">first</option>-->
@@ -159,8 +159,10 @@
       </div>
 
       <div class="textarea-line">
-        <textarea appInput [(ngModel)]="createdCafeteria.cafeteria.caf_description" [placeholderMessage]="'description'"></textarea>
+        <textarea appInput [(ngModel)]="createdCafeteria.cafeteria.caf_description" [placeholderMessage]="'את התיאור'"></textarea>
       </div>
+
+      <div style="clear:both;"></div>
 
       <div class="upload__image__container">
         <input type="file" (change)="openFileUploader(fileUploader)" accept="image/jpeg,image/png,image/jpg" data-max-size="1024" #fileUploader>

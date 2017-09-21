@@ -5,6 +5,8 @@
     text-align: right;
     input[type="file"] {
       width: 0;
+      height: 0;
+      opacity: 0;
     }
   }
   .upload__image__btn__text {
@@ -80,8 +82,16 @@
       height: 100%;
     }
   }
-  .input-line{
-    width: 85%;
+  .input-line {
+    width: 80%;
+    input {
+      width: 100%;
+      font-size: 1.1rem;
+      height: 2.7rem;
+      background: inherit;
+      font-weight: 500;
+      color: #999999;
+    }
   }
   .registration-block .label{
     margin-top: 2.8rem;

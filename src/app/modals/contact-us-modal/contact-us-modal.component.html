@@ -7,23 +7,42 @@
   </div>
 
   <div class="torless-modal__body">
-    <app-input type="text"
-               placeholder="שם משתמש"
-               errorText="שם משתמש לא קיים"
-               [showError]="emailError"
-               [(model)]="email"
-               (output)="email = $event"
-               (invalid)="invalidForm = $event">
-    </app-input>
-    <app-textarea
-               placeholder="שם משתמש"
-               phoneFormat="true"
-               errorText="שם משתמש לא קיים"
-               [showError]="messageError"
-               [(model)]="message"
-               (output)="message = $event"
-               (invalid)="invalidForm = $event">
-    </app-textarea>
+    <!--<app-input type="text"-->
+               <!--placeholder="שם משתמש"-->
+               <!--errorText="שם משתמש לא קיים"-->
+               <!--[showError]="emailError"-->
+               <!--[(model)]="email"-->
+               <!--(output)="email = $event"-->
+               <!--(invalid)="invalidForm = $event">-->
+    <!--</app-input>-->
+    <div class="input-line">
+      <input type="text"
+             autocomplete="off" autocorrect="off" autocapitalize="off"
+             appInput
+             [(ngModel)]="email"
+             [placeholderMessage]="'שם משתמש'"
+             [error]="emailError"
+             [message]="'שם משתמש לא קיים'" />
+    </div>
+
+    <div class="textarea-line">
+      <textarea appInput
+                [(ngModel)]="message"
+                [placeholderMessage]="'שם משתמש'"
+                [error]="messageError"
+                [message]="'שם משתמש לא קיים'">
+      </textarea>
+    </div>
+<div style="clear: both;"></div>
+    <!--<app-textarea-->
+               <!--placeholder="שם משתמש"-->
+               <!--phoneFormat="true"-->
+               <!--errorText="שם משתמש לא קיים"-->
+               <!--[showError]="messageError"-->
+               <!--[(model)]="message"-->
+               <!--(output)="message = $event"-->
+               <!--(invalid)="invalidForm = $event">-->
+    <!--</app-textarea>-->
   </div>
 
   <div class="torless-modal__footer">

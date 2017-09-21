@@ -57,7 +57,7 @@
       </div>
 
       <div class="input-line required">
-        <input type="text" appInput [(ngModel)]="createdManagerUser.mn_phone" [placeholderMessage]="'phone'">
+        <input type="text" appInput [(ngModel)]="createdManagerUser.mn_phone" (keyup)="createdManagerUser.mn_phone = phoneFormatter(createdManagerUser.mn_phone)" [placeholderMessage]="'phone'">
       </div>
 
       <div style="margin-bottom: 1.5rem; font-weight: 800; font-size: 1.3rem">

@@ -51,23 +51,23 @@
         </div>
 
         <div class="input-line required">
-          <span>company name</span>
+          <!--<span>company name</span>-->
           <input type="text" appInput [(ngModel)]="createdUser.company.comapny_name" [placeholderMessage]="'שם חברה'" [error]="registrationError" >
         </div>
         <div class="input-line required">
-         <span> VAT number</span>
+         <!--<span> VAT number</span>-->
           <input dir="rtl" type="number" appInput [(ngModel)]="createdUser.company.comapny_vat_number" [placeholderMessage]="'מס’ ח”פ'" [message]="'ח”פ לא תקין'" [error]="registrationError">
         </div>
         <div class="input-line required">
-          <span>address</span>
+          <!--<span>address</span>-->
           <input type="text" appInput [(ngModel)]="createdUser.company.comapny_address" [placeholderMessage]="'כתובת'" [error]="registrationError">
         </div>
         <div class="input-line required">
-          <span>city</span>
+          <!--<span>city</span>-->
           <input type="text" appInput [(ngModel)]="createdUser.company.comapny_city" [placeholderMessage]="'עיר'" [error]="registrationError">
         </div>
         <div class="input-line">
-          <span>post code</span>
+          <!--<span>post code</span>-->
           <input type="text" appInput [(ngModel)]="createdUser.company.comapny_zip_code" [placeholderMessage]="'מיקוד'" [error]="registrationError">
         </div>
       </div>
@@ -81,28 +81,28 @@
         </div>
 
         <div class="input-line required">
-          <span>first name</span>
+          <!--<span>first name</span>-->
           <input type="text" appInput [(ngModel)]="createdUser.user.us_name" [placeholderMessage]="'שם פרטי'" [error]="registrationError" >
         </div>
         <div class="input-line required">
-          <span>last name</span>
+          <!--<span>last name</span>-->
           <input type="text" appInput [(ngModel)]="createdUser.user.us_last_name" [placeholderMessage]="'שם משפחה'" [error]="registrationError">
         </div>
         <div class="input-line required">
-          <span>id number</span>
+          <!--<span>id number</span>-->
           <input type="text" appInput [(ngModel)]="createdUser.user.us_passport_id" [placeholderMessage]="'מס’ תעודת זהות'" [error]="registrationError">
         </div>
         <div class="input-line required">
-          <span>role</span>
+          <!--<span>role</span>-->
           <input type="text" appInput [(ngModel)]="createdUser.user.us_position" [placeholderMessage]="'תפקיד'" [error]="registrationError" >
         </div>
         <div class="input-line required">
-          <span>email</span>
+          <!--<span>email</span>-->
           <input type="text" appInput [(ngModel)]="createdUser.user.us_email" (blur)="checkEmail(createdUser.user.us_email)" [placeholderMessage]="'אימייל'" [error]="formErrors.emailField" [message]="formErrorMessages.email" >
         </div>
         <div class="input-line required">
-          <span>phone</span>
-          <input type="text" appInput [(ngModel)]="createdUser.user.us_phone" [placeholderMessage]="'מספר טלפון נייד'" [error]="registrationError">
+          <!--<span>phone</span>-->
+          <input type="text" appInput [(ngModel)]="createdUser.user.us_phone" (keyup)="createdUser.user.us_phone = phoneFormatter(createdUser.user.us_phone)" [placeholderMessage]="'מספר טלפון נייד'" [error]="registrationError">
         </div>
       </div>
 
@@ -112,7 +112,7 @@
         </div>
 
         <div class="input-line required">
-          <span>password</span>
+          <!--<span>password</span>-->
           <input type="password" appInput [(ngModel)]="createdUser.user.us_pass" [placeholderMessage]="'סיסמה'" [error]="confirmPasswordError" [message]="'passwords do not match'" (blur)="passwordsCheck(createdUser.user.us_pass, confirmedPassword)">
         </div>
 

@@ -25,20 +25,24 @@
         :כבר איתנו? התחבר/י
       </div>
       <div class="input-line">
-        <input type="text" appInput
+        <input name="n"
+               type="text" appInput
                [(ngModel)]="user.us_log_email"
                [placeholderMessage]="'שם משתמש'"
                [error]="loginError"
-               [message]="'שם משתמש לא קיים'">
+               [message]="'שם משתמש לא קיים'" autocomplete="off" >
       </div>
 
       <div class="input-line">
         <span class="link top left" (click)="forgotPassword()">שכחתי סיסמה</span>
-        <input type="password" appInput
+        <input name="p"
+               type="password"
+               autocomplete="off" autocorrect="off" autocapitalize="off"
+               appInput
                [(ngModel)]="user.us_log_pass"
                [placeholderMessage]="'סיסמה'"
                [error]="loginError"
-               [message]="'אולי טעיתם פה?'">
+               [message]="'אולי טעיתם פה?'" />
       </div>
 
       <button class="torless-button" (click)="login(user)" [disabled]="submitButtonDisabled(user) && !invalidForm">התחבר/י</button>

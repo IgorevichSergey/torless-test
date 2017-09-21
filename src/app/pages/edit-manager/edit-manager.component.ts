@@ -94,13 +94,30 @@ export class EditManagerComponent implements OnInit {
     return disable;
   }
 
+  phoneFormatter(t: string): any {
+    const numbers: string = t ? t.replace(/\D/g, '') : '',
+      dashes: Object = {
+        3: '-',
+        5: '-',
+        7: '-'
+      },
+      len = (numbers.length <= 10) ? numbers.length : 10;
 
+    let result: string = '';
+
+    for (let i = 0; i < len; i++) {
+      result += (dashes[i] || '') + numbers[i];
+    }
+
+    return result;
+  }
 
   ////
   private __getManager(id: number): void {
     this.userService.getManagerById(id).then((response) => {
       console.log('response', response);
       this.manager = response.data;
+      this.manager.phone = this.phoneFormatter(this.manager.phone);
     }, () => {
       console.log('reject')
       this.manager = {};

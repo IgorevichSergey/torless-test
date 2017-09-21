@@ -170,6 +170,23 @@ console.log("error CB")
     this.uploadedFile = null;
   }
 
+  phoneFormatter(t: string): any {
+    const numbers: string = t ? t.replace(/\D/g, '') : '',
+      dashes: Object = {
+        3: '-',
+        5: '-',
+        7: '-'
+      },
+      len = (numbers.length <= 10) ? numbers.length : 10;
+
+    let result: string = '';
+
+    for (let i = 0; i < len; i++) {
+      result += (dashes[i] || '') + numbers[i];
+    }
+
+    return result;
+  }
 
   /////
   private _goTo(url: string, params?: NavigationExtras): void {

@@ -219,3 +219,20 @@
     }
   }
 }
+
+
+.radio-line {
+  position: relative;
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: .5rem;
+  flex-wrap: wrap;
+  width: 110%;
+  margin-left: -10%;
+  flex-direction: row-reverse;
+
+  .radio-button-element {
+    width: auto;
+  }
+}

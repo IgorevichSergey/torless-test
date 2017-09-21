@@ -2,4 +2,30 @@
   &__body {
     padding-bottom: 0!important;
   }
+
+  .input-line,
+  .textarea-line {
+    position: relative;
+    margin-bottom: 5rem;
+    width: 100%;
+    text-align: right;
+    float: right;
+    align-self: flex-end;
+
+    input,
+    textarea {
+      width: 100%;
+      font-size: 1.1rem;
+      height: 2.7rem;
+      background: inherit;
+      font-weight: 500;
+      color: #999999;
+    }
+
+    textarea {
+      padding-top: 10px;
+      resize: vertical;
+      max-height: 200px;
+    }
+  }
 }
