@@ -12,10 +12,7 @@ export class ModalService {
 
   constructor(
     private resolver: ComponentFactoryResolver
-  ) {
-
-    console.log('service error')
-  }
+  ) {}
 
 
   public create(component: any, data: Object = {}, cssClass?: string): Promise<any> {

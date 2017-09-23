@@ -51,7 +51,16 @@ export class CategoriesListComponent implements OnInit {
   }
 
   public categoriesDropped(): void {
-    console.log('this.categories', this.categories);
+    let orderedCategories: {cat_id: number, cat_pos: number}[] = [];
+    this.categories.forEach((item, i) => {
+      orderedCategories.push({
+        cat_id: item.cat_id,
+        cat_pos: i + 1
+      });
+    });
+
+    this.categoryService.setCategoryOrder(this._cafeteriaId, orderedCategories);
+
   }
 
   public tmpCafeteriaList(): void {
@@ -78,16 +87,17 @@ export class CategoriesListComponent implements OnInit {
     for(let i = 0, len = this.categories.length; i < len; i++ ) {
       if(buffer.cat_id === this.categories[i].cat_id) {
         if (buffer && buffer.category_name) {
-          // let updatedCategory: UpdatedMainCategory = new UpdatedMainCategory(this._cafeteriaId, buffer.cat_id, buffer.category_name, buffer.prod_col);
+          let updatedCategory: UpdatedMainCategory = new UpdatedMainCategory(this._cafeteriaId, buffer.cat_id, buffer.category_name, buffer.prod_col);
           // todo: add Update Category Method
-          // this.categoryService.updateMainCategory(updatedCategory).then((response) => {
+          this.categoryService.updateMainCategory(updatedCategory).then((response) => {
             this.categories[i] = Object.assign({}, this.editBuffer);
-          // });
+          });
         } else {
+
           this.categories[i].edit = false;
         }
 
-        this.editBuffer = null;
+
         break;
       }
     }

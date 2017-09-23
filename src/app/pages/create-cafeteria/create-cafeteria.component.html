@@ -50,41 +50,15 @@
       </div>
 
       <div class="select-line required">
-        <!--<div>-->
-          <!--Universities-->
-        <!--</div>-->
         <app-select [list]="universities" [value]="getBy(universities, createdCafeteria.cafeteria.caf_university_id, 'university_id', 'university_name')" key="university_name" [placeholder]="'בנייני האוניברסיטה'" (setItem)="selectUniversity($event)"></app-select>
-        <!--<select [(ngModel)]="createdCafeteria.cafeteria.caf_university_id" (change)="selectUniversity($event)">-->
-          <!--<option *ngFor="let university of universities" [value]="university.university_id">-->
-            <!--{{ university.university_name }}-->
-          <!--</option>-->
-        <!--</select>-->
       </div>
 
       <div class="select-line required">
-        <!--<div>-->
-          <!--University Buildings-->
-        <!--</div>-->
         <app-select [list]="universityBuildings" [value]="getBy(universityBuildings, createdCafeteria.cafeteria.caf_university_building_id, 'building_id', 'building_name')" key="building_name" [placeholder]="'בנייני האוניברסיטה'" (setItem)="selectCafeteriaBuilding($event)"></app-select>
-        <!--<select [(ngModel)]="createdCafeteria.cafeteria.caf_university_building_id">-->
-          <!--<option *ngFor="let universityBuilding of universityBuildings" [value]="universityBuilding.building_id">-->
-            <!--{{ universityBuilding.building_name }}-->
-          <!--</option>-->
-        <!--</select>-->
       </div>
 
       <div class="select-line required">
-        <!--<div>-->
-          <!--Kosher Type-->
-        <!--</div>-->
         <app-select [list]="kosherTypes" key="name" [value]="getBy(kosherTypes, createdCafeteria.cafeteria.caf_kosher_type, 'id', 'name')" [placeholder]="'כשרות'" (setItem)="selectKosherType($event)"></app-select>
-        <!--<select [(ngModel)]="createdCafeteria.cafeteria.caf_kosher_type">-->
-          <!--<option [value]="0">first</option>-->
-          <!--<option [value]="1">second</option>-->
-          <!--<option [value]="2">third</option>-->
-          <!--<option [value]="3">fourth</option>-->
-          <!--<option [value]="4">fifth</option>-->
-        <!--</select>-->
       </div>
 
       <div class="radio-line">

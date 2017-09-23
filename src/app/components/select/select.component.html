@@ -17,7 +17,7 @@
     <div class="list-element" *ngFor="let item of list | filter: filterParams;" (click)="selectItem(item)">
       {{ key ? item[key] : item }}
     </div>
-    <div dir="rtl" class="list-element" *ngIf="(list | filter: filterParams)?.length === 0">
+    <div dir="rtl" class="list-element" *ngIf="filterParams && (list | filter: filterParams)?.length === 0">
       אין פריטים עם פרמטר '{{filterParams.value}}'
     </div>
   </div>

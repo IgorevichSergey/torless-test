@@ -160,6 +160,20 @@ export class ProductService {
     });
   }
 
+
+  public orderProducts(products: {prod_id: number; position: number}[]): Promise<any> {
+    const _token: string = localStorage.getItem('torless_token');
+    const data: string = JSON.stringify({'tag': 'set_product_order', 'token': _token, 'prods': products});
+
+    return new Promise((resolve, reject) => {
+      this._setRequest(data).then((response) => {
+        resolve(response);
+      }, (error) => {
+        reject(error);
+      });
+    });
+  }
+
   /////
   private _setRequest(data: string): Promise<any> {
     const body: URLSearchParams = new URLSearchParams();

@@ -3,7 +3,9 @@ import {ActivatedRoute, Router} from '@angular/router';
 
 import { UpdatedCafeteria } from '../../custom-classes';
 
-import { CafeteriaService, UniversityService, TimeSelectService } from '../../services';
+import { TimeSelectModalComponent } from '../../modals/time-select-modal/time-select-modal.component';
+
+import { CafeteriaService, UniversityService, TimeSelectService, ModalService } from '../../services';
 
 @Component({
   selector: 'app-edit-cafeteria',
@@ -50,7 +52,8 @@ export class EditCafeteriaComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private timeSelectService: TimeSelectService,
     private cafeteriaService: CafeteriaService,
-    private universityService: UniversityService
+    private universityService: UniversityService,
+    private modalService: ModalService
   ) { }
 
   ngOnInit() {
@@ -59,6 +62,7 @@ export class EditCafeteriaComponent implements OnInit {
         this._cafeteriaId = +param.id;
         this._getCafeteria(+param.id).then((data) => {
           this.updatedCafeteria = this._parseCafeteriaToSaveFormat(data);
+          console.log('this.updatedCafeteria', this.updatedCafeteria)
           this.getBuildingsByUniversityId(this.updatedCafeteria.cafeteria.up_caf_university_id);
           this._getUniversityBuildingById(this.updatedCafeteria.cafeteria.up_caf_university_building_id);
         });
@@ -67,17 +71,47 @@ export class EditCafeteriaComponent implements OnInit {
     this._getUniversities();
   }
 
+  // public showTimeSelectModal(dayNumber: number, event): void {
+  //   console.log('CLICK')
+  //   this.timeSelectService.show(dayNumber).then((response) => {
+  //     this._setSelectedTime(this.updatedCafeteria.work_time, {
+  //       up_day_number: dayNumber,
+  //       up_time_start: (response as any).begin,
+  //       up_time_end: (response as any).end
+  //     });
+  //     this.selectDay(event);
+  //   }, (error) => {
+  //     console.log('error', error);
+  //   });
+  // }
+
   public showTimeSelectModal(dayNumber: number, event): void {
-    this.timeSelectService.show(dayNumber).then((response) => {
-      this._setSelectedTime(this.updatedCafeteria.work_time, {
-        up_day_number: dayNumber,
-        up_time_start: (response as any).begin,
-        up_time_end: (response as any).end
+    let workTime = [];
+    this.updatedCafeteria.work_time.forEach((item) => {
+      workTime.push({
+        day_number: item.up_day_number,
+        time_start: item.up_time_start,
+        time_end: item.up_time_end
       });
-      this.selectDay(event);
-    }, (error) => {
-      console.log('error', error);
     });
+    this.modalService.create(TimeSelectModalComponent, {
+      workTime: workTime,
+      selectedDay: dayNumber
+    }, 'middle').then((response: { day_number: number; time_start: string; time_end: string; offDay?: boolean;}[]) => {
+      this.updatedCafeteria.work_time = this._timeSelectResponseParsing(response);
+    }, (errors) => {
+      console.log('errors', errors);
+    });
+    // this.timeSelectService.show(dayNumber, this.createdCafeteria.work_time[dayNumber - 1]).then((response) => {
+    //   this._setSelectedTime(this.createdCafeteria.work_time, {
+    //     day_number: dayNumber,
+    //     time_start: (response as any).begin,
+    //     time_end: (response as any).end
+    //   });
+    //   this.selectDay(event);
+    // }, (error) => {
+    //   console.log('error', error);
+    // });
   }
 
   public selectDay(event: MouseEvent) {
@@ -119,16 +153,17 @@ export class EditCafeteriaComponent implements OnInit {
     console.log('updatedCafeteria ==> ', updatedCafeteria)
     this.cafeteriaService.updateCafeteria(updatedCafeteria).then((data) => {
       console.log('update data', data);
-      // if (this.uploadedFile) {
-      //   this.cafeteriaService.saveImage(this.uploadedFile, this._cafeteriaId).then((imgResponse) => {
-      //     console.log('img response', imgResponse);
-      //     this.goBack();
-      //   }, (imgError) => {
-      //     console.warn('img error', imgError);
-      //   });
-      // } else {
-      //   this.goBack();
-      // }
+      if (this.uploadedFile) {
+        this.cafeteriaService.saveImage(this.uploadedFile, this._cafeteriaId).then((imgResponse) => {
+          console.log('img response', imgResponse);
+          this.goBack();
+        }, (imgError) => {
+          console.warn('img error', imgError);
+          this.goBack();
+        });
+      } else {
+        this.goBack();
+      }
 
     }, (error) => {
       console.log('update error', error);
@@ -336,6 +371,24 @@ export class EditCafeteriaComponent implements OnInit {
         resolve(response.data.cafeteria);
       });
     });
+  }
+
+  private _timeSelectResponseParsing(array: { day_number: number; time_start: string; time_end: string; offDay?: boolean; }[]): {
+    up_day_number: number,
+    up_time_start: string,
+    up_time_end: string }[] {
+    let result = [],
+      len = array.length,
+      i = 0;
+    for ( ; i < len; i++) {
+      let tmpObj = {};
+      for (const key in array[i]) {
+        tmpObj['up_' + key] = array[i][key];
+      }
+      result.push(tmpObj);
+    }
+
+    return result;
   }
 
 }

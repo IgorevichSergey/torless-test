@@ -42,7 +42,7 @@ export class SelectComponent implements AfterViewInit, OnChanges {
       const isClickInside = specifiedElement.contains(event.target);
       if (!isClickInside) {
         this.showList(false);
-        if (!this.value) {
+        if (!this.value && (!this.filterParams || !this.filterParams.value)) {
           this.setFocus(false);
         }
       }
@@ -55,9 +55,13 @@ export class SelectComponent implements AfterViewInit, OnChanges {
 
 
   ngOnChanges(values) {
-    console.log('values', values);
+    // console.log('values ==> ', values);
     if (values && values.value && values.value.currentValue && (values.value.currentValue !== values.value.previousValue)) {
       this.setFocus(true);
+    }
+
+    if (values && values.value && !values.value.currentValue && values.value.previousValue) {
+      this.filterParams = null;
     }
   }
 
@@ -73,6 +77,8 @@ export class SelectComponent implements AfterViewInit, OnChanges {
     this.filterParams = null;
     this.visibleList = false;
     this.search = '';
+
+    this.setFocus(true);
 
     this.setItem.emit(item);
   }

@@ -11,55 +11,58 @@
   input {
     background: inherit;
     width: 100%;
-    height: 34px;
+    height: 2.7rem;
+    line-height: 2.7rem;
     font-size: 1.1rem;
-    font-weight: 300;
+    font-weight: 500;
+    color: #999999;
     padding-left: 10px;
   }
 
   &__triangle {
     position: absolute;
-    top: 0;
-    height: 34px;
-    line-height: 34px;
+    bottom: 0;
+    height: 2.7rem;
+    line-height: 2.7rem;
     cursor: pointer;
 
     &:after {
       content: '\25bc';
       font-size: 0.6rem;
-      color: #909090;
+      color: #999999;
 
     }
   }
 
   &__close {
     position: absolute;
-    top: 0;
-    height: 34px;
-    line-height: 34px;
+    bottom: 0;
+    height: 2.7rem;
+    line-height: 2.7rem;
     cursor: pointer;
 
     &:after {
       content: '\D7';
       font-size: 0.9rem;
-      color: #909090;
+      color: #999999;
 
     }
   }
 
   &__placeholder {
     position: absolute;
-    height: 34px;
-    line-height: 34px;
+    height: 2.7rem;
+    line-height: 2.7rem;
     width: 100%;
     top: 0;
     right: 0;
     vertical-align: middle;
     text-align: right;
     user-select: none;
-    font-size: 1rem;
+    font-size: 1.1rem;
+    font-weight: 500;
     transition: top 0.2s, font-size 0.2s;
-    color: #a2a2a2;
+    color: #999999;
 
     &.focused {
       top: -10px;
@@ -72,18 +75,19 @@
 
   &__value {
     //position: absolute;
-    height: 34px;
-    line-height: 34px;
+    height: 2.7rem;
+    line-height: 2.7rem;
     width: 100%;
     //top: 0;
     //right: 0;
     vertical-align: middle;
     text-align: right;
     user-select: none;
-    font-size: 1rem;
+    font-size: 1.1rem;
     transition: top 0.2s, font-size 0.2s;
-    color: #000;
     border-bottom: 1px solid #c8c8c8;
+    font-weight: 500;
+    color: #999999;
 
     &.focused {
       top: -16px;
@@ -104,16 +108,18 @@
     direction: rtl;
 
     .list-element {
-      height: 34px;
-      line-height: 34px;
+      height: 2.7rem;
+      line-height: 2.7rem;
       background: #fff;
-      color: #3f3f3f;
+      color: #999999;
       padding: 0 10px;
       white-space: nowrap;
       text-overflow: ellipsis;
       overflow: hidden;
       user-select: none;
       cursor: pointer;
+      font-weight: 500;
+      font-size: 1.1rem;
       &:hover {
         background: #d0d5d5;
         border-right: 1px solid #fff;
@@ -123,7 +129,7 @@
     }
 
     &.visible {
-      max-height: calc(34px * 7);
+      max-height: calc(2.7rem * 6);
     }
   }
 

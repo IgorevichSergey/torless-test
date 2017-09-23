@@ -14,7 +14,6 @@ export class AuthGuardService implements CanActivate {
   canActivate() {
     let result: boolean = this.userService.isLoggedIn();
     if(!result) {
-      console.log('authgurad result error');
       this.router.navigateByUrl('/login');
     }
     return result;

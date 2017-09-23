@@ -54,7 +54,7 @@
         <span (click)="setEditMode(category)">{{ category.category_name || 'NA' }}</span>
       </div>
 
-      <div class="input-line" *ngIf="category.edit">
+      <div class="input-line" *ngIf="category.edit && editBuffer">
         <input type="text" [(ngModel)]="editBuffer.category_name" placeholder="שם קטגוריה" (blur)="editCategory(editBuffer)">
       </div>
 

@@ -75,6 +75,23 @@ export class ProductListComponent implements OnInit {
     this.router.navigate(['removed-products', this._cafeteriaId, this._categoryId]);
   }
 
+  public productsDropped(): void {
+    let orderedProducts: {prod_id: number; position: number}[] = [];
+
+    this.products.forEach((item, i) => {
+      orderedProducts.push({
+        prod_id: item.prod_id,
+        position: i + 1
+      });
+    });
+ console.log('orderedProducts', orderedProducts);
+    this.productService.orderProducts(orderedProducts).then((response) => {
+      console.log('response => ', response);
+    }, (error) => {
+      console.log('error', error);
+    });
+  }
+
   ////
   private _getProducts(): void {
     this.productService.getProductsForCategory(this._cafeteriaId, this._categoryId).then((response) => {

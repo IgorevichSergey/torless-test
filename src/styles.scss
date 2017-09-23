@@ -43,18 +43,22 @@ button {
 // input-directive styles
 .app-input-placeholder {
   position: absolute;
-  top: 5px;
+  top: 0!important;
   right: 0;
   //z-index: -1;
   user-select: none;
-  font-size: 1rem;
+  font-size: 1.1rem!important;
   transition: top 0.2s, font-size 0.2s;
   color: #a2a2a2;
+  height: 2.7rem;
+  line-height: 2.7rem;
 }
 .app-input-placeholder.focused {
-  top: -5px;
+  top: -10px!important;
   right: 0;
-  font-size: 0.7rem;
+  font-size: 0.7rem!important;
+  height: auto;
+  line-height: inherit;
 }
 .app-input-error-message {
   position: absolute;

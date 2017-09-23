@@ -88,9 +88,15 @@ export class CreateCafeteriaComponent implements OnInit {
 
   public selectUniversity(event) {
     console.log('selectUniversity event', event);
-    this.createdCafeteria.cafeteria.caf_university_id = event ? event.caf_university_id : null;
+    this.createdCafeteria.cafeteria.caf_university_id = event ? event.university_id : null;
+    this.universityBuildings = [];
+    if (this.createdCafeteria.cafeteria.caf_university_building_id) {
+      this.createdCafeteria.cafeteria.caf_university_building_id = null;
+    }
+    console.log('this.createdCafeteria.cafeteria.caf_university_id', this.createdCafeteria.cafeteria.caf_university_id)
     if (this.createdCafeteria.cafeteria.caf_university_id) {
       this._getUniversityBuildingById(this.createdCafeteria.cafeteria.caf_university_id).then((universityBuildings) => {
+        console.log('universityBuildings', universityBuildings);
         this.universityBuildings = universityBuildings;
       });
     }
@@ -218,6 +224,7 @@ export class CreateCafeteriaComponent implements OnInit {
 
   public selectCafeteriaBuilding(event): void {
     this.createdCafeteria.cafeteria.caf_university_building_id = event ? event.building_id : null;
+    console.log('this.createdCafeteria.cafeteria.caf_university_building_id', this.createdCafeteria.cafeteria.caf_university_building_id);
   }
 
   public getBy(array: any[], value: string | number, key: string, displayedValue: string): string | number {

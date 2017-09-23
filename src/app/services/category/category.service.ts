@@ -58,6 +58,20 @@ export class CategoryService {
   }
 
 
+  public setCategoryOrder(cafeteriaId: number, categories: {cat_id: number, cat_pos: number}[]): Promise<any> {
+    const token: string = localStorage.getItem('torless_token');
+    const data: string = JSON.stringify({tag: 'set_category_order', token: token, caf_id: cafeteriaId, cats: categories});
+
+    return new Promise((resolve, reject) => {
+      this._setRequest(data).then((response) => {
+        resolve(response);
+      }, (error) => {
+        reject(error);
+      });
+    });
+  }
+
+
   /////
   private _setRequest(data: string): Promise<any> {
     const body: URLSearchParams = new URLSearchParams();
