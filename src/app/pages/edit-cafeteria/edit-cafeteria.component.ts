@@ -5,7 +5,7 @@ import { UpdatedCafeteria } from '../../custom-classes';
 
 import { TimeSelectModalComponent } from '../../modals/time-select-modal/time-select-modal.component';
 
-import { CafeteriaService, UniversityService, TimeSelectService, ModalService } from '../../services';
+import { CafeteriaService, UniversityService, TimeSelectService, ModalService, EventService } from '../../services';
 
 @Component({
   selector: 'app-edit-cafeteria',
@@ -53,14 +53,18 @@ export class EditCafeteriaComponent implements OnInit {
     private timeSelectService: TimeSelectService,
     private cafeteriaService: CafeteriaService,
     private universityService: UniversityService,
-    private modalService: ModalService
+    private modalService: ModalService,
+    private eventService: EventService
   ) { }
 
   ngOnInit() {
     this.activatedRoute.params
       .subscribe((param) => {
-        this._cafeteriaId = +param.id;
-        this._getCafeteria(+param.id).then((data) => {
+        this._cafeteriaId = +param.cafId;
+        this._getCafeteria(+param.cafId).then((data) => {
+
+          this.eventService.headerText$.emit(data.caf_name);
+
           this.updatedCafeteria = this._parseCafeteriaToSaveFormat(data);
           console.log('this.updatedCafeteria', this.updatedCafeteria)
           this.getBuildingsByUniversityId(this.updatedCafeteria.cafeteria.up_caf_university_id);

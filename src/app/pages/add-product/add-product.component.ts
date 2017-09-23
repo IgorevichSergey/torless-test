@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { ProductService } from '../../services';
+import { ProductService, CafeteriaService, EventService } from '../../services';
 
 import { CreatedProduct, ExtraCategories, DoubleExtraProduct, ExtraInfo } from '../../custom-classes';
 
@@ -12,11 +12,15 @@ import { CreatedProduct, ExtraCategories, DoubleExtraProduct, ExtraInfo } from '
   styleUrls: ['./add-product.component.scss']
 })
 export class AddProductComponent implements OnInit {
-  public createdProduct: CreatedProduct = new CreatedProduct();
+  public createdProduct: any = new CreatedProduct();
   public minutes: number[] = new Array(18);
 
   public uploadedFile: File;
   public uploadedImage: string;
+
+  public emptyProduct: boolean = false;
+
+  public vegTypes: {veg_id: number, veg_type: string}[];
 
   private _cafeteriaId: number;
   private _categoryId: number;
@@ -24,7 +28,9 @@ export class AddProductComponent implements OnInit {
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private productService: ProductService
+    private productService: ProductService,
+    private cafeteriaService: CafeteriaService,
+    private eventService: EventService
   ) { }
 
   ngOnInit() {
@@ -32,7 +38,11 @@ export class AddProductComponent implements OnInit {
       .subscribe((param) => {
         this._cafeteriaId = +param.cafId;
         this._categoryId = +param.catId;
+        this.cafeteriaService.getCafeteriaById(this._cafeteriaId).then((response) => {
+          this.eventService.headerText$.emit(response.data.cafeteria.caf_name);
+        });
       });
+    this.__getVegTypes();
   }
 
 
@@ -142,6 +152,22 @@ export class AddProductComponent implements OnInit {
   }
 
 
+  makeEmpty(status: number): void {
+    this.createdProduct.product.pr_type = status;
+  }
+
   ///
+
+  private __makeEmptyProduct(productId: number): void {
+    this.productService.emptyProduct(productId).then(() => {
+      this.router.navigate(['removed-products', this._cafeteriaId, this._categoryId]);
+    });
+  }
+
+  private __getVegTypes(): void {
+    this.productService.getVegTypes().then((response) => {
+      this.vegTypes = response.data;
+    })
+  }
 
 }

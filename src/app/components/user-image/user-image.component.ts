@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-user-image',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-image.component.scss']
 })
 export class UserImageComponent implements OnInit {
+  @Input('text') text: string;
 
   constructor() { }
 

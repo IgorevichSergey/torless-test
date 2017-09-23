@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { CafeteriaService } from '../../services';
+import { CafeteriaService, EventService } from '../../services';
 
 import * as _ from 'lodash';
 
@@ -15,11 +15,13 @@ export class CafeteriaListComponent implements OnInit {
 
   constructor(
     private cafeteriaService: CafeteriaService,
+    private eventService: EventService,
     private router: Router
   ) { }
 
   ngOnInit() {
     this._getCafeteriaList();
+    this.eventService.headerText$.emit('');
   }
 
   public selectNewCafeteriaType() {

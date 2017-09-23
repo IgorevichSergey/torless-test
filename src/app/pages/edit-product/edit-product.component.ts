@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { ProductService } from '../../services';
+import { ProductService, CafeteriaService, EventService } from '../../services';
 
 import { ExtraInfo, DoubleExtraProduct, ExtraCategories } from '../../custom-classes';
 
@@ -17,6 +17,8 @@ export class EditProductComponent implements OnInit {
   public minutes: number[] = new Array(18);
   public uploadedImage: string;
 
+  public vegTypes: {veg_id: number, veg_type: string}[];
+
   private _cafeteriaId: number;
   private _categoryId: number;
   private _productId: number;
@@ -24,7 +26,9 @@ export class EditProductComponent implements OnInit {
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private productService: ProductService
+    private productService: ProductService,
+    private cafeteriaService: CafeteriaService,
+    private eventService: EventService
   ) { }
 
   ngOnInit() {
@@ -35,12 +39,18 @@ export class EditProductComponent implements OnInit {
         this._cafeteriaId = +param.cafId;
         this._categoryId = +param.catId;
 
+        this.cafeteriaService.getCafeteriaById(this._cafeteriaId).then((response) => {
+          this.eventService.headerText$.emit(response.data.cafeteria.caf_name);
+        });
+
         this.productService.getMainProduct(this._productId).then((response) => {
           console.log('response ==> ', response);
           console.log('response.data', response.data)
           this.updatedMainProduct = this._parseBEData(response.data);
         });
       });
+
+    this.__getVegTypes();
 
   }
 
@@ -106,19 +116,31 @@ export class EditProductComponent implements OnInit {
     this.updatedMainProduct.extra_categories.splice(index, 1);
   }
 
+  public makeEmpty(statusCode: number): void {
+    this.updatedMainProduct.product.prod_type = statusCode;
+  }
+
 
   ///
 
   private _parseBEData(beData): any {
     let result: any = {};
     result.extra_categories = beData.extra_categories;
+
     result.product = {
       pr_name: beData.product.prod_name,
       pr_price: beData.product.prod_price,
       pr_cook_time: String(beData.product.prod_cook_time),
-      pr_descr: beData.product.prod_descr
+      pr_descr: beData.product.prod_descr,
+      pr_type: beData.product.prod_type
     };
 
     return result;
+  }
+
+  private __getVegTypes(): void {
+    this.productService.getVegTypes().then((response) => {
+      this.vegTypes = response.data;
+    })
   }
 }

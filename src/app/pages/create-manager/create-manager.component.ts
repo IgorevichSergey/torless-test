@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { CreatedManagerUser } from '../../custom-classes';
 
-import { UserService } from '../../services';
+import { UserService, CafeteriaService, EventService } from '../../services';
 
 
 @Component({
@@ -36,13 +36,18 @@ export class CreateManagerComponent implements OnInit {
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private userService: UserService
+    private userService: UserService,
+    private cafeteriaService: CafeteriaService,
+    private eventService: EventService,
   ) { }
 
   ngOnInit() {
     this.activatedRoute.params
       .subscribe((param) => {
-        this._cafeteriaId = +param.id;
+        this._cafeteriaId = +param.cafId;
+        this.cafeteriaService.getCafeteriaById(this._cafeteriaId).then((response) => {
+          this.eventService.headerText$.emit(response.data.cafeteria.caf_name);
+        });
       });
   }
 

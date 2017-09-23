@@ -2,7 +2,7 @@ import { Component, OnInit, ElementRef, Renderer } from '@angular/core';
 import { Router, NavigationExtras, Params } from '@angular/router';
 
 
-import { CafeteriaService } from '../../services';
+import { CafeteriaService, EventService } from '../../services';
 
 import * as _ from 'lodash';
 
@@ -21,10 +21,13 @@ export class CafeteriaTypeComponent implements OnInit {
     private elementRef: ElementRef,
     private renderer: Renderer,
     private cafeteriaService: CafeteriaService,
-    private router: Router
+    private router: Router,
+    private eventService: EventService
   ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.eventService.headerText$.emit('');
+  }
 
   selectCafeteria(event) {
     this.selectedCafeteriaId = event ?  event.id : null;

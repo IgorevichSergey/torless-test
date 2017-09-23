@@ -4,6 +4,8 @@ interface IProduct {
   pr_price: string;
   pr_cook_time: string;
   pr_descr: string;
+  pr_type: number;
+  pr_veg_type: number;
 }
 interface IDoubleExtraProduct {
   double_extra_pr_name: string;
@@ -59,7 +61,9 @@ export class CreatedProduct implements ICreatedProduct {
       pr_name: '',
       pr_price: '',
       pr_cook_time: '',
-      pr_descr: ''
+      pr_descr: '',
+      pr_type: -1,
+      pr_veg_type: 0
     },
     public extra_categories: IExtraCategories[] = []
   ) {}

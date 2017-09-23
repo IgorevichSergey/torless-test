@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { ProductService } from '../../services';
+import { ProductService, CafeteriaService, EventService } from '../../services';
 
 @Component({
   selector: 'app-product-list',
@@ -16,6 +16,8 @@ export class ProductListComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
+    private cafeteriaService: CafeteriaService,
+    private eventService: EventService,
     private activatedRoute: ActivatedRoute,
     private router: Router
   ) {
@@ -28,6 +30,10 @@ export class ProductListComponent implements OnInit {
         this._cafeteriaId = +param.cafId;
         this._categoryId = +param.catId;
         this._getProducts();
+
+        this.cafeteriaService.getCafeteriaById(this._cafeteriaId).then((response) => {
+          this.eventService.headerText$.emit(response.data.cafeteria.caf_name);
+        });
       });
   }
 

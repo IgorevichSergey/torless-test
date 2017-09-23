@@ -202,6 +202,19 @@ export class UserService {
     });
   }
 
+  public getUserInfo(): Promise<any> {
+    const _token: string = localStorage.getItem('torless_token');
+    const data: string = JSON.stringify({tag: 'get_user_info', 'token': _token});
+
+    return new Promise((resolve, reject) => {
+      this._setRequest(data).then((response) => {
+        resolve(response);
+      }, (error) => {
+        reject(error);
+      });
+    });
+  }
+
   /////
   private _setRequest(data: string): Promise<any> {
     const body: URLSearchParams = new URLSearchParams();

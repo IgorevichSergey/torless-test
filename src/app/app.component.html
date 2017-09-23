@@ -43,7 +43,7 @@
             <div style="position: absolute; left: 50%; top: 10px;">
               <app-information *ngIf="visible.info" [hintText]="visible.hintText" hintPosition="top center"></app-information>
             </div>
-            <app-user-image *ngIf="visible.companyLogo"></app-user-image>
+            <app-user-image *ngIf="visible.companyLogo" [text]="logoText"></app-user-image>
           </div>
 
           <div class="torless__body">

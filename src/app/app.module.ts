@@ -44,7 +44,8 @@ import {
   LoggedInGuardService,
   TimeSelectService,
   ModalService,
-  TmpTimerService
+  TmpTimerService,
+  EventService
 } from './services';
 
 // DIRECTIVES
@@ -118,7 +119,8 @@ import { ModalsModule } from './modals';
     UniversityService,
     TimeSelectService,
     ModalService,
-    TmpTimerService
+    TmpTimerService,
+    EventService
   ],
   bootstrap: [AppComponent]
 })

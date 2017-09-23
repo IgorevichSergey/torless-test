@@ -8,7 +8,7 @@ import { CreateManagerComponent } from './create-manager.component';
 
 const routes: Routes = [
   {
-    path: 'create-cafeteria-manager/:id',
+    path: 'create-cafeteria-manager/:cafId',
     component: CreateManagerComponent,
     canActivate: [AuthGuardService, TmpTimerService]
   }

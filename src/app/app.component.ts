@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { PAGES_CONFIG } from './constants';
 
 // Services
-import { UserService, CafeteriaService, ModalService } from './services';
+import { UserService, CafeteriaService, ModalService, EventService } from './services';
 
 
 import { ConfirmModalComponent } from './modals/confirm-modal/confirm-modal.component';
@@ -18,6 +18,11 @@ import { ConfirmModalComponent } from './modals/confirm-modal/confirm-modal.comp
 export class AppComponent {
   public loggedIn: boolean;
   public cafeteriasLength: number = 0;
+  public logoText: string;
+
+  private companyName: string = '';
+  private cafeteriaName: string = '';
+  private userName: string = '';
 
   public visible: {[key: string]: boolean | string} = {
     info: false,
@@ -33,8 +38,8 @@ export class AppComponent {
     private router: Router,
     private userService: UserService,
     private cafeteriaService: CafeteriaService,
-    private modalService: ModalService
-
+    private modalService: ModalService,
+    private eventService: EventService
   ) {
     /**
      * when app init
@@ -53,8 +58,19 @@ export class AppComponent {
         this.__subHeaderElementsVisible(data.url);
         this.__isLoggedIn();
         this.__getCafeteriasList(this.loggedIn);
-        this.__getInfo();
       });
+
+    this.userService.getUserInfo().then((response) => {
+      this.companyName = response.data.company_name;
+      this.userName = response.data.name;
+
+      this.logoText = this.__setHeaderText();
+    });
+
+    this.eventService.headerText$.subscribe((cafeteriaName) => {
+      this.cafeteriaName = cafeteriaName;
+      this.logoText = this.__setHeaderText();
+    });
   }
 
   public logOut(): void {
@@ -111,9 +127,26 @@ export class AppComponent {
 
   }
 
-  private __getInfo(): void {
-    this.cafeteriaService.getInfo().then((response) => {
-      console.log('response info ===> ', response);
-    });
+  private __setHeaderText(): string {
+    // cafeteria_name - company_name / login_user_name
+    let result: string = '';
+    if (this.cafeteriaName) {
+      result += this.cafeteriaName;
+    }
+
+    if (result) {
+      result += ' - ' + this.companyName;
+    } else {
+      result += this.companyName;
+    }
+
+    if (result) {
+      result += ' / ' + this.userName;
+    } else {
+      result += this.userName;
+    }
+
+    return result;
   }
+
 }

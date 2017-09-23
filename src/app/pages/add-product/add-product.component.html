@@ -13,19 +13,21 @@
     <div class="new-product">
       <div class="name-line">
         <div class="input-line required">
-          <input type="text" appInput [(ngModel)]="createdProduct.product.pr_name" [placeholderMessage]="'product name'">
+          <input type="text" appInput [(ngModel)]="createdProduct.product.pr_name" [placeholderMessage]="'שם מוצר'">
         </div>
         <div class="check-elements">
-          <div class="check-element">
-            <img class="check-element__icon" *ngIf="true" src="./assets/icon/check-red.svg" >
-            <img class="check-element__icon" *ngIf="false" src="./assets/icon/disabled.svg" >
-            <div class="check-element__text" [ngClass]="{'checked': true}">זה לא במלאי</div>
+          <div class="check-element" (click)="makeEmpty(-1)">
+            <img class="check-element__icon" *ngIf="createdProduct.product.pr_type === -1" src="./assets/icon/check-red.svg" >
+            <img class="check-element__icon" *ngIf="createdProduct.product.pr_type !== -1" src="./assets/icon/disabled.svg" >
+            <!--no available-->
+            <div class="check-element__text" [ngClass]="{'checked': createdProduct.product.pr_type === -1}">זה לא במלאי</div>
           </div>
 
-          <div class="check-element">
-            <img class="check-element__icon" *ngIf="false" src="./assets/icon/check-red.svg" >
-            <img class="check-element__icon" *ngIf="true" src="./assets/icon/disabled.svg" >
-            <div class="check-element__text" [ngClass]="{'checked': false}">הוא במלאי</div>
+          <div class="check-element" (click)="makeEmpty(1)">
+            <img class="check-element__icon" *ngIf="createdProduct.product.pr_type === 1" src="./assets/icon/check-red.svg" >
+            <img class="check-element__icon" *ngIf="createdProduct.product.pr_type !== 1" src="./assets/icon/disabled.svg" >
+            <!--available-->
+            <div class="check-element__text" [ngClass]="{'checked': createdProduct.product.pr_type === 1}" style="width: 25px; margin: 0 auto;">מוצר ריק</div>
           </div>
         </div>
 
@@ -35,11 +37,11 @@
       <div class="border-bottom"></div>
 
       <div class="input-line required">
-        <input type="text" appInput [(ngModel)]="createdProduct.product.pr_descr" [placeholderMessage]="'product details'">
+        <input type="text" appInput [(ngModel)]="createdProduct.product.pr_descr" [placeholderMessage]="'פרטי מוצר'">
       </div>
 
       <div class="input-line required">
-        <input type="number" dir="rtl" appInput [(ngModel)]="createdProduct.product.pr_price" [placeholderMessage]="'product price'">
+        <input type="number" dir="rtl" appInput [(ngModel)]="createdProduct.product.pr_price" [placeholderMessage]="'מחיר מוצר'">
       </div>
 
       <div class="cook-time">
@@ -56,26 +58,10 @@
         </div>
       </div>
 
-      <div class="radio-elements required">
-        <div class="radio-element">
-          <label class="text" for="_1">text</label>
-          <input type="radio" id="_1">
-        </div>
-        <div class="radio-element">
-          <label class="text" for="_2">text</label>
-          <input type="radio" id="_2">
-        </div>
-        <div class="radio-element">
-          <label class="text" for="_3">text</label>
-          <input type="radio" id="_3">
-        </div>
-        <div class="radio-element">
-          <label class="text" for="_4">text</label>
-          <input type="radio" id="_4">
-        </div>
-        <div class="radio-element">
-          <label class="text" for="_5">text</label>
-          <input type="radio" id="_5">
+      <div class="radio-elements" *ngIf="vegTypes">
+        <div class="radio-element" *ngFor="let vegType of vegTypes;">
+          <label class="text" [attr.for]="vegType.veg_type">{{vegType.veg_type}}</label>
+          <input type="radio" [attr.id]="vegType.veg_type" value="{{vegType.veg_id}}" [(ngModel)]="createdProduct.product.pr_veg_type">
         </div>
       </div>
 
@@ -141,7 +127,7 @@
         </div>
         <div class="name-line">
           <div class="input-line">
-            <input type="text" appInput [(ngModel)]="extra_category.extra_cat_name" [placeholderMessage]="'category name'">
+            <input type="text" appInput [(ngModel)]="extra_category.extra_cat_name" [placeholderMessage]="'שם קטגוריה נוספת'">
           </div>
         </div>
       </div>
@@ -160,11 +146,11 @@
           <div *ngFor="let extra_info of extra_category.extra_info" style="margin-bottom: 30px;">
             <div class="extra-product__inner">
               <div class="input-line">
-                <input type="text" appInput [(ngModel)]="extra_info.extra_pr_name" [placeholderMessage]="'name'">
+                <input type="text" appInput [(ngModel)]="extra_info.extra_pr_name" [placeholderMessage]="'שם מוצר נוסף'">
               </div>
 
               <div class="input-line">
-                <input type="text" dir="rtl" appInput [(ngModel)]="extra_info.extra_pr_descr" [placeholderMessage]="'description'">
+                <input type="text" dir="rtl" appInput [(ngModel)]="extra_info.extra_pr_descr" [placeholderMessage]="'תיאור מוצר נוסף'">
               </div>
 
               <div class="price-input-line" *ngIf="extra_info.double_extra_products?.length === 0">
@@ -183,7 +169,7 @@
 
                 <div class="double-extra-products__item--inner" *ngFor="let double_extra of extra_info.double_extra_products">
                   <div class="input-line">
-                    <input type="text" appInput [(ngModel)]="double_extra.double_extra_pr_name" [placeholderMessage]="'double extra product name'">
+                    <input type="text" appInput [(ngModel)]="double_extra.double_extra_pr_name" [placeholderMessage]="'שם מוצר כפול'">
                   </div>
                   <div class="price-input-line">
                     <input type="text" dir="rtl" [(ngModel)]="double_extra.double_extra_pr_price">

@@ -1,7 +1,7 @@
 import { Component, OnInit, Renderer } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { CafeteriaService, TimeSelectService, UniversityService, ModalService } from '../../services';
+import { CafeteriaService, TimeSelectService, UniversityService, ModalService, EventService } from '../../services';
 
 // custom classes
 import { CreatedCafeteria } from '../../custom-classes';
@@ -54,6 +54,7 @@ export class CreateCafeteriaComponent implements OnInit {
     private renderer: Renderer,
     private router: Router,
     private activatedRoute: ActivatedRoute,
+    private eventService: EventService,
     private cafeteriaService: CafeteriaService,
     private universityService: UniversityService,
     private timeSelectService: TimeSelectService,
@@ -78,6 +79,8 @@ export class CreateCafeteriaComponent implements OnInit {
       });
 
     this._getUniversities();
+
+    this.eventService.headerText$.emit('');
   }
 
   public selectDay(event: MouseEvent) {

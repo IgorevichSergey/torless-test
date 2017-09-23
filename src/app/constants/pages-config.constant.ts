@@ -71,6 +71,11 @@ export const PAGES_CONFIG = {
       info: false,
       breadcrumbs: true,
       companyLogo: true
+    },
+    '/edit-product': {
+      info: false,
+      breadcrumbs: true,
+      companyLogo: true
     }
   }
 };

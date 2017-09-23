@@ -8,6 +8,7 @@ import { TimeSelectService } from './time-select/time-select.service';
 import { ModalService } from './modal/modal.service';
 import { LoggedInGuardService } from './logged-in-guard/logged-in-guard.service';
 import { TmpTimerService } from './tmp-timer/tmp-timer.service';
+import { EventService } from './event/event.service';
 
 export {
   ProductService,
@@ -19,5 +20,6 @@ export {
   TimeSelectService,
   ModalService,
   LoggedInGuardService,
-  TmpTimerService
+  TmpTimerService,
+  EventService
 };

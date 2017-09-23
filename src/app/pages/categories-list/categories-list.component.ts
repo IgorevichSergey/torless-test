@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { CategoryService } from '../../services';
+import { CategoryService, CafeteriaService, EventService } from '../../services';
 
 import { CreatedMainCategoryClass, UpdatedMainCategory } from '../../custom-classes';
 
@@ -20,6 +20,8 @@ export class CategoriesListComponent implements OnInit {
 
   constructor(
     private categoryService: CategoryService,
+    private cafeteriaService: CafeteriaService,
+    private eventService: EventService,
     private activatedRoute: ActivatedRoute,
     private router: Router
   ) { }
@@ -27,8 +29,11 @@ export class CategoriesListComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.params
       .subscribe((param) => {
-        this._cafeteriaId = +param.id;
-        this._getCategoriesForCafeteria(+param.id);
+        this._cafeteriaId = +param.cafId;
+        this._getCategoriesForCafeteria(+param.cafId);
+        this.cafeteriaService.getCafeteriaById(this._cafeteriaId).then((response) => {
+          this.eventService.headerText$.emit(response.data.cafeteria.caf_name);
+        });
       });
   }
 

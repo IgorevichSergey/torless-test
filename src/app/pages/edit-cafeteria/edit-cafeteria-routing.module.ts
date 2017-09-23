@@ -8,7 +8,7 @@ import { EditCafeteriaComponent } from './edit-cafeteria.component';
 
 const routes: Routes = [
   {
-    path: 'edit-cafeteria/:id',
+    path: 'edit-cafeteria/:cafId',
     component: EditCafeteriaComponent,
     canActivate: [AuthGuardService, TmpTimerService]
   }

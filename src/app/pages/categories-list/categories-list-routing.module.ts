@@ -8,7 +8,7 @@ import { CategoriesListComponent } from './categories-list.component';
 
 const routes: Routes = [
   {
-    path: 'categories-list/:id',
+    path: 'categories-list/:cafId',
     component: CategoriesListComponent,
     canActivate: [AuthGuardService, TmpTimerService]
   }

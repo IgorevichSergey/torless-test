@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { UserService } from '../../services';
+import { UserService, EventService } from '../../services';
 
 @Component({
   selector: 'app-edit-manager',
@@ -34,7 +34,8 @@ export class EditManagerComponent implements OnInit {
   constructor(
     private router: Router,
     private userService: UserService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private eventService: EventService
   ) { }
 
   ngOnInit() {
@@ -43,6 +44,8 @@ export class EditManagerComponent implements OnInit {
         this._managerId = +param.id;
         this.__getManager(+param.id);
       });
+
+    this.eventService.headerText$.emit('');
   }
 
   public updateManager(manager): void {
