@@ -24,7 +24,9 @@ export class RegisterComponent implements OnInit {
   public emailErrorMessage: string;
 
   public formErrors = {
-    emailField: false
+    emailField: false,
+    passwordField: false,
+    confirmPasswordField: false
   };
 
   public formErrorMessages = {
