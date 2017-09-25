@@ -28,12 +28,14 @@ export class RegisterComponent implements OnInit {
   };
 
   public formErrorMessages = {
-    email: ''
+    email: '',
+    password: ''
   };
 
   private _errors = {
     invalidEmail: 'דוא"ל שנכתב שגוי',
-    emailAlreadyExist: 'הדוא"ל כבר בשימוש'
+    emailAlreadyExist: 'הדוא"ל כבר בשימוש',
+    invalidPassword: 'חייב להכיל לפחות 6 סמלים'
   };
 
 
@@ -104,20 +106,46 @@ console.log("error CB")
 
   }
 
-  public passwordsCheck(firstPass, secondPass): void {
-    this.confirmPasswordError = ((firstPass !== secondPass) && firstPass !== '' && secondPass !== '');
+  checkPassword(password: string, type): void {
+    if (password) {
+      if (password.length >= 6) {
+        this.formErrors[type] = false;
+      } else {
+        this.formErrors[type] = true;
+        this.formErrorMessages.password = this._errors.invalidPassword;
+      }
+    }
   }
 
-  public isButtonDisabled(user): boolean {
-    let result: boolean = (this.confirmedPassword !== user.us_pass);
+  // public isButtonDisabled(user): boolean {
+  //   let result: boolean = (this.confirmedPassword !== user.us_pass);
+  //
+  //   for (let key in user) {
+  //     if (!user[key]) {
+  //       result = true;
+  //     }
+  //   }
+  //
+  //   return result;
+  // }
 
-    for (let key in user) {
-      if (!user[key]) {
-        result = true;
+  isButtonDisabled(user): boolean {
+    let disable = false;
+    for (const key in user) {
+      if (!user[key] || String(user[key]).length < 2) {
+        disable = true;
       }
     }
 
-    return result;
+    if (this.__hasError()) {
+      disable = true;
+    }
+
+    if (!user.us_pass || !this.confirmedPassword || (this.confirmedPassword !== user.us_pass)) {
+      disable = true;
+    }
+
+    return disable;
   }
 
   public termsAndConditions(): void {
@@ -135,8 +163,8 @@ console.log("error CB")
         this.uploadedFile = file;
         this.uploadedImage = reader.result;
 
-        // let token = localStorage.getItem('torless_token') ? localStorage.getItem('torless_token') : '6104ff56de74232da2495690d165c54b';
-        this.userService.saveCompanyImage(this.uploadedFile, '9cb923ae0f8c4993dadecf1bef0b6f27').then((response) => {
+        let token = localStorage.getItem('torless_token') ? localStorage.getItem('torless_token') : null;
+        this.userService.saveCompanyImage(this.uploadedFile, token).then((response) => {
           console.log('response ===> ', response);
         }, (error) => {
           console.log('error ===> ', error);
@@ -190,6 +218,17 @@ console.log("error CB")
   /////
   private _goTo(url: string, params?: NavigationExtras): void {
     this.router.navigateByUrl(url, params);
+  }
+
+  private __hasError(): boolean {
+    let result: boolean = false;
+    for (const key in this.formErrors) {
+      if (this.formErrors[key]) {
+        result = true;
+      }
+    }
+
+    return result;
   }
 
 }

@@ -113,12 +113,12 @@
 
         <div class="input-line required">
           <!--<span>password</span>-->
-          <input type="password" appInput [(ngModel)]="createdUser.user.us_pass" [placeholderMessage]="'סיסמה'" [error]="confirmPasswordError" [message]="'passwords do not match'" (blur)="passwordsCheck(createdUser.user.us_pass, confirmedPassword)">
+          <input type="password" appInput [(ngModel)]="createdUser.user.us_pass" [placeholderMessage]="'סיסמה'" (blur)="checkPassword(createdUser.user.us_pass, 'passwordField')" [error]="formErrors.passwordField" [message]="formErrorMessages.password" >
         </div>
 
         <div class="input-line required">
           <!--username-->
-          <input type="password" appInput [(ngModel)]="confirmedPassword" [placeholderMessage]="'שם משתמש'" [error]="confirmPasswordError" [message]="'passwords do not match'" (blur)="passwordsCheck(createdUser.user.us_pass, confirmedPassword)">
+          <input type="password" appInput [(ngModel)]="confirmedPassword" [placeholderMessage]="'שם משתמש'" (blur)="checkPassword(confirmedPassword, 'confirmPasswordField')" [error]="formErrors.confirmPasswordField" [message]="formErrorMessages.password" >
         </div>
 
       </div>
