@@ -34,39 +34,39 @@
       </div>
 
       <div class="input-line required">
-        <input type="text" appInput [(ngModel)]="manager.name" [placeholderMessage]="'name'">
+        <input type="text" dir="rtl" appInput [(ngModel)]="manager.name" [placeholderMessage]="'שם פרטי'">
       </div>
 
       <div class="input-line required">
-        <input type="text" appInput [(ngModel)]="manager.last_name" [placeholderMessage]="'last name'">
+        <input type="text" dir="rtl" appInput [(ngModel)]="manager.last_name" [placeholderMessage]="'שם משפחה'">
       </div>
 
-      <div class="input-line">
-        <input type="text" appInput [(ngModel)]="manager.id" [placeholderMessage]="'id'">
-      </div>
+      <!--<div class="input-line">-->
+        <!--<input type="text" appInput [(ngModel)]="manager.id" [placeholderMessage]="'id'">-->
+      <!--</div>-->
 
-      <div class="input-line">
-        <input type="number" dir="rtl" [(ngModel)]="manager.passport_id" appInput [placeholderMessage]="'passport ID'">
+      <!--<div class="input-line">-->
+        <!--<input type="text" dir="rtl" [(ngModel)]="manager.passport_id" appInput [placeholderMessage]="'passport ID'">-->
+      <!--</div>-->
+
+      <div class="input-line required">
+        <input type="text" dir="rtl" appInput [(ngModel)]="manager.email" (blur)="checkEmail(manager.email)"  [placeholderMessage]="'אֶלֶקטרוֹנִי'" [error]="formErrors.emailField" [message]="formErrorMessages.email">
       </div>
 
       <div class="input-line required">
-        <input type="text" appInput [(ngModel)]="manager.email"  (blur)="checkEmail(manager.email)"  [placeholderMessage]="'email'" [error]="formErrors.emailField" [message]="formErrorMessages.email">
-      </div>
-
-      <div class="input-line required">
-        <input type="text" appInput [(ngModel)]="manager.phone" (keyup)="manager.phone = phoneFormatter(manager.phone)" [placeholderMessage]="'phone'">
+        <input type="text" dir="rtl" appInput [(ngModel)]="manager.phone" (keyup)="manager.phone = phoneFormatter(manager.phone)" [placeholderMessage]="'טלפון'">
       </div>
 
       <div style="margin-bottom: 1.5rem; font-weight: 800; font-size: 1.3rem">
         סיסמה
       </div>
 
-      <div class="input-line required">
-        <input type="password" appInput [(ngModel)]="manager.password" [placeholderMessage]="'password'">
+      <div class="input-line">
+        <input type="password" dir="rtl" appInput [(ngModel)]="passwords.main" (blur)="checkPassword(passwords.main, 'passwordField')" [error]="formErrors.passwordField" [message]="formErrorMessages.password" [placeholderMessage]="'סיסמה'">
       </div>
 
-      <div class="input-line required">
-        <input type="password" appInput [(ngModel)]="confirmPassword" [placeholderMessage]="'confirm password'">
+      <div class="input-line">
+        <input type="password" dir="rtl" appInput [(ngModel)]="passwords.confirm" (blur)="checkPassword(passwords.confirm, 'confirmPasswordField')" [error]="formErrors.confirmPasswordField" [message]="formErrorMessages.password" [placeholderMessage]="'אשר סיסמה'">
       </div>
 
       <div class="submit-block">

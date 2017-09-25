@@ -236,3 +236,6 @@
     width: auto;
   }
 }
+button[disabled] {
+  cursor: not-allowed!important;
+}

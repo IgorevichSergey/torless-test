@@ -37,27 +37,27 @@
       </div>
 
       <div class="input-line required">
-        <input type="text" appInput [(ngModel)]="createdManagerUser.mn_name" [placeholderMessage]="'name'">
+        <input type="text" appInput [(ngModel)]="createdManagerUser.mn_name" [placeholderMessage]="'שֵׁם'">
       </div>
 
       <div class="input-line required">
-        <input type="text" appInput [(ngModel)]="createdManagerUser.mn_last_name" [placeholderMessage]="'last name'">
+        <input type="text" appInput [(ngModel)]="createdManagerUser.mn_last_name" [placeholderMessage]="'שם משפחה'">
       </div>
 
       <div class="input-line">
-        <input type="text" appInput [placeholderMessage]="'id'">
+        <input type="text" appInput [placeholderMessage]="'תְעוּדַת זֶהוּת'">
       </div>
 
       <div class="input-line">
-        <input type="number" dir="rtl" appInput [placeholderMessage]="'passport ID'">
+        <input type="text" dir="rtl" appInput [placeholderMessage]="'מספר דרכון'">
       </div>
 
       <div class="input-line required">
-        <input type="text" appInput [(ngModel)]="createdManagerUser.mn_email"  (blur)="checkEmail(createdManagerUser.mn_email)"  [placeholderMessage]="'email'" [error]="formErrors.emailField" [message]="formErrorMessages.email">
+        <input type="text" appInput [(ngModel)]="createdManagerUser.mn_email" (blur)="checkEmail(createdManagerUser.mn_email)" [placeholderMessage]="'אֶלֶקטרוֹנִי'" [error]="formErrors.emailField" [message]="formErrorMessages.email">
       </div>
 
       <div class="input-line required">
-        <input type="text" appInput [(ngModel)]="createdManagerUser.mn_phone" (keyup)="createdManagerUser.mn_phone = phoneFormatter(createdManagerUser.mn_phone)" [placeholderMessage]="'phone'">
+        <input type="text" appInput [(ngModel)]="createdManagerUser.mn_phone" (keyup)="createdManagerUser.mn_phone = phoneFormatter(createdManagerUser.mn_phone)" [placeholderMessage]="'טלפון'">
       </div>
 
       <div style="margin-bottom: 1.5rem; font-weight: 800; font-size: 1.3rem">
@@ -65,11 +65,11 @@
       </div>
 
       <div class="input-line required">
-        <input type="password" appInput [(ngModel)]="createdManagerUser.mn_pass" [placeholderMessage]="'password'">
+        <input type="password" appInput [(ngModel)]="createdManagerUser.mn_pass" (blur)="checkPassword(createdManagerUser.mn_pass, 'passwordField')" [error]="formErrors.passwordField" [message]="formErrorMessages.password" [placeholderMessage]="'סיסמה'">
       </div>
 
       <div class="input-line required">
-        <input type="password" appInput [(ngModel)]="confirmPassword" [placeholderMessage]="'confirm password'">
+        <input type="password" appInput [(ngModel)]="confirmPassword" (blur)="checkPassword(confirmPassword, 'confirmPasswordField')"  [error]="formErrors.confirmPasswordField" [message]="formErrorMessages.password" [placeholderMessage]="'אשר סיסמה'">
       </div>
 
       <div class="submit-block">

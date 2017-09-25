@@ -213,9 +213,15 @@ export class EditCafeteriaComponent implements OnInit {
 
   public selectUniversity(event) {
     console.log('selectUniversity event', event);
-    this.updatedCafeteria.cafeteria.up_caf_university_id = event ? event.caf_university_id : null;
+    this.updatedCafeteria.cafeteria.up_caf_university_id = event ? event.university_id : null;
+    console.log('this.updatedCafeteria.cafeteria.up_caf_university_id', this.updatedCafeteria.cafeteria.up_caf_university_id);
+    this.universityBuildings = [];
+    if (this.updatedCafeteria.cafeteria.up_caf_university_id) {
+      this.updatedCafeteria.cafeteria.up_caf_university_building_id = null;
+    }
     if (this.updatedCafeteria.cafeteria.up_caf_university_id) {
       this._getUniversityBuildingById(this.updatedCafeteria.cafeteria.up_caf_university_id).then((universityBuildings) => {
+        console.log('universityBuildings', universityBuildings);
         this.universityBuildings = universityBuildings;
       });
     }

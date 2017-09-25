@@ -19,16 +19,20 @@ export class CreateManagerComponent implements OnInit {
   private _cafeteriaId: number;
 
   public formErrors = {
-    emailField: false
+    emailField: false,
+    passwordField: false,
+    confirmPasswordField: false
   };
 
   public formErrorMessages = {
-    email: ''
+    email: '',
+    password: ''
   };
 
   private _errors = {
     invalidEmail: 'דוא"ל שנכתב שגוי',
-    emailAlreadyExist: 'הדוא"ל כבר בשימוש'
+    emailAlreadyExist: 'הדוא"ל כבר בשימוש',
+    invalidPassword: 'חייב להכיל לפחות 6 סמלים'
   };
 
   private _emailRegExp: RegExp = /(.+)@(.+){2,}\.(.+){2,}/;
@@ -74,6 +78,10 @@ export class CreateManagerComponent implements OnInit {
       }
     }
 
+    if (this.__hasError()) {
+      disable = true;
+    }
+
     if (!this.confirmPassword || !this.createdManagerUser.mn_pass || (this.confirmPassword !== this.createdManagerUser.mn_pass)) {
       disable = true;
     }
@@ -98,6 +106,17 @@ export class CreateManagerComponent implements OnInit {
 
   }
 
+  checkPassword(password: string, type): void {
+    if (password) {
+      if (password.length >= 6) {
+        this.formErrors[type] = false;
+      } else {
+        this.formErrors[type] = true;
+        this.formErrorMessages.password = this._errors.invalidPassword;
+      }
+    }
+  }
+
   phoneFormatter(t: string): any {
     const numbers: string = t ? t.replace(/\D/g, '') : '',
       dashes: Object = {
@@ -119,6 +138,17 @@ export class CreateManagerComponent implements OnInit {
   ///////
   private _goTo(url: string): void {
     this.router.navigateByUrl(url);
+  }
+
+  private __hasError(): boolean {
+    let result: boolean = false;
+    for (const key in this.formErrors) {
+      if (this.formErrors[key]) {
+        result = true;
+      }
+    }
+
+    return result;
   }
 
 }

@@ -157,7 +157,7 @@ export class UserService {
 
   public editManager(managerId: number, cafeteriaId: number, manager: any): Promise<any> {
     const _token: string = localStorage.getItem('torless_token');
-    const data: string = JSON.stringify({tag: 'update_manager_user', 'token': _token, 'user_id': managerId, 'caf_id': cafeteriaId, 'manager_user': {'mn_name': manager.name, 'mn_last_name': manager.last_name, 'mn_phone': manager.phone, 'mn_email': manager.email, 'mn_pass': manager.password}});
+    const data: string = JSON.stringify({tag: 'update_manager_user', 'token': _token, 'user_id': managerId, 'caf_id': cafeteriaId, 'manager_user': manager});
 
     return new Promise((resolve, reject) => {
       this._setRequest(data).then((response) => {
