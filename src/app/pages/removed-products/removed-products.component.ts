@@ -101,7 +101,12 @@ export class RemovedProductsComponent implements OnInit {
   }
 
   public restoreProduct(product: any): void {
-    this.productService.restoreProduct()
+    console.log('product', product);
+    this.productService.fullProduct(product.prod_id).then((response) => {
+      let index: number = this._findIndex(this.products, (item) => {return item.prod_id === product.prod_id});
+      console.log('index', index);
+      this.products.splice(index, 1);
+    });
   }
 
   ////

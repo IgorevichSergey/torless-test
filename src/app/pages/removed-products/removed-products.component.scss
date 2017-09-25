@@ -28,6 +28,11 @@
     }
     &__list{
       .element {
+        .dots {
+          img {
+            opacity: 0;
+          }
+        }
         .image {
           margin: 0;
           margin-right: 30px;
@@ -62,6 +67,13 @@
             }
           }
         }
+      }
+      .empty-list {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        font-size: 1.6rem;
+        color: grey;
+        text-align: center;
       }
     }
   }

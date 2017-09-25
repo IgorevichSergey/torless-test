@@ -62,7 +62,7 @@ export class CreatedProduct implements ICreatedProduct {
       pr_price: '',
       pr_cook_time: '',
       pr_descr: '',
-      pr_type: -1,
+      pr_type: 1,
       pr_veg_type: 0
     },
     public extra_categories: IExtraCategories[] = []

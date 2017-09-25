@@ -55,7 +55,15 @@
         </button>
       </div>
     </div>
+
+
   </div>
+  <div class="torless-page__list" *ngIf="products?.length === 0">
+    <div class="empty-list" *ngIf="products?.length === 0">
+      הרשימה ריקה
+    </div>
+  </div>
+
 
   <div class="torless-page__footer" *ngIf="products?.length > 4">
     <button (click)="goToAddProductPage()" class="torless-page__add-new-element">
