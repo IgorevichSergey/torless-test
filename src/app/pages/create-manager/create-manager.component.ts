@@ -56,13 +56,18 @@ export class CreateManagerComponent implements OnInit {
   }
 
   createManager(createdManagerUser: CreatedManagerUser) {
-    this.userService.registerManagerUser(createdManagerUser).then((data) => {
-      console.log('data', data);
-      this.router.navigate(['categories-list', this._cafeteriaId]);
-      // this._goTo('/categories-list');
-    }, (error) => {
-      console.log('error', error);
+    this.checkEmail(createdManagerUser.mn_email).then(() => {
+      this.userService.registerManagerUser(createdManagerUser).then((data) => {
+        console.log('data', data);
+        this.router.navigate(['categories-list', this._cafeteriaId]);
+        // this._goTo('/categories-list');
+      }, (error) => {
+        console.log('error', error);
+      });
+    }, () => {
+      console.log('invlid email, or email alreadu exist');
     });
+
   }
 
   goBack() {
@@ -89,20 +94,22 @@ export class CreateManagerComponent implements OnInit {
     return disable;
   }
 
-  checkEmail(email: string): void {
-    if (email) {
-      if (this._emailRegExp.test(email)) {
-        this.userService.checkUserEmail(email).then((data) => {
-          this.formErrors.emailField = false;
-        }, (error) => {
+  checkEmail(email: string): Promise<any> {
+    return new Promise((resolve, reject) => {
+      if (email) {
+        if (this._emailRegExp.test(email)) {
+          this.userService.checkUserEmail(email).then((data) => {
+            this.formErrors.emailField = false;
+          }, (error) => {
+            this.formErrors.emailField = true;
+            this.formErrorMessages.email = this._errors.emailAlreadyExist;
+          });
+        } else {
           this.formErrors.emailField = true;
-          this.formErrorMessages.email = this._errors.emailAlreadyExist;
-        });
-      } else {
-        this.formErrors.emailField = true;
-        this.formErrorMessages.email = this._errors.invalidEmail;
+          this.formErrorMessages.email = this._errors.invalidEmail;
+        }
       }
-    }
+    });
 
   }
 
