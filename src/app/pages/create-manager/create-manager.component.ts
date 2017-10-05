@@ -100,14 +100,19 @@ export class CreateManagerComponent implements OnInit {
         if (this._emailRegExp.test(email)) {
           this.userService.checkUserEmail(email).then((data) => {
             this.formErrors.emailField = false;
+            resolve();
           }, (error) => {
             this.formErrors.emailField = true;
             this.formErrorMessages.email = this._errors.emailAlreadyExist;
+            reject();
           });
         } else {
           this.formErrors.emailField = true;
           this.formErrorMessages.email = this._errors.invalidEmail;
+          reject();
         }
+      } else {
+        reject();
       }
     });
 
