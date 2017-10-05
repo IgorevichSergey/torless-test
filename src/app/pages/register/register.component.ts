@@ -59,28 +59,33 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {}
 
   registerUser(createdUser: CreatedUser): void {
-    this.userService.registration(createdUser).then((response) => {
-      this.registrationError = false;
-      console.log('response ===> ', response);
-      console.log('response', response.data.token);
-      if (this.uploadedFile) {
-        this.userService.saveCompanyImage(this.uploadedFile, response.data.token).then((imgResponse) => {
-          this._goTo('/cafeteria-type');
-        }, (error) => {
-          console.log('error ===> ', error);
-        });
-      } else {
-        console.log('go to cafeteria type');
+    this.checkEmail(createdUser.user.us_email || '').then(() => {
+      this.userService.registration(createdUser).then((response) => {
+        this.registrationError = false;
+        console.log('response ===> ', response);
+        console.log('response', response.data.token);
+        if (this.uploadedFile) {
+          this.userService.saveCompanyImage(this.uploadedFile, response.data.token).then((imgResponse) => {
+            this._goTo('/cafeteria-type');
+          }, (error) => {
+            console.log('error ===> ', error);
+          });
+        } else {
+          console.log('go to cafeteria type');
 
-      }
-      // todo: move to ELSE after BE fix
-      this._goTo('/cafeteria-type');
-      // todo: go to next page
-      // this._goTo('/cafeteria-type');
-      console.log('todo: save new image');
-    }, (error) => {
-      this.registrationError = true;
+        }
+        // todo: move to ELSE after BE fix
+        this._goTo('/cafeteria-type');
+        // todo: go to next page
+        // this._goTo('/cafeteria-type');
+        console.log('todo: save new image');
+      }, (error) => {
+        this.registrationError = true;
+      });
+    }, () => {
+      console.log('email already exist, or has incorrect format.');
     });
+
   }
 
   contactUsModal() {
@@ -91,20 +96,27 @@ console.log("error CB")
     });
   }
 
-  checkEmail(email: string): void {
-    if(email) {
-      if(this._emailRegExp.test(email)) {
-        this.userService.checkUserEmail(email).then((data) => {
-          this.formErrors.emailField = false;
-        }, (error) => {
+  checkEmail(email: string): Promise<any> {
+    return new Promise((resolve, reject) => {
+      if(email) {
+        if(this._emailRegExp.test(email)) {
+          this.userService.checkUserEmail(email).then((data) => {
+            resolve();
+            this.formErrors.emailField = false;
+          }, (error) => {
+            reject();
+            this.formErrors.emailField = true;
+            this.formErrorMessages.email = this._errors.emailAlreadyExist;
+          });
+        } else {
+          reject();
           this.formErrors.emailField = true;
-          this.formErrorMessages.email = this._errors.emailAlreadyExist;
-        });
+          this.formErrorMessages.email = this._errors.invalidEmail;
+        }
       } else {
-        this.formErrors.emailField = true;
-        this.formErrorMessages.email = this._errors.invalidEmail;
+        reject();
       }
-    }
+    });
 
   }
 
