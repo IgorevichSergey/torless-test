@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
-  host: 'https://tor-less.com/torless-admin/public/front_api_all_tags',
-  companyImage: 'https://tor-less.com/torless-admin/public/addCompanyImageAjax',
-  cafeteriaImage: 'https://tor-less.com/torless-admin/public/addCafeteriaImageAjax',
-  productImage: 'https://tor-less.com/torless-admin/public/addProductImageAjax'
+  host: 'http://api.tor-less.com/front_api_all_tags',
+  companyImage: 'http://api.tor-less.com/addCompanyImageAjax',
+  cafeteriaImage: 'http://api.tor-less.com/addCafeteriaImageAjax',
+  productImage: 'http://api.tor-less.com/addProductImageAjax'
 };
