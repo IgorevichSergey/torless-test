@@ -59,6 +59,8 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {}
 
   registerUser(createdUser: CreatedUser): void {
+    console.log('createdUser', createdUser);
+    console.log('this.uploadedFile', this.uploadedFile);
     this.checkEmail(createdUser.user.us_email || '').then(() => {
       this.userService.registration(createdUser).then((response) => {
         this.registrationError = false;
@@ -177,12 +179,12 @@ console.log("error CB")
         this.uploadedFile = file;
         this.uploadedImage = reader.result;
 
-        let token = localStorage.getItem('torless_token') ? localStorage.getItem('torless_token') : null;
-        this.userService.saveCompanyImage(this.uploadedFile, token).then((response) => {
-          console.log('response ===> ', response);
-        }, (error) => {
-          console.log('error ===> ', error);
-        });
+        // let token = localStorage.getItem('torless_token') ? localStorage.getItem('torless_token') : null;
+        // this.userService.saveCompanyImage(this.uploadedFile, token).then((response) => {
+        //   console.log('response ===> ', response);
+        // }, (error) => {
+        //   console.log('error ===> ', error);
+        // });
 
         // image size check 150x150
         // const img: HTMLImageElement = new Image();

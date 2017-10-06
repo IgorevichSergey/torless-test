@@ -50,7 +50,8 @@ export class AddProductComponent implements OnInit {
     this.createdProduct.pr_caf_id = '' + this._cafeteriaId;
     this.createdProduct.pr_cat_id = '' + this._categoryId;
     this.createdProduct.product.pr_price = '' + this.createdProduct.product.pr_price;
-
+                                                                                         console.log('this.createdProduct', this.createdProduct);
+                                                                                         console.log('this.uploadedFile', this.uploadedFile);
     this.productService.createMainProduct(this.createdProduct).then((response) => {
       console.log('response ==> ', response);
       if (this.uploadedFile) {

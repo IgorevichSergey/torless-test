@@ -155,6 +155,7 @@ export class EditCafeteriaComponent implements OnInit {
 
   public updateCafeteria(updatedCafeteria: UpdatedCafeteria): void {
     console.log('updatedCafeteria ==> ', updatedCafeteria)
+    console.log('this.uploadedFile ==> ', this.uploadedFile)
     this.cafeteriaService.updateCafeteria(updatedCafeteria).then((data) => {
       console.log('update data', data);
       if (this.uploadedFile) {

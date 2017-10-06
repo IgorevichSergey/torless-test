@@ -15,7 +15,9 @@ import * as _ from 'lodash';
 export class EditProductComponent implements OnInit {
   public updatedMainProduct: any; // todo: set UpdatedMainProduct interface
   public minutes: number[] = new Array(18);
+
   public uploadedImage: string;
+  public uploadedFile: File;
 
   public vegTypes: {veg_id: number, veg_type: string}[];
 
@@ -63,9 +65,18 @@ export class EditProductComponent implements OnInit {
     console.log('this._cafeteriaId', this._cafeteriaId);
     console.log('this._categoryId', this._categoryId);
     console.log('this._productId', this._productId);
+
+    console.log('this.uploadedFile', this.uploadedFile);
     this.productService.updateProduct(this.updatedMainProduct, this._cafeteriaId, this._categoryId, this._productId).then((response) => {
       console.log('response ==> ', response);
-      this.goBack();
+      if (this.uploadedFile) {
+        this.productService.saveImage(this.uploadedFile, this._productId).then(() => {
+          this.goBack();
+        });
+      } else {
+        this.goBack();
+      }
+
     }, (error) => {
       console.log('error ===> ', error);
     });
@@ -120,6 +131,38 @@ export class EditProductComponent implements OnInit {
     this.updatedMainProduct.product.prod_type = statusCode;
   }
 
+  public openFileUploader(fileUploader: HTMLElement | any): void {
+    if (fileUploader.files && fileUploader.files[0]) {
+      const files: FileList = fileUploader.files;
+      const file: File = files[0];
+      const reader: FileReader = new FileReader();
+      reader.readAsDataURL(file);
+
+      reader.onload = (() => {
+        this.uploadedFile = file;
+        this.uploadedImage = reader.result;
+
+        // image size check 150x150
+        // const img: HTMLImageElement = new Image();
+        // img.src = reader.result;
+        // img.onload = () => {
+        //   if (img.width <= 150 && img.height <= 150) {
+        //     // prev.src = this.src;
+        //     this.uploadedImage = img.src;
+        //   } else {
+        //     console.log('ERROR');
+        //   }
+        // };
+
+      }).bind(this);
+
+      reader.onerror = ((error) => {
+        console.log('Error: ', error);
+      });
+
+    }
+
+  }
 
   ///
 
