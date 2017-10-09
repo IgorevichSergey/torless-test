@@ -25,8 +25,8 @@
         <span>{{ product.prod_name || 'NA' }}</span>
       </div>
 
-      <div class="image">
-        <img src="./assets/icon/product-example.png">
+      <div class="image" *ngIf="product.prod_image && product.prod_image !== 'none'">
+        <img [src]="product.prod_image">
       </div>
 
       <div class="checkboxes">

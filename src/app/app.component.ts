@@ -130,7 +130,7 @@ export class AppComponent {
   private __setHeaderText(): string {
     // cafeteria_name - company_name / login_user_name
     let result: string = '';
-    console.log('this.cafeteriaName', this.cafeteriaName)
+
     if (this.cafeteriaName) {
       result += this.cafeteriaName;
     }

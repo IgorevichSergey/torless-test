@@ -282,6 +282,8 @@ export class EditCafeteriaComponent implements OnInit {
     console.log('result', result);
     console.log('cafeteria', cafeteria);
     //
+    this.uploadedImage = cafeteria.caf_image;
+
     result.cafeteria.up_caf_id = cafeteria.id;
     result.cafeteria.up_caf_type = cafeteria.caf_type;
     result.cafeteria.up_caf_name = cafeteria.caf_name;

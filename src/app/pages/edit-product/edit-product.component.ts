@@ -169,7 +169,7 @@ export class EditProductComponent implements OnInit {
   private _parseBEData(beData): any {
     let result: any = {};
     result.extra_categories = beData.extra_categories;
-
+    this.uploadedImage = (beData.product.prod_image === 'none') ? '' : beData.product.prod_image;
     result.product = {
       pr_name: beData.product.prod_name,
       pr_price: beData.product.prod_price,
