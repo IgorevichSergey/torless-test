@@ -17,11 +17,11 @@
   //    max-width: 300px;
   //  }
   //}
-.cafe__title__component__prev{
-      display: block;
+  .cafe__title__component__prev{
+    display: block;
     margin-top: 3.85rem;
     font-size: 1.4rem;
-}
+  }
   .list-options {
     display: flex;
     justify-content: space-around;
@@ -29,7 +29,7 @@
     width: 50%;
     margin: 0 auto 40px;
     min-width: 520px;
-        margin-top: 2rem;
+    margin-top: 2rem;
     width: 42%;
     min-width: 0;
 
@@ -45,9 +45,9 @@
       padding: 5px 10px 5px;
       text-align: right;
       width: 50%;
-    padding: 0.3rem 1rem;
-    text-align: right;
-    float: right;
+      padding: 0.3rem 1rem;
+      text-align: right;
+      float: right;
 
       @media screen and (max-width: 760px) {
         margin: 0 auto;
@@ -63,10 +63,10 @@
         background: #fff;
         font-weight: 900;
         border-radius: 100%;
-            width: 2rem;
-    height: 2rem;
-    font-family: sans-serif;
-    font-size: 1.5rem;
+        width: 2rem;
+        height: 2rem;
+        font-family: sans-serif;
+        font-size: 1.5rem;
         span {
           align-self: center;
         }
@@ -76,7 +76,7 @@
         font-weight: bolder;
         font-size: 1.4rem;
         font-size: 1.8rem;
-    padding-top: 0.25rem;
+        padding-top: 0.25rem;
       }
     }
   }
@@ -85,25 +85,26 @@
     text-align: center;
     margin-bottom: 40px;
     .button-description {
-         font-size: 1.2rem;
-    margin-top: 3.4rem;
-    margin-bottom: 0;
+      font-size: 1.2rem;
+      margin-top: 3.4rem;
+      margin-bottom: 0;
     }
     button {
       background: #fff557;
       font-size: 1rem;
       font-weight: 900;
-    width: 48%;
-    min-width: 0;
-    max-width: none;
-    font-size: 1.6rem;
-    height: 3.8rem;
-    box-sizing: border-box;
-    margin-bottom: 0.7rem;
-        margin-top: 0.7rem;
-    margin-bottom: 0;
+      width: 48%;
+      min-width: 0;
+      max-width: none;
+      font-size: 1.6rem;
+      height: 3.8rem;
+      box-sizing: border-box;
+      margin-bottom: 0.7rem;
+      margin-top: 0.7rem;
+      margin-bottom: 0;
+      &:hover,
       &:active {
-        background: darken(#fff557, 10%)
+        background: #c2ba37;
       }
       span {
         display: inline-block;
@@ -125,7 +126,7 @@
     width: 60%;
     justify-content: space-between;
     margin: 0 auto 60px;
-        width: 47.5%;
+    width: 47.5%;
     max-width: none;
     margin-top: 6.3rem;
     @media screen and (max-width: 760px) {
@@ -212,7 +213,7 @@
   width: 100%;
   max-width: 1220px;
   margin: 10px auto;
-      margin-top: 11.3rem;
+  margin-top: 40px;
 
   .component-description {
     display: flex;
@@ -318,10 +319,10 @@
         padding: 10px;
         font-size: 0.9rem;
         text-align: center;
-            color: #fff;
-    font-size: 1.25rem;
-    padding-top: 0.5rem;
-    padding-bottom: 0.2rem;
+        color: #fff;
+        font-size: 1.25rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.2rem;
       }
       .block-content {
         padding: 30px;
@@ -347,7 +348,7 @@
   margin: 10px auto;
   background: #353b41;
   width: 100%;
-    margin-top: 4rem;
-    height: 21rem;
-    margin-bottom: 15rem;
+  margin-top: 4rem;
+  height: 21rem;
+  margin-bottom: 15rem;
 }

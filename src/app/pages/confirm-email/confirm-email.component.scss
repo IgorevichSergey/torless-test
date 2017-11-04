@@ -17,8 +17,9 @@
       background: #fff557;
       font-size: 0.9rem;
       font-weight: 900;
-      &:active {
-        background: darken(#fff557, 10%)
+      &:active,
+      &:hover {
+        background: #c2ba37;
       }
     }
     button[disabled] {

@@ -132,9 +132,7 @@ export class CreateManagerComponent implements OnInit {
   phoneFormatter(t: string): any {
     const numbers: string = t ? t.replace(/\D/g, '') : '',
       dashes: Object = {
-        3: '-',
-        5: '-',
-        7: '-'
+        3: '-'
       },
       len = (numbers.length <= 10) ? numbers.length : 10;
 

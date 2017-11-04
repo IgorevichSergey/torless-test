@@ -7,6 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class UserImageComponent implements OnInit {
   @Input('text') text: string;
+  @Input('image') image: string;
 
   constructor() { }
 

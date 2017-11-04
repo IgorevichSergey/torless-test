@@ -83,117 +83,6 @@ export class SelectComponent implements AfterViewInit, OnChanges {
     this.setItem.emit(item);
   }
 
-//   public filterParams: { by: string; value: any; } = {
-//     by: '',
-//     value: ''
-//   };
-//
-//   /**
-//    * Model input
-//    */
-//   @Input('model') model: string | number;
-//
-//   /**
-//    * array and displayed value
-//    */
-//   @Input('list') list: any[];
-//   @Input('key') key: string;
-//
-//   /**
-//    * placeholder string
-//    */
-//   @Input('placeholder') placeholder: string;
-//
-//   /**
-//    * Model output
-//    * @type {EventEmitter<any>}
-//    */
-//   @Output('output') output: EventEmitter<any> = new EventEmitter();
-//
-//
-//   /**
-//    * HTML elements
-//    */
-//   @ViewChild('listElement') listElement: ElementRef;
-//   @ViewChild('inputElement') inputElement: ElementRef;
-//   @ViewChild('placeholderElement') placeholderElement: ElementRef;
-//
-//   constructor(
-//     private renderer: Renderer,
-//     private elementRef: ElementRef
-//   ) { }
-//
-//   ngOnChanges() {
-//
-//   }
-//
-//   ngAfterViewInit() {
-//     this.filterParams = {
-//       by: this.key,
-//       value: ''
-//     };
-//
-//     this.__setModel(this.model);
-//
-//     const specifiedElement = this.elementRef.nativeElement;
-//
-//     // console.log('this.listElement', this.listElement.nativeElement)
-//     // console.log('this.inputElement', this.inputElement.nativeElement)
-//
-// // I'm using "click" but it works with any event
-//     document.addEventListener('click', ((event) => {
-//       const isClickInside = specifiedElement.contains(event.target);
-//
-//
-//
-//       if (!isClickInside) {
-//         // console.log('click was outside')
-//         console.log('isClickInside ==> ', isClickInside);
-//
-//         this.elementFocus(false);
-//
-//
-//         // this.fieldFocus((this.inputElement as any).nativeElement, false);
-//         // the click was outside the specifiedElement, do something
-//       }
-//     }).bind(this));
-//
-//     // this.elementRef.nativeElement.addEventListener('click', (data) => {
-//     //   console.log('data', data);
-//     // });
-//   }
-//
-//   elementFocus(focus: boolean) {
-//     this.inputFocus(focus);
-//     this.showList(focus);
-//
-//     if (focus && this.placeholderElement) {
-//       this.renderer.invokeElementMethod(this.placeholderElement.nativeElement, 'focus');
-//     }
-//
-//     if (focus) {
-//       this.renderer.invokeElementMethod(this.inputElement.nativeElement, 'focus');
-//     }
-//
-//     // this.renderer.setElementClass(element, 'focused', add);
-//     // this.renderer.setElementClass(this.elementRef.nativeElement.querySelector('.select-component__list'), 'visible', add);
-//     // if (add) {
-//     //   this.renderer.invokeElementMethod(this.elementRef.nativeElement.querySelector('input'), 'focus');
-//     // }
-//   }
-//
-//   inputFocus(focus) {
-//     this.renderer.setElementClass(this.inputElement.nativeElement, 'focused', focus);
-//     // const placeholderElement: HTMLElement = this.elementRef.nativeElement.querySelector('.select-component__placeholder'),
-//     //       listElement: HTMLElement = this.elementRef.nativeElement.querySelector('.select-component__list');
-//     // this.renderer.setElementClass(listElement, 'visible', true);
-//
-//
-//     if (!this.filterParams.value && this.filterParams.value !== 0) {
-//       this.renderer.setElementClass(this.placeholderElement.nativeElement, 'focused', focus);
-//     }
-//   }
-//
   showList(show: boolean): void {
     this.visibleList = show;
     // this.renderer.setElementClass(this.listElement.nativeElement, 'visible', show);
@@ -217,6 +106,12 @@ export class SelectComponent implements AfterViewInit, OnChanges {
     if (this.input) {
       this.input.nativeElement.focus();
       this.inputFocused = true;
+    }
+  }
+
+  valueReset(value) {
+    if (!value) {
+      this.setItem.emit();
     }
   }
 

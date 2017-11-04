@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 
 import { InputDirective } from './input/input.directive';
+import { CheckImageDirective } from './check-image/check-image.directive';
 import { CommonModule } from '@angular/common';
 
 @NgModule({
@@ -8,10 +9,12 @@ import { CommonModule } from '@angular/common';
     CommonModule
   ],
   declarations: [
-    InputDirective
+    InputDirective,
+    CheckImageDirective
   ],
   exports: [
-    InputDirective
+    InputDirective,
+    CheckImageDirective
   ]
 })
 export class DirectivesModule {}

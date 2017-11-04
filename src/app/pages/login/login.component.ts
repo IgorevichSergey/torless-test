@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
   public login(user: LoginUser): void {
     this.userService.login(user).then((data) => {
       this.loginError = false;
-      this._goTo('/cafeteria-list');
+      this._goTo('/welcome-page');
     }, (reject) => {
       this.loginError = true;
     });

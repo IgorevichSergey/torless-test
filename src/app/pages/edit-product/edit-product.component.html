@@ -96,7 +96,7 @@
             <div class="text">הוסף/י לוגו לרשת</div>
           </div>
 
-          <img [src]="uploadedImage" *ngIf="uploadedImage">
+          <img app-check-image [src]="uploadedImage" [image]="uploadedImage" *ngIf="uploadedImage">
         </div>
 
 

@@ -14,13 +14,13 @@
 
       <div class="create-connection">
         <div class="notice">
-          <div class="bold">תהליך ההרשמה לתורלס הוא</div>
-          <div class="bold">.חד פעמי</div>
-          <div class="normal">בעתיד, תוכל/י לבצע עידכונים וש</div>
+          <div class="bold" dir="rtl">תהליך הקמת קפיטריה הוא חד פעמי.</div>
+          <div class="bold" dir="rtl">בעתיד, תוכלו לבצע עידכונים ושינויים בכל הבחירות שבצעתם</div>
+          <div class="normal" dir="rtl">בעתיד, תוכל/י לבצע עידכונים וש</div>
         </div>
 
           <div class="notice notice__second">
-            <div class="bold">נא הכינו את המידע הנ”ל:</div>
+            <div class="bold" dir="rtl">נא הכינו את המידע הנ”ל:</div>
 
             <div class="normal create__big__area">
 
@@ -29,8 +29,7 @@
           </div>
 
         <div class="link">
-          לעזרה - צור/י קשר
-        </div>
+          לעזרה - צורו קשר        </div>
       </div>
 
     </div>
@@ -38,23 +37,22 @@
     <div class="cafeteria-details-form">
       <!--cafeteria details-->
       <div class="form-label">
-        פרטי הקפיטריה
-      </div>
+        פרטי ה      </div>
 
       <div class="input-line required">
-        <input type="text" appInput [(ngModel)]="createdCafeteria.cafeteria.caf_name" [placeholderMessage]="'שם חברה'">
+        <input type="text" appInput [(ngModel)]="createdCafeteria.cafeteria.caf_name" [placeholderMessage]="'שם'">
       </div>
 
-      <div class="input-line required">
-        <input type="text" appInput [(ngModel)]="createdCafeteria.cafeteria.caf_address" [placeholderMessage]="'כתובת'">
+      <!--<div class="input-line required">-->
+        <!--<input type="text" appInput [(ngModel)]="createdCafeteria.cafeteria.caf_address" [placeholderMessage]="'כתובת'">-->
+      <!--</div>-->
+
+      <div class="select-line required">
+        <app-select [list]="universities" [value]="getBy(universities, createdCafeteria.cafeteria.caf_university_id, 'university_id', 'university_name')" key="university_name" [placeholder]="'המוסד האקדמי בו הקפיטריה נמצאת'" (setItem)="selectUniversity($event)"></app-select>
       </div>
 
       <div class="select-line required">
-        <app-select [list]="universities" [value]="getBy(universities, createdCafeteria.cafeteria.caf_university_id, 'university_id', 'university_name')" key="university_name" [placeholder]="'בנייני האוניברסיטה'" (setItem)="selectUniversity($event)"></app-select>
-      </div>
-
-      <div class="select-line required">
-        <app-select [list]="universityBuildings" [value]="getBy(universityBuildings, createdCafeteria.cafeteria.caf_university_building_id, 'building_id', 'building_name')" key="building_name" [placeholder]="'בנייני האוניברסיטה'" (setItem)="selectCafeteriaBuilding($event)"></app-select>
+        <app-select [list]="universityBuildings" [value]="getBy(universityBuildings, createdCafeteria.cafeteria.caf_university_building_id, 'building_id', 'building_name')" key="building_name" [placeholder]="'הבניין בו ממוקמת הכפיטריה'" (setItem)="selectCafeteriaBuilding($event)"></app-select>
       </div>
 
       <div class="select-line required">
@@ -65,7 +63,7 @@
         <div class="radio-button-element">
           <!-- not vegeterian -->
           <span class="button-description">
-           אין מאכלים צמחוניים
+יש מנות צמחוניות
           </span>
           <!--<input type="radio"  name="sex" >Female-->
 
@@ -75,7 +73,7 @@
         <div class="radio-button-element">
           <!-- vegeterian -->
           <span class="button-description">
-            יש מנות צמחוניות
+            יש מנות טבעוניות
           </span>
           <input type="radio" [(ngModel)]="createdCafeteria.cafeteria.caf_veg_type" [value]="1">
           <!--<input type="radio">-->
@@ -132,32 +130,27 @@
         </div>
       </div>
 
-      <div class="textarea-line">
-        <textarea appInput [(ngModel)]="createdCafeteria.cafeteria.caf_description" [placeholderMessage]="'את התיאור'"></textarea>
-      </div>
-
       <div style="clear:both;"></div>
 
       <div class="upload__image__container">
         <input type="file" (change)="openFileUploader(fileUploader)" accept="image/jpeg,image/png,image/jpg" data-max-size="1024" #fileUploader>
         <div class="upload__image__text">
-          <div>
-            הלוגו יופיע בכל פרסומי הקפיטריה, <br>
-            על כן, אנחנו ממליצים לצרף קובץ איכותי<br>
-          </div>
-          <div>
-            מידת הלוגו 150X150 פיקסלים<br>
-            בפורמט JPG / PNG
-          </div>
+
+          <div dir="rtl">התמונה תופיע בכל פרסומי הסניף,</div>
+          <div dir="rtl"> על כן, אנחנו ממליצים לצרף קובץ איכותי</div>
+
+          <div dir="rtl">מידת התמונה <span style="display: inline-block; margin-right: 3px;">400X400</span> פיקסלים</div>
+          <div dir="rtl">בפורמט <span style="display: inline-block; margin-right: 3px;">JPG / PNG</span></div>
+
 
           <div class="upload__image__text__links" *ngIf="uploadedImage">
-            <div (click)="fileUploader.click()">שנה תמונה</div>
+            <div (click)="fileUploader.click()">שינוי תמונה</div>
             <div (click)="deleteImage()">למחוק תמונה</div>
           </div>
         </div>
         <div class="upload__image__btn">
           <div class="upload__image__btn__inner" *ngIf="!uploadedImage" (click)="fileUploader.click()">
-            <div class="upload__image__btn__text">הוסף/י לוגו לרשת</div>
+            <div class="upload__image__btn__text">הוסיפו תמונת סניף</div>
           </div>
           <img [src]="uploadedImage" *ngIf="uploadedImage">
         </div>
@@ -166,9 +159,9 @@
 
       <div class="submit-block">
         <div class="submit-button-container">
-          <button (click)="createCafeteria(createdCafeteria)">הרשם/י</button>
+          <button (click)="createCafeteria(createdCafeteria)">המשיכו</button>
           <div class="repeat-button">
-            <span (click)="goBack()">חזור/י</span>
+            <span (click)="goBack()">חזרו</span>
           </div>
         </div>
       </div>

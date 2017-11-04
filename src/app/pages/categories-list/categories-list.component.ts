@@ -69,7 +69,7 @@ export class CategoriesListComponent implements OnInit {
   }
 
   public tmpCafeteriaList(): void {
-    this.router.navigate(['cafeteria-list']);
+    this.router.navigate(['welcome-page']);
   }
 
   public removeNewCategory(): void {

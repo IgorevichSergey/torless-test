@@ -163,6 +163,11 @@ export class EditProductComponent implements OnInit {
     }
 
   }
+  
+  public deleteImage(): void {
+    this.uploadedFile = null;
+    this.uploadedImage = null;
+  }
 
   ///
 

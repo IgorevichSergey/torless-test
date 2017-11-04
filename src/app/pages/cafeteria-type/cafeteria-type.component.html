@@ -39,12 +39,12 @@
     </div>
   </div>
   <div class="duplication-options" *ngIf="selectedCafeteriaType && cafeterias?.length > 0">
-    <app-select [list]="cafeterias" key="caf_name" [placeholder]="'סוג הקפטריה'" (setItem)="selectCafeteria($event)"></app-select>
+    <app-select [list]="cafeterias" key="caf_name" [placeholder]="'שכפול סניף קיים'" (setItem)="selectCafeteria($event)"></app-select>
   </div>
 
   <div class="button-container">
     <button [disabled]="!selectedCafeteriaType" (click)="submitCafeteriaType(selectedCafeteriaType)">
-      שמור/י והמשך/י
+      המשיכו
     </button>
   </div>
 </div>

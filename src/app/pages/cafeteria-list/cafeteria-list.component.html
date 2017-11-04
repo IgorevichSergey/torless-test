@@ -1,12 +1,19 @@
 <div class="cafeteria-list-component">
-  <div class="component-title component-center-element">
-    <div>
-      ברוכים הבאים,  אנחנו שמחים שבחרת במערכת torLess. על מנת שתוכל/י
+  <div class="component-title component-center-element" *ngIf="cafeteriaList?.length === 0">
+    <div dir="rtl" style="margin-top: 1rem;">
+      ברוכים הבאים
     </div>
+    <div dir="rtl" style="margin-top: 1rem;">
+      אנחנו שמחים שבחרתם torless.
+    </div>
+    <div dir="rtl" style="margin-top: 1rem;">
+
+
+      **על מנת שתוכלו להתחיל להרוויח, עליכם להשלים **2 שלבים:    </div>
 
   </div>
 
-  <div class="list-options">
+  <div class="list-options" *ngIf="cafeteriaList?.length === 0">
     <div class="list-element">
       <div class="element-label">
         <span>1</span>
@@ -25,17 +32,17 @@
     </div>
   </div>
 
-  <div class="component-button-container">
+  <div class="component-button-container" *ngIf="cafeteriaList?.length === 0">
     <div class="button-description">
-.אנחנו נלווה אותך לכל אורך התהליך ונדאג שתסיים/י אותו במהירות
+      אנחנו נלווה אתכם לכל אורך התהליך ונדאג שתסיימו אותו במהירות.
     </div>
     <button (click)="selectNewCafeteriaType()">
       <span>+</span>
-      לחץ/י להקמת סניף ראשון
+      לחצו להקמת סניף ראשון
     </button>
   </div>
 
-  <div class="table-images-container">
+  <div class="table-images-container" *ngIf="cafeteriaList?.length === 0">
     <div class="table-image">
       <img src="./assets/icon/table-image.png">
     </div>

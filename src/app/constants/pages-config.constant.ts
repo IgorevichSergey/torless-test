@@ -19,7 +19,7 @@ export const PAGES_CONFIG = {
       companyLogo: false,
       hintText: 'דף אישור'
     },
-    '/cafeteria-list': {
+    '/welcome-page': {
       info: true,
       breadcrumbs: true,
       companyLogo: true,

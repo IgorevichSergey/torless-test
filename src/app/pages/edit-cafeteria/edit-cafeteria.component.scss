@@ -376,8 +376,9 @@
         margin-bottom: 10rem;
         font-weight: 900;
         font-size: 1.4rem;
-        &:active {
-          background: darken(#fff557, 10%)
+        &:active,
+        &:hover {
+          background: #c2ba37;
         }
       }
       .repeat-button {

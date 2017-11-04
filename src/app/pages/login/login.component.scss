@@ -26,19 +26,18 @@
   font-family: sans-serif;
 }
 
-.login-component__left-side .torless-button{
+.login-component__left-side .torless-button {
   width: 100%;
   font-size: 1.4rem;
   margin-top: 1.5rem;
   padding-top: 0.5rem;
   transition-duration: 0.3s;
-  border: 1px solid #fff557;
   padding-bottom: 0.9rem;
   height: auto;
-  &:hover{
-    border-color:#000;
-    background:none;
-  };
+  &:active,
+  &:hover {
+    background: #c2ba37;
+  }
 }
 
 .login-component {
@@ -72,12 +71,11 @@
       height: 3.7rem;
       color: #000;
       box-sizing: border-box;
-      border:1px solid #fff557;
       transition-duration: 0.3s;
-      &:hover{
-        border-color:#000;
-        background: none;
-      };
+      &:active,
+      &:hover {
+        background: #c2ba37;
+      }
 
     }
     .label{

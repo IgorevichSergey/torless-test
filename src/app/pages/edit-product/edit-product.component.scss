@@ -488,6 +488,10 @@
         background: lighten(#fff557, 10%);
         cursor: not-allowed;
       }
+      &:active,
+      &:hover {
+        background: #c2ba37;
+      }
     }
     //  text-align: right;
     //  margin-bottom: 40px;

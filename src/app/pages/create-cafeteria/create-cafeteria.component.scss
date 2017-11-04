@@ -9,6 +9,8 @@
 
   input[type="file"] {
     width: 0;
+    opacity: 0;
+    z-index: -1;
   }
 }
 .upload__image__btn__text {
@@ -31,7 +33,7 @@
   background: #fff557;
   margin: 0 auto;
   margin-top: 3.9rem;
-  &:after{
+  &:after {
     content:'';
     background: #fff557;
     position: absolute;
@@ -196,6 +198,7 @@
       position: absolute;
       left: 0;
       top: 0;
+      width: 40%;
     }
 
     .cafeteria-details-form {
@@ -374,8 +377,9 @@
         margin-bottom: 10rem;
         font-weight: 900;
         font-size: 1.4rem;
-        &:active {
-          background: darken(#fff557, 10%)
+        &:active,
+        &:hover {
+          background: #c2ba37;
         }
       }
       .repeat-button {

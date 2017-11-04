@@ -93,7 +93,7 @@ export class RemovedProductsComponent implements OnInit {
   }
 
   public goToCafeteriasList(): void {
-    this.router.navigate(['cafeteria-list']);
+    this.router.navigate(['welcome-page']);
   }
 
   public goToRemovedProductList(): void {

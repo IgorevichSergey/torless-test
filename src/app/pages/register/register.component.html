@@ -1,7 +1,7 @@
 <div class="registration-component">
   <div class="registration-header">
     <div class="label">הרשמה</div>
-    <div class="description">צ’יק צ’אק ואנחנו מתחילים לעבוד ביחד ולהרוויח. רק מלא/י כמ</div>
+    <div class="description">תהליך הקמה חד פעמי ומתחילים להרוויח</div>
   </div>
 
   <div class="registration-content">
@@ -10,10 +10,10 @@
       <div class="notice">
         <div class="bold">תהליך ההרשמה לתורלס הוא</div>
         <div class="bold">.חד פעמי</div>
-        <div class="normal">בעתיד, תוכל/י לבצע עידכונים וש</div>
+        <div class="normal">בעתיד, תוכלו לבצע עידכונים ושינויים בכל הבחירות שבצעתם</div>
       </div>
       <div class="link" (click)="contactUsModal()">
-        לעזרה - צור/י קשר
+        לעזרה - צרו קשר
       </div>
     </div>
 
@@ -30,8 +30,8 @@
               על כן, אנחנו ממליצים לצרף קובץ איכותי<br>
             </div>
             <div>
-              מידת הלוגו 150X150 פיקסלים<br>
-              בפורמט  JPG / PNG
+              מידת              הלוגו         <span style="display: inline-block; margin-right: 5px;">150X150</span>     פיקסלים<br>
+              בפורמט  <span style="display: inline-block; margin-right: 5px;">JPG / PNG</span>
             </div>
 
             <div class="upload__image__text__links" *ngIf="uploadedImage">
@@ -43,7 +43,7 @@
 
           <div class="upload__image__btn">
             <div class="upload__image__btn__inner" *ngIf="!uploadedImage" (click)="fileUploader.click()">
-              <div class="upload__image__btn__text">הוסף/י לוגו לרשת</div>
+              <div class="upload__image__btn__text">הוסיפו את לוגו הרשת</div>
             </div>
             <img [src]="uploadedImage" *ngIf="uploadedImage">
           </div>
@@ -66,16 +66,16 @@
           <!--<span>city</span>-->
           <input type="text" appInput [(ngModel)]="createdUser.company.comapny_city" [placeholderMessage]="'עיר'" [error]="registrationError">
         </div>
-        <div class="input-line">
-          <!--<span>post code</span>-->
-          <input type="text" appInput [(ngModel)]="createdUser.company.comapny_zip_code" [placeholderMessage]="'מיקוד'" [error]="registrationError">
-        </div>
+        <!--<div class="input-line">-->
+          <!--&lt;!&ndash;<span>post code</span>&ndash;&gt;-->
+          <!--<input type="text" appInput [(ngModel)]="createdUser.company.comapny_zip_code" [placeholderMessage]="'מיקוד'" [error]="registrationError">-->
+        <!--</div>-->
       </div>
 
       <div class="chief-account-details">
         <div class="label">
         <div class="information-container">
-          <app-information [hintText]="'פרטי מנהל/ת החשבון הראשי'" hintPosition="top center" elementVerticalPosition="top" elementHorizontalPosition="left" iconColor="#ff5b57"></app-information>
+          <app-information [hintText]="'בתורלס. פרטיו של המנהל הראשי מוזנים פה. הפרטים ניתנים לשינוי בכל עת. בנוסף, לכל סניף שתפתחו במערכת, יהיה מנהל משלו ופרטיו מוזנים בעת פתיחת הסניף.'" hintPosition="top center" elementVerticalPosition="top" elementHorizontalPosition="left" iconColor="#ff5b57"></app-information>
         </div>
           פרטי מנהל/ת החשבון הראשי
         </div>
@@ -98,11 +98,11 @@
         </div>
         <div class="input-line required">
           <!--<span>email</span>-->
-          <input type="text" appInput [(ngModel)]="createdUser.user.us_email" (blur)="checkEmail(createdUser.user.us_email)" [placeholderMessage]="'אימייל'" [error]="formErrors.emailField" [message]="formErrorMessages.email" >
+          <input type="email" appInput [(ngModel)]="createdUser.user.us_email" (blur)="checkEmail(createdUser.user.us_email)" [placeholderMessage]="'אימייל'" [error]="formErrors.emailField" [message]="formErrorMessages.email" >
         </div>
         <div class="input-line required">
           <!--<span>phone</span>-->
-          <input type="text" appInput [(ngModel)]="createdUser.user.us_phone" (keyup)="createdUser.user.us_phone = phoneFormatter(createdUser.user.us_phone)" [placeholderMessage]="'מספר טלפון נייד'" [error]="registrationError">
+          <input type="text" appInput [(ngModel)]="createdUser.user.us_phone" (keyup)="createdUser.user.us_phone = phoneFormatter(createdUser.user.us_phone)" [placeholderMessage]="'מספר טלפון נייד'" [error]="registrationError" >
         </div>
       </div>
 
@@ -118,7 +118,7 @@
 
         <div class="input-line required">
           <!--username-->
-          <input type="password" appInput [(ngModel)]="confirmedPassword" [placeholderMessage]="'שם משתמש'" (blur)="checkPassword(confirmedPassword, 'confirmPasswordField')" [error]="formErrors.confirmPasswordField" [message]="formErrorMessages.password" >
+          <input type="password" appInput [(ngModel)]="confirmedPassword" [placeholderMessage]="'הקלידו ססמה מחדש'" (blur)="checkPassword(confirmedPassword, 'confirmPasswordField')" [error]="formErrors.confirmPasswordField" [message]="formErrorMessages.password" >
         </div>
 
       </div>
@@ -130,12 +130,9 @@
           <span (click)="termsAndConditions()" class="link">ולתקנון</span>
           <span>תורלס</span>
 
-
-
-
         </div>
         <div class="submit-button-container">
-          <button (click)="registerUser(createdUser)" [disabled]="isButtonDisabled(createdUser.user)">הרשם/י</button>
+          <button (click)="registerUser(createdUser)" [disabled]="isButtonDisabled(createdUser.user)">הרשמו</button>
         </div>
       </div>
     </div>

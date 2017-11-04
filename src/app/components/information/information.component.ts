@@ -29,7 +29,5 @@ export class InformationComponent implements AfterViewInit {
     // if (this.elementVerticalPosition === 'bottom') {
     //   this.renderer.setElementStyle(this.elementref.nativeElement, 'margin-top', 'inherit');
     // }
-
-    console.log('this.hintText', this.hintText);
   }
 }

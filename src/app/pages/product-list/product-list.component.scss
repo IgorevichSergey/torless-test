@@ -48,8 +48,9 @@
       color: grey;
       font-size: 1.3rem;
       font-weight: 900;
-      &:active {
-        background: lighten(#fff557, 10%);
+      &:active,
+      &:hover {
+        background: #c2ba37;
       }
     }
   }

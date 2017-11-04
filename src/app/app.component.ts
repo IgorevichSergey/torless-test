@@ -19,6 +19,7 @@ export class AppComponent {
   public loggedIn: boolean;
   public cafeteriasLength: number = 0;
   public logoText: string;
+  public logoImage: string;
 
   private companyName: string = '';
   private cafeteriaName: string = '';
@@ -51,21 +52,17 @@ export class AppComponent {
     router.events
       .debounce(value => Observable.timer(100))
       .subscribe((data: NavigationEnd) => {
-      this.currentUrl = data.url;
+        this.currentUrl = data.url;
         /**
          * when url update
          */
         this.__subHeaderElementsVisible(data.url);
         this.__isLoggedIn();
         this.__getCafeteriasList(this.loggedIn);
+        this.__getCafeteriaInfo();
       });
 
-    this.userService.getUserInfo().then((response) => {
-      this.companyName = response.data.company_name;
-      this.userName = response.data.name;
-
-      this.logoText = this.__setHeaderText();
-    });
+    this.__getUserInfo();
 
     this.eventService.headerText$.subscribe((cafeteriaName) => {
       this.cafeteriaName = cafeteriaName;
@@ -148,6 +145,28 @@ export class AppComponent {
     }
 
     return result;
+  }
+
+  private __getCafeteriaInfo() {
+    this.cafeteriaService.getInfo().then((response) => {
+      if(response.data && response.data.company_image) {
+        this.logoImage = response.data.company_image;
+      }
+    }, (error) => {
+      console.warn('error', error);
+    });
+  }
+
+  private __getUserInfo() {
+    if (this.loggedIn) {
+      this.userService.getUserInfo().then((response) => {
+        console.log('user info response ===> ', response);
+        this.companyName = response.data.company_name;
+        this.userName = response.data.name;
+
+        this.logoText = this.__setHeaderText();
+      });
+    }
   }
 
 }

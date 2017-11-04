@@ -17,8 +17,10 @@
   background: #fff557;
   font-size: 0.9rem;
   font-weight: 900;
+
+  &:hover,
   &:active {
-    background: darken(#fff557, 10%)
+    background: #c2ba37;
   }
   &[disabled] {
     cursor: not-allowed;

@@ -18,13 +18,13 @@
         </div>
       </div>
 
-      <div *ngIf="loggedIn" class="pages center">
+      <div class="pages center">
         <!--manager list-->
-        <div [ngClass]="{'active': isActiveLink('/manager-list')}" (click)="goTo('/manager-list')">רשימת משתמשים</div>
+        <div [ngClass]="{'active': isActiveLink('/welcome-page')}" (click)="goTo('/manager-list')">רשימת משתמשים</div>
         <!--reports-->
         <div>דוחות</div>
         <!--cafeterias-->
-        <div [ngClass]="{'active': isActiveLink('/cafeteria-list')}" (click)="goTo('/cafeteria-list')">({{cafeteriasLength}})  קפיטריות</div>
+        <div [ngClass]="{'active': isActiveLink('/welcome-page')}" (click)="goTo('/welcome-page')">({{cafeteriasLength}})  קפיטריות</div>
         <!--main-->
         <div >ראשי</div>
       </div>
@@ -43,7 +43,7 @@
             <div style="position: absolute; left: 50%; top: 10px;">
               <app-information *ngIf="visible.info" [hintText]="visible.hintText" hintPosition="top center"></app-information>
             </div>
-            <app-user-image *ngIf="visible.companyLogo" [text]="logoText"></app-user-image>
+            <app-user-image *ngIf="visible.companyLogo" [text]="logoText" [image]="logoImage"></app-user-image>
           </div>
 
           <div class="torless__body">

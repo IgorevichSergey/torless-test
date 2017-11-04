@@ -4,14 +4,21 @@
     {{ placeholder }}
   </div>
 
-  <div *ngIf="value" class="select-component__close" (click)="resetValue()"></div>
+  <!--<div *ngIf="value" class="select-component__close" (click)="resetValue()"></div>-->
+
+
+
+
   <input *ngIf="!value" dir="rtl" type="text" #input
-         [(ngModel)]="search" (focus)="setFocus(true)" (keyup)="filterGenerate(search)" (focus)="showList(true)">
+         [(ngModel)]="search" (focus)="setFocus(true); showList(true)" (keyup)="filterGenerate(search)">
 
   <div *ngIf="!value" class="select-component__triangle" (click)="showList(true)"></div>
-  <div *ngIf="value" class="select-component__value">
-    {{ value }}
-  </div>
+
+  <!--<div *ngIf="value" class="">-->
+    <!--{{ value }}-->
+  <!--</div>-->
+  <input *ngIf="value" dir="rtl" type="text" [(ngModel)]="value" (focus)="setFocus(true); showList(true)" (blur)="valueReset(value)" (keyup)="filterGenerate(value)">
+  <!--select-component__value-->
 
   <div class="select-component__list" *ngIf="list" [ngClass]="{'visible': visibleList}">
     <div class="list-element" *ngFor="let item of list | filter: filterParams;" (click)="selectItem(item)">

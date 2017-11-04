@@ -26,7 +26,7 @@
       </div>
 
       <div class="image" *ngIf="product.prod_image && product.prod_image !== 'none'">
-        <img [src]="product.prod_image">
+        <img app-check-image [src]="product.prod_image" [image]="product.prod_image">
       </div>
 
       <div class="checkboxes">

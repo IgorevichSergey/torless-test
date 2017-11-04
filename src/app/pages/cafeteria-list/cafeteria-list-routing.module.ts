@@ -8,7 +8,7 @@ import { CafeteriaListComponent } from './cafeteria-list.component';
 
 const routes: Routes = [
   {
-    path: 'cafeteria-list',
+    path: 'welcome-page',
     component: CafeteriaListComponent,
     canActivate: [ AuthGuardService, TmpTimerService ]
   }

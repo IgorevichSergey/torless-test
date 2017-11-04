@@ -68,7 +68,7 @@ export class RegisterComponent implements OnInit {
         console.log('response', response.data.token);
         if (this.uploadedFile) {
           this.userService.saveCompanyImage(this.uploadedFile, response.data.token).then((imgResponse) => {
-            this._goTo('/cafeteria-type');
+            this._goTo('/welcome-page');
           }, (error) => {
             console.log('error ===> ', error);
           });
@@ -76,10 +76,9 @@ export class RegisterComponent implements OnInit {
           console.log('go to cafeteria type');
 
         }
-        // todo: move to ELSE after BE fix
-        this._goTo('/cafeteria-type');
-        // todo: go to next page
-        // this._goTo('/cafeteria-type');
+
+        this._goTo('/welcome-page');
+
         console.log('todo: save new image');
       }, (error) => {
         this.registrationError = true;
@@ -216,9 +215,7 @@ console.log("error CB")
   phoneFormatter(t: string): any {
     const numbers: string = t ? t.replace(/\D/g, '') : '',
       dashes: Object = {
-        3: '-',
-        5: '-',
-        7: '-'
+        3: '-'
       },
       len = (numbers.length <= 10) ? numbers.length : 10;
 

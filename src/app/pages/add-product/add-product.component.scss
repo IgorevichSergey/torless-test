@@ -11,6 +11,11 @@
     color: grey;
     font-size: 1.3rem;
     font-weight: 900;
+
+    &:hover,
+    &:active {
+      background: #c2ba37;
+    }
   }
 
   .upload-image {
@@ -487,6 +492,10 @@
       &[disabled] {
         background: lighten(#fff557, 10%);
         cursor: not-allowed;
+      }
+
+      &:hover {
+        background: #c2ba37;
       }
     }
   //  text-align: right;

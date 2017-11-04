@@ -67,13 +67,14 @@
     .close-button {
       position: absolute;
       color: #fff557;
-      top: 10px;
+      top: 5px;
       right: 10px;
       cursor: pointer;
 
 
       &:after {
         content: '×';
+        font-size: 30px;
         vertical-align: middle;
       }
     }
@@ -95,8 +96,9 @@
       cursor: pointer;
       user-select: none;
 
+      &:hover,
       &:active {
-        background: darken(#fff557, 10%);
+        background: #c2ba37;
       }
     }
 

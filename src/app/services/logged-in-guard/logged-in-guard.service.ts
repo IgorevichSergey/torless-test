@@ -14,7 +14,7 @@ export class LoggedInGuardService implements CanActivate {
   canActivate() {
     const result: boolean = this.userService.isLoggedIn();
     if (result) {
-      this.router.navigateByUrl('/cafeteria-list');
+      this.router.navigateByUrl('/welcome-page');
     }
 
     return true;

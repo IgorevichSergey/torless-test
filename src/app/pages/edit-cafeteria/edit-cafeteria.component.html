@@ -180,7 +180,7 @@
           <div class="upload__image__btn__inner" *ngIf="!uploadedImage" (click)="fileUploader.click()">
             <div class="upload__image__btn__text">הוסף/י לוגו לרשת</div>
           </div>
-          <img [src]="uploadedImage" *ngIf="uploadedImage">
+          <img app-check-image [src]="uploadedImage" [image]="uploadedImage" *ngIf="uploadedImage">
         </div>
 
       </div>

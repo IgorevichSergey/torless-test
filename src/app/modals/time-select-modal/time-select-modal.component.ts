@@ -2,28 +2,88 @@ import {AfterViewInit, Component} from '@angular/core';
 
 import { ModalService } from '../../services';
 
+class Day {
+  public dayName: string;
+  public dayNumber: number;
+  public opened: boolean = false;
+  public closed: boolean = false;
+
+  constructor (
+    dayName: string,
+    dayNumber: number,
+    public openAt?: string,
+    public closeAt?: string
+  ) {
+    this.dayName = dayName;
+    this.dayNumber = dayNumber;
+  }
+}
+
+class Week {
+  public days: Day[];
+  public getDay(dayNumber: number): Day {
+    let i: number = 0,
+      len: number = (this.days && this.days.length) ? this.days.length : 0,
+      result: Day;
+
+    for (; i < len; i ++) {
+      if (this.days[i].dayNumber === dayNumber) {
+        result = this.days[i];
+        break;
+      }
+    }
+
+    return result;
+  }
+  public changeDay(newValue: Day): void {
+    let index: number;
+
+    for (let i = 0, len = this.days.length; i < len; i++ ) {
+      if (this.days[i].dayNumber === newValue.dayNumber) {
+        index = i;
+        break;
+      }
+    }
+
+    if (index > -1) {
+      this.days[index] = newValue;
+    }
+  }
+
+  constructor (
+    days: Day[]
+  ) {
+    this.days = days;
+  }
+}
+
+const daysOfWeekNames: string[] = [
+  'mon',
+  'tues',
+  'wed',
+  'thurs',
+  'fri',
+  'sut',
+  'sun'
+];
+
 @Component({
   selector: 'app-time-select-modal',
   templateUrl: './time-select-modal.component.html',
   styleUrls: ['./time-select-modal.component.scss', '../modal-container/modal-container.component.scss']
 })
 export class TimeSelectModalComponent implements AfterViewInit {
-  workingDay: boolean;
+  week: Week;
+
+  viewedDay: Day;
 
   // Input
   workTime: any[];
   selectedDay: number;
 
   // Output
-  resultWorkTime: any[];
 
   hours: any[] = [];
-
-  prevSelectedDay: number;
-  currSelectedDay: number;
-
-
-  notWorkingDays: number[];
 
   constructor(
     private modalService: ModalService
@@ -32,8 +92,10 @@ export class TimeSelectModalComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.__isWorkingDay(this.workTime, this.selectedDay);
-    this.resultWorkTime = this.workTime.slice();
+
+    this.__setWeek(this.workTime.slice());
+
+    this.viewedDay = this.week.getDay(this.selectedDay);
   }
 
 
@@ -43,58 +105,40 @@ export class TimeSelectModalComponent implements AfterViewInit {
 
   public submit() {
     if (!this.isButtonDisabled()) {
-      this.modalService.closeModal$.emit(this.resultWorkTime);
+
+      this.modalService.closeModal$.emit(this.__parseResult(this.week.days));
     } else {
       console.log('no. both values must be selected!');
     }
   }
 
-  public makeWorking(status: boolean): void {
-    this.workingDay = status;
+  public makeWorking(working: boolean): void {
+    this.viewedDay.opened = working;
+    this.viewedDay.closed = !working;
   }
 
-  public selectDay(dayNumber: number): void {
-    this.prevSelectedDay = this.selectedDay;
-    this.currSelectedDay = dayNumber;
-    this.selectedDay = dayNumber;
-    this.__isWorkingDay(this.resultWorkTime, this.selectedDay);
-
+  public selectDay(day: Day): void {
+    this.viewedDay = day;
   }
 
-  public setTime(event, timeType: string): void {
-    let index: number = this.__findIndex(this.resultWorkTime, (item) => {
-      return item.day_number === this.selectedDay;
-    });
-
-    if (!index && index !== 0) {
-      let time: Object = {
-        day_number: this.selectedDay
-      };
-      time[timeType] = event;
-      this.resultWorkTime.push(time);
-    } else {
-      this.resultWorkTime[index][timeType] = event;
-    }
+  public setTime(event, timeType: 'openAt' | 'closeAt'): void {
+    // public setTime(event, timeType: 'time_start' | 'time_end'): void {
+    this.viewedDay[timeType] = event;
+    this.week.changeDay(this.viewedDay);
   }
 
-  public getValue(timeType: string): string {
-    let index: number = this.__findIndex(this.resultWorkTime, (item) => {
-      return item.day_number === this.selectedDay;
-    });
-
-    return (index || index === 0) ? this.resultWorkTime[index][timeType] : '';
+  public getValue(timeType: 'openAt' | 'closeAt'): string {
+    return this.viewedDay[timeType] ? this.viewedDay[timeType] : '';
   }
-
 
   public isButtonDisabled(): boolean {
     let result: boolean = false;
 
-    for (let i: number = 0, len: number = (this.resultWorkTime && this.resultWorkTime.length) ? this.resultWorkTime.length : 0; i < len; i++ ) {
-      if (this.resultWorkTime[i]) {
-        if ((!this.resultWorkTime[i].time_start && this.resultWorkTime[i].time_end) || this.resultWorkTime[i].time_start && !this.resultWorkTime[i].time_end) {
-          result = true;
-          break;
-        }
+    if (this.viewedDay && this.viewedDay.opened) {
+      if ((this.viewedDay.closeAt && this.viewedDay.openAt) || (!this.viewedDay.closeAt && !this.viewedDay.openAt)) {
+        result = false;
+      } else {
+        result = true;
       }
     }
 
@@ -106,7 +150,7 @@ export class TimeSelectModalComponent implements AfterViewInit {
     for (let i = 0, len = 24; i < len; i++) {
       for (let j = 1, _len = 4; j <= _len; j++ ) {
         let hours = i,
-            minutes = '' + (15 * j);
+          minutes = '' + (15 * j);
         if (j === 4) {
           hours++;
           minutes = '00';
@@ -119,51 +163,61 @@ export class TimeSelectModalComponent implements AfterViewInit {
     this.hours.splice(this.hours.length - 1, 1);
   }
 
-  private __isWorkingDay(workTime: any[], dayNumber: number): void {
-    const index: number = this.__findIndex(workTime, (item) => {
-      return item.day_number === dayNumber;
-    });
-    if (index > -1) {
-      if (!workTime[index] || workTime[index].time_start === '00:00' && workTime[index].time_end === '00:00') {
-        this.workingDay = false;
-      } else {
-        this.workingDay = true;
+  private __setWeek(array: any[]): void {
+    let days: Day[] = [],
+      sortedArr: any[] = array.sort((a, b) => {
+        if (a && b && (a.day_number < b.day_number)) {
+          return -1;
+        }
+
+        if (a && b && (a.day_number > b.day_number)) {
+          return 1;
+        }
+
+        return 0;
+      }),
+      maxDayNumber: number = (sortedArr[sortedArr.length - 1] && sortedArr[sortedArr.length - 1].day_number) ? sortedArr[sortedArr.length - 1].day_number : 0,
+      length: number = maxDayNumber === 7 ? maxDayNumber : 7;
+
+    for (let i = 0, len = length; i < len; i++) {
+      let day = new Day(
+        daysOfWeekNames[i],
+        i + 1,
+        (sortedArr[i] && sortedArr[i].time_start) ? sortedArr[i].time_start : '',
+        (sortedArr[i] && sortedArr[i].time_end) ? sortedArr[i].time_end : ''
+      );
+
+      if (day.openAt && day.closeAt) {
+        day.opened = true;
       }
-    } else {
-      this.workingDay = false;
+
+      days.push(day);
     }
+
+    this.week = new Week(days);
   }
 
-  private __findIndex(array: any[], callback: (item: any) => boolean): number {
-    let i: number = 0,
-        len: number = (array && array.length) ? array.length : 0,
-        result: number;
+  public __parseResult(days: Day[]): {
+    day_number: number;
+    time_start: string;
+    time_end: string;
+  }[] {
+    let result: {
+      day_number: number;
+      time_start: string;
+      time_end: string;
+    }[] = [];
 
-    for (; i < len; i ++) {
-      if (callback(array[i])) {
-        result = i;
-        break;
+    for (let i = 0, len = days.length; i < len; i++ ) {
+      if (days[i].opened) {
+        result.push({
+          day_number: days[i].dayNumber,
+          time_start: days[i].openAt,
+          time_end: days[i].closeAt
+        });
       }
     }
 
     return result;
   }
-
-
-  // private __makeNotWorkingDay(dayNumber: number): void {
-  //   let workingDay = this.__isWorkingDay(this.resultWorkTime, dayNumber); // because days start from 1
-  //   if (!workingDay) {
-  //     let index: number = this.__findIndex(this.resultWorkTime, (item) => {
-  //       return item.day_number === dayNumber;
-  //     });
-  //     if (index) {
-  //       this.resultWorkTime[index].offDay = true;
-  //     } else {
-  //       this.resultWorkTime.push({
-  //         day_number: dayNumber,
-  //         offDay: true
-  //       });
-  //     }
-  //   }
-  // }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit, Renderer } from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { environment } from '../../../environments/environment';
 
 import { UpdatedCafeteria } from '../../custom-classes';
 
@@ -73,6 +74,11 @@ export class EditCafeteriaComponent implements OnInit {
       });
 
     this._getUniversities();
+  }
+
+  public deleteImage() {
+    this.uploadedImage = '';
+    this.uploadedFile = null;
   }
 
   // public showTimeSelectModal(dayNumber: number, event): void {
@@ -176,7 +182,7 @@ export class EditCafeteriaComponent implements OnInit {
   }
 
   public goBack(): void {
-    this.router.navigate(['cafeteria-list']);
+    this.router.navigate(['welcome-page']);
   }
 
   public openFileUploader(fileUploader: HTMLElement | any): void {
