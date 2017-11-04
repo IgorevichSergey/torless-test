@@ -58,13 +58,13 @@ class Week {
 }
 
 const daysOfWeekNames: string[] = [
-  'mon',
-  'tues',
-  'wed',
-  'thurs',
-  'fri',
-  'sut',
-  'sun'
+  '’יום א',
+  '’יום ב',
+  '’יום ג',
+  '’יום ד',
+  '’יום ה',
+  '’יום ו',
+  '’יום ש'
 ];
 
 @Component({

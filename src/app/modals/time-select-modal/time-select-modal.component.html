@@ -1,7 +1,7 @@
 <div class="torless-modal time-select-modal">
   <div class="torless-modal__header">
     <div class="text">
-      בחר זמן
+      ימי פעילות הסניף
     </div>
     <div class="close-button" (click)="close()"></div>
   </div>
@@ -10,21 +10,21 @@
     <div class="buttons">
       <button class="button" [ngClass]="{'selected': viewedDay?.opened}" (click)="makeWorking(true)">
         <!--working-->
-        עובד
+        הסניף פתוח
       </button>
       <button class="button" [ngClass]="{'selected': viewedDay?.closed}" (click)="makeWorking(false)">
         <!--not working-->
-        לא עובד
+        הסניף סגור
       </button>
 
     </div>
     <div class="form" *ngIf="viewedDay?.opened">
       <div class="select-container">
-        <app-select [list]="hours" [value]="getValue('openAt')" [placeholder]="'פתוח ב'" (setItem)="setTime($event, 'openAt')"></app-select>
+        <app-select [list]="hours" [value]="getValue('openAt')" [placeholder]="'יום א’ - הקלד/י שעת פתיחה'" (setItem)="setTime($event, 'openAt')"></app-select>
       </div>
 
       <div class="select-container">
-        <app-select [list]="hours" [value]="getValue('closeAt')" [placeholder]="'סגור ב'" (setItem)="setTime($event, 'closeAt')"></app-select>
+        <app-select [list]="hours" [value]="getValue('closeAt')" [placeholder]="'יום א’ - הקלד/י שעת פתיחה'" (setItem)="setTime($event, 'closeAt')"></app-select>
       </div>
     </div>
 
@@ -64,10 +64,10 @@
 
   <div class="torless-modal__footer">
     <button class="response-button" (click)="submit()" [disabled]="isButtonDisabled()">
-      תְגוּבָה
+      שמירה
     </button>
     <div class="reject-button" (click)="close()">
-      לִדחוֹת
+      ביטול
     </div>
   </div>
 </div>
