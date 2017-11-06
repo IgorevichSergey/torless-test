@@ -14,4 +14,8 @@ export class UserImageComponent implements OnInit {
   ngOnInit() {
   }
 
+  setImage(image): void {
+    this.image = image;
+  }
+
 }

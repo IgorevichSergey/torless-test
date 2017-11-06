@@ -1,5 +1,5 @@
 <div class="user-image-component">
   <!--<div class="user-description">קרנף בקמפוס - רשת מסעדות / מנהל/ת אדמין ראשי - שי יטח</div>-->
   <div class="user-description">{{ text }}</div>
-  <img app-check-image defaultImage="./assets/icon/image-example.png" [src]="image" [image]="image">
+  <img app-check-image defaultImage="./assets/icon/image-example.png" [src]="image" (setImage)="setImage($event)" [image]="image">
 </div>

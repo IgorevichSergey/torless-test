@@ -1,5 +1,6 @@
 .registration-component {
   padding-right: 0rem;
+  font-family: 'OpenSansHebrew-Regular';
   .upload__image__container {
     margin-top: -1.5rem;
     text-align: right;
@@ -108,11 +109,10 @@
 
     .label {
       font-size: 2.3rem;
-      margin-right: 0.6rem;
       margin-top: -0.8rem;
       font-weight: 800;
     }
-    .description{
+    .description {
       font-size: 1.5rem;
       font-weight: 500;
     }
@@ -194,6 +194,10 @@
         display: flex;
         flex-direction: column;
         margin-bottom: 0;
+        .label {
+          font-family: 'OpenSansHebrew-Regular';
+          font-weight: 700;
+        }
       }
 
       // todo: move to one .scss file

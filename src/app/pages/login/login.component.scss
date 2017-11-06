@@ -1,46 +1,6 @@
-.login__header__containtainer{
-  display: inline-block;
-  width: 100%;
-  height: auto;
-}
-
-.login__header__left__part{
-  display: inline-block;
-  vertical-align: top;
-  width: 24%;
-  margin-right: 10%;
-  height: 1px;
-}
-
-.login-component .login-component__title{
-  display: inline-block;
-  width: 31.5%;
-  max-width: none;
-  margin: 0;
-  vertical-align: top;
-  font-size: 1.79rem;
-  max-width: none;
-  line-height: 1.3;
-  margin-bottom: 0;
-  margin-top: -0.4rem;
-  font-family: sans-serif;
-}
-
-.login-component__left-side .torless-button {
-  width: 100%;
-  font-size: 1.4rem;
-  margin-top: 1.5rem;
-  padding-top: 0.5rem;
-  transition-duration: 0.3s;
-  padding-bottom: 0.9rem;
-  height: auto;
-  &:active,
-  &:hover {
-    background: #c2ba37;
-  }
-}
-
 .login-component {
+  font-family: 'OpenSansHebrew-Regular';
+
   .body-container {
     position: relative;
     margin-top: 4.4rem;
@@ -49,24 +9,24 @@
   &__title {
     text-align: center;
     font-size: 1.3rem;
-    margin-bottom: 40px;
-    width: 45%;
+    width: 31.5%;
+    margin: 0 auto 75px;
+
+    @media screen and (max-width: 940px) {
+      width: 100%!important;
+    }
   }
 
   &__form {
-    display: inline-block;
     width: 31.5%;
     max-width: none;
-    margin: 0;
+    margin: 0 auto;
     vertical-align: top;
-    max-width: none;
     line-height: 1.3;
-    margin-bottom: 0;
-    margin-top: -0.4rem;
-    font-family: sans-serif;
-    text-align: right;
-    .torless-button{
-      font-size: 1.4rem;
+    direction: rtl;
+
+    .torless-button {
+      font-size: 20px;
       padding-top: 0rem;
       height: 3.7rem;
       color: #000;
@@ -77,19 +37,45 @@
         background: #c2ba37;
       }
 
+      @media screen and (max-width: 940px) {
+
+        display: block;
+        width: 25%!important;
+        min-width: 200px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
     }
-    .label{
+    .label {
       font-size: 1.3rem;
       letter-spacing: -0.1rem;
       margin-bottom: 15px;
+      text-align: right;
+      @media screen and (max-width: 940px) {
+        width: 25%!important;
+        min-width: 200px;
+        margin-left: auto;
+        margin-right: auto;
+      }
     }
     .input-line {
       margin-bottom: 40px;
+      @media screen and (max-width: 940px) {
+        width: 25%!important;
+        min-width: 200px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
+    @media screen and (max-width: 940px) {
+      width: 100%!important;
     }
   }
 
   &__left-side {
-    position: relative;
+    position: absolute;
     left: auto;
     top: auto;
     max-width: none;
@@ -97,17 +83,34 @@
     text-align: center;
     display: inline-block;
     vertical-align: top;
-    width: 24%;
+    width: 25%;
+    min-width: 200px;
+
     margin-right: 10%;
-    height: 1px;
-    .label {
+    height: auto;
+    @media screen and (max-width: 940px) {
+      position: relative;
       width: 100%;
-      font-size: 1.3rem;
-      font-family: sans-serif;
+    }
+
+    .label {
+      font-family: 'OpenSansHebrew-Regular';
+      width: 85%;
+      font-size: 15px;
       font-weight: 600;
-      letter-spacing: -0.09rem;
-      line-height: 1;
-      margin-bottom: 0;
+      margin: 0 auto 25px;
+      @media screen and (max-width: 940px) {
+        width: 25%;
+        min-width: 200px;
+      }
+    }
+    button {
+      font-size: 20px;
+      @media screen and (max-width: 940px) {
+        width: 25%!important;
+        min-width: 200px;
+        margin: 0 auto 20px;
+      }
     }
   }
 }

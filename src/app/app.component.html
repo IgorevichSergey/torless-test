@@ -20,7 +20,7 @@
 
       <div class="pages center">
         <!--manager list-->
-        <div [ngClass]="{'active': isActiveLink('/welcome-page')}" (click)="goTo('/manager-list')">רשימת משתמשים</div>
+        <div [ngClass]="{'active': isActiveLink('/manager-list')}" (click)="goTo('/manager-list')">רשימת משתמשים</div>
         <!--reports-->
         <div>דוחות</div>
         <!--cafeterias-->
@@ -35,12 +35,13 @@
         </div>
       </div>
     </div>
+
     <div class="main__content__block">
       <div class="main__container">
 
         <div class="sub-header">
             <app-path *ngIf="visible.breadcrumbs"></app-path>
-            <div style="position: absolute; left: 50%; top: 10px;">
+            <div style="position: absolute; left: 50%; top: calc(50% - 11px);">
               <app-information *ngIf="visible.info" [hintText]="visible.hintText" hintPosition="top center"></app-information>
             </div>
             <app-user-image *ngIf="visible.companyLogo" [text]="logoText" [image]="logoImage"></app-user-image>
