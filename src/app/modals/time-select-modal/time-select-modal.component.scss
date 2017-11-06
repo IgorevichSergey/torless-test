@@ -1,4 +1,6 @@
 .time-select-modal {
+  font-family: OpenSansHebrew-Regular;
+
   .torless-modal {
     &__body {
       display: flex;
@@ -6,16 +8,18 @@
       position: relative;
 
       .buttons {
+
         position: absolute;
         top: 0;
         width: calc(100% - 200px);
         margin: 0 auto;
         display: flex;
         justify-content: space-between;
+
         .button {
-          height: 50px;
+          height: 55px;
           width: calc(50% - 10px);
-          font-size: 1.6rem;
+          font-size: 20px;
           cursor: pointer;
           user-select: none;
           border: 1px solid #CFCFCF;
@@ -25,7 +29,8 @@
           &.selected {
             background: #32393F;
             color: #FFF557;
-            font-weight: 900;
+            font-family: OpenSansHebrew-ExtraBold;
+            //font-weight: 900;
             border: none;
           }
         }
@@ -45,24 +50,45 @@
         padding: 10px 0;
         margin-left: auto;
         .day {
-          height: 50px;
+          height: 55px;
           text-align: center;
           user-select: none;
           cursor: pointer;
+          margin-bottom: 20px;
 
           .icon {
-            font-size: 2rem;
-            line-height: 50px;
+            font-size: 25px;
+            //line-height: 50px;
+          }
+
+          .time {
+            font-family: OpenSansHebrew-Regular;
+            color: #8f8f8f;
           }
 
           &.selected {
             background: #000;
+            font-family: OpenSansHebrew-ExtraBold;
             .icon {
               color: #fff;
               font-weight: 900;
             }
+            .time {
+              font-family: OpenSansHebrew-Regular;
+              color: white;
+            }
           }
         }
+      }
+    }
+
+    &__footer {
+      .response-button {
+        height: 55px;
+        font-size: 20px;
+      }
+      .reject-button {
+        font-size: 20px;
       }
     }
   }

@@ -34,31 +34,10 @@
            (click)="selectDay(day)"
            [ngClass]="{'selected': viewedDay?.dayNumber === (index + 1)}">
         <div class="icon">{{ day.dayName }}</div>
-        <div *ngIf="day.openAt && day.closeAt" class="time">
+        <div *ngIf="day.openAt && day.closeAt && day.opened" class="time">
           {{ day.openAt + ' - ' + day.closeAt}}
         </div>
       </div>
-      <!--<div class="day" (click)="selectDay(1)" [ngClass]="{'selected': selectedDay === 1}">-->
-        <!--<div class="icon">א</div>-->
-      <!--</div>-->
-      <!--<div class="day" (click)="selectDay(2)" [ngClass]="{'selected': selectedDay === 2}">-->
-        <!--<div class="icon">ב</div>-->
-      <!--</div>-->
-      <!--<div class="day" (click)="selectDay(3)" [ngClass]="{'selected': selectedDay === 3}">-->
-        <!--<div class="icon">ג</div>-->
-      <!--</div>-->
-      <!--<div class="day" (click)="selectDay(4)" [ngClass]="{'selected': selectedDay === 4}">-->
-        <!--<div class="icon">ד</div>-->
-      <!--</div>-->
-      <!--<div class="day" (click)="selectDay(5)" [ngClass]="{'selected': selectedDay === 5}">-->
-        <!--<div class="icon">ה</div>-->
-      <!--</div>-->
-      <!--<div class="day" (click)="selectDay(6)" [ngClass]="{'selected': selectedDay === 6}">-->
-        <!--<div class="icon">ו</div>-->
-      <!--</div>-->
-      <!--<div class="day" (click)="selectDay(7)" [ngClass]="{'selected': selectedDay === 7}">-->
-        <!--<div class="icon">ש</div>-->
-      <!--</div>-->
     </div>
   </div>
 
