@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { ProductService, CafeteriaService, EventService } from '../../services';
+import { ProductService, CafeteriaService, EventService, ModalService } from '../../services';
 
 import { ExtraInfo, DoubleExtraProduct, ExtraCategories } from '../../custom-classes';
+
+import { ErrorModalComponent } from '../../modals';
 
 import * as _ from 'lodash';
 
@@ -15,6 +17,7 @@ import * as _ from 'lodash';
 export class EditProductComponent implements OnInit {
   public updatedMainProduct: any; // todo: set UpdatedMainProduct interface
   public minutes: number[] = new Array(18);
+  public showSpinner: boolean = false;
 
   public uploadedImage: string;
   public uploadedFile: File;
@@ -30,7 +33,8 @@ export class EditProductComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private productService: ProductService,
     private cafeteriaService: CafeteriaService,
-    private eventService: EventService
+    private eventService: EventService,
+    private modalService: ModalService
   ) { }
 
   ngOnInit() {
@@ -67,17 +71,27 @@ export class EditProductComponent implements OnInit {
     console.log('this._productId', this._productId);
 
     console.log('this.uploadedFile', this.uploadedFile);
+    this.showSpinner = true;
     this.productService.updateProduct(this.updatedMainProduct, this._cafeteriaId, this._categoryId, this._productId).then((response) => {
+      this.showSpinner = false;
       console.log('response ==> ', response);
       if (this.uploadedFile) {
         this.productService.saveImage(this.uploadedFile, this._productId).then(() => {
+          this.showSpinner = false;
           this.goBack();
+        }, () => {
+          this.modalService.create(ErrorModalComponent).then(() => {
+            this.showSpinner = false;
+            this.goBack();
+          });
         });
       } else {
+        this.showSpinner = false;
         this.goBack();
       }
 
     }, (error) => {
+      this.showSpinner = false;
       console.log('error ===> ', error);
     });
   }
@@ -163,7 +177,7 @@ export class EditProductComponent implements OnInit {
     }
 
   }
-  
+
   public deleteImage(): void {
     this.uploadedFile = null;
     this.uploadedImage = null;

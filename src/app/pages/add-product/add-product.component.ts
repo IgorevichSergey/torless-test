@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { ProductService, CafeteriaService, EventService } from '../../services';
+import { ProductService, CafeteriaService, EventService, ModalService } from '../../services';
 
 import { CreatedProduct, ExtraCategories, DoubleExtraProduct, ExtraInfo } from '../../custom-classes';
+
+import { ErrorModalComponent } from '../../modals';
 
 
 @Component({
@@ -14,6 +16,7 @@ import { CreatedProduct, ExtraCategories, DoubleExtraProduct, ExtraInfo } from '
 export class AddProductComponent implements OnInit {
   public createdProduct: any = new CreatedProduct();
   public minutes: number[] = new Array(18);
+  public showSpinner: boolean = false;
 
   public uploadedFile: File;
   public uploadedImage: string;
@@ -30,7 +33,8 @@ export class AddProductComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private productService: ProductService,
     private cafeteriaService: CafeteriaService,
-    private eventService: EventService
+    private eventService: EventService,
+    private modalService: ModalService
   ) { }
 
   ngOnInit() {
@@ -47,6 +51,7 @@ export class AddProductComponent implements OnInit {
 
 
   public saveProduct() {
+    this.showSpinner = true;
     this.createdProduct.pr_caf_id = '' + this._cafeteriaId;
     this.createdProduct.pr_cat_id = '' + this._categoryId;
     this.createdProduct.product.pr_price = '' + this.createdProduct.product.pr_price;
@@ -56,17 +61,23 @@ export class AddProductComponent implements OnInit {
       console.log('response ==> ', response);
       if (this.uploadedFile) {
         this.productService.saveImage(this.uploadedFile, response.data.prod_id).then((imgResponse) => {
+          this.showSpinner = false;
           console.log('imgResponse', imgResponse);
           this.goBack();
         }, (imgError) => {
           console.warn('imgError', imgError);
+          this.modalService.create(ErrorModalComponent).then(() => {
+            this.showSpinner = false;
+          });
         });
       } else {
+        this.showSpinner = false;
         this.goBack();
       }
       // todo: delete after BE connect
       this.goBack();
     }, (error) => {
+      this.showSpinner = false;
       console.log('error ===> ', error);
     });
   }

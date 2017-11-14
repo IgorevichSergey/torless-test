@@ -44,7 +44,10 @@
                [message]="'אולי טעיתם פה?'" />
       </div>
 
-      <button class="torless-button" (click)="login(user)" [disabled]="submitButtonDisabled(user) && !invalidForm">התחבר/י</button>
+      <button class="torless-button" (click)="login(user)" [disabled]="submitButtonDisabled(user) && !invalidForm && showSpinner">
+        <app-loading-spinner *ngIf="showSpinner"></app-loading-spinner>
+        <span *ngIf="!showSpinner">התחבר/י</span>
+      </button>
     </div>
   </div>
 </div>

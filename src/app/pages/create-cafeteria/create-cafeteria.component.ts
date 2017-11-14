@@ -7,7 +7,7 @@ import { CafeteriaService, TimeSelectService, UniversityService, ModalService, E
 import { CreatedCafeteria } from '../../custom-classes';
 
 // modal
-import { TimeSelectModalComponent } from '../../modals/time-select-modal/time-select-modal.component';
+import { TimeSelectModalComponent, ErrorModalComponent } from '../../modals';
 
 @Component({
   selector: 'app-create-cafeteria',
@@ -16,6 +16,7 @@ import { TimeSelectModalComponent } from '../../modals/time-select-modal/time-se
 })
 export class CreateCafeteriaComponent implements OnInit {
   complete: number = 25; // 25, 50, 75, 100
+  public showSpinner: boolean = false;
 
   public createdCafeteria: CreatedCafeteria = new CreatedCafeteria();
   public universities: any[];
@@ -25,30 +26,6 @@ export class CreateCafeteriaComponent implements OnInit {
   public uploadedImage: string;
 
   private _cafeteriaTypeId: number;
-
-  // temporary. todo: remove after BE connect
-  kosherTypes = [
-    {
-      id: 0,
-      name: 'first'
-    },
-    {
-      id: 1,
-      name: 'second'
-    },
-    {
-      id: 2,
-      name: 'third'
-    },
-    {
-      id: 3,
-      name: 'fourth'
-    },
-    {
-      id: 4,
-      name: 'fifth'
-    }
-  ];
 
   constructor(
     private renderer: Renderer,
@@ -107,25 +84,33 @@ export class CreateCafeteriaComponent implements OnInit {
 
   public createCafeteria(createdCafeteria: CreatedCafeteria): void {
     this.createdCafeteria.cafeteria.caf_type = this._cafeteriaTypeId;
+    this.showSpinner = true;
 
     this.cafeteriaService.createCafeteria(this.createdCafeteria).then((response) => {
       console.log('response', response);
       if (this.uploadedFile) {
         this.cafeteriaService.saveImage(this.uploadedFile, response.data.caf_id).then((imgResponse) => {
           console.log('img response', imgResponse);
+          this.showSpinner = false;
           this.router.navigate(['create-cafeteria-manager', response.data.caf_id]);
         }, (imgError) => {
           console.warn('img error', imgError);
+          this.modalService.create(ErrorModalComponent).then(() => {
+            this.showSpinner = false;
+            this.router.navigate(['create-cafeteria-manager', response.data.caf_id]);
+          });
+
         });
       } else {
-        // todo: uncomment after BE fix
-        // this.router.navigate(['create-cafeteria-manager', response.data.caf_id]);
+        this.showSpinner = false;
+        this.router.navigate(['create-cafeteria-manager', response.data.caf_id]);
       }
 
       this.router.navigate(['create-cafeteria-manager', response.data.caf_id]);
       // this._goTo('/create-cafeteria-manager');
     }, (error) => {
       console.log('error', error);
+      this.showSpinner = false;
     });
   }
 

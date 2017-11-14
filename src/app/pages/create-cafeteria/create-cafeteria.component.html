@@ -159,7 +159,10 @@
 
       <div class="submit-block">
         <div class="submit-button-container">
-          <button (click)="createCafeteria(createdCafeteria)">המשיכו</button>
+          <button (click)="createCafeteria(createdCafeteria)" [disabled]="showSpinner">
+            <app-loading-spinner *ngIf="showSpinner"></app-loading-spinner>
+            <span *ngIf="!showSpinner">המשיכו</span>
+          </button>
           <div class="repeat-button">
             <span (click)="goBack()">חזרו</span>
           </div>

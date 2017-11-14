@@ -17,6 +17,7 @@ export class RegisterComponent implements OnInit {
   public registrationError: boolean = false;
   public confirmedPassword: string = '';
   public confirmPasswordError: boolean = false;
+  public showSpinner: boolean = false;
 
   public uploadedImage: string;
   public uploadedFile: File;
@@ -44,7 +45,7 @@ export class RegisterComponent implements OnInit {
   private _emailRegExp: RegExp = /(.+)@(.+){2,}\.(.+){2,}/;
 
 
-  constructor(
+  constructor (
     private userService: UserService,
     private modalService: ModalService,
     private router: Router,
@@ -61,9 +62,11 @@ export class RegisterComponent implements OnInit {
   registerUser(createdUser: CreatedUser): void {
     console.log('createdUser', createdUser);
     console.log('this.uploadedFile', this.uploadedFile);
+    this.showSpinner = true;
     this.checkEmail(createdUser.user.us_email || '').then(() => {
       this.userService.registration(createdUser).then((response) => {
         this.registrationError = false;
+        this.showSpinner = false;
         console.log('response ===> ', response);
         console.log('response', response.data.token);
         if (this.uploadedFile) {
@@ -82,9 +85,11 @@ export class RegisterComponent implements OnInit {
         console.log('todo: save new image');
       }, (error) => {
         this.registrationError = true;
+        this.showSpinner = false;
       });
     }, () => {
       console.log('email already exist, or has incorrect format.');
+      this.showSpinner = false;
     });
 
   }

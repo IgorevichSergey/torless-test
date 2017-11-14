@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { CreatedManagerUser } from '../../custom-classes';
 
 import { UserService, CafeteriaService, EventService } from '../../services';
+import {findTemplateAstAt} from "@angular/language-service/src/utils";
 
 
 @Component({
@@ -15,6 +16,7 @@ export class CreateManagerComponent implements OnInit {
   public complete: number = 75;
   public createdManagerUser: CreatedManagerUser = new CreatedManagerUser();
   public confirmPassword: string;
+  public showSpinner: boolean = false;
 
   private _cafeteriaId: number;
 
@@ -56,15 +58,19 @@ export class CreateManagerComponent implements OnInit {
   }
 
   createManager(createdManagerUser: CreatedManagerUser) {
+    this.showSpinner = true;
     this.checkEmail(createdManagerUser.mn_email).then(() => {
       this.userService.registerManagerUser(createdManagerUser).then((data) => {
         console.log('data', data);
+        this.showSpinner = false;
         this.router.navigate(['categories-list', this._cafeteriaId]);
         // this._goTo('/categories-list');
       }, (error) => {
+        this.showSpinner = false;
         console.log('error', error);
       });
     }, () => {
+      this.showSpinner = false;
       console.log('invlid email, or email alreadu exist');
     });
 

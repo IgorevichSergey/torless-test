@@ -56,7 +56,10 @@
           בלחיצה, אני מסכים/ה לתנאי השימוש ולתקנון תורלס
         </div>
         <div class="submit-button-container">
-          <button (click)="createMainCategory()">הרשם/י</button>
+          <button (click)="createMainCategory()" [disabled]="showSpinner">
+            <app-loading-spinner *ngIf="showSpinner"></app-loading-spinner>
+            <span *ngIf="!showSpinner">הרשם/י</span>
+          </button>
         </div>
       </div>
     </div>

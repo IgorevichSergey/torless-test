@@ -205,11 +205,14 @@
 
   <div class="component-footer">
     <span (click)="goBack()" class="back-button">תחזור</span>
-    <button (click)="saveProduct()" [disabled]="isSubmitButtonDisabled()" class="torless-page__add-new-element">
-      <span class="text">לשמור מוצר</span>
-      <span class="icon">
-        <img src="./assets/icon/save.svg">
-      </span>
+    <button (click)="saveProduct()" [disabled]="isSubmitButtonDisabled() && showSpinner" class="torless-page__add-new-element">
+      <app-loading-spinner *ngIf="showSpinner"></app-loading-spinner>
+      <div *ngIf="!showSpinner">
+        <span class="text">לשמור מוצר</span>
+        <span class="icon">
+          <img src="./assets/icon/save.svg">
+        </span>
+      </div>
     </button>
   </div>
 

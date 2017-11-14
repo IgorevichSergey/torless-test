@@ -205,8 +205,9 @@
 
   <div class="component-footer">
     <span (click)="goBack()" class="back-button">תחזור</span>
-    <button (click)="updateProduct()" [disabled]="isSubmitButtonDisabled()" class="torless-page__add-new-element">
-      <span class="text">עדכון המוצר</span>
+    <button (click)="updateProduct()" [disabled]="isSubmitButtonDisabled() && showSpinner" class="torless-page__add-new-element">
+      <app-loading-spinner *ngIf="showSpinner"></app-loading-spinner>
+      <span class="text" *ngIf="!showSpinner">עדכון המוצר</span>
     </button>
   </div>
 

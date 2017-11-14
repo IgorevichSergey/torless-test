@@ -187,7 +187,10 @@
 
       <div class="submit-block">
         <div class="submit-button-container">
-          <button (click)="updateCafeteria(updatedCafeteria)">הרשם/י</button>
+          <button (click)="updateCafeteria(updatedCafeteria)" [disabled]="showSpinner">
+            <app-loading-spinner *ngIf="showSpinner"></app-loading-spinner>
+            <span *ngIf="!showSpinner">הרשם/י</span>
+          </button>
           <div class="repeat-button">
             <span (click)="goBack()">חזור/י</span>
           </div>

@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
   public user: LoginUser = new LoginUser(); // 'torless_1@mailinator.com', 'qwerty123' //('sergiosy@sergiosy.com', '111111');
   public loginError: boolean = false;
   public invalidForm: boolean = false;
+  public showSpinner: boolean = false;
 
   // listOne: Array<string> = ['Coffee', 'Orange Juice', 'Red Wine', 'Unhealty drink!', 'Water'];
 
@@ -30,11 +31,14 @@ export class LoginComponent implements OnInit {
   }
 
   public login(user: LoginUser): void {
+    this.showSpinner = true;
     this.userService.login(user).then((data) => {
       this.loginError = false;
+      this.showSpinner = false;
       this._goTo('/welcome-page');
     }, (reject) => {
       this.loginError = true;
+      this.showSpinner = false;
     });
   }
 

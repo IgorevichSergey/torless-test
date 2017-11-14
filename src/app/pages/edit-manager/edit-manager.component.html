@@ -71,7 +71,10 @@
 
       <div class="submit-block">
         <div class="submit-button-container">
-          <button (click)="updateManager(manager)" [disabled]="isButtonDisabled()">עדכון</button>
+          <button (click)="updateManager(manager)" [disabled]="isButtonDisabled()">
+            <app-loading-spinner *ngIf="showSpinner"></app-loading-spinner>
+            <span *ngIf="!showSpinner">עדכון</span>
+          </button>
           <div class="repeat-button">
             <span (click)="goBack()">חזור</span>
           </div>

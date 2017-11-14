@@ -4,7 +4,7 @@ import { environment } from '../../../environments/environment';
 
 import { UpdatedCafeteria } from '../../custom-classes';
 
-import { TimeSelectModalComponent } from '../../modals/time-select-modal/time-select-modal.component';
+import { TimeSelectModalComponent, ErrorModalComponent } from '../../modals';
 
 import { CafeteriaService, UniversityService, TimeSelectService, ModalService, EventService } from '../../services';
 
@@ -22,6 +22,8 @@ export class EditCafeteriaComponent implements OnInit {
 
   public uploadedImage: string;
   public uploadedFile: File;
+
+  public showSpinner: boolean = false;
 
   // temporary. todo: remove after BE connect
   kosherTypes = [
@@ -162,22 +164,31 @@ export class EditCafeteriaComponent implements OnInit {
   public updateCafeteria(updatedCafeteria: UpdatedCafeteria): void {
     console.log('updatedCafeteria ==> ', updatedCafeteria)
     console.log('this.uploadedFile ==> ', this.uploadedFile)
+    this.showSpinner = true;
     this.cafeteriaService.updateCafeteria(updatedCafeteria).then((data) => {
       console.log('update data', data);
+
       if (this.uploadedFile) {
         this.cafeteriaService.saveImage(this.uploadedFile, this._cafeteriaId).then((imgResponse) => {
           console.log('img response', imgResponse);
+          this.showSpinner = false;
           this.goBack();
         }, (imgError) => {
           console.warn('img error', imgError);
-          this.goBack();
+
+          this.modalService.create(ErrorModalComponent).then(() => {
+            this.showSpinner = false;
+            this.goBack();
+          });
         });
       } else {
+        this.showSpinner = false;
         this.goBack();
       }
 
     }, (error) => {
       console.log('update error', error);
+      this.showSpinner = false;
     });
   }
 

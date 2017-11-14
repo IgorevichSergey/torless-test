@@ -132,7 +132,12 @@
 
         </div>
         <div class="submit-button-container">
-          <button (click)="registerUser(createdUser)" [disabled]="isButtonDisabled(createdUser.user)">הרשמו</button>
+          <!--<button (click)="registerUser(createdUser)">-->
+          <button (click)="registerUser(createdUser)" [disabled]="isButtonDisabled(createdUser.user) && showSpinner">
+            <app-loading-spinner *ngIf="showSpinner"></app-loading-spinner>
+            <span *ngIf="!showSpinner">הרשמו</span>
+          <!--</button>-->
+          </button>
         </div>
       </div>
     </div>

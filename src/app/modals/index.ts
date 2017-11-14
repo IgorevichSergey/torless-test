@@ -10,6 +10,12 @@ import { TimeSelectModalComponent } from './time-select-modal/time-select-modal.
 import { ContactUsModalComponent } from './contact-us-modal/contact-us-modal.component';
 import { SelectCafeteriaModalComponent } from './select-cafeteria-modal/select-cafeteria-modal.component';
 import { ModalContainerComponent } from './modal-container/modal-container.component';
+import { ErrorModalComponent } from './error-modal/error-modal.component';
+
+export {
+  TimeSelectModalComponent,
+  ErrorModalComponent
+}
 
 // import { InformationComponent } from './information/information.component';
 // import { PathComponent } from './path/path.component';
@@ -29,14 +35,16 @@ import { ModalContainerComponent } from './modal-container/modal-container.compo
     TimeSelectModalComponent,
     ContactUsModalComponent,
     SelectCafeteriaModalComponent,
-    ModalContainerComponent
+    ModalContainerComponent,
+    ErrorModalComponent
   ],
   exports: [
     ConfirmModalComponent,
     TimeSelectModalComponent,
     ContactUsModalComponent,
     SelectCafeteriaModalComponent,
-    ModalContainerComponent
+    ModalContainerComponent,
+    ErrorModalComponent
   ]
 })
 export class ModalsModule {}

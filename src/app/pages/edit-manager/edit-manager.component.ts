@@ -12,6 +12,7 @@ import { REG_EXPS } from '../../constants';
 })
 export class EditManagerComponent implements OnInit {
   manager: any = {};
+  public showSpinner: boolean = false;
 
   public passwords: {
     [key: string]: string
@@ -63,7 +64,7 @@ export class EditManagerComponent implements OnInit {
   }
 
   public updateManager(manager): void {
-
+    this.showSpinner = true;
     this.userService.editManager(this._managerId, this._cafeteriaId, {
       mn_name: manager.name,
       mn_last_name: manager.last_name,
@@ -71,8 +72,11 @@ export class EditManagerComponent implements OnInit {
       mn_email: manager.email,
       mn_pass: manager.password
     }).then((response) => {
+      this.showSpinner = false;
       console.log('manager was updated', response);
       this.goBack();
+    }, () => {
+      this.showSpinner = false;
     });
   }
 

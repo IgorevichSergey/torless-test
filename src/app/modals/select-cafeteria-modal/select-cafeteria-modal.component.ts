@@ -18,8 +18,10 @@ export class SelectCafeteriaModalComponent implements OnInit {
 
   ngOnInit() {
     this.cafeteriaService.getUserCafeterias().then((response) => {
-      this.cafeterias = response.data;
-      console.log('cafeterias', response.data);
+      // this.cafeterias = (response.data || []).filter((item) => {
+      //   return item.caf_name && item.id;
+      // });
+      console.log('cafeterias', this.cafeterias);
     })
   }
 

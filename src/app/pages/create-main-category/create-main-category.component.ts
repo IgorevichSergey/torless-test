@@ -11,6 +11,7 @@ import { CreatedMainCategoryClass } from '../../custom-classes';
 })
 export class CreateMainCategoryComponent implements OnInit {
   public complete: number = 50;
+  public showSpinner: boolean = false;
 
   constructor(
     private categoryService: CategoryService
@@ -20,7 +21,7 @@ export class CreateMainCategoryComponent implements OnInit {
   }
 
   createMainCategory() {
-
+    this.showSpinner = true;
   }
 
 }
