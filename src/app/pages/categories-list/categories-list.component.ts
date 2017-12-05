@@ -33,6 +33,7 @@ export class CategoriesListComponent implements OnInit {
         this._getCategoriesForCafeteria(+param.cafId);
         this.cafeteriaService.getCafeteriaById(this._cafeteriaId).then((response) => {
           this.eventService.headerText$.emit(response.data.cafeteria.caf_name);
+          this.addNewCategory();
         });
       });
   }

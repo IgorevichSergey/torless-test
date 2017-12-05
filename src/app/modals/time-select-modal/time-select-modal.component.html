@@ -20,11 +20,11 @@
     </div>
     <div class="form" *ngIf="viewedDay?.opened">
       <div class="select-container">
-        <app-select [list]="hours" [value]="getValue('openAt')" [placeholder]="'יום א’ - הקלד/י שעת פתיחה'" (setItem)="setTime($event, 'openAt')"></app-select>
+        <app-select [list]="hours" [value]="getValue('openAt')" [placeholder]="viewedDay.dayName + ' - הקלד/י שעת פתיחה'" (setItem)="setTime($event, 'openAt')"></app-select>
       </div>
 
       <div class="select-container">
-        <app-select [list]="hours" [value]="getValue('closeAt')" [placeholder]="'יום א’ - הקלד/י שעת פתיחה'" (setItem)="setTime($event, 'closeAt')"></app-select>
+        <app-select [list]="hours" [value]="getValue('closeAt')" [placeholder]="viewedDay.dayName + ' - הקלד/י שעת סגירה'" (setItem)="setTime($event, 'closeAt')"></app-select>
       </div>
     </div>
 

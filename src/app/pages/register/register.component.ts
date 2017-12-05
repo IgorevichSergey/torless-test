@@ -38,7 +38,8 @@ export class RegisterComponent implements OnInit {
   private _errors = {
     invalidEmail: 'דוא"ל שנכתב שגוי',
     emailAlreadyExist: 'הדוא"ל כבר בשימוש',
-    invalidPassword: 'חייב להכיל לפחות 6 סמלים'
+    invalidPassword: 'חייב להכיל לפחות 6 סמלים',
+    passwordsIsNotMatch: 'סיסמאות לא תואמות'
   };
 
 
@@ -126,8 +127,8 @@ console.log("error CB")
 
   }
 
-  checkPassword(password: string, type): void {
-    if (password) {
+  isPasswordValid(password: string, type: string): void {
+    if (password && password !== '') {
       if (password.length >= 6) {
         this.formErrors[type] = false;
       } else {
@@ -136,6 +137,15 @@ console.log("error CB")
       }
     }
   }
+
+  isPasswordConfirm(password, confirmPassword): void {
+    if (password && confirmPassword) {
+      this.formErrors.passwordField = (password !== confirmPassword);
+      this.formErrors.confirmPasswordField = (password !== confirmPassword);
+      this.formErrorMessages.password = this._errors.passwordsIsNotMatch;
+    }
+  }
+  // passwordsIsNotMatch
 
   // public isButtonDisabled(user): boolean {
   //   let result: boolean = (this.confirmedPassword !== user.us_pass);
@@ -149,21 +159,38 @@ console.log("error CB")
   //   return result;
   // }
 
-  isButtonDisabled(user): boolean {
+  isButtonDisabled(user, company): boolean {
+    console.log('user', user);
+    console.log('company', company);
     let disable = false;
     for (const key in user) {
-      if (!user[key] || String(user[key]).length < 2) {
+      if (!user[key] || user[key] === '' || user[key] === null || user[key] === undefined) {
         disable = true;
+        break;
       }
     }
 
-    if (this.__hasError()) {
-      disable = true;
+    for (const key in company) {
+      if (!company[key] || company[key] === '' || company[key] === null || company[key] === undefined) {
+        disable = true;
+        break;
+      }
     }
 
-    if (!user.us_pass || !this.confirmedPassword || (this.confirmedPassword !== user.us_pass)) {
-      disable = true;
+    if (!disable) {
+      if (this.__hasError()) {
+        disable = true;
+      }
+
+      disable = this.confirmedPassword !== user.us_pass;
     }
+
+    // for (const key in user) {
+    //   // console.log('user[key]', user[key])
+    //   if (!user[key] || String(user[key]).length < 2) {
+    //     disable = true;
+    //   }
+    // }
 
     return disable;
   }

@@ -75,7 +75,7 @@
       <div class="chief-account-details">
         <div class="label">
         <div class="information-container">
-          <app-information [hintText]="'בתורלס. פרטיו של המנהל הראשי מוזנים פה. הפרטים ניתנים לשינוי בכל עת. בנוסף, לכל סניף שתפתחו במערכת, יהיה מנהל משלו ופרטיו מוזנים בעת פתיחת הסניף.'" hintPosition="top center" elementVerticalPosition="top" elementHorizontalPosition="left" iconColor="#ff5b57"></app-information>
+          <app-information hintText="לכל רשת סניפים, יש מנהל חשבון ראשי בתורלס. פרטיו של המנהל הראשי מוזנים פה. הפרטים ניתנים לשינוי בכל עת. בנוסף, לכל סניף שתפתחו במערכת, יהיה מנהל משלו ופרטיו מוזנים בעת פתיחת הסניף" hintPosition="top center" elementVerticalPosition="top" elementHorizontalPosition="left" iconColor="#ff5b57"></app-information>
         </div>
           פרטי מנהל/ת החשבון הראשי
         </div>
@@ -113,12 +113,12 @@
 
         <div class="input-line required">
           <!--<span>password</span>-->
-          <input type="password" appInput [(ngModel)]="createdUser.user.us_pass" [placeholderMessage]="'סיסמה'" (blur)="checkPassword(createdUser.user.us_pass, 'passwordField')" [error]="formErrors.passwordField" [message]="formErrorMessages.password" >
+          <input type="password" appInput [(ngModel)]="createdUser.user.us_pass" [placeholderMessage]="'סיסמה'" (blur)="isPasswordValid(createdUser.user.us_pass, 'passwordField'); isPasswordConfirm(createdUser.user.us_pass, confirmedPassword);" [error]="formErrors.passwordField" [message]="formErrorMessages.password" >
         </div>
 
         <div class="input-line required">
           <!--username-->
-          <input type="password" appInput [(ngModel)]="confirmedPassword" [placeholderMessage]="'הקלידו ססמה מחדש'" (blur)="checkPassword(confirmedPassword, 'confirmPasswordField')" [error]="formErrors.confirmPasswordField" [message]="formErrorMessages.password" >
+          <input type="password" appInput [(ngModel)]="confirmedPassword" [placeholderMessage]="'הקלידו ססמה מחדש'" (blur)="isPasswordValid(confirmedPassword, 'confirmPasswordField'); isPasswordConfirm(createdUser.user.us_pass, confirmedPassword);" [error]="formErrors.confirmPasswordField" [message]="formErrorMessages.password" >
         </div>
 
       </div>
@@ -133,7 +133,7 @@
         </div>
         <div class="submit-button-container">
           <!--<button (click)="registerUser(createdUser)">-->
-          <button (click)="registerUser(createdUser)" [disabled]="isButtonDisabled(createdUser.user) && showSpinner">
+          <button (click)="registerUser(createdUser)" [disabled]="isButtonDisabled(createdUser.user, createdUser.company)">
             <app-loading-spinner *ngIf="showSpinner"></app-loading-spinner>
             <span *ngIf="!showSpinner">הרשמו</span>
           <!--</button>-->

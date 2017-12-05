@@ -18,6 +18,29 @@ export class CreateCafeteriaComponent implements OnInit {
   complete: number = 25; // 25, 50, 75, 100
   public showSpinner: boolean = false;
 
+  kosherTypes = [
+    {
+      id: 0,
+      name: 'first'
+    },
+    {
+      id: 1,
+      name: 'second'
+    },
+    {
+      id: 2,
+      name: 'third'
+    },
+    {
+      id: 3,
+      name: 'fourth'
+    },
+    {
+      id: 4,
+      name: 'fifth'
+    }
+  ];
+
   public createdCafeteria: CreatedCafeteria = new CreatedCafeteria();
   public universities: any[];
   public universityBuildings: any[];
